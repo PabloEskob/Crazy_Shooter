@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="53933274-9b43-45af-9600-5ee3072e3939" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Zomb.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Zomb.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene/NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene/NavMesh.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Demo/PortalTeleport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Demo/PortalTeleport.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/RemoveMissingScripts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/RemoveMissingScripts.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +19,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/Road.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/RoadTraffic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/TurnOffRoad.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6a5b55f2e18b419e9faedac06ac6af94817600/09/02bed2e2/Editor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -30,20 +29,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="A:\Unity\2021.3.14f1\Editor\Unity.exe" />
@@ -83,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670942272069</updated>
       <workItem from="1670942281463" duration="624000" />
-      <workItem from="1671014644531" duration="15938000" />
+      <workItem from="1671014644531" duration="17351000" />
     </task>
     <servers />
   </component>

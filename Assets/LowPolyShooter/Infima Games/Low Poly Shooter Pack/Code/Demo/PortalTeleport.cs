@@ -3,8 +3,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
-using UnityEditor;
-using UnityEditor.SceneManagement;
+//using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -78,8 +77,8 @@ namespace InfimaGames.LowPolyShooterPack
             yield return StartCoroutine(FadeLoadingScreen(1, fadeDuration));
 
             //Load the scene.
-            AsyncOperation operation = EditorSceneManager.LoadSceneAsyncInPlayMode(sceneToLoad, new LoadSceneParameters(LoadSceneMode.Single));
-            yield return new WaitWhile(() => !operation.isDone);
+          //  AsyncOperation operation = EditorSceneManager.LoadSceneAsyncInPlayMode(sceneToLoad, new LoadSceneParameters(LoadSceneMode.Single));
+           // yield return new WaitWhile(() => !operation.isDone);
 
             //Fade out loading screen once loading is completed.
             yield return StartCoroutine(FadeLoadingScreen(0, fadeDuration));
