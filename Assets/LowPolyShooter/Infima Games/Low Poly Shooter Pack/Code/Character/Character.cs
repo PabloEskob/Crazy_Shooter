@@ -1402,7 +1402,6 @@ namespace InfimaGames.LowPolyShooterPack
 		{
 			//Read.
 			axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
-
 			//Make sure that we have a weapon.
 			if (equippedWeapon == null)
 				return;

@@ -6,38 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="53933274-9b43-45af-9600-5ee3072e3939" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat01_animated_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat01_animated_3x3_AB.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat02_animated_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/splat02_animated_3x3_AB.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/P_LPSP_FP_CH.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/P_LPSP_FP_CH.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/Attachments/P_LPSP_WEP_ATT_Scopes.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/Attachments/P_LPSP_WEP_ATT_Scopes.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/Attachments/Specific/P_LPSP_WEP_ATT_Scope_05.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/Attachments/Specific/P_LPSP_WEP_ATT_Scope_05.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/Attachments/Specific/P_LPSP_WEP_ATT_Scope_06.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/Attachments/Specific/P_LPSP_WEP_ATT_Scope_06.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/Attachments/Specific/P_LPSP_WEP_ATT_Scope_07.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/Attachments/Specific/P_LPSP_WEP_ATT_Scope_07.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/Attachments/Specific/P_LPSP_WEP_ATT_Scope_08.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/Attachments/Specific/P_LPSP_WEP_ATT_Scope_08.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_Inventory.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_Inventory.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_AR_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_AR_01.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_AR_02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_AR_02.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_AR_03.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_AR_03.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_GL_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_GL_01.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Handgun_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Handgun_01.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Handgun_02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Handgun_02.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Handgun_03.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Handgun_03.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Handgun_04.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Handgun_04.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_RL_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_RL_01.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_SMG_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_SMG_01.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_SMG_02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_SMG_02.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_SMG_03.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_SMG_03.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_SMG_04.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_SMG_04.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_SMG_05.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_SMG_05.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Shotgun_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Shotgun_01.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Sniper_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Sniper_01.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Sniper_02.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Sniper_02.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Sniper_03.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Weapons/P_LPSP_WEP_Sniper_03.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PolygonZombies/Materials/PolygonZombie_Texture_01_A 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PolygonZombies/Materials/PolygonZombie_Texture_01_A 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PolygonZombies/Models/Zombies.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PolygonZombies/Models/Zombies.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Camera/CameraLook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Camera/CameraLook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Character.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Input/IA_Player.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Input/IA_Player.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +21,15 @@
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/Road.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/RoadTraffic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/TurnOffRoad.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/FPSCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Actions/InputActionMap.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Actions/InputActionReference.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Devices/InputDevice.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/Users/InputUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -58,20 +39,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="A:\Unity\2021.3.14f1\Editor\Unity.exe" />
