@@ -20,6 +20,10 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Minimum and maximum up/down rotation angle the camera can have.")]
         [SerializeField]
         private Vector2 yClamp = new Vector2(-60, 60);
+        
+        [Tooltip("Minimum and maximum left/right rotation angle the player can have.")]
+        [SerializeField]
+        private Vector2 xClamp = new Vector2(-60, 60);
 
         [Tooltip("Should the look rotation be interpolated?")]
         [SerializeField]
@@ -77,7 +81,7 @@ namespace InfimaGames.LowPolyShooterPack
             frameInput *= sensitivity;
 
             //Yaw.
-            Quaternion rotationYaw = Quaternion.Euler(0.0f, frameInput.x, 0.0f);
+            Quaternion rotationYaw = Quaternion.Euler(0.0f, frameInput.x , 0.0f);
             //Pitch.
             Quaternion rotationPitch = Quaternion.Euler(-frameInput.y, 0.0f, 0.0f);
             
@@ -102,13 +106,48 @@ namespace InfimaGames.LowPolyShooterPack
                 localRotation *= rotationPitch;
                 //Clamp.
                 localRotation = Clamp(localRotation);
-
                 //Rotate character.
+                var angle = playerCharacter.transform.localRotation.eulerAngles.y;
+                    
+                if (playerCharacter.transform.localRotation.eulerAngles.y <= xClamp.x) 
+                    SetRotation(xClamp.x);
+
+                if (playerCharacter.transform.localRotation.eulerAngles.y >= xClamp.y) 
+                    SetRotation(xClamp.y);
+
                 playerCharacterRigidbody.MoveRotation(playerCharacterRigidbody.rotation * rotationYaw);
             }
             
             //Set.
             transform.localRotation = localRotation;
+        }
+
+        private void SetRotation(float yValue)
+        {
+            var playerTransform = playerCharacter.transform;
+            var rotation = playerTransform.localRotation;
+            playerCharacter.transform.localRotation = Quaternion.Euler(rotation.eulerAngles.x, yValue, rotation.eulerAngles.z);
+            playerCharacterRigidbody.rotation = playerCharacter.transform.rotation;
+        }
+
+        private Quaternion ClampYaw(Quaternion rotationYaw)
+        {
+            rotationYaw.x /= rotationYaw.w;
+            rotationYaw.y /= rotationYaw.w;
+            rotationYaw.z /= rotationYaw.w;
+            rotationYaw.w = 1.0f;
+
+            //Pitch.
+            float pitch = 2.0f * Mathf.Rad2Deg * Mathf.Atan(rotationYaw.x);
+
+            //Clamp.
+            pitch = Mathf.Clamp(pitch, xClamp.x, xClamp.y);
+            float yRotation = 0f;
+            
+            rotationYaw.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * pitch);
+
+            //Return.
+            return rotationYaw;
         }
 
         #endregion
@@ -130,6 +169,8 @@ namespace InfimaGames.LowPolyShooterPack
 
             //Clamp.
             pitch = Mathf.Clamp(pitch, yClamp.x, yClamp.y);
+            float yRotation = 0f;
+            
             rotation.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * pitch);
 
             //Return.

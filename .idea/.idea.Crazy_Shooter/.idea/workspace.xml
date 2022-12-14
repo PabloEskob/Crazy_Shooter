@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="53933274-9b43-45af-9600-5ee3072e3939" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Demo/PortalTeleport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Demo/PortalTeleport.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/RemoveMissingScripts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/RemoveMissingScripts.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Camera/CameraLook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Camera/CameraLook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Character.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Input/IA_Player.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Input/IA_Player.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +21,15 @@
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/Road.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/RoadTraffic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/TurnOffRoad.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6a5b55f2e18b419e9faedac06ac6af94817600/09/02bed2e2/Editor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/FPSCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Actions/InputActionMap.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Actions/InputActionReference.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Devices/InputDevice.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/Users/InputUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -82,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1670942272069</updated>
       <workItem from="1670942281463" duration="624000" />
-      <workItem from="1671014644531" duration="17351000" />
+      <workItem from="1671014644531" duration="13320000" />
     </task>
     <servers />
   </component>
