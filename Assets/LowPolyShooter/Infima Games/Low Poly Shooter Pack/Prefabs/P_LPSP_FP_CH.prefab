@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 916095938892669238}
   - component: {fileID: 5827704354076846068}
   - component: {fileID: 8156954733744108957}
+  - component: {fileID: 368310458}
   m_Layer: 9
   m_Name: Camera
   m_TagString: MainCamera
@@ -44,8 +45,8 @@ Camera:
   m_GameObject: {fileID: 56164245437412244}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6279096, g: 0.8018868, b: 0.59385014, a: 0.54509807}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -110,6 +111,15 @@ AudioReverbZone:
   m_Density: 100
   m_LFReference: 250
   m_RoomLF: 0
+--- !u!45 &368310458
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56164245437412244}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 2c308a3b06c530748acc49e5e317ee58, type: 2}
 --- !u!1 &80323377428827398
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +727,7 @@ Transform:
   m_GameObject: {fileID: 2751027687307977091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8479647377699197980}
@@ -864,13 +874,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClipWalking: {fileID: 8300000, guid: 74abbbf1b1724e34b894191db38e10a0, type: 3}
   audioClipRunning: {fileID: 8300000, guid: d2add02f58e61e640aba3ae9110591cb, type: 3}
-  speedWalking: 8
-  speedAiming: 3.2
-  speedRunning: 8.8
-  walkingMultiplierForward: 1
-  walkingMultiplierSideways: 0.8
-  walkingMultiplierBackwards: 0.8
-  movementSmoothness: 0.08
+  speedWalking: 0
+  speedAiming: 0
+  speedRunning: 0
+  walkingMultiplierForward: 0
+  walkingMultiplierSideways: 0
+  walkingMultiplierBackwards: 0
+  movementSmoothness: 0
 --- !u!114 &434113066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3273,7 +3283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9144016917351435942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalPosition: {x: 0, y: 1.41, z: 0.016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3327,7 +3337,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: {x: 1, y: 1}
-  yClamp: {x: -89, y: 89}
+  yClamp: {x: -10, y: 50}
+  xClamp: {x: 90, y: 270}
   smooth: 0
   interpolationSpeed: 35
 --- !u!1 &9213006797200856089

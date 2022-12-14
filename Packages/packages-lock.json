@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.agava.webutility": {
-      "version": "https://github.com/forcepusher/com.agava.webutility.git#2.0.0",
+      "version": "https://github.com/forcepusher/com.agava.webutility.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "dbf49295fd77c3f9d8ba0ab156c96c0f2e90e9de"
+      "hash": "97e107965fd41cc7092dde52668c70c897b4da98"
     },
     "com.agava.yandexgames": {
       "version": "https://github.com/forcepusher/com.agava.yandexgames.git#11.0.0",
@@ -13,6 +13,13 @@
       "source": "git",
       "dependencies": {},
       "hash": "51d2698d5aaa609e1679da6546bbb49148c4909c"
+    },
+    "com.agava.yandexmetrica": {
+      "version": "https://github.com/forcepusher/com.agava.yandexmetrica.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2937380390844fc76ae88d6cd570a19ee86ac2e2"
     },
     "com.unity.collab-proxy": {
       "version": "1.17.7",
