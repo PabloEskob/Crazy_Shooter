@@ -345,6 +345,14 @@ PrefabInstance:
       value: P_LPSP_FP_CH
       objectReference: {fileID: 0}
     - target: {fileID: 7954147704929373820, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
+      propertyPath: xClamp.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954147704929373820, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
+      propertyPath: xClamp.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954147704929373820, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
       propertyPath: yClamp.x
       value: -10
       objectReference: {fileID: 0}
