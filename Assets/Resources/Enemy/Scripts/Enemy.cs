@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[RequireComponent(typeof(CapsuleCollider))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
@@ -7,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private ParticleSystem _particleSystem;
 
     private static readonly int Die = Animator.StringToHash("Die");
+    private CapsuleCollider _collider;
 
     public bool IsDied { get; private set; }
 
@@ -16,6 +19,11 @@ public class Enemy : MonoBehaviour
         {
             TakeDamage();
         }
+    }
+
+    private void Awake()
+    {
+        _collider = GetComponent<CapsuleCollider>();
     }
 
     public void Died()
@@ -31,6 +39,7 @@ public class Enemy : MonoBehaviour
         if (_maxHealth == 0)
         {
             IsDied = true;
+            _collider.enabled = false;
             _animator.SetTrigger(Die);
         }
     }
