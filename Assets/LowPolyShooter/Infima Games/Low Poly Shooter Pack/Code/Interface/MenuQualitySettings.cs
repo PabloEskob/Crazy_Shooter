@@ -65,7 +65,8 @@ namespace InfimaGames.LowPolyShooterPack.Interface
             animatedCanvas.GetComponent<CanvasGroup>().alpha = 0;
             //Get canvas animation component.
             animationComponent = animatedCanvas.GetComponent<Animation>();
-
+            SetQualityVeryLow();
+            Debug.Log(QualitySettings.currentLevel);
             //Find post process volumes in scene and assign them.
            // postProcessingVolume = GameObject.Find("Post Process Volume").GetComponent<PostProcessVolume>();
            // postProcessingVolumeScope = GameObject.Find("Post Process Volume Scope").GetComponent<PostProcessVolume>();
@@ -151,10 +152,10 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         /// </summary>
         public void SetQualityLow()
         {
-            //Set Quality.
-            QualitySettings.SetQualityLevel(1);
-            //Disable Post Processing.
-            SetPostProcessingState(false);
+            // //Set Quality.
+            // QualitySettings.SetQualityLevel(1);
+            // //Disable Post Processing.
+            // SetPostProcessingState(false);
         }
 
         /// <summary>
@@ -162,20 +163,20 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         /// </summary>
         public void SetQualityMedium()
         {
-            //Set Quality.
-            QualitySettings.SetQualityLevel(2);
-            //Enable Post Processing.
-            SetPostProcessingState();
+            // //Set Quality.
+            // QualitySettings.SetQualityLevel(2);
+            // //Enable Post Processing.
+            // SetPostProcessingState();
         }
         /// <summary>
         /// Sets the graphic quality to high.
         /// </summary>
         public void SetQualityHigh()
         {
-            //Set Quality.
-            QualitySettings.SetQualityLevel(3);
-            //Enable Post Processing.
-            SetPostProcessingState();
+            // //Set Quality.
+            // QualitySettings.SetQualityLevel(3);
+            // //Enable Post Processing.
+            // SetPostProcessingState();
         }
 
         /// <summary>
@@ -183,20 +184,20 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         /// </summary>
         public void SetQualityVeryHigh()
         {
-            //Set Quality.
-            QualitySettings.SetQualityLevel(4);
-            //Enable Post Processing.
-            SetPostProcessingState();
+            // //Set Quality.
+            // QualitySettings.SetQualityLevel(4);
+            // //Enable Post Processing.
+            // SetPostProcessingState();
         }
         /// <summary>
         /// Sets the graphic quality to ultra.
         /// </summary>
         public void SetQualityUltra()
         {
-            //Set Quality.
-            QualitySettings.SetQualityLevel(5);
-            //Enable Post Processing.
-            SetPostProcessingState();
+            // //Set Quality.
+            // QualitySettings.SetQualityLevel(5);
+            // //Enable Post Processing.
+            // SetPostProcessingState();
         }
 
         public void Restart()
