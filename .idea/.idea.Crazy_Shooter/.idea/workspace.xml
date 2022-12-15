@@ -6,17 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="53933274-9b43-45af-9600-5ee3072e3939" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Animator/Zombie.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Animator/Zombie.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Died.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Died.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Zomb.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Zomb.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/RemoveMissingScripts.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/RemoveMissingScripts.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/UnigueIdEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/UnigueIdEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Spawner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Spawner.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

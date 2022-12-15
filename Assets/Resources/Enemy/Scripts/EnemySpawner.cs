@@ -12,7 +12,6 @@ public class EnemySpawner : MonoBehaviour
     private GameFactory _gameFactory;
     private List<Enemy> _enemies;
     private bool _slain;
-    private string _id;
 
     public int Number => _number;
 
@@ -28,7 +27,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        _id = GetComponent<UniqueId>().Id;
         _enemies = new List<Enemy>();
     }
 

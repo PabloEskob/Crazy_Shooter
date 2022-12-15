@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4243440337666959620}
   - component: {fileID: 4243440337666959621}
-  - component: {fileID: 5917787230136385572}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -46,18 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _monsterTypeId: 0
-  _factory: {fileID: 0}
   _count: 0
---- !u!114 &5917787230136385572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4243440337666959618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 826589b94eae4d499b2078c9ef3c5f97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _id: _32660578-ee11-4a2e-aa1c-7158f50d6cd6
+  _number: 0
