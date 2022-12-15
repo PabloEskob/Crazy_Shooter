@@ -1,15 +1,33 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CapsuleCollider))]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageRecipient
 {
-    [SerializeField] private float _maxHealth;
     [SerializeField] private Animator _animator;
     [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private float _timeDied = 5f;
 
-    private static readonly int Die = Animator.StringToHash("Die");
     private CapsuleCollider _collider;
+    private float _maxHealth;
+    private int _damage;
+
+    public int Damage
+    {
+        get => _damage;
+        set => _damage = value;
+    }
+
+    public float MaxHealth
+    {
+        get => _maxHealth;
+        set => _maxHealth = value;
+    }
+
+    private static readonly int DieAnimation = Animator.StringToHash("Die");
+
+    public event Action OnDied;
 
     public bool IsDied { get; private set; }
 
@@ -17,7 +35,7 @@ public class Enemy : MonoBehaviour
     {
         if (!collision.collider.GetComponent<Enemy>())
         {
-            TakeDamage();
+            TakeDamage(1);
         }
     }
 
@@ -26,21 +44,30 @@ public class Enemy : MonoBehaviour
         _collider = GetComponent<CapsuleCollider>();
     }
 
-    public void Died()
+    public void TakeDamage(int damage)
     {
-        gameObject.SetActive(false);
+        _maxHealth -= damage;
+        _particleSystem.Play();
+
+        if (_maxHealth <= 0)
+        {
+            OnDied?.Invoke();
+            Die();
+        }
     }
 
-    private void TakeDamage()
+    private void Die()
     {
-        _maxHealth -= 1;
-        _particleSystem.Play();
-        
-        if (_maxHealth == 0)
-        {
-            IsDied = true;
-            _collider.enabled = false;
-            _animator.SetTrigger(Die);
-        }
+        IsDied = true;
+        _collider.enabled = false;
+        _animator.SetTrigger(DieAnimation);
+        StartCoroutine(DisableCharacter());
+    }
+
+    private IEnumerator DisableCharacter()
+    {
+        var newWaitForSecond = new WaitForSeconds(_timeDied);
+        yield return newWaitForSecond;
+        gameObject.SetActive(false);
     }
 }

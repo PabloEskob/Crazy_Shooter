@@ -1638,6 +1638,7 @@ MonoBehaviour:
   _maxHealth: 2
   _animator: {fileID: 5478271320605166967}
   _particleSystem: {fileID: 7335426502248481629}
+  _timeDied: 3
 --- !u!136 &8390890276324636980
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1677,8 +1678,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 8367683719984430029}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.22
-  m_Speed: 1.5
+  m_Radius: 1
+  m_Speed: 15
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 1600
@@ -1703,7 +1704,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 8807107853477571611}
-  _player: {fileID: 0}
 --- !u!1 &8552611850788319209
 GameObject:
   m_ObjectHideFlags: 0

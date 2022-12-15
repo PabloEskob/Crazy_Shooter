@@ -4,8 +4,8 @@ using UnityEngine.AI;
 public class EnemyMove : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _navMeshAgent;
-    [SerializeField] private Player _player;
-
+    
+    private Player _player;
     private Enemy _enemy;
 
     private void Awake()
@@ -19,5 +19,10 @@ public class EnemyMove : MonoBehaviour
             _navMeshAgent.destination = _player.transform.position;
         else
             _navMeshAgent.speed = 0;
+    }
+
+    public void Init(Player player)
+    {
+        _player = player;
     }
 }
