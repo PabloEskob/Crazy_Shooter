@@ -66,7 +66,6 @@ namespace InfimaGames.LowPolyShooterPack.Interface
             //Get canvas animation component.
             animationComponent = animatedCanvas.GetComponent<Animation>();
             SetQualityVeryLow();
-            Debug.Log(QualitySettings.currentLevel);
             //Find post process volumes in scene and assign them.
            // postProcessingVolume = GameObject.Find("Post Process Volume").GetComponent<PostProcessVolume>();
            // postProcessingVolumeScope = GameObject.Find("Post Process Volume Scope").GetComponent<PostProcessVolume>();

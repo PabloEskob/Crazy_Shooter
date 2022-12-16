@@ -1227,12 +1227,12 @@ namespace InfimaGames.LowPolyShooterPack
 			{
 				case InputActionPhase.Started:
 					//Started.
-					holdingButtonAim = true;
+					holdingButtonAim = !holdingButtonAim;
 					break;
-				case InputActionPhase.Canceled:
-					//Canceled.
-					holdingButtonAim = false;
-					break;
+				// case InputActionPhase.Canceled:
+				// 	//Canceled.
+				// 	holdingButtonAim = false;
+				// 	break;
 			}
 		}
 

@@ -116,6 +116,7 @@ public class ECExplodingProjectile : MonoBehaviour
             }
             Vector3 pos = contact.point;
             Instantiate(impactPrefab, pos, rot);
+            
             if (!explodeOnTimer && Missile == false)
             {
                 Destroy(gameObject);

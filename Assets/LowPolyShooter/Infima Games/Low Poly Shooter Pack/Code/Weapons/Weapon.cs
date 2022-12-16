@@ -20,6 +20,9 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("How much the character's movement speed is multiplied by when wielding this weapon.")]
         [SerializeField]
         private float multiplierMovementSpeed = 1.0f;
+
+        [SerializeField] 
+        private bool _isBought;
         
         [Header("Firing")]
 
@@ -308,6 +311,8 @@ namespace InfimaGames.LowPolyShooterPack
 
         public override int GetAmmunitionTotal() => magazineBehaviour.GetAmmunitionTotal();
         public override bool HasCycledReload() => cycledReload;
+
+        public override bool IsBought() => _isBought;
 
         public override bool IsAutomatic() => automatic;
         public override bool IsBoltAction() => boltAction;

@@ -1,5 +1,6 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using System.Linq;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -31,7 +32,7 @@ namespace InfimaGames.LowPolyShooterPack
         public override void Init(int equippedAtStart = 0)
         {
             //Cache all weapons. Beware that weapons need to be parented to the object this component is on!
-            weapons = GetComponentsInChildren<WeaponBehaviour>(true);
+            weapons = GetComponentsInChildren<WeaponBehaviour>(true).Where(w => w.IsBought() == true).ToArray();
             
             //Disable all weapons. This makes it easier for us to only activate the one we need.
             foreach (WeaponBehaviour weapon in weapons)

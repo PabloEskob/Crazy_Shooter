@@ -3399,6 +3399,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 60135812283842780, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 60135812283842780, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 60135812283842780, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 60135812283842780, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 60135812283842780, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 80100401030342568, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -3514,6 +3534,26 @@ PrefabInstance:
     - target: {fileID: 206191853951617036, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 206871652657571402, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 206871652657571402, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 206871652657571402, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 206871652657571402, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 206871652657571402, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 215172813554358403, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -4175,6 +4215,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1336205423775232939, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336205423775232939, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336205423775232939, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336205423775232939, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336205423775232939, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1364705570931274561, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -4570,6 +4630,26 @@ PrefabInstance:
     - target: {fileID: 2096149297245490968, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113768312870607030, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113768312870607030, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113768312870607030, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113768312870607030, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113768312870607030, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2139698070364553663, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -5022,6 +5102,22 @@ PrefabInstance:
     - target: {fileID: 2938217730183995700, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940767764272533086, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940767764272533086, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940767764272533086, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940767764272533086, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2952116202895869051, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -6095,6 +6191,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5069160595750692273, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069160595750692273, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069160595750692273, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069160595750692273, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069160595750692273, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5083472910339749208, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -6395,6 +6511,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5567679552925350123, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567679552925350123, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567679552925350123, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567679552925350123, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567679552925350123, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5578287539154031706, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -6687,6 +6823,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 6046589879588722185, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046589879588722185, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046589879588722185, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046589879588722185, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046589879588722185, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6047367118689157255, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -6818,6 +6974,26 @@ PrefabInstance:
     - target: {fileID: 6304306483880944685, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6313751023667887553, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -6984,9 +7160,25 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6703516999087342009, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6703516999087342009, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: prefabProjectile
       value: 
       objectReference: {fileID: 1670969100947644, guid: 6eff2e3f87451484da970b33bbf1411f, type: 3}
+    - target: {fileID: 6703516999087342009, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6703516999087342009, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6703516999087342009, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6710130054947326841, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -7155,6 +7347,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7019589266253609496, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019589266253609496, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019589266253609496, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019589266253609496, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019589266253609496, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7022615053740936348, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -7230,6 +7442,26 @@ PrefabInstance:
     - target: {fileID: 7120312283734486019, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126395202556731877, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126395202556731877, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126395202556731877, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126395202556731877, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126395202556731877, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7129637501664986320, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -7631,6 +7863,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7888240408129932584, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888240408129932584, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888240408129932584, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888240408129932584, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888240408129932584, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7889308892428250637, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -7735,6 +7987,46 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8111604114442987983, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111604114442987983, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111604114442987983, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111604114442987983, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111604114442987983, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123693601619948954, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123693601619948954, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123693601619948954, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123693601619948954, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123693601619948954, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8147433870490419921, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -7791,6 +8083,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8174372834435582359, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8174372834435582361, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -7810,6 +8106,26 @@ PrefabInstance:
     - target: {fileID: 8189622510159415221, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8234593458945141305, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8234593458945141305, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8234593458945141305, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8234593458945141305, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8234593458945141305, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8246278217219449197, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -7915,6 +8231,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8400103367643415804, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -7994,6 +8330,26 @@ PrefabInstance:
     - target: {fileID: 8491545275308128233, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524413377780846853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isBought
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524413377780846853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automaticReloadOnEmpty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524413377780846853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.x
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524413377780846853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524413377780846853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8555681454957008580, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
