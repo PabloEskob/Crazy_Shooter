@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyAnimator))]
 [RequireComponent(typeof(CapsuleCollider))]
 public class Enemy : MonoBehaviour, IDamageRecipient
 {
-    [SerializeField] private Animator _animator;
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private float _timeDied = 5f;
 
+    private EnemyAnimator _enemyAnimator;
     private CapsuleCollider _collider;
     private float _maxHealth;
     private int _damage;
@@ -25,7 +26,6 @@ public class Enemy : MonoBehaviour, IDamageRecipient
         set => _maxHealth = value;
     }
 
-    private static readonly int DieAnimation = Animator.StringToHash("Die");
 
     public event Action OnDied;
 
@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour, IDamageRecipient
     private void Awake()
     {
         _collider = GetComponent<CapsuleCollider>();
+        _enemyAnimator = GetComponent<EnemyAnimator>();
     }
 
     public void TakeDamage(int damage)
@@ -60,7 +61,7 @@ public class Enemy : MonoBehaviour, IDamageRecipient
     {
         IsDied = true;
         _collider.enabled = false;
-        _animator.SetTrigger(DieAnimation);
+        _enemyAnimator.PlayDeath();
         StartCoroutine(DisableCharacter());
     }
 

@@ -9,7 +9,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private TriggerSpawn _triggerSpawn;
 
     private int _number;
-    private Player _player;
     private GameFactory _gameFactory;
     private List<Enemy> _enemies;
     private bool _released;
@@ -47,10 +46,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void Init(GameFactory gameFactory, Player player)
+    public void Init(GameFactory gameFactory)
     {
         _gameFactory = gameFactory;
-        _player = player;
     }
 
     public void SetNumber(int number)
@@ -85,7 +83,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void InitEnemy(Enemy enemy)
     {
-        enemy.GetComponent<EnemyMove>().Init(_player);
+        enemy.GetComponent<EnemyMove>().Init(_gameFactory.Player);
+        enemy.GetComponent<Attack>().Init(_gameFactory);
         enemy.transform.parent = transform;
         enemy.gameObject.SetActive(false);
     }

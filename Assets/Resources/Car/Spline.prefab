@@ -155,6 +155,8 @@ MonoBehaviour:
   _subscribers:
   - {fileID: 5701614417599849928}
   - {fileID: 8259981328517194626, guid: 87b5fcd0afe3ada419c3c839fd77c8ba, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   _rawSamples:
   - position: {x: -6.0212097, y: 1, z: 23.002266}
     up: {x: 0, y: 1, z: 0}

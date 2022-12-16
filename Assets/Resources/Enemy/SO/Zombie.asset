@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 3
   _damage: 1
-  _effectiveDistance: 7
+  _effectiveDistance: 5
   _speed: 14
   _monsterTypeId: 0
   _prefab: {fileID: 4378630177900363809, guid: 8f3467037e1d4384496b5f4051c939d3, type: 3}
