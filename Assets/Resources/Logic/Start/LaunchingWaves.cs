@@ -6,7 +6,6 @@ using UnityEngine;
 public class LaunchingWaves
 {
     private readonly List<EnemySpawner> _enemySpawners;
-    private int _number;
 
     public LaunchingWaves(List<EnemySpawner> enemySpawners)
     {
@@ -15,13 +14,23 @@ public class LaunchingWaves
 
     public void TurnOnSpawn()
     {
-        _number++;
+        var firstOrDefault = _enemySpawners.FirstOrDefault(e => e.Clear == false);
 
-        foreach (var enemySpawner in _enemySpawners.Where(enemySpawner => enemySpawner.Number==_number))
-            enemySpawner.TurnOnEnemy();
+        if (firstOrDefault != null && firstOrDefault.Released == false && firstOrDefault.TriggerSpawn == null)
+        {
+            firstOrDefault.TurnOnEnemy();
+        }
     }
 
-    public IEnumerator StartFirstWave(float startFirstWave )
+    public void TurnOnSpawn(Collider collider, int count)
+    {
+        var firstOrDefault = _enemySpawners.FirstOrDefault(e => e.Number == count);
+
+        if (firstOrDefault != null) firstOrDefault.TurnOnEnemy();
+    }
+
+
+    public IEnumerator StartFirstWave(float startFirstWave)
     {
         var newWaitForSecond = new WaitForSeconds(startFirstWave);
         yield return newWaitForSecond;

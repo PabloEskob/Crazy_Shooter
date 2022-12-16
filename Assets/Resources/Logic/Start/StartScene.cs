@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,20 +9,33 @@ public class StartScene : MonoBehaviour
     private StaticDataService _staticDataEnemy;
     private GameFactory _gameFactory;
     private AssetProvider _assetProvider;
-    private Player _player;
     private int _number;
     private LaunchingWaves _launchingWaves;
 
     private void OnEnable()
     {
-        foreach (var enemySpawner in _enemySpawners) 
+        foreach (var enemySpawner in _enemySpawners)
+        {
             enemySpawner.OnTurnedSpawner += _launchingWaves.TurnOnSpawn;
+
+            if (enemySpawner.TriggerSpawn != null)
+            {
+                enemySpawner.TriggerSpawn.TriggerEnter += _launchingWaves.TurnOnSpawn;
+            }
+        }
     }
 
     private void OnDisable()
     {
-        foreach (var enemySpawner in _enemySpawners) 
+        foreach (var enemySpawner in _enemySpawners)
+        {
             enemySpawner.OnTurnedSpawner -= _launchingWaves.TurnOnSpawn;
+
+            if (enemySpawner.TriggerSpawn != null)
+            {
+                enemySpawner.TriggerSpawn.TriggerEnter -= _launchingWaves.TurnOnSpawn;
+            }
+        }
     }
 
     private void Awake()
@@ -32,8 +44,6 @@ public class StartScene : MonoBehaviour
         _staticDataEnemy = new StaticDataService();
         _gameFactory = new GameFactory(_staticDataEnemy, _assetProvider);
         _launchingWaves = new LaunchingWaves(_enemySpawners);
-        _player = _gameFactory.CreateCar().GetComponent<Player>();
-        
         InitGameWorld();
     }
 
@@ -41,11 +51,13 @@ public class StartScene : MonoBehaviour
 
     private void InitGameWorld()
     {
-        for (var index = 0; index < _enemySpawners.Count; index++)
+        _gameFactory.CreateCar();
+        
+        for (var i = 0; i < _enemySpawners.Count; i++)
         {
-            var enemySpawner = _enemySpawners[index];
-            enemySpawner.Init(_gameFactory, _player);
-            enemySpawner.SetNumber(index);
+            var enemySpawner = _enemySpawners[i];
+            enemySpawner.Init(_gameFactory);
+            enemySpawner.SetNumber(i);
         }
     }
 }

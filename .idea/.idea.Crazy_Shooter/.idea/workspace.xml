@@ -6,25 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="53933274-9b43-45af-9600-5ee3072e3939" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Examples.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/PlaymakerActions.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/TMPro.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EffectCore/packs/StylizedProjectilePack1/prefabs/Bullet/Bullet_SilverFlare/Bullet_Small_SilverFlare/Bullet_SilverFlare_Small_Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EffectCore/packs/StylizedProjectilePack1/prefabs/Bullet/Bullet_SilverFlare/Bullet_Small_SilverFlare/Bullet_SilverFlare_Small_Projectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/EffectCore/packs/WebDemoAssets/scripts/ECExplodingProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/EffectCore/packs/WebDemoAssets/scripts/ECExplodingProjectile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Inventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Interface/CanvasSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Interface/CanvasSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Interface/MenuQualitySettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Interface/MenuQualitySettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/WeaponBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/WeaponBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Input/IA_Player.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Input/IA_Player.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Interface/P_LPSP_UI_Canvas.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Interface/P_LPSP_UI_Canvas.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Projectiles/P_LPSP_PROJ_Bullet_01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Prefabs/Projectiles/P_LPSP_PROJ_Bullet_01.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/FPSCounter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/FPSCounter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ShootingTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ShootingTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Car.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Spline.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Spline.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Animator/Zombie.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Animator/Zombie.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Zomb.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Zomb.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/SO/Zombie.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/SO/Zombie.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/GameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/GameFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/IGameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/IGameFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Start/StartScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Start/StartScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,26 +29,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bae255e3e08e46f7bc2fbd23dde96338158800/a8/c371ce26/QualitySettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bae255e3e08e46f7bc2fbd23dde96338158800/eb/d70315df/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/PoolRoad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/Road.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/RoadTraffic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/TurnOffRoad.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.agava.yandexgames@51d2698d5a/Runtime/Device/Device.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.agava.yandexgames@51d2698d5a/Runtime/Device/DeviceType.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.agava.yandexgames@51d2698d5a/Runtime/YandexGamesSdk.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Actions/InputActionMap.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Actions/InputActionPhase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Actions/InputActionReference.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Devices/InputDevice.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/OnScreen/OnScreenButton.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/UI/InputSystemUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/Users/InputUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/ab/1841a00c/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -77,7 +69,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.14f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="A:\Unity\2021.3.14f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;A:\Unity\Crazy Shooter\Crazy_Shooter&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="A:\Unity\Crazy Shooter\Crazy_Shooter" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -116,7 +108,7 @@
       <workItem from="1670942281463" duration="624000" />
       <workItem from="1671014644531" duration="13320000" />
       <workItem from="1671098692936" duration="29667000" />
-      <workItem from="1671179730947" duration="23810000" />
+      <workItem from="1671183338887" duration="23794000" />
     </task>
     <servers />
   </component>

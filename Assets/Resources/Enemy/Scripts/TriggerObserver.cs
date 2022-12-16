@@ -1,0 +1,22 @@
+﻿using System;
+using UnityEngine;
+
+public class TriggerObserver : MonoBehaviour
+{
+    public event Action<Collider> TriggerEnter;
+    public event Action<Collider> TriggerExit;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Player>())
+        {
+            TriggerEnter?.Invoke(other);
+        }
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        TriggerExit?.Invoke(other);
+    }
+}

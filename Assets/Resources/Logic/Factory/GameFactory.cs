@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
+using Object = UnityEngine.Object;
 
 public class GameFactory : IGameFactory
 {
     private readonly StaticDataService _staticDataEnemy;
     private readonly AssetProvider _assetProvider;
+
+    public Player Player { get; private set; }
 
     public GameFactory(StaticDataService staticDataEnemy, AssetProvider assetProvider)
     {
@@ -12,9 +15,10 @@ public class GameFactory : IGameFactory
         _assetProvider = assetProvider;
     }
 
-    public GameObject CreateCar()
+    public Player CreateCar()
     {
-        return _assetProvider.Instantiate(AssetPath.CarPath);
+        Player = _assetProvider.Instantiate(AssetPath.CarPath).GetComponent<Player>();
+        return Player;
     }
 
     public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent)
