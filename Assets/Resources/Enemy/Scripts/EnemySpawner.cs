@@ -6,13 +6,18 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private MonsterTypeId _monsterTypeId;
     [SerializeField] private int _count;
-    [SerializeField] private int _number;
+    [SerializeField] private TriggerSpawn _triggerSpawn;
 
+    private int _number;
     private Player _player;
     private GameFactory _gameFactory;
     private List<Enemy> _enemies;
-    private bool _slain;
+    private bool _released;
+    private bool _clear;
 
+    public bool Clear => _clear;
+    public TriggerSpawn TriggerSpawn => _triggerSpawn;
+    public bool Released => _released;
     public int Number => _number;
 
     public event Action OnTurnedSpawner;
@@ -25,13 +30,15 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        _enemies = new List<Enemy>();
-    }
-
     private void Start()
     {
+        _enemies = new List<Enemy>();
+
+        if (_triggerSpawn != null)
+        {
+            _triggerSpawn.Init(_number);
+        }
+
         CreateQuantityEnemy();
 
         foreach (var enemy in _enemies)
@@ -40,12 +47,10 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void TurnOnEnemy()
+    public void Init(GameFactory gameFactory, Player player)
     {
-        foreach (var enemy in _enemies)
-        {
-            enemy.gameObject.SetActive(true);
-        }
+        _gameFactory = gameFactory;
+        _player = player;
     }
 
     public void SetNumber(int number)
@@ -53,16 +58,20 @@ public class EnemySpawner : MonoBehaviour
         _number = number;
     }
 
-    public void Init(GameFactory gameFactory, Player player)
+    public void TurnOnEnemy()
     {
-        _gameFactory = gameFactory;
-        _player = player;
+        foreach (var enemy in _enemies)
+        {
+            enemy.gameObject.SetActive(true);
+        }
+
+        _released = true;
     }
 
     private Enemy Spawn()
     {
         Enemy enemy = _gameFactory.CreateEnemy(_monsterTypeId, transform);
-        TurnOffEnemy(enemy);
+        InitEnemy(enemy);
         return enemy;
     }
 
@@ -74,7 +83,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void TurnOffEnemy(Enemy enemy)
+    private void InitEnemy(Enemy enemy)
     {
         enemy.GetComponent<EnemyMove>().Init(_player);
         enemy.transform.parent = transform;
@@ -86,7 +95,7 @@ public class EnemySpawner : MonoBehaviour
         _count--;
 
         if (_count != 0) return;
-        Debug.Log("Новая волна!");
+        _clear = true;
         OnTurnedSpawner?.Invoke();
     }
 }
