@@ -1,5 +1,6 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using System;
 using System.Collections;
 using Agava.YandexGames;
 using UnityEngine;
@@ -27,12 +28,14 @@ namespace InfimaGames.LowPolyShooterPack.Interface
 
         #endregion
 
+        public event Action Spawned;
+        
         #region UNITY
 
         /// <summary>
         /// Awake.
         /// </summary>
-        private void Start()
+        private void Awake()
         {
             //Spawn Interface.
 #if !UNITY_EDITOR && UNITY_WEBGL
@@ -42,19 +45,12 @@ namespace InfimaGames.LowPolyShooterPack.Interface
 #if UNITY_EDITOR
             Instantiate(_mobileCanvasPrefab);
 #endif
-            
             //Spawn Quality Settings Menu.
         }
 
         private IEnumerator InstantiateRoutine()
         {
-            Debug.Log("Wait SDK initialization");
-            //yield return new WaitWhile(()=>YandexGamesSdk.IsInitialized == false);
-            yield return null;
-            
-            Debug.Log($"SDK initialized = {YandexGamesSdk.IsInitialized}");
-            Debug.Log($"Device Type is {Device.Type}");
-            Debug.Log($"Device Type must be shown");
+            yield return YandexGamesSdk.Initialize();
             
             switch (Device.Type)
             {
@@ -72,8 +68,9 @@ namespace InfimaGames.LowPolyShooterPack.Interface
                     break;
                         
             }
-            
+
             Instantiate(qualitySettingsPrefab);
+            Spawned?.Invoke();
         }
 
         #endregion

@@ -1964,6 +1964,7 @@ GameObject:
   - component: {fileID: 8874903453222421882}
   - component: {fileID: 5284803560652665282}
   - component: {fileID: 1877268538052477349}
+  - component: {fileID: 1364305150}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -2164,7 +2165,7 @@ MonoBehaviour:
   enableWeaponSway: 1
   weaponSwaySmoothValueInput: 8
   fieldOfView: 85
-  fieldOfViewWeapon: 65
+  fieldOfViewWeapon: 75
   audioClipsMelee:
   - {fileID: 8300000, guid: 8381cfa68b44d734b9c039db0dbad2a1, type: 3}
   - {fileID: 8300000, guid: bce84b3643e6f284782de83c55b79cc5, type: 3}
@@ -2186,7 +2187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2bd74ba84b94cd4bbb9b189a5e89fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasPrefab: {fileID: 5393623835024644669, guid: 48d7771c50bd625489d38055025597a3, type: 3}
+  _mobileCanvasPrefab: {fileID: 5393623835024644669, guid: 87e1f455ec3ca4548a38ca49a0b0b717, type: 3}
+  _pCCanvasPrefab: {fileID: 5393623835024644669, guid: 48d7771c50bd625489d38055025597a3, type: 3}
   qualitySettingsPrefab: {fileID: 5965040680208419700, guid: 458b1dae88c7baf46a163b218ce42a30, type: 3}
 --- !u!114 &8874903453222421882
 MonoBehaviour:
@@ -2514,9 +2516,185 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 207fb2a2-8add-4ddb-bda7-c1887aeb313a
     m_ActionName: Player/Tutorial[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a07653e0-92a7-4dc3-8191-a26e5f8ce2e8
+    m_ActionName: MobileActionMap/Look
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1a3e50a4-10ae-4b80-81e7-bb544f789b79
+    m_ActionName: MobileActionMap/Fire
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryAiming
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f50fd609-788d-447a-af8e-3357b2d398e4
+    m_ActionName: MobileActionMap/Aim[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryPlayReload
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 23483c17-e88d-4e3c-aa6a-e8a967f6e7fd
+    m_ActionName: MobileActionMap/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryHolster
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b74fbe91-891d-4491-a499-349977c0dce2
+    m_ActionName: MobileActionMap/Holster[/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryThrowGrenade
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4c9e9b2e-59f6-4235-a49e-ea05ab844fce
+    m_ActionName: MobileActionMap/Grenade[/Keyboard/g]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryMelee
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 63d051a2-3a49-41be-8cb8-1b3fe7ff3c23
+    m_ActionName: MobileActionMap/Melee[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryInspect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fe8b0d88-e758-48df-99c3-5862081acb0b
+    m_ActionName: MobileActionMap/Inspect[/Keyboard/t]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnLockCursor
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4d7208d1-17d0-4afe-9d74-89b2ba1f71cd
+    m_ActionName: MobileActionMap/Lock Cursor[/Keyboard/escape,/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryInventoryNext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f11f2944-d622-4ae1-a28c-bab48314704d
+    m_ActionName: MobileActionMap/Inventory Next[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4683947834111407526}
+        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
+        m_MethodName: OnTryInventoryNext
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9d4b1b8b-f899-47e8-84fb-5615cb99dd78
+    m_ActionName: MobileActionMap/Inventory Next Wheel[/Mouse/scroll]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: DesktopActionMap
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1877268538052477349
@@ -2547,6 +2725,20 @@ MonoBehaviour:
   - {fileID: 8707256358238582882}
   hint: {fileID: 0}
   weightHint: 0
+--- !u!114 &1364305150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7434638856081251855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91a871d27a031bc4e93445a0e0e07441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInput: {fileID: 5284803560652665282}
+  _canvasSpawner: {fileID: 3479352085229885695}
 --- !u!1 &7508940651585047471
 GameObject:
   m_ObjectHideFlags: 0
@@ -3409,11 +3601,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 60135812283842780, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 60135812283842780, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 60135812283842780, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
@@ -3545,11 +3737,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 206871652657571402, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 206871652657571402, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 206871652657571402, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
@@ -4225,15 +4417,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1336205423775232939, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 1336205423775232939, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1336205423775232939, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336205423775232939, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1364705570931274561, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -4414,6 +4610,10 @@ PrefabInstance:
     - target: {fileID: 1608467314417414853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608467314417414853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1621852084308371326, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -4641,11 +4841,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2113768312870607030, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2113768312870607030, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2113768312870607030, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
@@ -4739,6 +4939,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2345805235019555388, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2354890349391604807, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -4751,9 +4955,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2375201795120203055, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2393161171820662426, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393161171820662426, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2401628944744563009, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -5109,15 +5321,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2940767764272533086, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2940767764272533086, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940767764272533086, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.x
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2940767764272533086, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940767764272533086, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.z
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2952116202895869051, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -5951,6 +6171,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4560880306872507540, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4584667812301154473, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -6201,11 +6425,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5069160595750692273, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5069160595750692273, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5069160595750692273, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
@@ -6302,6 +6526,10 @@ PrefabInstance:
     - target: {fileID: 5273912482797981656, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273912482797981656, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5280176434972792635, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -6521,15 +6749,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5567679552925350123, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567679552925350123, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingLocation.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5567679552925350123, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5567679552925350123, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567679552925350123, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5578287539154031706, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -6803,6 +7039,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 6044956949521309236, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6044956949521309238, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -6980,12 +7220,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: prefabProjectile
+      value: 
+      objectReference: {fileID: 4071997348075655003, guid: 34fee30dc7338ff4ea8438c93eb43cbe, type: 3}
+    - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: automaticReloadOnEmpty
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
@@ -6994,6 +7238,10 @@ PrefabInstance:
     - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306305043144894503, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: weaponOffsets.standingRotation.z
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6313751023667887553, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -7357,11 +7605,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7019589266253609496, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7019589266253609496, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7019589266253609496, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
@@ -7453,11 +7701,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7126395202556731877, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7126395202556731877, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7126395202556731877, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
@@ -7864,6 +8112,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7888240408129932584, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: spread
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7888240408129932584, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: _isBought
       value: 1
       objectReference: {fileID: 0}
@@ -7873,11 +8125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7888240408129932584, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 7888240408129932584, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7888240408129932584, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
@@ -7914,6 +8166,10 @@ PrefabInstance:
     - target: {fileID: 7938083298364851986, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7938083298364851986, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7942159807805613686, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -7997,11 +8253,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8111604114442987983, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8111604114442987983, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8111604114442987983, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y
@@ -8117,11 +8373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8234593458945141305, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.x
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8234593458945141305, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingLocation.z
-      value: 0.01
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8234593458945141305, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: weaponOffsets.standingRotation.y

@@ -1000,26 +1000,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3479352085229885695, guid: 1e078682981af594eb08df705e283869, type: 3}
-      propertyPath: canvasPrefab
-      value: 
-      objectReference: {fileID: 5393623835024644669, guid: 87e1f455ec3ca4548a38ca49a0b0b717, type: 3}
-    - target: {fileID: 3479352085229885695, guid: 1e078682981af594eb08df705e283869, type: 3}
-      propertyPath: _pCCanvasPrefab
-      value: 
-      objectReference: {fileID: 5393623835024644669, guid: 48d7771c50bd625489d38055025597a3, type: 3}
-    - target: {fileID: 3479352085229885695, guid: 1e078682981af594eb08df705e283869, type: 3}
-      propertyPath: _mobileCanvasPrefab
-      value: 
-      objectReference: {fileID: 5393623835024644669, guid: 87e1f455ec3ca4548a38ca49a0b0b717, type: 3}
-    - target: {fileID: 4683947834111407526, guid: 1e078682981af594eb08df705e283869, type: 3}
-      propertyPath: fieldOfViewWeapon
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4995572786018557177, guid: 1e078682981af594eb08df705e283869, type: 3}
-      propertyPath: prefabProjectile
-      value: 
-      objectReference: {fileID: 4071997348075655003, guid: 34fee30dc7338ff4ea8438c93eb43cbe, type: 3}
     - target: {fileID: 7432804505493573037, guid: 1e078682981af594eb08df705e283869, type: 3}
       propertyPath: m_RootOrder
       value: 2
