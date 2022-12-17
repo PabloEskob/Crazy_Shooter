@@ -2,7 +2,6 @@
 
 using System.Collections;
 using Agava.YandexGames;
-
 using UnityEngine;
 using DeviceType = Agava.YandexGames.DeviceType;
 
@@ -33,19 +32,30 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         /// <summary>
         /// Awake.
         /// </summary>
-        private void Awake()
+        private void Start()
         {
             //Spawn Interface.
-            //StartCoroutine(InstantiateRoutine());
+#if !UNITY_EDITOR && UNITY_WEBGL
+            StartCoroutine(InstantiateRoutine());
+#endif
+
+#if UNITY_EDITOR
             Instantiate(_mobileCanvasPrefab);
+#endif
+            
             //Spawn Quality Settings Menu.
         }
 
         private IEnumerator InstantiateRoutine()
         {
-            yield return new WaitWhile(()=>YandexGamesSdk.IsInitialized == false);
+            Debug.Log("Wait SDK initialization");
+            //yield return new WaitWhile(()=>YandexGamesSdk.IsInitialized == false);
+            yield return null;
             
+            Debug.Log($"SDK initialized = {YandexGamesSdk.IsInitialized}");
             Debug.Log($"Device Type is {Device.Type}");
+            Debug.Log($"Device Type must be shown");
+            
             switch (Device.Type)
             {
                 case DeviceType.Desktop:
