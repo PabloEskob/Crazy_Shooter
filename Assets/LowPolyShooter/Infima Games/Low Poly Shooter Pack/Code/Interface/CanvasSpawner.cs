@@ -43,7 +43,8 @@ namespace InfimaGames.LowPolyShooterPack.Interface
 #endif
 
 #if UNITY_EDITOR
-            Instantiate(_mobileCanvasPrefab);
+            Instantiate(_pCCanvasPrefab);
+            Instantiate(qualitySettingsPrefab);
 #endif
             //Spawn Quality Settings Menu.
         }
