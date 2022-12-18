@@ -32,7 +32,7 @@ public class GameFactory : IGameFactory
 
     private static void CreateStatsEnemy(Enemy enemy, EnemyStaticData enemyStaticData)
     {
-        enemy.MaxHealth = enemyStaticData.Hp;
+        enemy.EnemyHealth.Max = enemyStaticData.Hp;
         enemy.Attack.Damage = enemyStaticData.Damage;
         enemy.Attack.AttackCooldown = enemyStaticData.AttackCooldown;
     }

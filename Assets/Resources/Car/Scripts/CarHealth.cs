@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class CarHealth : MonoBehaviour
+public class CarHealth : MonoBehaviour, IHealth
 {
     [SerializeField] private CarAnimator _carAnimator;
 
@@ -12,7 +12,7 @@ public class CarHealth : MonoBehaviour
     public float Current
     {
         get => _carState.CurrentHp;
-        private set
+        set
         {
             if (_carState.CurrentHp != value)
             {
@@ -22,18 +22,21 @@ public class CarHealth : MonoBehaviour
         }
     }
 
-    public float Max => _carState.MaxHp;
+    public float Max
+    {
+        get => _carState.MaxHp;
+        set => _carState.MaxHp = value;
+    }
 
     public void LoadProgress(PlayerProgress playerProgress) =>
         _carState = playerProgress.CarState;
 
     public void TakeDamage(int damage)
     {
-        Debug.Log(Current);
         if (Current <= 0)
             return;
 
         Current -= damage;
-        _carAnimator.PlayHit();
+       _carAnimator.PlayHit();
     }
 }

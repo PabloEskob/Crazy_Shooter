@@ -5,20 +5,13 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] private EnemyAnimator _enemyAnimator;
 
-    private float _attackCooldown ;
-
-    public float AttackCooldown
-    {
-        get => _attackCooldown;
-        set => _attackCooldown = value;
-    }
-
     private GameFactory _gameFactory;
     private Player _player;
     private float _attackEnd;
     private bool _isAttacking;
     private bool _attackIsActive;
 
+    public float AttackCooldown { get; set; }
     public int Damage { get; set; }
 
     private void Update()
@@ -56,7 +49,7 @@ public class Attack : MonoBehaviour
 
     private void OnAttackEnded()
     {
-        _attackEnd = _attackCooldown;
+        _attackEnd = AttackCooldown;
         _isAttacking = false;
         _enemyAnimator.Move();
     }

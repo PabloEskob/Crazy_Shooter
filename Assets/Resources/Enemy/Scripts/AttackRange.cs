@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Attack))]
 public class AttackRange : MonoBehaviour
 {
     [SerializeField] private Attack _attack;

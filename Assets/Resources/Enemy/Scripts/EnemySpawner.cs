@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (var enemy in _enemies)
         {
-            enemy.OnDied -= TryTurnOnAnotherSpawner;
+            enemy.EnemyDeath.Happened -= TryTurnOnAnotherSpawner;
         }
     }
 
@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (var enemy in _enemies)
         {
-            enemy.OnDied += TryTurnOnAnotherSpawner;
+            enemy.EnemyDeath.Happened += TryTurnOnAnotherSpawner;
         }
     }
 

@@ -5,6 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53933274-9b43-45af-9600-5ee3072e3939" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_default_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_default_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_01.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_01.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_02.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_02.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_03.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_03.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Car.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarHealth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Spline.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Spline.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Animator/Zombie.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Animator/Zombie.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Zomb.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Zomb.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/SO/Zombie.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/SO/Zombie.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Attack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/TriggerObserver.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/TriggerObserver.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/TriggerSpawn.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/TriggerSpawn.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/AssetPath.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/AssetPath.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/AssetProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/AssetProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/GameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/GameFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
@@ -15,6 +44,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarDeath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/PoolRoad.cs" root0="FORCE_HIGHLIGHTING" />
@@ -108,6 +138,7 @@
       <workItem from="1671183338887" duration="23794000" />
       <workItem from="1671310898090" duration="11884000" />
       <workItem from="1671348703236" duration="10468000" />
+      <workItem from="1671382559438" duration="12504000" />
     </task>
     <servers />
   </component>

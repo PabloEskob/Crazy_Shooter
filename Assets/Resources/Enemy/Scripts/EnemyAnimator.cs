@@ -22,7 +22,7 @@ public class EnemyAnimator : MonoBehaviour, IAnimationStateReader
     private void Awake() =>
         _animator = GetComponent<Animator>();
 
-    public void PlayHit(float speed) =>
+    public void PlayHit() =>
         _animator.SetTrigger(Hit);
 
     public void PlayDeath() =>

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMove : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _navMeshAgent;
@@ -15,7 +16,7 @@ public class EnemyMove : MonoBehaviour
 
     private void Update()
     {
-        if (!_enemy.IsDied)
+        if (!_enemy.EnemyDeath.IsDied)
             _navMeshAgent.destination = _player.transform.position;
         else
             _navMeshAgent.speed = 0;
