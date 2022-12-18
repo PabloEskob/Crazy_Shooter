@@ -4,15 +4,22 @@
 public class Attack : MonoBehaviour
 {
     [SerializeField] private EnemyAnimator _enemyAnimator;
-    [SerializeField] private float _attackCooldown = 3;
-    [SerializeField] private int _damage = 5;
-    
+
+    private float _attackCooldown ;
+
+    public float AttackCooldown
+    {
+        get => _attackCooldown;
+        set => _attackCooldown = value;
+    }
+
     private GameFactory _gameFactory;
     private Player _player;
     private float _attackEnd;
     private bool _isAttacking;
     private bool _attackIsActive;
 
+    public int Damage { get; set; }
 
     private void Update()
     {
@@ -44,6 +51,7 @@ public class Attack : MonoBehaviour
     {
         transform.LookAt(_player.transform);
         _enemyAnimator.PlayAttack();
+        _isAttacking = true;
     }
 
     private void OnAttackEnded()
@@ -53,11 +61,8 @@ public class Attack : MonoBehaviour
         _enemyAnimator.Move();
     }
 
-    private void OnAttack()
-    {
-        _player.GetComponent<CarHealth>().TakeDamage(_damage);
-        Debug.Log("удар!");
-    }
+    private void OnAttack() =>
+        _player.GetComponent<CarHealth>().TakeDamage(Damage);
 
     private bool CooldownIsUp() =>
         _attackEnd <= 0f;

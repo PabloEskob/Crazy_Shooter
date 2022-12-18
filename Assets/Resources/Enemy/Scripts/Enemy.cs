@@ -8,18 +8,19 @@ public class Enemy : MonoBehaviour, IDamageRecipient
 {
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private float _timeDied = 5f;
+    [SerializeField] private Attack _attack;
 
     private EnemyAnimator _enemyAnimator;
     private CapsuleCollider _collider;
 
     public bool IsDied { get; private set; }
 
-    public int Damage { get; set; }
-
+    public Attack Attack => _attack;
+    
     public float MaxHealth { get; set; }
 
     public event Action OnDied;
-    
+
     private void OnCollisionEnter(Collision collision)
     {
         TakeDamage(1);
@@ -34,7 +35,7 @@ public class Enemy : MonoBehaviour, IDamageRecipient
     public void TakeDamage(int damage)
     {
         MaxHealth -= damage;
-        
+
         _particleSystem.Play();
 
         if (MaxHealth <= 0)

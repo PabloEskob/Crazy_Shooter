@@ -17,7 +17,7 @@ public class AttackRange : MonoBehaviour
     {
         _attack.EnableAttack();
     }
-    
+
     private void TriggerExit(Collider collider)
     {
         _attack.DisableAttack();
