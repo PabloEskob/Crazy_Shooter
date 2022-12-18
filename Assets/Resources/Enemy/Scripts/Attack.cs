@@ -1,19 +1,16 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(EnemyAnimator))]
 public class Attack : MonoBehaviour
 {
     [SerializeField] private EnemyAnimator _enemyAnimator;
     [SerializeField] private float _attackCooldown = 3;
-    [SerializeField] private float _cleavege = 0.5f;
-
-    private readonly Collider[] _hits = new Collider[1];
+    [SerializeField] private int _damage = 5;
+    
     private GameFactory _gameFactory;
     private Player _player;
     private float _attackEnd;
     private bool _isAttacking;
-    private int _layerMask;
     private bool _attackIsActive;
 
 
@@ -29,7 +26,6 @@ public class Attack : MonoBehaviour
     {
         _gameFactory = gameFactory;
         _player = _gameFactory.Player;
-        _layerMask = 1 << LayerMask.NameToLayer("Player");
     }
 
     public void EnableAttack() =>
@@ -59,15 +55,8 @@ public class Attack : MonoBehaviour
 
     private void OnAttack()
     {
-        if (Hit(out Collider hit))
-            Debug.Log("УДАР");
-    }
-
-    private bool Hit(out Collider hit)
-    {
-        int hitCount = Physics.OverlapSphereNonAlloc(transform.position, _cleavege, _hits, _layerMask);
-        hit = _hits.FirstOrDefault();
-        return hitCount > 0;
+        _player.GetComponent<CarHealth>().TakeDamage(_damage);
+        Debug.Log("удар!");
     }
 
     private bool CooldownIsUp() =>

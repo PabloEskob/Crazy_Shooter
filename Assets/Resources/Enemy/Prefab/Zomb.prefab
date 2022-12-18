@@ -1791,6 +1791,7 @@ MonoBehaviour:
   _enemyAnimator: {fileID: 7680905711852097482}
   _attackCooldown: 3
   _cleavege: 0.5
+  _damage: 5
 --- !u!114 &190540388817046437
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ public class StartScene : MonoBehaviour
 {
     [SerializeField] private List<EnemySpawner> _enemySpawners;
     [SerializeField] private float _startFirstWave;
+    [SerializeField] private int _carHp;
+    [SerializeField] private ActorUI _actorUI;
 
     private StaticDataService _staticDataEnemy;
     private GameFactory _gameFactory;
@@ -51,13 +53,34 @@ public class StartScene : MonoBehaviour
 
     private void InitGameWorld()
     {
-        _gameFactory.CreateCar();
-        
+        var player = _gameFactory.CreateCar();
+        InitUI(player);
+        player.GetComponent<CarHealth>().LoadProgress(NewProgress());
+
         for (var i = 0; i < _enemySpawners.Count; i++)
         {
             var enemySpawner = _enemySpawners[i];
             enemySpawner.Init(_gameFactory);
             enemySpawner.SetNumber(i);
         }
+    }
+
+    private void InitUI(Player player)
+    {
+        _actorUI.Construct(player.GetComponent<CarHealth>());
+    }
+
+    private PlayerProgress NewProgress()
+    {
+        var progress = new PlayerProgress
+        {
+            CarState =
+            {
+                MaxHp = _carHp
+            }
+        };
+        
+        progress.CarState.ResetHp();
+        return progress;
     }
 }
