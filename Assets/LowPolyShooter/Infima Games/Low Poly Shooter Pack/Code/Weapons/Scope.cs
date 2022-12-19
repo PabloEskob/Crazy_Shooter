@@ -64,6 +64,9 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private Material materialHidden;
         
+        [SerializeField] private bool _isBought;
+        [SerializeField] private bool _isEquipped;
+        
         #endregion
 
         #region FIELDS
@@ -157,6 +160,21 @@ namespace InfimaGames.LowPolyShooterPack
             materials[materialIndex] = materialHidden;
             //Update Materials.
             meshRenderer.materials = materials;
+        }
+
+        public override void SetIsBought()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SetEquipped()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SetUnequipped()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

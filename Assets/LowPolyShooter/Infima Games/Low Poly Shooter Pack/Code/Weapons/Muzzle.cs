@@ -54,6 +54,9 @@ namespace InfimaGames.LowPolyShooterPack
         
         #region FIELDS
 
+        [SerializeField] private bool _isBought;
+        [SerializeField] private bool _isEquipped;
+        
         /// <summary>
         /// Instantiated Particle System.
         /// </summary>
@@ -62,6 +65,8 @@ namespace InfimaGames.LowPolyShooterPack
         /// Instantiated light.
         /// </summary>
         private Light flashLight;
+        
+        
 
         #endregion
 
@@ -126,17 +131,35 @@ namespace InfimaGames.LowPolyShooterPack
         public override Transform GetSocket() => socket;
 
         public override Sprite GetSprite() => sprite;
+
         public override AudioClip GetAudioClipFire() => audioClipFire;
-        
+
         public override ParticleSystem GetParticlesFire() => particles;
+
         public override int GetParticlesFireCount() => flashParticlesCount;
-        
+
         public override Light GetFlashLight() => flashLight;
+
         public override float GetFlashLightDuration() => flashLightDuration;
 
         #endregion
 
         #region METHODS
+
+        public override void SetIsBought()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void SetEquipped()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void SetUnequipped()
+        {
+            throw new System.NotImplementedException();
+        }
 
         private IEnumerator DisableLight()
         {

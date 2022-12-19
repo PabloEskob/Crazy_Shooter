@@ -59,6 +59,10 @@ namespace InfimaGames.LowPolyShooterPack
         /// Called when the character using this scope stops aiming through it.
         /// </summary>
         public abstract void OnAimStop();
+        
+        public abstract void SetIsBought();
+        public abstract void SetEquipped();
+        public abstract void SetUnequipped();
 
         #endregion
     }

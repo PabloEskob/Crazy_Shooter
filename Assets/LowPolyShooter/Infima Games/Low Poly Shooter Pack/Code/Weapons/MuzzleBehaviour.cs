@@ -51,6 +51,10 @@ namespace InfimaGames.LowPolyShooterPack
         /// Plays all of the muzzle effects.
         /// </summary>
         public abstract void Effect(); 
+        
+        public abstract void SetIsBought();
+        public abstract void SetEquipped();
+        public abstract void SetUnequipped();
 
         #endregion
     }

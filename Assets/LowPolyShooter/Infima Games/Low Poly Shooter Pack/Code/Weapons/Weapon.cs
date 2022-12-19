@@ -23,6 +23,9 @@ namespace InfimaGames.LowPolyShooterPack
 
         [SerializeField] 
         private bool _isBought;
+
+        [SerializeField] 
+        private bool _isEquipped;
         
         [Header("Firing")]
 
@@ -313,6 +316,7 @@ namespace InfimaGames.LowPolyShooterPack
         public override bool HasCycledReload() => cycledReload;
 
         public override bool IsBought() => _isBought;
+        public override bool IsEquipped() => _isEquipped;
 
         public override bool IsAutomatic() => automatic;
         public override bool IsBoltAction() => boltAction;
@@ -336,6 +340,9 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region METHODS
 
+        public override void SetIsBought() => _isBought = true;
+        public override void SetEquipped() => _isEquipped = true;
+        public override void SetUnequipped() => _isEquipped = false;
         public override void Reload()
         {
             //Set Reloading Bool. This helps cycled reloads know when they need to stop cycling.

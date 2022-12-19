@@ -107,6 +107,7 @@ namespace InfimaGames.LowPolyShooterPack
         public abstract Animator GetAnimator();
 
         public abstract bool IsBought();
+        public abstract bool IsEquipped();
         /// <summary>
         /// Returns true if this weapon shoots in automatic.
         /// </summary>
@@ -179,6 +180,9 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region METHODS
 
+        public abstract void SetIsBought();
+        public abstract void SetEquipped();
+        public abstract void SetUnequipped();
         /// <summary>
         /// Fires the weapon.
         /// </summary>

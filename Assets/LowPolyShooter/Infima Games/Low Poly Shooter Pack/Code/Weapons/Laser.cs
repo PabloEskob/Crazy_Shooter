@@ -32,6 +32,9 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private float beamMaxDistance = 500.0f;
         
+        [SerializeField] private bool _isBought;
+        [SerializeField] private bool _isEquipped;
+        
         #endregion
 
         #region FIELDS
@@ -78,6 +81,25 @@ namespace InfimaGames.LowPolyShooterPack
             beamParent.localScale = new Vector3(beamThickness, beamThickness, targetScale);
         }
 
+        #endregion
+
+        #region METHODS
+        
+        public override void SetIsBought()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SetEquipped()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SetUnequipped()
+        {
+            throw new NotImplementedException();
+        }
+        
         #endregion
     }
 }

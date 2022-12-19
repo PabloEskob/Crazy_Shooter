@@ -17,5 +17,9 @@ namespace InfimaGames.LowPolyShooterPack
         public abstract Sprite GetSprite();
 
         #endregion
+
+        public abstract void SetIsBought();
+        public abstract void SetEquipped();
+        public abstract void SetUnequipped();
     }
 }

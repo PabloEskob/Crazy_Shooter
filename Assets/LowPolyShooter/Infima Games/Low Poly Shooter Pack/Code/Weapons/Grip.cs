@@ -17,6 +17,9 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private Sprite sprite;
 
+        [SerializeField] private bool _isBought;
+        [SerializeField] private bool _isEquipped;
+
         #endregion
 
         #region GETTERS
@@ -24,5 +27,20 @@ namespace InfimaGames.LowPolyShooterPack
         public override Sprite GetSprite() => sprite;
 
         #endregion
+
+        public override void SetIsBought()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void SetEquipped()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void SetUnequipped()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
