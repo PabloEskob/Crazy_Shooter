@@ -17,7 +17,9 @@ public class EnemyMove : MonoBehaviour
     private void Update()
     {
         if (!_enemy.EnemyDeath.IsDied)
+        {
             _navMeshAgent.destination = _player.transform.position;
+        }
         else
             _navMeshAgent.speed = 0;
     }

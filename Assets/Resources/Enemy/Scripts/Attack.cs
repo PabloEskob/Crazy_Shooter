@@ -49,13 +49,13 @@ public class Attack : MonoBehaviour
 
     private void OnAttackEnded()
     {
+        _enemyAnimator.PlayIdle();
         _attackEnd = AttackCooldown;
         _isAttacking = false;
-        _enemyAnimator.Move();
     }
 
     private void OnAttack() =>
-        _player.GetComponent<CarHealth>().TakeDamage(Damage);
+        _player.GetComponent<PlayerHealth>().TakeDamage(Damage);
 
     private bool CooldownIsUp() =>
         _attackEnd <= 0f;

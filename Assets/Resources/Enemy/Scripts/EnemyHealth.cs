@@ -20,8 +20,8 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public void TakeDamage(int damage)
     {
         Max -= damage;
+        _enemyAnimator.PlayHit();
         _particleSystem.Play();
-       // _enemyAnimator.PlayHit();
         HealthChanged?.Invoke();
     }
 }

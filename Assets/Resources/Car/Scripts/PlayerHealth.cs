@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-public class CarHealth : MonoBehaviour, IHealth
+public class PlayerHealth : MonoBehaviour, IHealth
 {
-    [SerializeField] private CarAnimator _carAnimator;
+    [SerializeField] private PlayerAnimator _playerAnimator;
 
     private State _carState;
 
@@ -37,6 +37,6 @@ public class CarHealth : MonoBehaviour, IHealth
             return;
 
         Current -= damage;
-       _carAnimator.PlayHit();
+       _playerAnimator.PlayHit();
     }
 }

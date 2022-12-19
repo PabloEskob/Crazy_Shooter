@@ -1,12 +1,14 @@
 using System.Collections.Generic;
+using Agava.YandexGames;
 using UnityEngine;
 
 public class StartScene : MonoBehaviour
 {
     [SerializeField] private List<EnemySpawner> _enemySpawners;
     [SerializeField] private float _startFirstWave;
-    [SerializeField] private int _carHp;
+    [SerializeField] private int _hpPlayer;
     [SerializeField] private ActorUI _actorUI;
+    [SerializeField] private PlayerRespawn _playerRespawn;
 
     private StaticDataService _staticDataEnemy;
     private GameFactory _gameFactory;
@@ -53,9 +55,9 @@ public class StartScene : MonoBehaviour
 
     private void InitGameWorld()
     {
-        var player = _gameFactory.CreateCar();
+        var player = _gameFactory.CreatePlayer(_playerRespawn.transform);
         InitUI(player);
-        player.GetComponent<CarHealth>().LoadProgress(NewProgress());
+        player.GetComponent<PlayerHealth>().LoadProgress(NewProgress());
 
         for (var i = 0; i < _enemySpawners.Count; i++)
         {
@@ -67,7 +69,7 @@ public class StartScene : MonoBehaviour
 
     private void InitUI(Player player)
     {
-        _actorUI.Construct(player.GetComponent<CarHealth>());
+        _actorUI.Construct(player.GetComponent<PlayerHealth>());
     }
 
     private PlayerProgress NewProgress()
@@ -76,7 +78,7 @@ public class StartScene : MonoBehaviour
         {
             CarState =
             {
-                MaxHp = _carHp
+                MaxHp = _hpPlayer
             }
         };
         

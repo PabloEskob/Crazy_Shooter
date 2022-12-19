@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4074173828024971059}
   - component: {fileID: 4199309030057825227}
   - component: {fileID: 4197467747549567443}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flarespikes_thin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4821,7 +4821,7 @@ GameObject:
   - component: {fileID: 4074577329213003043}
   - component: {fileID: 4199001398849666271}
   - component: {fileID: 4197456901993451091}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9685,7 +9685,7 @@ GameObject:
   - component: {fileID: 4074382543944817065}
   - component: {fileID: 4198647628517763741}
   - component: {fileID: 4197422510326336839}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14500,7 +14500,7 @@ GameObject:
   - component: {fileID: 8787292203492939028}
   - component: {fileID: 4198155060815434475}
   - component: {fileID: 4199084853458837477}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GoldFire_Medium_Projectile_Template
   m_TagString: FX
   m_Icon: {fileID: 0}

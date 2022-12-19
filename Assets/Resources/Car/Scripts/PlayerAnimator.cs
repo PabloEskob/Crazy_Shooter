@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CarAnimator : MonoBehaviour
+public class PlayerAnimator : MonoBehaviour
 {
     private static readonly int Die = Animator.StringToHash("Die");
     private static readonly int Hit = Animator.StringToHash("Hit");
@@ -10,9 +10,15 @@ public class CarAnimator : MonoBehaviour
     private void Awake() =>
         _animator = GetComponent<Animator>();
 
-    public void PlayDeath() =>
-        _animator.SetTrigger(Die);
+    public void PlayDeath()
+    {
+        Debug.Log("Смерть игрока!");
+    }
 
-    public void PlayHit() =>
-        _animator.SetTrigger(Hit);
+
+    public void PlayHit()
+    {
+        Debug.Log("Удар по игроку!");
+    }
+        
 }

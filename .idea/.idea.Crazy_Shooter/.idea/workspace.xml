@@ -6,37 +6,68 @@
   <component name="ChangeListManager">
     <list default="true" id="53933274-9b43-45af-9600-5ee3072e3939" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_default_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_default_AB.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_AB.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_01.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_01.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_01.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_02.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_02.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_03.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PolygonApocalypse/Models/SM_Env_Motorway_Edge_Destroyed_03.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Car.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Car.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarAnimator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarHealth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Spline.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Spline.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/healing_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Unsorted/healing_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 1 - Mode_None-Completely Flat/1-Pear1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 1 - Mode_None-Completely Flat/1-Pear1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 1 - Mode_None-Completely Flat/1-Pear2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 1 - Mode_None-Completely Flat/1-Pear2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 1 - Mode_None-Completely Flat/1-Plane.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 1 - Mode_None-Completely Flat/1-Plane.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 1 - Mode_None-Completely Flat/1-Plane2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 1 - Mode_None-Completely Flat/1-Plane2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 1 - Mode_None-Completely Flat/1-Vase.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 1 - Mode_None-Completely Flat/1-Vase.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Apple.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Apple.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Cherries.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Cherries.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Grape.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Grape.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Leaves.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Leaves.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Plane.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Plane.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Stalks.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Stalks.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Vase.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 2 - Mode_Single/2-Vase.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 3 - Mode_Steps-Toony/3-Grape.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 3 - Mode_Steps-Toony/3-Grape.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 3 - Mode_Steps-Toony/3-Plane2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 3 - Mode_Steps-Toony/3-Plane2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 4 - Mode_Curve-Gradients/4-Stalks.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 4 - Mode_Curve-Gradients/4-Stalks.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 5 - Var-Outlines/5-Pear2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 5 - Var-Outlines/5-Pear2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 5 - Var-Outlines/5-Plane2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 5 - Var-Outlines/5-Plane2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 5 - Var-Outlines/5-Vase.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 5 - Var-Outlines/5-Vase.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 6 - Var-TwoColor/6-TwoColor-Color1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVase-Materials/FV-Scene 6 - Var-TwoColor/6-TwoColor-Color1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] NormalMapsTree/NormalMapsTree-Materials/Tree-Material-2-WithNormalMap.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] NormalMapsTree/NormalMapsTree-Materials/Tree-Material-2-WithNormalMap.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] NormalMapsTree/NormalMapsTree-Materials/Tree-Material-2-WithoutNormalMap.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] NormalMapsTree/NormalMapsTree-Materials/Tree-Material-2-WithoutNormalMap.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Valley/Valley-Materials/Rock03.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Valley/Valley-Materials/Rock03.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-Cloud.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-Cloud.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-Road.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-Road.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-RocksSmall2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-RocksSmall2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-TreeLeaves2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-TreeLeaves2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-TreeTrunk1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-TreeTrunk1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/PresetsShared/Materials/TwoColorVasePreset01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/PresetsShared/Materials/TwoColorVasePreset01.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PolygonZombies/Models/Zombies.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PolygonZombies/Models/Zombies.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Ground.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Ground.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/PlayerAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarAnimator.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/PlayerAnimator.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarDeath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/PlayerDeath.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarDeath.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/PlayerDeath.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/PlayerHealth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarHealth.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/PlayerHealth.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Spline.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Spline.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Animator/Zombie.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Animator/Zombie.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Zomb.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Zomb.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/SO/Zombie.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/SO/Zombie.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Attack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyHealth.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/TriggerObserver.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/TriggerObserver.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/TriggerSpawn.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/TriggerSpawn.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/AssetPath.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/AssetPath.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/AssetProvider.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/AssetProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Asset/AssetPath.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Asset/AssetPath.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Asset/AssetProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Asset/AssetProvider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/GameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/GameFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Start/StartScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Start/StartScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/StaticData/EnemyStaticData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/StaticData/EnemyStaticData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Projectiles/Bullet_GoldFire_Medium_Impact_Template 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Projectiles/Bullet_GoldFire_Medium_Impact_Template 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Projectiles/GoldFire_Medium_Projectile_Template.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Projectiles/GoldFire_Medium_Projectile_Template.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/ActorUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/ActorUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/Canvas.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +75,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarDeath.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resources/Car/Scripts/PlayerDeath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Envrinoment/Scripts/PoolRoad.cs" root0="FORCE_HIGHLIGHTING" />
@@ -139,6 +170,7 @@
       <workItem from="1671310898090" duration="11884000" />
       <workItem from="1671348703236" duration="10468000" />
       <workItem from="1671382559438" duration="12504000" />
+      <workItem from="1671445440193" duration="13708000" />
     </task>
     <servers />
   </component>

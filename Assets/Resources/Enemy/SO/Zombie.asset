@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bd112241884160851d7e6f85ce91fd, type: 3}
   m_Name: Zombie
   m_EditorClassIdentifier: 
-  _hp: 3
+  _hp: 5
   _damage: 5
-  _effectiveDistance: 5.4
-  _speed: 12
-  _attackCooldown: 7
+  _effectiveDistance: 3.1
+  _speed: 1
+  _attackCooldown: 3
   _monsterTypeId: 0
-  _prefab: {fileID: 4378630177900363809, guid: 8f3467037e1d4384496b5f4051c939d3, type: 3}
+  _prefab: {fileID: 2093916982507839477, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
