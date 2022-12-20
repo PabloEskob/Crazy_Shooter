@@ -12,7 +12,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// <summary>
         /// Array of all weapons. These are gotten in the order that they are parented to this object.
         /// </summary>
-        public WeaponBehaviour[] weapons;
+        public Weapon[] weapons;
         
         /// <summary>
         /// Currently equipped WeaponBehaviour.
@@ -29,17 +29,33 @@ namespace InfimaGames.LowPolyShooterPack
 
         
         
-        public override void Init(int equippedAtStart = 0)
+        public override void Init()
         {
             //Cache all weapons. Beware that weapons need to be parented to the object this component is on!
-            weapons = GetComponentsInChildren<WeaponBehaviour>(true).Where(w => w.IsBought() == true).ToArray();
+            weapons = GetComponentsInChildren<Weapon>(true);
+
+            foreach (Weapon weapon in weapons)
+            {
+                weapon.Load();
+            }
+            
+            var availableWeapons = weapons.Where(w => w.IsBought()).ToArray();
             
             //Disable all weapons. This makes it easier for us to only activate the one we need.
-            foreach (WeaponBehaviour weapon in weapons)
+            foreach (Weapon weapon in availableWeapons)
                 weapon.gameObject.SetActive(false);
 
+            int equippedWeaponIndex = 0;
+
+            for (int i = 0; i < availableWeapons.Length; i++)
+            {
+                if (availableWeapons[i].IsEquipped())
+                    equippedWeaponIndex = i;
+            }
+
             //Equip.
-            Equip(equippedAtStart);
+            //Equip(equippedAtStart);
+            Equip(equippedWeaponIndex);
         }
 
         public override WeaponBehaviour Equip(int index)
@@ -60,6 +76,7 @@ namespace InfimaGames.LowPolyShooterPack
             if (equipped != null)
             {
                 equipped.SetUnequipped();
+                equipped.GetComponent<Weapon>().Save(equipped as Weapon);
                 equipped.gameObject.SetActive(false);
             }
 
@@ -70,6 +87,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Activate the newly-equipped weapon.
             equipped.gameObject.SetActive(true);
             equipped.SetEquipped();
+            equipped.GetComponent<Weapon>().Save(equipped as Weapon);
             //Return.
             return equipped;
         }

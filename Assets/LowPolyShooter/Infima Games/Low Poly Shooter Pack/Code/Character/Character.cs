@@ -361,7 +361,7 @@ namespace InfimaGames.LowPolyShooterPack
 			characterKinematics = GetComponent<CharacterKinematics>();
 
 			//Initialize Inventory.
-			inventory.Init(weaponIndexEquippedAtStart);
+			inventory.Init();
 
 			//Refresh!
 			RefreshWeaponSetup();

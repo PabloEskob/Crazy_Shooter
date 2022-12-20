@@ -208,5 +208,7 @@ namespace InfimaGames.LowPolyShooterPack
         public abstract void EjectCasing();
 
         #endregion
+
+        public abstract string GetName();
     }
 }

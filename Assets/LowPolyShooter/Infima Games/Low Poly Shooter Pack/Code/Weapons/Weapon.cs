@@ -1,5 +1,6 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using Source.Scripts.Data;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -235,6 +236,7 @@ namespace InfimaGames.LowPolyShooterPack
             characterBehaviour = gameModeService.GetPlayerCharacter();
             //Cache the world camera. We use this in line traces.
             playerCamera = characterBehaviour.GetCameraWorld().transform;
+
         }
         protected override void Start()
         {
@@ -263,6 +265,8 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region GETTERS
 
+        public override string GetName() => weaponName;
+        
         public override Offsets GetWeaponOffsets() => weaponOffsets;
         
         public override float GetFieldOfViewMultiplierAim()
@@ -424,5 +428,24 @@ namespace InfimaGames.LowPolyShooterPack
         }
 
         #endregion
+
+        public WeaponProgress weaponProgress;
+        
+        public void Save(Weapon weapon)
+        {
+            PlayerPrefs.SetInt($"{weapon.weaponName}_isBought", DataExtensions.BoolToInt(_isBought));
+            PlayerPrefs.SetInt($"{weapon.weaponName}_isEquipped", DataExtensions.BoolToInt(_isEquipped));
+            PlayerPrefs.Save();
+        }
+        
+        public void Load()
+        { 
+            if(!_isBought)
+                _isBought = DataExtensions.IntToBool(PlayerPrefs.GetInt($"{weaponName}_isBought"));
+            
+            _isEquipped = DataExtensions.IntToBool(PlayerPrefs.GetInt($"{weaponName}_isEquipped"));
+        }
+            
+        
     }
 }

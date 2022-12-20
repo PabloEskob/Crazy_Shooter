@@ -5,52 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53933274-9b43-45af-9600-5ee3072e3939" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Source.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/DataExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/DataExtensions.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/WeaponData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/WeaponData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/WeaponProgress.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/WeaponProgress.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/AllServices.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/AllServices.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/IService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/IService.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/IPersistentProgressService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/IPersistentProgressService.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/ISavedProgress.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/ISavedProgress.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/ISavedProgressReader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/ISavedProgressReader.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/PersistantProgressService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/PersistantProgressService.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/SaveLoad.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/SaveLoad/ISaveLoadService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/SaveLoad/ISaveLoadService.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/SaveLoad/SaveLoadService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/SaveLoad/SaveLoadService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/Vector3Data.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/Vector3Data.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/Data.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/Data.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/DataNames.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/DataNames.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/IStorage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/IStorage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/PersistentProgress/ISavedProgress.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/QuaternionData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/QuaternionData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/SaveMode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/SaveMode.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/SerializedDictionary.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/SerializedDictionary.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/Storage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/Storage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SimpleSaveSystem.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SimpleSaveSystem/SaveSystem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SimpleSaveSystem/SaveSystem.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/Examples.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/PlaymakerActions.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Dreamteck/Splines/TMPro.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Character.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/Inventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Grip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Grip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/GripBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/GripBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Laser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Laser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/LaserBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/LaserBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Muzzle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Muzzle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/MuzzleBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/MuzzleBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Scope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Scope.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/ScopeBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/ScopeBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/InventoryBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Character/InventoryBehaviour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/Weapon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/WeaponBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Weapons/WeaponBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/GameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/GameFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/IGameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/IGameFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Data/DataExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/DataExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Data/WeaponData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/WeaponData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Data/WeaponProgress.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Data/WeaponProgress.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/AllServices.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/AllServices.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/IService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/IService.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/PersistentProgress.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/IPersistentProgressService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/IPersistentProgressService.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/ISavedProgress.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/ISavedProgress.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem/PersistentProgress/ISavedProgress.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/ISavedProgressReader.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/ISavedProgressReader.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/PersistantProgressService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/PersistentProgress/PersistantProgressService.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/SaveLoad.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/SaveSystem.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/SaveLoad/ISaveLoadService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/SaveLoad/ISaveLoadService.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/SaveLoad/SaveLoadService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Infrastructure/Services/SaveLoad/SaveLoadService.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +61,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bae255e3e08e46f7bc2fbd23dde96338158800/1d/39b2293d/PlayerPrefs.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Car/Scripts/CarDeath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" root0="FORCE_HIGHLIGHTING" />

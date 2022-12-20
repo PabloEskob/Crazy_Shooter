@@ -10,7 +10,7 @@ namespace Source.Scripts.Data
         public bool IsEquipped;
         
         
-        public WeaponData(WeaponBehaviour weapon)
+        public WeaponData(Weapon weapon)
         {
             IsBought = weapon.IsBought();
             IsEquipped = weapon.IsEquipped();
