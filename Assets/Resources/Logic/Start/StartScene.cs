@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Agava.YandexGames;
+using Dreamteck.Splines;
 using UnityEngine;
 
 public class StartScene : MonoBehaviour
@@ -9,6 +10,7 @@ public class StartScene : MonoBehaviour
     [SerializeField] private int _hpPlayer;
     [SerializeField] private ActorUI _actorUI;
     [SerializeField] private PlayerRespawn _playerRespawn;
+    [SerializeField] private SplineComputer _splineComputer;
 
     private StaticDataService _staticDataEnemy;
     private GameFactory _gameFactory;
@@ -56,9 +58,13 @@ public class StartScene : MonoBehaviour
     private void InitGameWorld()
     {
         var player = _gameFactory.CreatePlayer(_playerRespawn.transform);
+        PlayerConstruct(player);
         InitUI(player);
-        player.GetComponent<PlayerHealth>().LoadProgress(NewProgress());
+        FillInEnemySpawner();
+    }
 
+    private void FillInEnemySpawner()
+    {
         for (var i = 0; i < _enemySpawners.Count; i++)
         {
             var enemySpawner = _enemySpawners[i];
@@ -67,21 +73,22 @@ public class StartScene : MonoBehaviour
         }
     }
 
+    private void PlayerConstruct(Player player)
+    {
+        player.PlayerHealth.LoadProgress(NewProgress());
+        player.PlayerMove.Construct(_splineComputer);
+    }
+
     private void InitUI(Player player)
     {
-        _actorUI.Construct(player.GetComponent<PlayerHealth>());
+        _actorUI.Construct(player.PlayerHealth);
     }
 
     private PlayerProgress NewProgress()
     {
-        var progress = new PlayerProgress
-        {
-            CarState =
-            {
-                MaxHp = _hpPlayer
-            }
-        };
-        
+        var progress = new PlayerProgress();
+        progress.CarState.MaxHp = _hpPlayer;
+
         progress.CarState.ResetHp();
         return progress;
     }

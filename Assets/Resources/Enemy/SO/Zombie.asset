@@ -16,6 +16,6 @@ MonoBehaviour:
   _damage: 5
   _effectiveDistance: 3.1
   _speed: 1
-  _attackCooldown: 3
+  _attackCooldown: 1.5
   _monsterTypeId: 0
   _prefab: {fileID: 2093916982507839477, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}

@@ -37,7 +37,7 @@ ModelImporter:
       takeName: Zombie_Atk_Arms_3_Loop_IPC
       internalID: -1061737288182353941
       firstFrame: 10
-      lastFrame: 34
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -57,14 +57,21 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.66341466
+      - time: 0.33711907
         functionName: OnAttack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.997561
+      - time: 0.7907635
+        functionName: OnAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.92270494
         functionName: OnAttackEnded
         data: 
         objectReferenceParameter: {instanceID: 0}

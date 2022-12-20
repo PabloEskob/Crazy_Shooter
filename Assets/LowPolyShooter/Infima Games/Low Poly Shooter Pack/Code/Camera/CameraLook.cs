@@ -142,7 +142,7 @@ namespace InfimaGames.LowPolyShooterPack
 
             //Clamp.
             pitch = Mathf.Clamp(pitch, xClamp.x, xClamp.y);
-            float yRotation = 0f;
+          //  float yRotation = 0f;
             
             rotationYaw.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * pitch);
 
@@ -169,7 +169,7 @@ namespace InfimaGames.LowPolyShooterPack
 
             //Clamp.
             pitch = Mathf.Clamp(pitch, yClamp.x, yClamp.y);
-            float yRotation = 0f;
+           //float yRotation = 0f;
             
             rotation.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * pitch);
 

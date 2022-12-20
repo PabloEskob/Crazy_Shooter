@@ -6,10 +6,35 @@
   <component name="ChangeListManager">
     <list default="true" id="53933274-9b43-45af-9600-5ee3072e3939" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Valley/Valley-Materials/Rock02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Valley/Valley-Materials/Rock02.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-Plane-Brown-ish.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-Materials/Wanderer-Plane-Brown-ish.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Camera/CameraLook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LowPolyShooter/Infima Games/Low Poly Shooter Pack/Code/Camera/CameraLook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/IDamageRecipient.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/IDamageRecipient.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Car/Scripts/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Animator/Test.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Animator/Test.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Zombie_Atk_Arms_3_Loop_IPC.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Zombie_Atk_Arms_3_Loop_IPC.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Zombie_Chase_3_KnockBack_Chase_IPC.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Animation/Zombie_Chase_3_KnockBack_Chase_IPC.fbx.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Test.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Test.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Zomb.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Prefab/Zomb.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/SO/Zombie.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/SO/Zombie.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyAttack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Attack.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyAttack.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyHealth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemyMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/EnemySpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/GameFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Factory/GameFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Start/StartScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Start/StartScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Projectiles/GoldFire_Medium_Projectile_Template.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Projectiles/GoldFire_Medium_Projectile_Template.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Trigger/TriggerSpawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Trigger/TriggerSpawn.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/FirstScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FirstScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FirstScene/NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FirstScene/NavMesh.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FirstScene/NavMesh.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FirstScene/NavMesh.asset.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +139,7 @@
       <workItem from="1671382559438" duration="12504000" />
       <workItem from="1671445440193" duration="13710000" />
       <workItem from="1671480297928" duration="736000" />
+      <workItem from="1671528854670" duration="10486000" />
     </task>
     <servers />
   </component>

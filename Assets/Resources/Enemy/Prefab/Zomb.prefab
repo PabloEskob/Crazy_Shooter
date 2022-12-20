@@ -1700,7 +1700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4b0ccf132a388408a00dd636a7e7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attack: {fileID: 3790010453518937791}
+  _enemyAttack: {fileID: 3790010453518937791}
   _enemyDeath: {fileID: 929012833335871492}
   _enemyHealth: {fileID: 3567556165215643676}
 --- !u!136 &8390890276324636980
@@ -1805,7 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e72498c5054c2348bc0be90b1476e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attack: {fileID: 3790010453518937791}
+  _enemyAttack: {fileID: 0}
   _triggerObserver: {fileID: 2929943319710130010}
 --- !u!114 &929012833335871492
 MonoBehaviour:

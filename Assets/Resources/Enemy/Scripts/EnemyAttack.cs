@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(EnemyAnimator))]
-public class Attack : MonoBehaviour
+public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private EnemyAnimator _enemyAnimator;
 
@@ -49,6 +49,7 @@ public class Attack : MonoBehaviour
 
     private void OnAttackEnded()
     {
+        Debug.Log("Завершил");
         _enemyAnimator.PlayIdle();
         _attackEnd = AttackCooldown;
         _isAttacking = false;
