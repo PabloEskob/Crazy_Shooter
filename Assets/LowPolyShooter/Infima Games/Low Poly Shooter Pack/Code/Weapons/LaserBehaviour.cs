@@ -15,6 +15,8 @@ namespace InfimaGames.LowPolyShooterPack
         /// Returns the Sprite used on the Character's Interface.
         /// </summary>
         public abstract Sprite GetSprite();
+        public abstract bool IsBought();
+        public abstract bool IsEquipped();
 
         #endregion
         

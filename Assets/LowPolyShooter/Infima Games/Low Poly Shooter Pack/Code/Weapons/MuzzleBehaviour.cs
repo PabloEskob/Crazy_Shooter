@@ -10,7 +10,8 @@ namespace InfimaGames.LowPolyShooterPack
     public abstract class MuzzleBehaviour : MonoBehaviour
     {
         #region GETTERS
-
+        public abstract bool IsBought();
+        public abstract bool IsEquipped();
         /// <summary>
         /// Returns the firing socket. This is the point that we use to fire the bullets.
         /// </summary>

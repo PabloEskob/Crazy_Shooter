@@ -11,6 +11,9 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region GETTERS
 
+        public abstract bool IsBought();
+        public abstract bool IsEquipped();
+        
         /// <summary>
         /// Returns the value of multiplierMouseSensitivity.
         /// </summary>

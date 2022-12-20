@@ -3572,6 +3572,30 @@ PrefabInstance:
     m_TransformParent: {fileID: 6048517401451250415}
     m_Modifications:
     - target: {fileID: 7795163959819838, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795163959819838, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795163959819838, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795163959819838, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795163959819838, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795163959819838, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795163959819838, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -3772,6 +3796,18 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 214048951178163014, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 214048951178163014, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 214048951178163014, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 214048951178163014, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -3840,6 +3876,30 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 318819215665963965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 318819215665963965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 318819215665963965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 318819215665963965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318819215665963965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318819215665963965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 318819215665963965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3858,6 +3918,30 @@ PrefabInstance:
     - target: {fileID: 341608228907740454, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 342526275505790809, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 342526275505790809, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 342526275505790809, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 342526275505790809, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 342526275505790809, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 342526275505790809, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 342526275505790809, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
@@ -3894,6 +3978,30 @@ PrefabInstance:
     - target: {fileID: 369915760121122637, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 379223143994315854, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 379223143994315854, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 379223143994315854, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 379223143994315854, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 379223143994315854, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 379223143994315854, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 379223143994315854, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
@@ -3958,6 +4066,30 @@ PrefabInstance:
     - target: {fileID: 491292388271959023, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 498304367306660513, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 498304367306660513, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 498304367306660513, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498304367306660513, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498304367306660513, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498304367306660513, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 498304367306660513, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
@@ -4807,6 +4939,30 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1924472260361746235, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924472260361746235, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924472260361746235, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924472260361746235, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924472260361746235, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924472260361746235, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1951769868315097705, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -5186,6 +5342,30 @@ PrefabInstance:
     - target: {fileID: 2544038003994893065, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544345319944641965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544345319944641965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544345319944641965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544345319944641965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544345319944641965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544345319944641965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2544345319944641965, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
@@ -6044,6 +6224,30 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4177526639086970163, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177526639086970163, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177526639086970163, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177526639086970163, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177526639086970163, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177526639086970163, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177526639086970163, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -6106,6 +6310,30 @@ PrefabInstance:
     - target: {fileID: 4314426503825662092, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319761041232184229, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319761041232184229, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319761041232184229, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319761041232184229, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319761041232184229, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4319761041232184229, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4319761041232184229, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
@@ -6658,6 +6886,30 @@ PrefabInstance:
     - target: {fileID: 5305549754842233463, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313719367971589152, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313719367971589152, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313719367971589152, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313719367971589152, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313719367971589152, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313719367971589152, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5313719367971589152, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
@@ -7468,6 +7720,30 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6524657844730715918, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524657844730715918, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524657844730715918, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524657844730715918, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524657844730715918, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524657844730715918, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524657844730715918, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -7518,6 +7794,30 @@ PrefabInstance:
     - target: {fileID: 6613591347337349842, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614136138418799626, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614136138418799626, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614136138418799626, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614136138418799626, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614136138418799626, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614136138418799626, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6614136138418799626, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
@@ -8023,6 +8323,30 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7388739548209321365, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388739548209321365, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388739548209321365, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388739548209321365, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388739548209321365, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7388739548209321365, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7391531515668697875, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -8174,6 +8498,30 @@ PrefabInstance:
     - target: {fileID: 7676253872134892445, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680938214175204005, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680938214175204005, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680938214175204005, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680938214175204005, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680938214175204005, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680938214175204005, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7680938214175204005, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
@@ -8644,6 +8992,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: _isEquipped
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: automaticReloadOnEmpty
       value: 1
       objectReference: {fileID: 0}
@@ -8734,6 +9086,30 @@ PrefabInstance:
     - target: {fileID: 8476867485117184191, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477924424165311924, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477924424165311924, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477924424165311924, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477924424165311924, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477924424165311924, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477924424165311924, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8491545275308128233, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
@@ -9036,6 +9412,38 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: magazineIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171766069727722671, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -9062,6 +9470,30 @@ PrefabInstance:
     - target: {fileID: 9183892006412798494, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184367823543550046, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184367823543550046, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184367823543550046, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: gripIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184367823543550046, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: laserIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184367823543550046, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: scopeIndexRandom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184367823543550046, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: muzzleIndexRandom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9184367823543550046, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: gripArray.Array.size

@@ -25,22 +25,16 @@ namespace InfimaGames.LowPolyShooterPack
         #region GETTERS
 
         public override Sprite GetSprite() => sprite;
+        public override bool IsBought() => _isBought;
+
+        public override bool IsEquipped() => _isEquipped;
 
         #endregion
 
-        public override void SetIsBought()
-        {
-            throw new System.NotImplementedException();
-        }
+        public override void SetIsBought() => _isBought = true;
 
-        public override void SetEquipped()
-        {
-            throw new System.NotImplementedException();
-        }
+        public override void SetEquipped() => _isEquipped = true;
 
-        public override void SetUnequipped()
-        {
-            throw new System.NotImplementedException();
-        }
+        public override void SetUnequipped() => _isEquipped = false;
     }
 }

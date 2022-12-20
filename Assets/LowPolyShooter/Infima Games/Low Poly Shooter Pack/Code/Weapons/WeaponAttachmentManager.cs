@@ -130,8 +130,16 @@ namespace InfimaGames.LowPolyShooterPack
             //Randomize. This allows us to spice things up a little!
             if (scopeIndexRandom)
                 scopeIndex = Random.Range(scopeIndexFirst, scopeArray.Length);
+            else
+                for (int i = 0; i < scopeArray.Length; i++)
+                    if (scopeArray[i].IsBought() && scopeArray[i].IsEquipped())
+                        scopeIndex = i;
             //Select Scope!
-            scopeBehaviour = scopeArray.SelectAndSetActive(scopeIndex);
+            if(scopeIndex>=0)
+                scopeBehaviour = scopeArray.SelectAndSetActive(scopeIndex);
+            else
+                scopeBehaviour = null;
+            
             //Check if we have no scope. This could happen if we have an incorrect index.
             if (scopeBehaviour == null)
             {
@@ -144,18 +152,32 @@ namespace InfimaGames.LowPolyShooterPack
             //Randomize. This allows us to spice things up a little!
             if (muzzleIndexRandom)
                 muzzleIndex = Random.Range(0, muzzleArray.Length);
+            else
+                for (int i = 0; i < muzzleArray.Length; i++)
+                    if (muzzleArray[i].IsBought() && muzzleArray[i].IsEquipped())
+                        muzzleIndex = i;
+            
             //Select Muzzle!
             muzzleBehaviour = muzzleArray.SelectAndSetActive(muzzleIndex);
 
             //Randomize. This allows us to spice things up a little!
             if (laserIndexRandom)
                 laserIndex = Random.Range(0, laserArray.Length);
+            else
+                for (int i = 0; i < laserArray.Length; i++)
+                    if (laserArray[i].IsBought() && laserArray[i].IsEquipped())
+                        laserIndex = i;
             //Select Laser!
             laserBehaviour = laserArray.SelectAndSetActive(laserIndex);
             
             //Randomize. This allows us to spice things up a little!
             if (gripIndexRandom)
                 gripIndex = Random.Range(0, gripArray.Length);
+            else
+                for (int i = 0; i < gripArray.Length; i++)
+                    if (gripArray[i].IsBought() && gripArray[i].IsEquipped())
+                        gripIndex = i;
+            
             //Select Grip!
             gripBehaviour = gripArray.SelectAndSetActive(gripIndex);
             

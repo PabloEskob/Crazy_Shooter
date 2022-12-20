@@ -108,6 +108,10 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region GETTERS
 
+        public override bool IsBought() => _isBought;
+
+        public override bool IsEquipped() => _isEquipped;
+
         public override float GetMultiplierMouseSensitivity() => multiplierMouseSensitivity;
 
         public override float GetMultiplierSpread() => multiplierSpread;
@@ -162,20 +166,11 @@ namespace InfimaGames.LowPolyShooterPack
             meshRenderer.materials = materials;
         }
 
-        public override void SetIsBought()
-        {
-            throw new NotImplementedException();
-        }
+        public override void SetIsBought() => _isBought = true;
 
-        public override void SetEquipped()
-        {
-            throw new NotImplementedException();
-        }
+        public override void SetEquipped() => _isEquipped = true;
 
-        public override void SetUnequipped()
-        {
-            throw new NotImplementedException();
-        }
+        public override void SetUnequipped() => _isEquipped = false;
 
         #endregion
     }
