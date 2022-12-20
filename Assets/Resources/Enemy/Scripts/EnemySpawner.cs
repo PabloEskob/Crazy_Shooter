@@ -84,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
     private void InitEnemy(Enemy enemy)
     {
         enemy.GetComponent<EnemyMove>().Init(_gameFactory.Player);
-        enemy.GetComponent<Attack>().Init(_gameFactory);
+        enemy.GetComponent<EnemyAttack>().Init(_gameFactory);
         enemy.transform.parent = transform;
         enemy.gameObject.SetActive(false);
     }

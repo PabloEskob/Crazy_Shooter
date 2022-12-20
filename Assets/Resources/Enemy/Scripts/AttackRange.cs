@@ -1,9 +1,9 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Attack))]
+[RequireComponent(typeof(EnemyAttack))]
 public class AttackRange : MonoBehaviour
 {
-    [SerializeField] private Attack _attack;
+    [SerializeField] private EnemyAttack _enemyAttack;
     [SerializeField] private TriggerObserver _triggerObserver;
 
     private void Start()
@@ -11,16 +11,16 @@ public class AttackRange : MonoBehaviour
         _triggerObserver.TriggerEnter += TriggerEnter;
         _triggerObserver.TriggerExit += TriggerExit;
 
-        _attack.DisableAttack();
+        _enemyAttack.DisableAttack();
     }
 
     private void TriggerEnter(Collider collider)
     {
-        _attack.EnableAttack();
+        _enemyAttack.EnableAttack();
     }
 
     private void TriggerExit(Collider collider)
     {
-        _attack.DisableAttack();
+        _enemyAttack.DisableAttack();
     }
 }

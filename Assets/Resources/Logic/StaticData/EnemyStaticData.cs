@@ -7,11 +7,11 @@ public class EnemyStaticData : ScriptableObject
 
     [Range(1, 5)] [SerializeField] private int _damage;
 
-    [Range(3, 20)] [SerializeField] private float _effectiveDistance;
+    [Range(1, 20)] [SerializeField] private float _effectiveDistance;
 
-    [Range(5, 20)] [SerializeField] private float _speed;
+    [Range(1, 20)] [SerializeField] private float _speed;
 
-    [Range(3, 20)] [SerializeField] private float _attackCooldown;
+    [Range(1, 20)] [SerializeField] private float _attackCooldown;
 
 
     [SerializeField] private MonsterTypeId _monsterTypeId;

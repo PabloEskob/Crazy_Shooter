@@ -4,19 +4,19 @@ public class ActorUI : MonoBehaviour
 {
     [SerializeField] private HpBar _hpBar;
 
-    private CarHealth _carHealth;
+    private PlayerHealth _playerHealth;
 
     private void OnDisable() =>
-        _carHealth.HealthChanged -= UpdateHpBar;
+        _playerHealth.HealthChanged -= UpdateHpBar;
 
-    public void Construct(CarHealth carHealth)
+    public void Construct(PlayerHealth playerHealth)
     {
-        _carHealth = carHealth;
-        _carHealth.HealthChanged += UpdateHpBar;
+        _playerHealth = playerHealth;
+        _playerHealth.HealthChanged += UpdateHpBar;
     }
 
     private void UpdateHpBar()
     {
-        _hpBar.SetValue(_carHealth.Current, _carHealth.Max);
+        _hpBar.SetValue(_playerHealth.Current, _playerHealth.Max);
     }
 }

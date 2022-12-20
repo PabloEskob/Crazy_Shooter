@@ -8,9 +8,9 @@ public class AssetProvider
         return Object.Instantiate(prefab);
     }
 
-    public  GameObject Instantiate(string path, Vector3 at)
+    public  GameObject Instantiate(string path, Transform at)
     {
         var prefab = Resources.Load<GameObject>(path);
-        return Object.Instantiate(prefab, at, Quaternion.identity);
+        return Object.Instantiate(prefab, at.position, at.rotation);
     }
 }

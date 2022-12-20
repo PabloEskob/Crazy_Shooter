@@ -8,7 +8,8 @@ public class TriggerSpawn : MonoBehaviour
 
     public event Action<Collider, int> TriggerEnter;
 
-    private void OnTriggerEnter(Collider other) => TriggerEnter?.Invoke(other, _enemySpawnerNumber);
+    private void OnTriggerEnter(Collider other) =>
+        TriggerEnter?.Invoke(other, _enemySpawnerNumber);
 
     public void Init(int number)
     {

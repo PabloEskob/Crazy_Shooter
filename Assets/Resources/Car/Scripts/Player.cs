@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageRecipient
+[RequireComponent(typeof(PlayerHealth))]
+[RequireComponent(typeof(PlayerMove))]
+public class Player : MonoBehaviour
 {
-     public void TakeDamage(int damage)
-     {
-          throw new System.NotImplementedException();
-     }
+    [SerializeField] private PlayerMove _playerMove;
+    [SerializeField] private PlayerHealth _playerHealth;
+
+    public PlayerMove PlayerMove =>
+        _playerMove;
+
+    public PlayerHealth PlayerHealth =>
+        _playerHealth;
 }
