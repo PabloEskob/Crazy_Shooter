@@ -1,6 +1,9 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using System;
+using Agava.YandexGames;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -15,6 +18,10 @@ namespace InfimaGames.LowPolyShooterPack
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Initialize()
         {
+            //if(!YandexGamesSdk.IsInitialized)
+                
+            
+            Debug.Log($"InitBootstrapper {DateTime.Now}");
             //Initialize default service locator.
             ServiceLocator.Initialize();
             

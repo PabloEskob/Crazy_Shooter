@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Source.Scripts.StaticData;
 using UnityEngine;
 
 public class StaticDataService : IStaticDataService
 {
     private Dictionary<MonsterTypeId, EnemyStaticData> _enemies;
+    private List<LevelConfig> _levelConfigs;
 
     public StaticDataService()
     {
@@ -22,4 +24,9 @@ public class StaticDataService : IStaticDataService
             ? staticData
             : null;
     }
+
+    public LevelConfig ForLevel(int levelIndex) => 
+        levelIndex >= 0 && levelIndex < _levelConfigs.Count
+        ? _levelConfigs[levelIndex]
+        : null;
 }

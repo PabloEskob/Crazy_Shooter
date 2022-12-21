@@ -1,7 +1,7 @@
 ﻿namespace Source.Scripts.SaveSystem
 {
-    public class DataNames
+    public static class DataNames
     {
-        
+        public const string GameName = "CrazyShooter";
     }
 }

@@ -10,13 +10,8 @@ public class GameFactory : IGameFactory
     private readonly AssetProvider _assetProvider;
 
     public Player Player { get; private set; }
-    public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
-    public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
-    public void Cleanup()
-    {
-        ProgressReaders.Clear();
-        ProgressWriters.Clear();
-    }
+    public List<ISavedProgressReader> ProgressReaders { get; }
+    public List<ISavedProgress> ProgressWriters { get; }
 
     public GameFactory(StaticDataService staticDataEnemy, AssetProvider assetProvider)
     {
@@ -53,11 +48,9 @@ public class GameFactory : IGameFactory
         stats.stoppingDistance = enemyStaticData.EffectiveDistance;
     }
 
-    private void Register(ISavedProgressReader progressReader)
+    public void Cleanup()
     {
-        if(progressReader is ISavedProgress progressWriter)
-            ProgressWriters.Add(progressWriter);
-        
-        ProgressReaders.Add(progressReader);
+        ProgressReaders.Clear();
+        ProgressWriters.Clear();
     }
 }

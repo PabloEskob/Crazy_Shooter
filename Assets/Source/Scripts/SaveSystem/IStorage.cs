@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
+using Source.Infrastructure;
 using UnityEngine;
 
 namespace Source.Scripts.Infrastructure.Services.PersistentProgress
 {
-    public interface IStorage
+    public interface IStorage : IService
     {
         void SetFloat(string key, float value);
         float GetFloat(string key);

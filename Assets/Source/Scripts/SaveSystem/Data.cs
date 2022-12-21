@@ -18,11 +18,18 @@ namespace Source.Scripts.SaveSystem
         public SerializedDictionary<string, bool> Bools = new();
         public SerializedDictionary<string, Vector3Data> Vectors = new();
         public SerializedDictionary<string, QuaternionData> Quaternions = new();
+        //public SerializedList<WeaponData> WeaponDatas = new();
         public int Soft;
 
         public Data()
         {
             
         }
+    }
+
+    [Serializable]
+    public class SerializedList<T>
+    {
+        
     }
 }

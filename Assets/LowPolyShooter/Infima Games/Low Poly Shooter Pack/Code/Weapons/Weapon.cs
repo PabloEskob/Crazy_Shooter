@@ -1,7 +1,11 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using System;
+using Agava.YandexGames;
 using Source.Scripts.Data;
+using Source.Scripts.SaveSystem;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -10,6 +14,8 @@ namespace InfimaGames.LowPolyShooterPack
     /// </summary>
     public class Weapon : WeaponBehaviour
     {
+        private WeaponData _data = new WeaponData();
+        
         #region FIELDS SERIALIZED
         
         [Header("Settings")]
@@ -236,7 +242,8 @@ namespace InfimaGames.LowPolyShooterPack
             characterBehaviour = gameModeService.GetPlayerCharacter();
             //Cache the world camera. We use this in line traces.
             playerCamera = characterBehaviour.GetCameraWorld().transform;
-
+            _data.WeaponName = weaponName;
+            _data.IsBought = _isBought;
         }
         protected override void Start()
         {
@@ -266,6 +273,18 @@ namespace InfimaGames.LowPolyShooterPack
         #region GETTERS
 
         public override string GetName() => weaponName;
+        public WeaponData GetData() => _data;
+
+        public void SetData(String name)
+        {
+            _data = name.ToDeserialized<WeaponData>();
+        }
+
+        public void SetBoolsFromData()
+        {
+            _isBought = _data.IsBought;
+            _isEquipped = _data.IsEquipped;
+        }
         
         public override Offsets GetWeaponOffsets() => weaponOffsets;
         
@@ -344,9 +363,24 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region METHODS
 
-        public override void SetIsBought() => _isBought = true;
-        public override void SetEquipped() => _isEquipped = true;
-        public override void SetUnequipped() => _isEquipped = false;
+        public override void SetIsBought()
+        {
+            _isBought = true;
+            _data.IsBought = _isBought;
+        }
+
+        public override void SetEquipped()
+        {
+            _isEquipped = true;
+            _data.IsEquipped = _isEquipped;
+        }
+
+        public override void SetUnequipped()
+        {
+            _isEquipped = false;
+            _data.IsEquipped = _isEquipped;
+        }
+
         public override void Reload()
         {
             //Set Reloading Bool. This helps cycled reloads know when they need to stop cycling.
@@ -429,23 +463,74 @@ namespace InfimaGames.LowPolyShooterPack
 
         #endregion
 
-        public WeaponProgress weaponProgress;
-        
-        public void Save(Weapon weapon)
-        {
-            PlayerPrefs.SetInt($"{weapon.weaponName}_isBought", DataExtensions.BoolToInt(_isBought));
-            PlayerPrefs.SetInt($"{weapon.weaponName}_isEquipped", DataExtensions.BoolToInt(_isEquipped));
-            PlayerPrefs.Save();
-        }
-        
-        public void Load()
-        { 
-            if(!_isBought)
-                _isBought = DataExtensions.IntToBool(PlayerPrefs.GetInt($"{weaponName}_isBought"));
-            
-            _isEquipped = DataExtensions.IntToBool(PlayerPrefs.GetInt($"{weaponName}_isEquipped"));
-        }
-            
-        
+//         public void Save(Weapon weapon)
+//         {
+//             _data.IsEquipped = _isEquipped;
+//             _data.IsBought = _isBought;
+//             //_data.SaveTime = DateTime.Now.ToString();
+//             
+//             if(!WeaponDatasList.Contains(_data.ToJson()))
+//                 WeaponDatasList.AddNewData(_data.ToJson());
+//             
+// #if UNITY_EDITOR
+//             PlayerPrefs.SetString(weaponName, _data.ToJson());
+//             // Debug.Log(_data.ToJson());
+//             // Debug.Log("Saved to local storage");
+// #endif
+//             
+// #if UNITY_WEBGL && !UNITY_EDITOR
+//             if(PlayerAccount.IsAuthorized){
+//                 _data.SaveTime = DateTime.Now.ToString();
+//                 PlayerAccount.SetPlayerData(_data.ToJson());
+//                 Debug.Log(_data.ToJson());
+//                 Debug.Log("Saved to remote storage");
+// }
+// #endif
+//             
+//         }
+//         
+//         public void Load()
+//         {
+// #if UNITY_EDITOR
+//             _data = PlayerPrefs.GetString(weaponName)?.ToDeserialized<WeaponData>() ?? new WeaponData();
+//             Debug.Log("Load from local storage");
+// #endif
+//             
+// #if UNITY_WEBGL && !UNITY_EDITOR
+//             Debug.Log($"Player Authorized = {PlayerAccount.IsAuthorized}");
+//             
+//                 LoadRemote(remoteData =>
+//                 {
+//                     remoteData ??= new WeaponData();
+//                     _data = remoteData;
+//
+//                     Debug.Log("Load from remote storage");
+//                     Debug.Log($"RemoteData - {remoteData.ToJson()}");
+//                 });
+// #endif
+//
+//             if (!_isBought)
+//                 _isBought = _data.IsBought;
+//
+//             _isEquipped = _data.IsEquipped;
+//         }
+//             
+//         private void LoadRemote(Action<WeaponData> onDataLoadedCallback)
+//         {
+// #if !UNITY_WEBGL || UNITY_EDITOR
+//             Debug.Log("Loaded from remote storage");
+//             onDataLoadedCallback?.Invoke(null);
+// #endif
+// #if UNITY_WEBGL && !UNITY_EDITOR
+//             if(PlayerAccount.IsAuthorized)
+//                 PlayerAccount.GetPlayerData(data =>
+//                 {
+//                     Debug.Log($"Data string {data}");
+//                     onDataLoadedCallback?.Invoke(data == weaponName ? null : data.ToDeserialized<WeaponData>());
+//                 });
+//             else
+//                 onDataLoadedCallback?.Invoke(null);
+// #endif
+//         }
     }
 }

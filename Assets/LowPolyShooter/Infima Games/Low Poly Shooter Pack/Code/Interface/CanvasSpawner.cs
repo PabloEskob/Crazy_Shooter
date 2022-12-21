@@ -37,6 +37,7 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         /// </summary>
         private void Awake()
         {
+            Debug.Log($"InitCanvas {DateTime.Now}");
             //Spawn Interface.
 #if !UNITY_EDITOR && UNITY_WEBGL
             StartCoroutine(InstantiateRoutine());

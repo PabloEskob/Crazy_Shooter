@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Agava.YandexGames;
 using Source.Scripts.Data;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -80,7 +81,7 @@ namespace Source.Scripts.SaveSystem
         {
             return _data.Strings.ContainsKey(key) 
                 ? _data.Strings[key] 
-                : throw new ArgumentException($"Strings doesn't contain Key: {key}");
+                : $"Strings doesn't contain Key: {key}";
         }
 
         public bool HasKeyString(string key)
@@ -207,6 +208,7 @@ namespace Source.Scripts.SaveSystem
         {
             _data.SaveTime = DateTime.Now.ToString();
             PlayerPrefs.SetString(_dataName, _data.ToJson());
+            Debug.Log(_data.ToJson());
         }
 
         public void ClearData()
@@ -221,11 +223,11 @@ namespace Source.Scripts.SaveSystem
         public void SaveRemote()
         {
             Save();
-#if YANDEX_GAMES && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
             if(PlayerAccount.IsAuthorized)
                 PlayerAccount.SetPlayerData(_data.ToJson());
-#endif
             Debug.Log("Saved to remote storage");
+#endif
         }
 
         public IEnumerator SyncRemoteSave(Action onDataIsSynchronizedCallback = null)
@@ -263,7 +265,7 @@ namespace Source.Scripts.SaveSystem
             onRemoteDataCleared?.Invoke();
             yield return true;
 #endif          
-#if YANDEX_GAMES && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
 
             if (!PlayerAccount.IsAuthorized)
             {
@@ -292,7 +294,7 @@ namespace Source.Scripts.SaveSystem
             Debug.Log("Loaded from remote storage");
             onDataLoadedCallback?.Invoke(null);
 #endif
-#if YANDEX_GAMES && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
             if(PlayerAccount.IsAuthorized)
                 PlayerAccount.GetPlayerData(data =>
                 {

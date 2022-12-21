@@ -1,6 +1,10 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using System;
 using System.Linq;
+using Source.Infrastructure;
+using Source.Scripts.Data;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -27,17 +31,23 @@ namespace InfimaGames.LowPolyShooterPack
         
         #region METHODS
 
-        
+        private IStorage _storage;
         
         public override void Init()
         {
+            _storage = AllServices.Container.Single<IStorage>();
             //Cache all weapons. Beware that weapons need to be parented to the object this component is on!
             weapons = GetComponentsInChildren<Weapon>(true);
 
-            foreach (Weapon weapon in weapons)
-            {
-                weapon.Load();
-            }
+            if(_storage!=null)
+                foreach (var weapon in weapons)
+                {
+                    if (_storage.HasKeyString(weapon.GetName()))
+                    {
+                        weapon.SetData(_storage.GetString(weapon.GetName()));
+                        weapon.SetBoolsFromData();
+                    }
+                }
             
             var availableWeapons = weapons.Where(w => w.IsBought()).ToArray();
             
@@ -52,14 +62,16 @@ namespace InfimaGames.LowPolyShooterPack
                 if (availableWeapons[i].IsEquipped())
                     equippedWeaponIndex = i;
             }
-
+                Debug.Log($"weapon index {equippedWeaponIndex}");
             //Equip.
             //Equip(equippedAtStart);
             Equip(equippedWeaponIndex);
+            
         }
 
         public override WeaponBehaviour Equip(int index)
         {
+            Weapon current;
             //If we have no weapons, we can't really equip anything.
             if (weapons == null)
                 return equipped;
@@ -76,7 +88,14 @@ namespace InfimaGames.LowPolyShooterPack
             if (equipped != null)
             {
                 equipped.SetUnequipped();
-                equipped.GetComponent<Weapon>().Save(equipped as Weapon);
+                
+                if (_storage != null)
+                {
+                    current = equipped as Weapon;
+                    _storage.SetString(current.GetName(), current.GetData().ToJson());
+                }
+                
+                //equipped.GetComponent<Weapon>().Save(equipped as Weapon);
                 equipped.gameObject.SetActive(false);
             }
 
@@ -87,7 +106,15 @@ namespace InfimaGames.LowPolyShooterPack
             //Activate the newly-equipped weapon.
             equipped.gameObject.SetActive(true);
             equipped.SetEquipped();
-            equipped.GetComponent<Weapon>().Save(equipped as Weapon);
+            
+            if (_storage != null)
+            {
+                current = equipped as Weapon;
+                _storage.SetString(current.GetName(), current.GetData().ToJson());
+                _storage.Save();
+            }
+
+            //equipped.GetComponent<Weapon>().Save(equipped as Weapon);
             //Return.
             return equipped;
         }
