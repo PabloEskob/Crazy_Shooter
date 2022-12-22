@@ -1,4 +1,5 @@
-﻿using Dreamteck.Splines;
+﻿using System;
+using Dreamteck.Splines;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,10 @@ public class PlayerMove : MonoBehaviour
     private ConstructSplineComputer _constructSplineComputer;
     private TriggerGroup _triggerGroup;
 
+    public bool CanMove { get; set; }
+
+    public event Action Stopped;
+
     private void OnDisable() =>
         RemoveListenerSplineTrigger();
 
@@ -20,11 +25,18 @@ public class PlayerMove : MonoBehaviour
         CreateSplineTrigger();
     }
 
-    public void PlayMove() =>
-        _constructSplineComputer.SetSpeed(_speed);
+    public void PlayMove()
+    {
+        if (CanMove)
+            _constructSplineComputer.SetSpeed(_speed);
+    }
 
-    public void PlayMove(InputAction.CallbackContext context) =>
-        _constructSplineComputer.SetSpeed(_speed);
+    public void PlayMove(InputAction.CallbackContext context)
+    {
+        if (CanMove)
+            _constructSplineComputer.SetSpeed(_speed);
+    }
+
 
     private void CreateSplineTrigger()
     {
@@ -40,6 +52,10 @@ public class PlayerMove : MonoBehaviour
             splineTrigger.RemoveListener(StopMove);
     }
 
-    private void StopMove(SplineUser arg0) =>
+    private void StopMove(SplineUser arg0)
+    {
+        Stopped?.Invoke();
+        CanMove = false;
         _constructSplineComputer.SetSpeed(0);
+    }
 }

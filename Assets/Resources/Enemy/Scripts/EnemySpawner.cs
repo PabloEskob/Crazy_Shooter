@@ -24,9 +24,7 @@ public class EnemySpawner : MonoBehaviour
     private void OnDisable()
     {
         foreach (var enemy in _enemies)
-        {
             enemy.EnemyDeath.Happened -= TryTurnOnAnotherSpawner;
-        }
     }
 
     private void Start()
@@ -34,34 +32,24 @@ public class EnemySpawner : MonoBehaviour
         _enemies = new List<Enemy>();
 
         if (_triggerSpawn != null)
-        {
             _triggerSpawn.Init(_number);
-        }
 
         CreateQuantityEnemy();
 
         foreach (var enemy in _enemies)
-        {
             enemy.EnemyDeath.Happened += TryTurnOnAnotherSpawner;
-        }
     }
 
-    public void Init(GameFactory gameFactory)
-    {
+    public void Init(GameFactory gameFactory) =>
         _gameFactory = gameFactory;
-    }
 
-    public void SetNumber(int number)
-    {
+    public void SetNumber(int number) =>
         _number = number;
-    }
 
     public void TurnOnEnemy()
     {
-        foreach (var enemy in _enemies)
-        {
+        foreach (var enemy in _enemies) 
             enemy.gameObject.SetActive(true);
-        }
 
         _released = true;
     }
@@ -76,9 +64,7 @@ public class EnemySpawner : MonoBehaviour
     private void CreateQuantityEnemy()
     {
         for (int i = 0; i < _count; i++)
-        {
             _enemies.Add(Spawn());
-        }
     }
 
     private void InitEnemy(Enemy enemy)

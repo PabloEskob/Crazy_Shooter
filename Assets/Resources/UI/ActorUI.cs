@@ -6,30 +6,44 @@ public class ActorUI : MonoBehaviour
 
     private PlayerHealth _playerHealth;
     private ButtonForward _buttonForward;
+    private PlayerMove _playerMove;
 
+    public ButtonForward ButtonForward => _buttonForward;
+
+    private void OnEnable()
+    {
+        _buttonForward.OnClick += OnClick;
+        _buttonForward.Moved += CanMoved;
+    }
+    
     private void OnDisable()
     {
         _playerHealth.HealthChanged -= UpdateHpBar;
+        _buttonForward.OnClick -= OnClick;
+        _playerMove.Stopped -= PlayerMoveOnStopped;
+        _buttonForward.Moved -= CanMoved;
     }
+
+    private void Awake() =>
+        _buttonForward = GetComponentInChildren<ButtonForward>();
 
     public void Construct(PlayerHealth playerHealth)
     {
         _playerHealth = playerHealth;
+        _playerMove = playerHealth.GetComponent<PlayerMove>();
         _playerHealth.HealthChanged += UpdateHpBar;
-        ConstructButtonForward();
+        _playerMove.Stopped += PlayerMoveOnStopped;
     }
 
-    private void ConstructButtonForward()
-    {
-        _buttonForward = GetComponentInChildren<ButtonForward>();
-        _buttonForward.OnClick += OnClick;
-    }
+    private void PlayerMoveOnStopped() =>
+        _buttonForward.SwitchOff();
 
     private void OnClick() =>
-        _playerHealth.GetComponent<PlayerMove>().PlayMove();
+        _playerMove.PlayMove();
 
-    private void UpdateHpBar()
-    {
+    private void UpdateHpBar() =>
         _hpBar.SetValue(_playerHealth.Current, _playerHealth.Max);
-    }
+
+    private void CanMoved() =>
+        _playerMove.CanMove = true;
 }
