@@ -2,42 +2,44 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(ConstructSplineComputer))]
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private SplineFollower _splineFollower;
 
-    private SplineComputer _splineComputer;
+    private ConstructSplineComputer _constructSplineComputer;
+    private TriggerGroup _triggerGroup;
+
+    private void OnDisable() =>
+        RemoveListenerSplineTrigger();
 
     public void Construct(SplineComputer splineComputer)
     {
-        _splineFollower.spline = splineComputer;
-        CreateSplineTrigger(splineComputer);
+        _constructSplineComputer = GetComponent<ConstructSplineComputer>();
+        _constructSplineComputer.Construct(splineComputer);
+        CreateSplineTrigger();
     }
 
-    public void PlayMove()
+    public void PlayMove() =>
+        _constructSplineComputer.SetSpeed(_speed);
+
+    public void PlayMove(InputAction.CallbackContext context) =>
+        _constructSplineComputer.SetSpeed(_speed);
+
+    private void CreateSplineTrigger()
     {
-        _splineFollower.followSpeed = _speed;
+        foreach (var triggerGroup in _constructSplineComputer.GetTriggerGroup())
+        foreach (var splineTrigger in triggerGroup.triggers)
+            splineTrigger.AddListener(StopMove);
     }
 
-    public void PlayMove(InputAction.CallbackContext context)
+    private void RemoveListenerSplineTrigger()
     {
-        _splineFollower.followSpeed = _speed;
+        foreach (var triggerGroup in _constructSplineComputer.GetTriggerGroup())
+        foreach (var splineTrigger in triggerGroup.triggers)
+            splineTrigger.RemoveListener(StopMove);
     }
 
-    private void CreateSplineTrigger(SplineComputer splineComputer)
-    {
-        foreach (var triggerGroup in splineComputer.triggerGroups)
-        {
-            foreach (var splineTrigger in triggerGroup.triggers)
-            {
-                splineTrigger.AddListener(StopMove);
-            }
-        }
-    }
-
-    private void StopMove(SplineUser arg0)
-    {
-        _splineFollower.followSpeed = 0;
-    }
+    private void StopMove(SplineUser arg0) =>
+        _constructSplineComputer.SetSpeed(0);
 }
