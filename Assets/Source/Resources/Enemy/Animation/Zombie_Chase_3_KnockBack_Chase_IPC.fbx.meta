@@ -37,7 +37,7 @@ ModelImporter:
       takeName: Zombie_Chase_3_KnockBack_Chase_IPC
       internalID: 3138944738898157804
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -64,7 +64,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.93038243
+      - time: 0.67061234
         functionName: OnHitEnded
         data: 
         objectReferenceParameter: {instanceID: 0}

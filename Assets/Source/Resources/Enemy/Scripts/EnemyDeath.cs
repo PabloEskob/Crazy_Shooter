@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(EnemyAnimator))]
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyDeath : MonoBehaviour
@@ -12,7 +12,7 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] private EnemyHealth _enemyHealth;
     [SerializeField] private EnemyAnimator _enemyAnimator;
 
-    private CapsuleCollider _collider;
+    private Collider _collider;
 
     public bool IsDied { get; private set; }
 
@@ -21,7 +21,7 @@ public class EnemyDeath : MonoBehaviour
     private void Start()
     {
         _enemyHealth.HealthChanged += OnHealthChanged;
-        _collider = GetComponent<CapsuleCollider>();
+        _collider = GetComponent<Collider>();
     }
 
     private void OnHealthChanged()

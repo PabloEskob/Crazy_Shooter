@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5337767859281886539}
   - component: {fileID: 5337767859281886538}
+  - component: {fileID: 6371585698108333452}
   m_Layer: 0
   m_Name: StartScene
   m_TagString: Untagged
@@ -44,4 +45,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afa56f232aaeed45855736c92b63d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemySpawner: {fileID: 0}
+  _hpPlayer: 50
+  _actorUI: {fileID: 0}
+  _playerRespawn: {fileID: 0}
+  _splineComputer: {fileID: 0}
+  _launchRoom: {fileID: 6371585698108333452}
+--- !u!114 &6371585698108333452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5337767859281886581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd99bccc3d7bfce49bc98f93871d38fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rooms:
+  - {fileID: 0}
+  _startFirstWave: 3

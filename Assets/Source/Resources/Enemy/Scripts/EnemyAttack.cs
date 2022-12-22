@@ -49,7 +49,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnAttackEnded()
     {
-        Debug.Log("Завершил");
+        Debug.Log("рестарт");
         _enemyAnimator.PlayIdle();
         _attackEnd = AttackCooldown;
         _isAttacking = false;

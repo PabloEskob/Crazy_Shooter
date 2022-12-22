@@ -1913,7 +1913,6 @@ GameObject:
   - component: {fileID: 6818236782372126371}
   - component: {fileID: 7912165017643291299}
   - component: {fileID: 2093916982507839477}
-  - component: {fileID: 6177105440793224928}
   - component: {fileID: 4843298650686568553}
   - component: {fileID: 6625414601667408847}
   - component: {fileID: 6970252418325554411}
@@ -1922,6 +1921,7 @@ GameObject:
   - component: {fileID: 2553538708926698609}
   - component: {fileID: 3255986719442638800}
   - component: {fileID: 1173631881349560264}
+  - component: {fileID: 7107038017456346212}
   m_Layer: 3
   m_Name: Test
   m_TagString: Untagged
@@ -1984,20 +1984,6 @@ MonoBehaviour:
   _enemyAttack: {fileID: 1536784074449121643}
   _enemyDeath: {fileID: 3255986719442638800}
   _enemyHealth: {fileID: 1173631881349560264}
---- !u!136 &6177105440793224928
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6184830516390962201}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.84, z: 0}
 --- !u!54 &4843298650686568553
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2007,7 +1993,7 @@ Rigidbody:
   m_GameObject: {fileID: 6184830516390962201}
   serializedVersion: 2
   m_Mass: 100
-  m_Drag: 0
+  m_Drag: 0.05
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -2118,6 +2104,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyAnimator: {fileID: 5427714518127054878}
   _particleSystem: {fileID: 4902090256062798985}
+--- !u!65 &7107038017456346212
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184830516390962201}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6430492662498399400
 GameObject:
   m_ObjectHideFlags: 0
@@ -2662,7 +2661,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8888104517242071759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.232, z: 0.429}
+  m_LocalPosition: {x: 0, y: 1.58, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
