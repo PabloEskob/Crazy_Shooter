@@ -30,7 +30,7 @@ public class LaunchingWaves
     }
 
 
-    public IEnumerator StartFirstWave(float startFirstWave)
+    public IEnumerator StartWave(float startFirstWave)
     {
         var newWaitForSecond = new WaitForSeconds(startFirstWave);
         yield return newWaitForSecond;

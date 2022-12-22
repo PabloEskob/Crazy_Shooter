@@ -8,6 +8,6 @@ public class TriggerSpawnEditor : Editor
     public static void RenderCustomGizmo(TriggerSpawn trigger, GizmoType gizmoType)
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(trigger.transform.position, 5f);
+        Gizmos.DrawSphere(trigger.transform.position, 0.5f);
     }
 }

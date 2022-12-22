@@ -53,7 +53,7 @@ public class StartScene : MonoBehaviour
         InitGameWorld();
     }
 
-    private void Start() => StartCoroutine(_launchingWaves.StartFirstWave(_startFirstWave));
+    private void Start() => StartCoroutine(_launchingWaves.StartWave(_startFirstWave));
 
     private void InitGameWorld()
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(Collider))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyAttack _enemyAttack;
