@@ -10,6 +10,7 @@ public class StartScene : MonoBehaviour
     [SerializeField] private PlayerRespawn _playerRespawn;
     [SerializeField] private SplineComputer _splineComputer;
     [SerializeField] private LaunchRoom _launchRoom;
+    [SerializeField] private Movement _movement;
 
     private StaticDataService _staticDataEnemy;
     private GameFactory _gameFactory;
@@ -29,6 +30,9 @@ public class StartScene : MonoBehaviour
         _gameFactory = new GameFactory(_staticDataEnemy, _assetProvider);
         InitGameWorld();
     }
+
+    private void Start() =>
+        StartGame();
 
     private void InitGameWorld()
     {
@@ -55,6 +59,12 @@ public class StartScene : MonoBehaviour
         return progress;
     }
 
-    private void OnAllowed() =>
-        _actorUI.ButtonForward.SwitchOn();
+    private void StartGame() => 
+        _launchRoom.StartFirstRoom();
+
+    private void OnAllowed()
+    {
+        if (_movement == Movement.Move)
+            _actorUI.ButtonForward.SwitchOn();
+    }
 }

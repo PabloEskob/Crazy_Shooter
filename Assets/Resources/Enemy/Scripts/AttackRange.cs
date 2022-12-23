@@ -14,13 +14,9 @@ public class AttackRange : MonoBehaviour
         _enemyAttack.DisableAttack();
     }
 
-    private void TriggerEnter(Collider collider)
-    {
+    private void TriggerEnter(Collider collider) => 
         _enemyAttack.EnableAttack();
-    }
 
-    private void TriggerExit(Collider collider)
-    {
+    private void TriggerExit(Collider collider) => 
         _enemyAttack.DisableAttack();
-    }
 }

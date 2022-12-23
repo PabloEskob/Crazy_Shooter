@@ -5,9 +5,17 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField] private List<EnemySpawner> _enemySpawners;
+    [SerializeField] private float _time;
 
     private LaunchingWaves _launchingWaves;
+
     private bool _clear;
+
+    public float Time
+    {
+        get => _time;
+        set => _time = value;
+    }
 
     public LaunchingWaves LaunchingWaves => _launchingWaves;
     public int Number { get; set; }

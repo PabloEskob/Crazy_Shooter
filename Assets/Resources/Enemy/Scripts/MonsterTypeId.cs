@@ -1,4 +1,5 @@
 ﻿public enum MonsterTypeId
 {
-    Zombie = 0
+    Zombie = 0,
+    NotAttackZombie = 1
 }
