@@ -10,7 +10,11 @@ namespace Source.Scripts.Data
         public bool IsBought;
         public bool IsEquipped;
         public string SaveTime = DateTime.MinValue.ToString();
-        
-        
+        public int Level;
+        public float Damage;
+        public float FireRate;
+        public float Reload;
+        public float MagazineSize;
+
     }
 }

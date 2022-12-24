@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b0666a4babd4249a1115f77031b11f, type: 3}
+  m_Name: NewUpgradeConfig
+  m_EditorClassIdentifier: 
+  stats:
+  - _level: 1
+    _damage: 10
+    _fireRate: 12
+    _reload: 1
+    _magazineSize: 30
+  - _level: 2
+    _damage: 20
+    _fireRate: 15
+    _reload: 2
+    _magazineSize: 35
+  - _level: 3
+    _damage: 30
+    _fireRate: 17
+    _reload: 3
+    _magazineSize: 40

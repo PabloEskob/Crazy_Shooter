@@ -4,6 +4,7 @@ using System;
 using Agava.YandexGames;
 using Source.Scripts.Data;
 using Source.Scripts.SaveSystem;
+using Source.Scripts.StaticData;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,22 +18,24 @@ namespace InfimaGames.LowPolyShooterPack
         private WeaponData _data = new WeaponData();
         
         #region FIELDS SERIALIZED
+
+        [SerializeField] private WeaponStats _stats;
+
+        public WeaponStats Stats => _stats;
         
         [Header("Settings")]
         
         [Tooltip("Weapon Name. Currently not used for anything, but in the future, we will use this for pickups!")]
         [SerializeField] 
         private string weaponName;
-
+        
         [Tooltip("How much the character's movement speed is multiplied by when wielding this weapon.")]
         [SerializeField]
         private float multiplierMovementSpeed = 1.0f;
 
-        [SerializeField] 
-        private bool _isBought;
-
-        [SerializeField] 
-        private bool _isEquipped;
+        [SerializeField] private string _weaponType;
+        [SerializeField] private bool _isBought;
+        [SerializeField] private bool _isEquipped;
         
         [Header("Firing")]
 
@@ -241,7 +244,9 @@ namespace InfimaGames.LowPolyShooterPack
             //Cache the player character.
             characterBehaviour = gameModeService.GetPlayerCharacter();
             //Cache the world camera. We use this in line traces.
-            playerCamera = characterBehaviour.GetCameraWorld().transform;
+            if(characterBehaviour != null)
+                playerCamera = characterBehaviour.GetCameraWorld().transform;
+            
             _data.WeaponName = weaponName;
             _data.IsBought = _isBought;
         }
@@ -273,6 +278,8 @@ namespace InfimaGames.LowPolyShooterPack
         #region GETTERS
 
         public override string GetName() => weaponName;
+        public override string GetWeaponType() => _weaponType;
+
         public WeaponData GetData() => _data;
 
         public void SetData(String name)
@@ -462,75 +469,5 @@ namespace InfimaGames.LowPolyShooterPack
         }
 
         #endregion
-
-//         public void Save(Weapon weapon)
-//         {
-//             _data.IsEquipped = _isEquipped;
-//             _data.IsBought = _isBought;
-//             //_data.SaveTime = DateTime.Now.ToString();
-//             
-//             if(!WeaponDatasList.Contains(_data.ToJson()))
-//                 WeaponDatasList.AddNewData(_data.ToJson());
-//             
-// #if UNITY_EDITOR
-//             PlayerPrefs.SetString(weaponName, _data.ToJson());
-//             // Debug.Log(_data.ToJson());
-//             // Debug.Log("Saved to local storage");
-// #endif
-//             
-// #if UNITY_WEBGL && !UNITY_EDITOR
-//             if(PlayerAccount.IsAuthorized){
-//                 _data.SaveTime = DateTime.Now.ToString();
-//                 PlayerAccount.SetPlayerData(_data.ToJson());
-//                 Debug.Log(_data.ToJson());
-//                 Debug.Log("Saved to remote storage");
-// }
-// #endif
-//             
-//         }
-//         
-//         public void Load()
-//         {
-// #if UNITY_EDITOR
-//             _data = PlayerPrefs.GetString(weaponName)?.ToDeserialized<WeaponData>() ?? new WeaponData();
-//             Debug.Log("Load from local storage");
-// #endif
-//             
-// #if UNITY_WEBGL && !UNITY_EDITOR
-//             Debug.Log($"Player Authorized = {PlayerAccount.IsAuthorized}");
-//             
-//                 LoadRemote(remoteData =>
-//                 {
-//                     remoteData ??= new WeaponData();
-//                     _data = remoteData;
-//
-//                     Debug.Log("Load from remote storage");
-//                     Debug.Log($"RemoteData - {remoteData.ToJson()}");
-//                 });
-// #endif
-//
-//             if (!_isBought)
-//                 _isBought = _data.IsBought;
-//
-//             _isEquipped = _data.IsEquipped;
-//         }
-//             
-//         private void LoadRemote(Action<WeaponData> onDataLoadedCallback)
-//         {
-// #if !UNITY_WEBGL || UNITY_EDITOR
-//             Debug.Log("Loaded from remote storage");
-//             onDataLoadedCallback?.Invoke(null);
-// #endif
-// #if UNITY_WEBGL && !UNITY_EDITOR
-//             if(PlayerAccount.IsAuthorized)
-//                 PlayerAccount.GetPlayerData(data =>
-//                 {
-//                     Debug.Log($"Data string {data}");
-//                     onDataLoadedCallback?.Invoke(data == weaponName ? null : data.ToDeserialized<WeaponData>());
-//                 });
-//             else
-//                 onDataLoadedCallback?.Invoke(null);
-// #endif
-//         }
     }
 }

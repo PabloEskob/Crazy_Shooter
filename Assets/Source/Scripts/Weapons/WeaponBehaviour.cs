@@ -207,8 +207,11 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public abstract void EjectCasing();
 
+        public abstract string GetName();
+
+        public abstract string GetWeaponType();
+
         #endregion
 
-        public abstract string GetName();
     }
 }
