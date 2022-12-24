@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53933274-9b43-45af-9600-5ee3072e3939" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/UI/BulletsUpgrade.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/UI/BulletsUpgrade.cs.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Source/Scripts/UI/BuyUpgradeButton.cs" afterDir="false" />
@@ -37,6 +38,21 @@
       <change beforePath="$PROJECT_DIR$/Assets/Source/Scripts/Weapons/WeaponBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Source/Scripts/Weapons/WeaponBehaviour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Start/Movement.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Start/Movement.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Crazy_Shooter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LaunchRoom.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LaunchRoom.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/AttackRange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/MonsterTypeId.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/Scripts/MonsterTypeId.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Logic/Start/StartScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Logic/Start/StartScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Room/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Room/Room.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/NewScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/NewScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+>>>>>>> develop
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
