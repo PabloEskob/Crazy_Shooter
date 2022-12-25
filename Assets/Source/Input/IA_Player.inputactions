@@ -729,7 +729,7 @@
                     "name": "",
                     "id": "fbbd66b6-9b64-4882-a29b-3b9347876f05",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "Hold",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Fire",

@@ -1250,7 +1250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: {x: 1, y: 1}
   yClamp: {x: -10, y: 50}
-  xClamp: {x: 90, y: 270}
+  xClamp: {x: 0, y: 360}
   smooth: 0
   interpolationSpeed: 35
 --- !u!1 &4620099561892197002
@@ -2000,9 +2000,9 @@ Rigidbody:
   m_Drag: 1
   m_AngularDrag: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!136 &1627309716043152462
 CapsuleCollider:
@@ -2277,19 +2277,7 @@ MonoBehaviour:
     m_ActionId: 3c4ac825-58e8-487f-8ba7-80b959d2a946
     m_ActionName: Player/Reload[/Keyboard/r,/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4683947834111407526}
-        m_TargetAssemblyTypeName: InfimaGames.LowPolyShooterPack.Character, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: cbe1b69e-ee87-44a4-b076-3a87d9e22674
     m_ActionName: Player/Movement[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
@@ -2692,6 +2680,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9d4b1b8b-f899-47e8-84fb-5615cb99dd78
     m_ActionName: MobileActionMap/Inventory Next Wheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c4c3e3f0-4567-4e44-9d5d-f111e61e3269
+    m_ActionName: DesktopActionMap/Move[/Keyboard/y]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: DesktopActionMap
@@ -6329,7 +6321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4319761041232184229, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: scopeIndexRandom
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4319761041232184229, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: muzzleIndexRandom

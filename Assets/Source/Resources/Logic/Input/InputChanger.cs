@@ -18,7 +18,7 @@ public class InputChanger : MonoBehaviour
     private const string DesktopActionMapName = "DesktopActionMap";
 
     private void Awake() => 
-        _playerInput.SwitchCurrentActionMap(DesktopActionMapName);
+        _playerInput.SwitchCurrentActionMap(_playerInput.defaultActionMap);
 
     private void OnEnable() => 
         _canvasSpawner.Spawned += OnSpawned;
