@@ -50,6 +50,7 @@ MonoBehaviour:
   _playerRespawn: {fileID: 0}
   _splineComputer: {fileID: 0}
   _launchRoom: {fileID: 6371585698108333452}
+  _movement: 0
 --- !u!114 &6371585698108333452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,4 +65,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rooms:
   - {fileID: 0}
-  _startFirstWave: 3

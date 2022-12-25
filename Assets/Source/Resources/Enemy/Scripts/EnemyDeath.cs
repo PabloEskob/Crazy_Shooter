@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(EnemyAnimator))]
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyDeath : MonoBehaviour
@@ -12,17 +11,13 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] private EnemyHealth _enemyHealth;
     [SerializeField] private EnemyAnimator _enemyAnimator;
 
-    private Collider _collider;
 
     public bool IsDied { get; private set; }
 
     public event Action Happened;
 
-    private void Start()
-    {
+    private void Start() =>
         _enemyHealth.HealthChanged += OnHealthChanged;
-        _collider = GetComponent<Collider>();
-    }
 
     private void OnHealthChanged()
     {
@@ -34,9 +29,9 @@ public class EnemyDeath : MonoBehaviour
     {
         _enemyHealth.HealthChanged -= OnHealthChanged;
         IsDied = true;
-        _collider.enabled = false;
 
         _enemyAnimator.PlayDeath();
+        ShowBlood();
 
         StartCoroutine(DestroyTimer());
 
@@ -50,8 +45,6 @@ public class EnemyDeath : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ShowBlood()
-    {
+    private void ShowBlood() =>
         _deathFx.Play();
-    }
 }

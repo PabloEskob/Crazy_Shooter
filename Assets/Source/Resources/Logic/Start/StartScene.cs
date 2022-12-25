@@ -59,7 +59,7 @@ public class StartScene : MonoBehaviour
         return progress;
     }
 
-    private void StartGame() => 
+    private void StartGame() =>
         _launchRoom.StartFirstRoom();
 
     private void OnAllowed()
