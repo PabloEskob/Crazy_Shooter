@@ -1,22 +1,20 @@
 using InfimaGames.LowPolyShooterPack;
+using UnityEngine;
 
 namespace Source.Scripts.Ui
 {
     public class BulletsUpgrade : UpgradeType
     {
-        protected override void OnButtonClick()
-        {
+        protected override void OnButtonClick() => 
             SendEvent();
-            SetText(Weapon.Stats.Level.ToString());
-        }
 
         protected override void OnWeaponSet(Weapon weapon)
         {
             Weapon = weapon;
-            SetText(Weapon.Stats.Level.ToString());
+            SetText();
         }
 
-        protected override void SetText(string text) => 
-            ButtonText.text = IsUpgradeChoosed ? $"{UpgradeName}-{text}" : $"lvl {text}";
+        public override void SetText() => 
+            ButtonText.text = IsUpgradeChoosed ? $"{UpgradeName}-lvl {Weapon.UpgradeConfig}" : $"lvl {Weapon.UpgradeConfig}";
     }
 }

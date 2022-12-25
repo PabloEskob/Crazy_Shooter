@@ -12,19 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b0666a4babd4249a1115f77031b11f, type: 3}
   m_Name: NewUpgradeConfig
   m_EditorClassIdentifier: 
-  stats:
+  _gunFrameUpgrades:
   - _level: 1
     _damage: 10
     _fireRate: 12
     _reload: 1
     _magazineSize: 30
-  - _level: 2
-    _damage: 20
-    _fireRate: 15
-    _reload: 2
-    _magazineSize: 35
-  - _level: 3
-    _damage: 30
-    _fireRate: 17
-    _reload: 3
-    _magazineSize: 40
+    _price: 0
+  _muzzleUpgrades:
+  - _level: 0
+    _damage: 0
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 0
+    _price: 0
+  _scopeUpgrades:
+  - _level: 0
+    _damage: 0
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 0
+    _price: 0
+  _bulletsUpgrades:
+  - _level: 0
+    _damage: 0
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 0
+    _price: 0
+  _magazineUpgrades:
+  - _level: 0
+    _damage: 0
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 0
+    _price: 0

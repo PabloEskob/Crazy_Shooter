@@ -33,7 +33,8 @@ namespace Source.Scripts.Ui
 
         protected abstract void OnButtonClick();
         protected abstract void OnWeaponSet(Weapon weapon);
-        protected abstract void SetText(string text);
+
+        public abstract void SetText();
 
         protected void SendEvent() => 
             UpgradeChoosed?.Invoke(this);

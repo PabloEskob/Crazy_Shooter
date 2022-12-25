@@ -15,7 +15,7 @@ public class BuyUpgradeButton : MonoBehaviour
         _upgradePanel.WeaponSet -= OnWeaponSet;
 
     private void OnWeaponSet(Weapon weapon) => 
-        SetPriceText(weapon.Stats.Price);
+        SetPriceText(5);
 
 
     private void SetPriceText(int price) => 

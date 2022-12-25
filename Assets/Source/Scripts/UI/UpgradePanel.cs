@@ -26,10 +26,14 @@ public class UpgradePanel : MonoBehaviour
 
     private void OnUpgradeChoosed(UpgradeType upgradeType)
     {
-        foreach (UpgradeType typeButton in _upgradeTypeButtons) 
+        foreach (UpgradeType typeButton in _upgradeTypeButtons)
+        {
             typeButton.SwitchButtonState(false);
+            typeButton.SetText();
+        }
 
         upgradeType.SwitchButtonState(true);
+        upgradeType.SetText();
     }
 
     public void SetWeapon(Weapon weapon)
