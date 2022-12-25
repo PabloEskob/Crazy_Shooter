@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyAttack _enemyAttack;
@@ -10,5 +9,4 @@ public class Enemy : MonoBehaviour
     public EnemyHealth EnemyHealth => _enemyHealth;
     public EnemyDeath EnemyDeath => _enemyDeath;
     public EnemyAttack EnemyAttack => _enemyAttack;
-
 }

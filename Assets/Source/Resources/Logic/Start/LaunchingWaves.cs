@@ -17,11 +17,25 @@ public class LaunchingWaves
     {
         var firstOrDefault = _enemySpawners.FirstOrDefault(e => e.Clear == false);
 
+        if (firstOrDefault == null)
+        {
+            Ended?.Invoke();
+            Debug.Log($" волны закончились , Начало новой зоны   ");
+        }
+    }
+
+    /*public void TurnOnSpawn()
+    {
+        var firstOrDefault = _enemySpawners.FirstOrDefault(e => e.Clear == false);
+
         if (firstOrDefault != null && firstOrDefault.Released == false && firstOrDefault.TriggerSpawn == null)
             firstOrDefault.TurnOnEnemy();
         else
+        {
             Ended?.Invoke();
-    }
+            Debug.Log($" волна закончилась , пристукпаю к новой комнате  ");
+        }
+    }*/
 
     public void TurnOnSpawn(Collider collider, int count)
     {
@@ -30,13 +44,23 @@ public class LaunchingWaves
         if (firstOrDefault != null)
             firstOrDefault.TurnOnEnemy();
         else
+        {
+            Debug.Log($" волна закончилась , пристукпаю к новой комнате  ");
             Ended?.Invoke();
+        }
     }
 
-    public IEnumerator StartWave(float startFirstWave)
+    public IEnumerator StartWave(float startFirstWave, float delay)
     {
-        var newWaitForSecond = new WaitForSeconds(startFirstWave);
-        yield return newWaitForSecond;
-        _enemySpawners[0].TurnOnEnemy();
+        var startNewRoom = new WaitForSeconds(startFirstWave);
+        var delayWave = new WaitForSeconds(delay);
+        yield return startNewRoom;
+
+        foreach (var enemySpawner in _enemySpawners)
+        {
+            Debug.Log($"Запуск новой волны ");
+            enemySpawner.TurnOnEnemy();
+            yield return delayWave;
+        }
     }
 }

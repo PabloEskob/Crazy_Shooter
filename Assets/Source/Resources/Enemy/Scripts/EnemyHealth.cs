@@ -1,12 +1,26 @@
 ﻿using System;
-using InfimaGames.LowPolyShooterPack.Legacy;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyAnimator))]
 public class EnemyHealth : MonoBehaviour, IHealth
 {
     [SerializeField] private EnemyAnimator _enemyAnimator;
+    [SerializeField] private HeadShot _headShot;
+    [SerializeField] private BodyShot _bodyShot;
+    [SerializeField] private BloodEffectSpawner _bloodEffectSpawner;
     [SerializeField] private ParticleSystem _particleSystem;
+
+    private void OnEnable()
+    {
+        _headShot.Hitted += HeadShot;
+        _bodyShot.Hitted += TakeHitBody;
+    }
+
+    private void OnDisable()
+    {
+        _headShot.Hitted -= HeadShot;
+        _bodyShot.Hitted -= TakeHitBody;
+    }
 
     private EnemyMove _enemyMove;
     private bool _canPlayHit = true;
@@ -16,16 +30,8 @@ public class EnemyHealth : MonoBehaviour, IHealth
 
     public event Action HealthChanged;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<Projectile>())
-            TakeDamage(1);
-    }
-
-    private void Start()
-    {
+    private void Start() =>
         _enemyMove = GetComponent<EnemyMove>();
-    }
 
     public void OnHitEnded()
     {
@@ -46,7 +52,18 @@ public class EnemyHealth : MonoBehaviour, IHealth
         if (_canPlayHit)
             _enemyAnimator.PlayHit();
 
-        //_particleSystem.Play();
         HealthChanged?.Invoke();
+    }
+
+    private void TakeHitBody(int damage, Collision collision)
+    {
+        TakeDamage(damage);
+        _bloodEffectSpawner.Init(collision.GetContact(0).point);
+    }
+
+    private void HeadShot(int damage, Collision collision)
+    {
+        TakeDamage(damage);
+        _particleSystem.Play();
     }
 }

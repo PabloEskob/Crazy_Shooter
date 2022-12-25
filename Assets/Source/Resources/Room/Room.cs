@@ -5,17 +5,15 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField] private List<EnemySpawner> _enemySpawners;
-    [SerializeField] private float _time;
+    [SerializeField] private float _delayWave;
+    [SerializeField] private float _startThisRoom;
 
     private LaunchingWaves _launchingWaves;
 
     private bool _clear;
 
-    public float Time
-    {
-        get => _time;
-        set => _time = value;
-    }
+    public float DelayWave => _delayWave;
+    public float StartThisRoom => _startThisRoom;
 
     public LaunchingWaves LaunchingWaves => _launchingWaves;
     public int Number { get; set; }
