@@ -37,7 +37,6 @@ public class EnemyDeath : MonoBehaviour
         _collider.enabled = false;
 
         _enemyAnimator.PlayDeath();
-        _deathFx.Play();
 
         StartCoroutine(DestroyTimer());
 
@@ -49,5 +48,10 @@ public class EnemyDeath : MonoBehaviour
         var newWaitForSeconds = new WaitForSeconds(_timeDied);
         yield return newWaitForSeconds;
         gameObject.SetActive(false);
+    }
+
+    public void ShowBlood()
+    {
+        _deathFx.Play();
     }
 }

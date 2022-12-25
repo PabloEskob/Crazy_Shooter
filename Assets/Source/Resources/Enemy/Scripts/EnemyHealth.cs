@@ -46,7 +46,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
         if (_canPlayHit)
             _enemyAnimator.PlayHit();
 
-        _particleSystem.Play();
+        //_particleSystem.Play();
         HealthChanged?.Invoke();
     }
 }

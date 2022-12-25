@@ -28,7 +28,7 @@ namespace Source.Infrastructure
             _loadingScreen.Show();
             //_gameFactory.Cleanup();
             //_sceneLoader.Load(_staticData.ForLevel(_storage.GetLevel()).SceneName, OnLoaded);
-            _sceneLoader.Load("ShootingTest", OnLoaded);
+            _sceneLoader.Load("NewScene", OnLoaded);
         }
 
         public void Exit() => _loadingScreen.Hide();
