@@ -200,6 +200,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3678060108400882201}
     m_Modifications:
+    - target: {fileID: 1307322090052279732, guid: f302f5a368662b34484b803c7a2f7011, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1308172016326733660, guid: f302f5a368662b34484b803c7a2f7011, type: 3}
       propertyPath: m_Name
       value: Zombie_Roadworker_Male_01
