@@ -6,6 +6,7 @@ using Source.Scripts.Data;
 using Source.Scripts.SaveSystem;
 using Source.Scripts.StaticData;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -19,9 +20,9 @@ namespace InfimaGames.LowPolyShooterPack
         
         #region FIELDS SERIALIZED
 
-        [SerializeField] private WeaponStats _stats;
+        [FormerlySerializedAs("_stats")] [SerializeField] private UpgradeConfig _upgradeConfig;
 
-        public WeaponStats Stats => _stats;
+        public UpgradeConfig UpgradeConfig => _upgradeConfig;
         
         [Header("Settings")]
         
