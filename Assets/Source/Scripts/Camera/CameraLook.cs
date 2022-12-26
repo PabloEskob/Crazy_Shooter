@@ -177,6 +177,11 @@ namespace InfimaGames.LowPolyShooterPack
             return rotation;
         }
 
+        public void SetSensitivity()
+        {
+            
+        }
+
         #endregion
     }
 }

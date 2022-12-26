@@ -26,10 +26,10 @@ namespace Source.Scripts.StaticData
     public class GunFrameUpgrade : WeaponUpgrade
     {
         public int Level => _level;
-        public int Damage => _damage;
-        public int FireRate => _fireRate;
-        public int Reload => _reload;
-        public int MagazineSize => _magazineSize;
+        public float Damage => _damage;
+        public float FireRate => _fireRate;
+        public float Reload => _reload;
+        public float MagazineSize => _magazineSize;
         public int Price => _price;
         public override void GetName()
         {
@@ -76,10 +76,10 @@ namespace Source.Scripts.StaticData
     public abstract class WeaponUpgrade
     {
         [SerializeField] protected int _level;
-        [SerializeField] protected int _damage;
-        [SerializeField] protected int _fireRate;
-        [SerializeField] protected int _reload;
-        [SerializeField] protected int _magazineSize;
+        [SerializeField] protected float _damage;
+        [SerializeField] protected float _fireRate;
+        [SerializeField] protected float _reload;
+        [SerializeField] protected float _magazineSize;
         [SerializeField] protected int _price;
 
         public abstract void GetName();

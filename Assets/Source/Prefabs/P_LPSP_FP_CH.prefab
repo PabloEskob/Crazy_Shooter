@@ -933,7 +933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2bd74ba84b94cd4bbb9b189a5e89fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasPrefab: {fileID: 5393623835024644669, guid: 48d7771c50bd625489d38055025597a3, type: 3}
+  _mobileCanvasPrefab: {fileID: 0}
+  _pCCanvasPrefab: {fileID: 0}
   qualitySettingsPrefab: {fileID: 5965040680208419700, guid: 458b1dae88c7baf46a163b218ce42a30, type: 3}
 --- !u!114 &4190955791512926966
 MonoBehaviour:
@@ -1261,9 +1262,57 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 207fb2a2-8add-4ddb-bda7-c1887aeb313a
     m_ActionName: Player/Tutorial[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c4c3e3f0-4567-4e44-9d5d-f111e61e3269
+    m_ActionName: DesktopActionMap/Move[/Keyboard/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a07653e0-92a7-4dc3-8191-a26e5f8ce2e8
+    m_ActionName: MobileActionMap/Look
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1a3e50a4-10ae-4b80-81e7-bb544f789b79
+    m_ActionName: MobileActionMap/Fire
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f50fd609-788d-447a-af8e-3357b2d398e4
+    m_ActionName: MobileActionMap/Aim
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 23483c17-e88d-4e3c-aa6a-e8a967f6e7fd
+    m_ActionName: MobileActionMap/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b74fbe91-891d-4491-a499-349977c0dce2
+    m_ActionName: MobileActionMap/Holster[/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4c9e9b2e-59f6-4235-a49e-ea05ab844fce
+    m_ActionName: MobileActionMap/Grenade[/Keyboard/g]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 63d051a2-3a49-41be-8cb8-1b3fe7ff3c23
+    m_ActionName: MobileActionMap/Melee[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fe8b0d88-e758-48df-99c3-5862081acb0b
+    m_ActionName: MobileActionMap/Inspect[/Keyboard/t]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4d7208d1-17d0-4afe-9d74-89b2ba1f71cd
+    m_ActionName: MobileActionMap/Lock Cursor[/Keyboard/escape,/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f11f2944-d622-4ae1-a28c-bab48314704d
+    m_ActionName: MobileActionMap/Inventory Next[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9d4b1b8b-f899-47e8-84fb-5615cb99dd78
+    m_ActionName: MobileActionMap/Inventory Next Wheel[/Mouse/scroll]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: DesktopActionMap
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &6561142636108398121

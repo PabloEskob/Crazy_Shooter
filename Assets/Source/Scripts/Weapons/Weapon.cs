@@ -20,7 +20,7 @@ namespace InfimaGames.LowPolyShooterPack
         
         #region FIELDS SERIALIZED
 
-        [FormerlySerializedAs("_stats")] [SerializeField] private UpgradeConfig _upgradeConfig;
+        [SerializeField] private UpgradeConfig _upgradeConfig;
 
         public UpgradeConfig UpgradeConfig => _upgradeConfig;
         

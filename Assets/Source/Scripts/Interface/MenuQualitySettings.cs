@@ -202,12 +202,12 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         public void Restart()
         {
             //Restart current scene.
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         public void Quit()
         {
             //Quit.
-            Application.Quit();
+            //Application.Quit();
         }
 
         #endregion

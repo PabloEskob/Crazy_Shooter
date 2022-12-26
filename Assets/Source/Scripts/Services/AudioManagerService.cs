@@ -47,6 +47,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private IEnumerator DestroySourceWhenFinished(AudioSource source)
         {
+            Debug.Log(source);
             //Wait for the audio source to complete playing the clip.
             yield return new WaitWhile(() => source.isPlaying);
             
@@ -89,7 +90,7 @@ namespace InfimaGames.LowPolyShooterPack
             newAudioSource.PlayOneShot(clip);
             
             //Start a coroutine that will destroy the whole object once it is done!
-            if(settings.AutomaticCleanup)
+            if(settings.AutomaticCleanup && newAudioSource != null)
                 StartCoroutine(nameof(DestroySourceWhenFinished), newAudioSource);
         }
 

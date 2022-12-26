@@ -2156,7 +2156,7 @@ MonoBehaviour:
   knife: {fileID: 2763418663518163960}
   cameraWorld: {fileID: 5599691611021483706}
   cameraDepth: {fileID: 1869058149268779877}
-  dampTimeTurning: 0.4
+  dampTimeTurning: 0.05
   dampTimeLocomotion: 0.1
   dampTimeAiming: 0.3
   aimingSpeedMultiplier: 1
@@ -7436,6 +7436,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6046589879588722185, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automatic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046589879588722185, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: roundsPerMinutes
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6046589879588722185, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: automaticReloadOnEmpty
       value: 1
       objectReference: {fileID: 0}
@@ -8760,6 +8768,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8123693601619948954, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automatic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123693601619948954, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: roundsPerMinutes
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123693601619948954, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: automaticReloadOnEmpty
       value: 1
       objectReference: {fileID: 0}
@@ -8984,8 +9000,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automatic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: _isEquipped
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: roundsPerMinutes
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8387527928059221245, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: automaticReloadOnEmpty
@@ -9110,6 +9134,14 @@ PrefabInstance:
     - target: {fileID: 8524413377780846853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: _isBought
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524413377780846853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: automatic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524413377780846853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
+      propertyPath: roundsPerMinutes
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8524413377780846853, guid: 9482e0a2ae6a92742bbe72e00f29f763, type: 3}
       propertyPath: automaticReloadOnEmpty
