@@ -63,7 +63,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
 
     private void HeadShot(int damage, Collision collision)
     {
-        TakeDamage(damage);
+        TakeDamage(damage * 10);
         _particleSystem.Play();
     }
 }
