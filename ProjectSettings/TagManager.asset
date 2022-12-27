@@ -7,7 +7,7 @@ TagManager:
   - FX
   - Target
   - PlayerInitialPointTag
-  - EnemySpawnerTag
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
