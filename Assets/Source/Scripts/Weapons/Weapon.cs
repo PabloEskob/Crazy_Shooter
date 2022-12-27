@@ -22,7 +22,6 @@ namespace InfimaGames.LowPolyShooterPack
 
         [SerializeField] private UpgradeConfig _upgradeConfig;
 
-        public UpgradeConfig UpgradeConfig => _upgradeConfig;
         
         [Header("Settings")]
         
@@ -174,6 +173,11 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region FIELDS
 
+        private float _damage;
+        private float _fireRate;
+        private float _reloadSpeed;
+        private float _magazineSize;
+        
         /// <summary>
         /// Weapon Animator.
         /// </summary>
@@ -230,6 +234,7 @@ namespace InfimaGames.LowPolyShooterPack
         private Transform playerCamera;
         
         #endregion
+        public UpgradeConfig UpgradeConfig => _upgradeConfig;
 
         #region UNITY
         
@@ -278,6 +283,10 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region GETTERS
 
+        public float Damage => _damage;
+        public float FireRate => _fireRate;
+        public float ReloadSpeed => _reloadSpeed;
+        public float MagazineSize => _magazineSize;
         public override string GetName() => weaponName;
         public override string GetWeaponType() => _weaponType;
 
