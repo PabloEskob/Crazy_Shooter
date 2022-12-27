@@ -18,4 +18,4 @@ MonoBehaviour:
   _speed: 1
   _attackCooldown: 1.5
   _monsterTypeId: 0
-  _prefab: {fileID: 8114132420821226319, guid: c7652cf9b3ab1a247accb7ed0d541b2e, type: 3}
+  _prefab: {fileID: 2941556048402982490, guid: d2716079c523de94b95cb669fdde65a1, type: 3}
