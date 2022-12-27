@@ -10,25 +10,22 @@ public class EnemyMove : MonoBehaviour
     private Enemy _enemy;
     private float _speed;
 
-    private void Awake()
-    {
+    private void Awake() =>
         _enemy = GetComponent<Enemy>();
-    }
 
     private void Update()
     {
         if (!_enemy.EnemyDeath.IsDied)
-        {
             _navMeshAgent.destination = _player.transform.position;
-        }
         else
+        {
             _navMeshAgent.speed = 0;
+            _navMeshAgent.enabled = false;
+        }
     }
 
-    public void Init(Player player)
-    {
+    public void Init(Player player) =>
         _player = player;
-    }
 
     public void StopMove()
     {
@@ -36,8 +33,6 @@ public class EnemyMove : MonoBehaviour
         _navMeshAgent.speed = 0;
     }
 
-    public void ContinueMove()
-    {
+    public void ContinueMove() =>
         _navMeshAgent.speed = _speed;
-    }
 }

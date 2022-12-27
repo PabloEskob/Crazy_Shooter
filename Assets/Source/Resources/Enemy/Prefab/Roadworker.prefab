@@ -90,6 +90,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skinnedMeshRenderer: {fileID: 5614345771084485411}
   _collider: {fileID: 6941529847296981853}
+--- !u!4 &4524960168041390587 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2718079489317707943, guid: 429b3a39f87304f438ebd1be5ee34886, type: 3}
+  m_PrefabInstance: {fileID: 1978045235823411548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &5614345771084485411 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6240093607049400959, guid: 429b3a39f87304f438ebd1be5ee34886, type: 3}
@@ -131,6 +136,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7235734147194784815, guid: 429b3a39f87304f438ebd1be5ee34886, type: 3}
   m_PrefabInstance: {fileID: 1978045235823411548}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2646116106437152160
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4524960168041390587}
+    m_Modifications:
+    - target: {fileID: 5971247764520639457, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_Name
+      value: Blood
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.04476775
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.05178734
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.3603718
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.9328088
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000014901163
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.00000007450581
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -94.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971247764520921341, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+--- !u!198 &8531724935965823263 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5971247764539284671, guid: a2b699d594508594581015a8e89a07ff, type: 3}
+  m_PrefabInstance: {fileID: 2646116106437152160}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3881425317042043311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158,6 +225,10 @@ PrefabInstance:
       propertyPath: _deathFx
       value: 
       objectReference: {fileID: 2634890695393038479}
+    - target: {fileID: 4992435269036673208, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: _blood
+      value: 
+      objectReference: {fileID: 8531724935965823263}
     - target: {fileID: 4992435269036673208, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: _deathFx
       value: 
