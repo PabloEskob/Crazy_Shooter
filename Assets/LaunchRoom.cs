@@ -7,6 +7,7 @@ public class LaunchRoom : MonoBehaviour
     [SerializeField] private List<Room> _rooms;
 
     public event Action Allowed;
+    public event Action EndedRoom;
 
     private void OnDisable()
     {
@@ -33,7 +34,7 @@ public class LaunchRoom : MonoBehaviour
     private void StartedNewRoom(int number)
     {
         Allowed?.Invoke();
-        
+
         var numberRoom = number + 1;
 
         if (_rooms.Count > numberRoom)
@@ -41,6 +42,11 @@ public class LaunchRoom : MonoBehaviour
             var startWave = _rooms[numberRoom].LaunchingWaves
                 .StartWave(_rooms[numberRoom].StartThisRoom, _rooms[numberRoom].DelayWave);
             StartCoroutine(startWave);
+        }
+        else
+        {
+            EndedRoom?.Invoke();
+            Debug.Log("тут конец");
         }
     }
 }
