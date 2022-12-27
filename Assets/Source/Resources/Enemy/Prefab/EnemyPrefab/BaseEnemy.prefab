@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3db55e3c22647f89589fda56b9b16ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathFx: {fileID: 0}
+  _deathFx: {fileID: 1246534896543721760}
   _timeDied: 7
   _enemyHealth: {fileID: 1173631881349560264}
   _enemyAnimator: {fileID: 5427714518127054878}
@@ -385,6 +385,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a897c3f85ff814cac5ce26545d19c5, type: 3}
+--- !u!198 &1246534896543721760 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6832333643772657774, guid: d9a897c3f85ff814cac5ce26545d19c5, type: 3}
+  m_PrefabInstance: {fileID: 5736961255505717582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1246534896562016208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6832333643792115358, guid: d9a897c3f85ff814cac5ce26545d19c5, type: 3}

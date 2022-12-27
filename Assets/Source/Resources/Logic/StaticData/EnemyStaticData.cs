@@ -7,7 +7,7 @@ public class EnemyStaticData : ScriptableObject
 
     [Range(1, 5)] [SerializeField] private int _damage;
 
-    [Range(1, 20)] [SerializeField] private float _effectiveDistance;
+    [Range(1, 20)] [SerializeField] private float _effectiveDistance = 3.1f;
 
     [Range(1, 20)] [SerializeField] private float _speed;
 
