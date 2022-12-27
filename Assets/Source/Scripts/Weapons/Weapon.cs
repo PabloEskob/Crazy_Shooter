@@ -287,15 +287,15 @@ namespace InfimaGames.LowPolyShooterPack
         public float FireRate => _fireRate;
         public float ReloadSpeed => _reloadSpeed;
         public float MagazineSize => _magazineSize;
+        
         public override string GetName() => weaponName;
+        
         public override string GetWeaponType() => _weaponType;
 
         public WeaponData GetData() => _data;
 
-        public void SetData(String name)
-        {
+        public void SetData(String name) => 
             _data = name.ToDeserialized<WeaponData>();
-        }
 
         public void SetBoolsFromData()
         {
