@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2553538708926698609}
   - component: {fileID: 3255986719442638800}
   - component: {fileID: 1173631881349560264}
+  - component: {fileID: 4992435269036673208}
   m_Layer: 3
   m_Name: BaseEnemy
   m_TagString: Untagged
@@ -164,7 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3db55e3c22647f89589fda56b9b16ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathFx: {fileID: 1246534896543721760}
   _timeDied: 7
   _enemyHealth: {fileID: 1173631881349560264}
   _enemyAnimator: {fileID: 5427714518127054878}
@@ -181,10 +181,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyAnimator: {fileID: 5427714518127054878}
-  _headShot: {fileID: 0}
-  _bodyShot: {fileID: 0}
+--- !u!114 &4992435269036673208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184830516390962201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62839c95bedc401ebec4e2d49ede4b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _bloodEffectSpawner: {fileID: 524220157833909674}
-  _particleSystem: {fileID: 0}
+  _fxHeadShot: {fileID: 0}
+  _deathFx: {fileID: 1246534896543721760}
 --- !u!1 &8888104517242071759
 GameObject:
   m_ObjectHideFlags: 0
