@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private TriggerSpawn _triggerSpawn;
 
     private int _number;
-    private GameFactory _gameFactory;
+    private IGameFactory _gameFactory;
     private List<Enemy> _enemies;
     private bool _released;
     private bool _clear;
@@ -34,13 +34,13 @@ public class EnemySpawner : MonoBehaviour
         if (_triggerSpawn != null)
             _triggerSpawn.Init(_number);
 
-        CreateQuantityEnemy();
+        //CreateQuantityEnemy();
 
         foreach (var enemy in _enemies)
             enemy.EnemyDeath.Happened += TryTurnOnAnotherSpawner;
     }
 
-    public void Init(GameFactory gameFactory) =>
+    public void Init(IGameFactory gameFactory) =>
         _gameFactory = gameFactory;
 
     public void SetNumber(int number) =>
@@ -61,7 +61,7 @@ public class EnemySpawner : MonoBehaviour
         return enemy;
     }
 
-    private void CreateQuantityEnemy()
+    public void CreateQuantityEnemy()
     {
         for (int i = 0; i < _count; i++)
             _enemies.Add(Spawn());

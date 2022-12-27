@@ -15,14 +15,22 @@ public class PlayerMove : MonoBehaviour
 
     public event Action Stopped;
 
+    private void Awake()
+    {
+        _constructSplineComputer = GetComponent<ConstructSplineComputer>();
+        SplineComputer spline = FindObjectOfType<SplineComputer>();
+        _constructSplineComputer.Construct(spline);
+        CreateSplineTrigger();
+    }
+
     private void OnDisable() =>
         RemoveListenerSplineTrigger();
 
     public void Construct(SplineComputer splineComputer)
     {
-        _constructSplineComputer = GetComponent<ConstructSplineComputer>();
-        _constructSplineComputer.Construct(splineComputer);
-        CreateSplineTrigger();
+        // _constructSplineComputer = GetComponent<ConstructSplineComputer>();
+        // _constructSplineComputer.Construct(splineComputer);
+        
     }
 
     public void PlayMove()

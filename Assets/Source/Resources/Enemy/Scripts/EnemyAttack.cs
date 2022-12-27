@@ -5,7 +5,7 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private EnemyAnimator _enemyAnimator;
 
-    private GameFactory _gameFactory;
+    private IGameFactory _gameFactory;
     private Player _player;
     private float _attackEnd;
     private bool _isAttacking;
@@ -22,7 +22,7 @@ public class EnemyAttack : MonoBehaviour
             StartAttack();
     }
 
-    public void Init(GameFactory gameFactory)
+    public void Init(IGameFactory gameFactory)
     {
         _gameFactory = gameFactory;
         _player = _gameFactory.Player;

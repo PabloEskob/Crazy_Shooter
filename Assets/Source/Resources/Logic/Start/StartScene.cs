@@ -28,7 +28,7 @@ public class StartScene : MonoBehaviour
     {
         _assetProvider = AllServices.Container.Single<IAssetProvider>();
         _staticDataEnemy = new StaticDataService();
-        _gameFactory = new GameFactory(_staticDataEnemy, _assetProvider);
+        //_gameFactory = new GameFactory(_assetProvider);
         InitGameWorld();
     }
 
@@ -37,10 +37,10 @@ public class StartScene : MonoBehaviour
 
     private void InitGameWorld()
     {
-        var player = _gameFactory.CreatePlayer(_playerRespawn.transform);
-        PlayerConstruct(player);
-        InitUI(player);
-        _launchRoom.Fill(_gameFactory);
+        // var player = _gameFactory.CreatePlayer(_playerRespawn.transform);
+        // PlayerConstruct(player);
+        // InitUI(player);
+         _launchRoom.Fill(AllServices.Container.Single<GameFactory>());
     }
 
     private void PlayerConstruct(Player player)

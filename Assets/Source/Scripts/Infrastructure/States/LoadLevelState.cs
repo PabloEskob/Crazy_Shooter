@@ -1,5 +1,6 @@
 using Source.Infrastructure.States;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
+using UnityEngine;
 
 namespace Source.Infrastructure
 {
@@ -12,6 +13,9 @@ namespace Source.Infrastructure
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
+        
+        private const string PlayerInitialPointTag = "PlayerInitialPointTag";
+        private const string EnemySpawnerTag = "EnemySpawner";
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IStorage storage,LoadingScreen loadingScreen, IGameFactory gameFactory, IStaticDataService staticData)
         {
@@ -27,7 +31,6 @@ namespace Source.Infrastructure
         {
             _loadingScreen.Show();
             //_gameFactory.Cleanup();
-            //_sceneLoader.Load(_staticData.ForLevel(_storage.GetLevel()).SceneName, OnLoaded);
             _sceneLoader.Load("NewScene", OnLoaded);
         }
 
@@ -36,10 +39,13 @@ namespace Source.Infrastructure
         private void OnLoaded()
         {
             InitGameWorld();
+            
             InformProgressReaders();
 
             _gameStateMachine.Enter<GameLoopState>();
         }
+
+        
 
         private void InformProgressReaders()
         {
@@ -49,11 +55,21 @@ namespace Source.Infrastructure
 
         private void InitGameWorld()
         {
-            // GameObject player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
-            //
-            // Camera camera = Camera.main;
-            // camera.GetComponent<CameraController>().SetTarget(player.transform);
+            Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
+            _gameFactory.CreateHUD();
+            InitSpawners();
+            // InitUI(player);
+            // _launchRoom.Fill(_gameFactory);
         }
-        
+
+        private void InitSpawners()
+        {
+            foreach (GameObject spawnerGameObject in GameObject.FindGameObjectsWithTag(EnemySpawnerTag))
+            {
+                var spawner = spawnerGameObject.GetComponent<EnemySpawner>();
+                spawner.Init(_gameFactory);
+                spawner.CreateQuantityEnemy();
+            }
+        }
     }
 }

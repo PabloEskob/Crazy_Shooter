@@ -6,8 +6,10 @@ using UnityEngine;
 
 public interface IGameFactory : IService
 {
-    Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent);
     
+    Player CreatePlayer(GameObject initialPoint);
+    public void CreateHUD();
+    Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent);
     Player Player { get; }
     
     List<ISavedProgressReader> ProgressReaders { get; }
