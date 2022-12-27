@@ -1,5 +1,6 @@
 using Agava.YandexGames;
 using Dreamteck.Splines;
+using Source.Infrastructure;
 using UnityEngine;
 
 [RequireComponent(typeof(LaunchRoom))]
@@ -14,7 +15,7 @@ public class StartScene : MonoBehaviour
 
     private StaticDataService _staticDataEnemy;
     private GameFactory _gameFactory;
-    private AssetProvider _assetProvider;
+    private IAssetProvider _assetProvider;
     private int _number;
 
     private void OnEnable() =>
@@ -25,7 +26,7 @@ public class StartScene : MonoBehaviour
 
     private void Awake()
     {
-        _assetProvider = new AssetProvider();
+        _assetProvider = AllServices.Container.Single<IAssetProvider>();
         _staticDataEnemy = new StaticDataService();
         _gameFactory = new GameFactory(_staticDataEnemy, _assetProvider);
         InitGameWorld();

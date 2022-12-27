@@ -22,7 +22,7 @@ namespace Source.Infrastructure
 
         private void RegisterServices()
         {
-            _services.RegisterSingle<IAssets>(new AssetProvider());
+            _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             //_services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssets>()));
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(), _services.Single<IGameFactory>()));

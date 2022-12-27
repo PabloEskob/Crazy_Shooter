@@ -8,7 +8,6 @@ namespace Source.Infrastructure
 {
     public class GameStateMachine
     {
-        
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
@@ -19,6 +18,8 @@ namespace Source.Infrastructure
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IStorage>(), loadingScreen, services.Single<IGameFactory>(), services.Single<IStaticDataService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IStorage>(), coroutineRunner),
+                [typeof(FinishLevelState)] = new FinishLevelState(),
+                [typeof(LoadMapSceneState)] = new LoadMapSceneState(this, sceneLoader, services.Single<IStorage>(), loadingScreen),
                 [typeof(GameLoopState)] = new GameLoopState(this)
             };
         }
