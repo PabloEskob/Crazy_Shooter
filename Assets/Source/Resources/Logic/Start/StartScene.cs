@@ -37,7 +37,7 @@ public class StartScene : MonoBehaviour
 
     private void InitGameWorld()
     {
-        var player = _gameFactory.CreatePlayer(_playerRespawn.transform);
+        var player = _gameFactory.CreatePlayer();
         PlayerConstruct(player);
         InitUI(player);
         _launchRoom.Fill(_gameFactory);

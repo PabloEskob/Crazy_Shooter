@@ -19,9 +19,9 @@ public class GameFactory : IGameFactory
         _assetProvider = assetProvider;
     }
 
-    public Player CreatePlayer(Transform position)
+    public Player CreatePlayer()
     {
-        Player = _assetProvider.Instantiate(AssetPath.PlayerPath,position).GetComponent<Player>();
+        Player = _assetProvider.Instantiate(AssetPath.PlayerPath).GetComponent<Player>();
         return Player;
     }
 
