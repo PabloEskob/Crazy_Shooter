@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Source.Scripts.Infrastructure.Factory;
 using UnityEngine;
 
 public class LaunchRoom : MonoBehaviour

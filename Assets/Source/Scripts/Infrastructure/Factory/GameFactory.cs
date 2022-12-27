@@ -5,92 +5,96 @@ using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
 
-public class GameFactory : IGameFactory
+namespace Source.Scripts.Infrastructure.Factory
 {
-    private readonly IStaticDataService _staticDataEnemy;
-    private readonly IAssetProvider _assetProvider;
-
-    public Player Player { get; private set; }
-    public List<ISavedProgressReader> ProgressReaders { get; }
-    public List<ISavedProgress> ProgressWriters { get; }
-
-    public GameFactory(IAssetProvider assetProvider, IStaticDataService staticDataEnemy)
+    public class GameFactory : IGameFactory
     {
-        _staticDataEnemy = staticDataEnemy;
-        _assetProvider = assetProvider;
-    }
+        private readonly IStaticDataService _staticDataEnemy;
+        private readonly IAssetProvider _assetProvider;
 
-    // public Player CreatePlayer(Transform position)
-    // {
-    //     Player = _assetProvider.Instantiate(AssetPath.PlayerPath,position).GetComponent<Player>();
-    //     return Player;
-    // }
+        public Player Player { get; private set; }
+        public List<ISavedProgressReader> ProgressReaders { get; }
+        public List<ISavedProgress> ProgressWriters { get; }
 
-    public Player CreatePlayer(GameObject initialPoint) =>
-        InstantiateRegistered(AssetPath.PlayerPath, initialPoint.transform.position);
+        public GameFactory(IAssetProvider assetProvider, IStaticDataService staticDataEnemy)
+        {
+            _staticDataEnemy = staticDataEnemy;
+            _assetProvider = assetProvider;
+        }
 
-    public void CreateHUD()
-    {
-        ActorUI actorUI = _assetProvider.Instantiate(AssetPath.HUDPath).GetComponent<ActorUI>();
-        actorUI.Construct(Player.PlayerHealth);
-    }
+        // public Player CreatePlayer(Transform position)
+        // {
+        //     Player = _assetProvider.Instantiate(AssetPath.PlayerPath,position).GetComponent<Player>();
+        //     return Player;
+        // }
 
-    public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent)
-    {
-        var enemyStaticData = _staticDataEnemy.ForEnemy(monsterTypeId);
-        var enemy = Object.Instantiate(enemyStaticData.Prefab, parent.position, Quaternion.identity);
-        CreateStatsEnemy(enemy, enemyStaticData);
-        CreateStatsNavMesh(enemy, enemyStaticData);
-        return enemy;
-    }
+        public Player CreatePlayer(GameObject initialPoint) =>
+            InstantiateRegistered(AssetPath.PlayerPath, initialPoint.transform.position);
 
-    private Player InstantiateRegistered(string prefabPath, Vector3 position)
-    {
-        Player = _assetProvider.Instantiate(prefabPath, position).GetComponent<Player>();
-        Player.PlayerHealth.LoadProgress(NewProgress());
-        RegisterProgressWatchers(Player.gameObject);
-        return Player;
-    }
-    
-    private PlayerProgress NewProgress()
-    {
-        var progress = new PlayerProgress();
-        progress.CarState.MaxHp = 50; 
-        progress.CarState.ResetHp();
-        return progress;
-    }
+        public void CreateHUD()
+        {
+            ActorUI actorUI = _assetProvider.Instantiate(AssetPath.HUDPath).GetComponent<ActorUI>();
+            actorUI.Construct(Player.PlayerHealth);
+        }
 
-    private static void CreateStatsEnemy(Enemy enemy, EnemyStaticData enemyStaticData)
-    {
-        enemy.EnemyHealth.Max = enemyStaticData.Hp;
-        enemy.EnemyAttack.Damage = enemyStaticData.Damage;
-        enemy.EnemyAttack.AttackCooldown = enemyStaticData.AttackCooldown;
-    }
+        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent)
+        {
+            var enemyStaticData = _staticDataEnemy.ForEnemy(monsterTypeId);
+            var enemy = Object.Instantiate(enemyStaticData.Prefab, parent.position, Quaternion.identity);
+            CreateStatsEnemy(enemy, enemyStaticData);
+            CreateStatsNavMesh(enemy, enemyStaticData);
+            return enemy;
+        }
 
-    private void CreateStatsNavMesh(Enemy enemy, EnemyStaticData enemyStaticData)
-    {
-        var stats = enemy.GetComponent<NavMeshAgent>();
-        stats.speed = enemyStaticData.Speed;
-        stats.stoppingDistance = enemyStaticData.EffectiveDistance;
-    }
+        private Player InstantiateRegistered(string prefabPath, Vector3 position)
+        {
+            Player = _assetProvider.Instantiate(prefabPath, position).GetComponent<Player>();
+            Player.PlayerHealth.LoadProgress(NewProgress());
+            RegisterProgressWatchers(Player.gameObject);
+            return Player;
+        }
 
-    private void RegisterProgressWatchers(GameObject instantiatePlayer)
-    {
-        foreach (ISavedProgressReader progressReader in instantiatePlayer.GetComponentsInChildren<ISavedProgressReader>())
-            Register(progressReader);
-    }
-    
-    private void Register(ISavedProgressReader progressReader)
-    {   
-        if(progressReader is ISavedProgress progressWriter)
-            ProgressWriters.Add(progressWriter);
-                
-        ProgressReaders.Add(progressReader);
-    }
+        private PlayerProgress NewProgress()
+        {
+            var progress = new PlayerProgress();
+            progress.CarState.MaxHp = 50;
+            progress.CarState.ResetHp();
+            return progress;
+        }
 
-    public void Cleanup()
-    {
-        ProgressReaders.Clear();
-        ProgressWriters.Clear();
+        private static void CreateStatsEnemy(Enemy enemy, EnemyStaticData enemyStaticData)
+        {
+            enemy.EnemyHealth.Max = enemyStaticData.Hp;
+            enemy.EnemyAttack.Damage = enemyStaticData.Damage;
+            enemy.EnemyAttack.AttackCooldown = enemyStaticData.AttackCooldown;
+        }
+
+        private void CreateStatsNavMesh(Enemy enemy, EnemyStaticData enemyStaticData)
+        {
+            var stats = enemy.GetComponent<NavMeshAgent>();
+            stats.speed = enemyStaticData.Speed;
+            stats.stoppingDistance = enemyStaticData.EffectiveDistance;
+        }
+
+        private void RegisterProgressWatchers(GameObject instantiatePlayer)
+        {
+            foreach (ISavedProgressReader progressReader in instantiatePlayer
+                         .GetComponentsInChildren<ISavedProgressReader>())
+                Register(progressReader);
+        }
+
+        private void Register(ISavedProgressReader progressReader)
+        {
+            if (progressReader is ISavedProgress progressWriter)
+                ProgressWriters.Add(progressWriter);
+
+            ProgressReaders.Add(progressReader);
+        }
+
+        public void Cleanup()
+        {
+            ProgressReaders.Clear();
+            ProgressWriters.Clear();
+        }
     }
 }

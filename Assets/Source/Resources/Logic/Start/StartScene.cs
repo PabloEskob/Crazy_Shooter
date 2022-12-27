@@ -1,6 +1,7 @@
 using Agava.YandexGames;
 using Dreamteck.Splines;
 using Source.Infrastructure;
+using Source.Scripts.Infrastructure.Factory;
 using UnityEngine;
 
 [RequireComponent(typeof(LaunchRoom))]
@@ -14,7 +15,7 @@ public class StartScene : MonoBehaviour
     [SerializeField] private Movement _movement;
 
     private StaticDataService _staticDataEnemy;
-    private GameFactory _gameFactory;
+    private IGameFactory _gameFactory;
     private IAssetProvider _assetProvider;
     private int _number;
 
