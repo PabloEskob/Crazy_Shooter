@@ -1,7 +1,6 @@
-﻿using Source.Infrastructure;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class AssetProvider : IAssets
+public class AssetProvider : IAssetProvider
 {
     public GameObject Instantiate(string path)
     {
@@ -15,15 +14,9 @@ public class AssetProvider : IAssets
         return Object.Instantiate(prefab, at.position, at.rotation);
     }
 
-    public GameObject InstantiatePlayer(string path, Vector3 initPoint)
+    public GameObject Instantiate(string path, Vector3 initPoint)
     {
         var prefab = Resources.Load<GameObject>(path);
         return Object.Instantiate(prefab, initPoint, Quaternion.identity);
-    }
-
-    public GameObject InstantiatePlayer(string path)
-    {
-        var prefab = Resources.Load<GameObject>(path);
-        return Object.Instantiate(prefab);
     }
 }

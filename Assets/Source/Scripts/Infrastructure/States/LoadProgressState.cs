@@ -26,9 +26,9 @@ namespace Source.Infrastructure
         {
 #if UNITY_WEBGL
             LoadProgressOrInitNew(() =>
-                _gameStateMachine.Enter<LoadLevelState>());
+                _gameStateMachine.Enter<LoadMapSceneState>());
 #else
-            _gameStateMachine.Enter<LoadLevelState>();
+            _gameStateMachine.Enter<LoadMapSceneState>();
 #endif
         }
         

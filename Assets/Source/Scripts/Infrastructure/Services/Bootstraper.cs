@@ -19,9 +19,7 @@ namespace InfimaGames.LowPolyShooterPack
         public static void Initialize()
         {
             //if(!YandexGamesSdk.IsInitialized)
-                
             
-            Debug.Log($"InitBootstrapper {DateTime.Now}");
             //Initialize default service locator.
             ServiceLocator.Initialize();
             

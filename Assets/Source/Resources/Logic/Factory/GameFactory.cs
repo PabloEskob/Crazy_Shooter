@@ -7,13 +7,13 @@ using Object = UnityEngine.Object;
 public class GameFactory : IGameFactory
 {
     private readonly StaticDataService _staticDataEnemy;
-    private readonly AssetProvider _assetProvider;
+    private readonly IAssetProvider _assetProvider;
 
     public Player Player { get; private set; }
     public List<ISavedProgressReader> ProgressReaders { get; }
     public List<ISavedProgress> ProgressWriters { get; }
 
-    public GameFactory(StaticDataService staticDataEnemy, AssetProvider assetProvider)
+    public GameFactory(StaticDataService staticDataEnemy, IAssetProvider assetProvider)
     {
         _staticDataEnemy = staticDataEnemy;
         _assetProvider = assetProvider;
