@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     public bool CanMove { get; set; }
 
     public event Action Stopped;
+    public event Action Disabled;
 
     private void Awake()
     {
@@ -23,8 +24,11 @@ public class PlayerMove : MonoBehaviour
         CreateSplineTrigger();
     }
 
-    private void OnDisable() =>
+    private void OnDisable()
+    {
         RemoveListenerSplineTrigger();
+        Disabled?.Invoke();
+    }
 
     public void Construct(SplineComputer splineComputer)
     {

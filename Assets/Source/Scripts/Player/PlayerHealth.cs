@@ -8,6 +8,10 @@ public class PlayerHealth : MonoBehaviour, IHealth
     private State _carState;
 
     public event Action HealthChanged;
+    public event Action Disabled;
+
+    private void OnDisable() => 
+        Disabled?.Invoke();
 
     public float Current
     {

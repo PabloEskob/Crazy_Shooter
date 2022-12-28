@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ActorUI : MonoBehaviour
 {
@@ -18,9 +19,9 @@ public class ActorUI : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerHealth.HealthChanged -= UpdateHpBar;
+        //_playerHealth.HealthChanged -= UpdateHpBar;
         _buttonForward.OnClick -= OnClick;
-        _playerMove.Stopped -= PlayerMoveOnStopped;
+        //_playerMove.Stopped -= PlayerMoveOnStopped;
         _buttonForward.Moved -= CanMoved;
     }
 
@@ -32,7 +33,21 @@ public class ActorUI : MonoBehaviour
         _playerHealth = playerHealth;
         _playerMove = playerHealth.GetComponent<PlayerMove>();
         _playerHealth.HealthChanged += UpdateHpBar;
+        _playerHealth.Disabled += OnHealthDisabled;
         _playerMove.Stopped += PlayerMoveOnStopped;
+        _playerMove.Disabled += OnMoveDisabled;
+    }
+
+    private void OnMoveDisabled()
+    {
+        _playerMove.Stopped -= PlayerMoveOnStopped;
+        _playerMove.Disabled -= OnMoveDisabled;
+    }
+
+    private void OnHealthDisabled()
+    {
+        _playerHealth.HealthChanged -= UpdateHpBar;
+        _playerHealth.Disabled -= OnHealthDisabled;
     }
 
     private void PlayerMoveOnStopped() =>
