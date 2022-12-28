@@ -10,6 +10,7 @@ namespace Source.Scripts.Infrastructure.Factory
     public class GameFactory : IGameFactory
     {
         private const string LaunchRoomTag = "LaunchRoom";
+        private const string ActorUiTag = "ActorUi";
         private readonly IStaticDataService _staticDataEnemy;
         private readonly IAssetProvider _assetProvider;
 
@@ -34,7 +35,7 @@ namespace Source.Scripts.Infrastructure.Factory
 
         public void CreateHUD()
         {
-            ActorUI actorUI = _assetProvider.Instantiate(AssetPath.HUDPath).GetComponent<ActorUI>();
+            ActorUI actorUI = GameObject.FindGameObjectWithTag(ActorUiTag).GetComponent<ActorUI>();
             actorUI.Construct(Player.PlayerHealth);
         }
 

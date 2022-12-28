@@ -15,7 +15,7 @@ public class ActorUI : MonoBehaviour
         _buttonForward.OnClick += OnClick;
         _buttonForward.Moved += CanMoved;
     }
-    
+
     private void OnDisable()
     {
         _playerHealth.HealthChanged -= UpdateHpBar;

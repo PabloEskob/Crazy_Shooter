@@ -39,6 +39,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SonNotAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 6625414601667408847, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: m_Radius
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6818236782372126371, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: m_RootOrder
       value: 0
