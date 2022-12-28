@@ -24,8 +24,11 @@ public class PlayerMove : MonoBehaviour
         CreateSplineTrigger();
     }
 
-    private void OnDisable() =>
+    private void OnDisable()
+    {
         RemoveListenerSplineTrigger();
+        Disabled?.Invoke();
+    }
 
     public void Construct(SplineComputer splineComputer)
     {
