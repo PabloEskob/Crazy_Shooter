@@ -39,9 +39,6 @@ namespace Source.Infrastructure
         private void OnLoaded()
         {
             InitGameWorld();
-            
-            InformProgressReaders();
-
             _gameStateMachine.Enter<GameLoopState>();
         }
 
@@ -58,7 +55,7 @@ namespace Source.Infrastructure
             Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
             _gameFactory.CreateHUD();
             InitSpawners();
-            // InitUI(player);
+            _gameFactory.CreateStartScene();
             // _launchRoom.Fill(_gameFactory);
         }
 
@@ -67,7 +64,7 @@ namespace Source.Infrastructure
             foreach (GameObject spawnerGameObject in GameObject.FindGameObjectsWithTag(EnemySpawnerTag))
             {
                 var spawner = spawnerGameObject.GetComponent<EnemySpawner>();
-                spawner.Init(_gameFactory);
+                spawner.Construct(_gameFactory);
                 spawner.CreateQuantityEnemy();
             }
         }

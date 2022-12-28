@@ -8,6 +8,8 @@ TagManager:
   - Target
   - PlayerInitialPointTag
   - EnemySpawner
+  - EnemySpawnerTag
+  - LaunchRoom
   layers:
   - Default
   - TransparentFX

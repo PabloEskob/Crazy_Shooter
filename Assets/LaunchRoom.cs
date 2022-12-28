@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Source.Scripts.Infrastructure.Factory;
 using UnityEngine;
 
 public class LaunchRoom : MonoBehaviour
@@ -16,7 +15,7 @@ public class LaunchRoom : MonoBehaviour
             room.StartedNewRoom -= StartedNewRoom;
     }
 
-    public void Fill(GameFactory gameFactory)
+    public void Fill(IGameFactory gameFactory)
     {
         for (var i = 0; i < _rooms.Count; i++)
         {
@@ -27,10 +26,8 @@ public class LaunchRoom : MonoBehaviour
         }
     }
 
-    public void StartFirstRoom()
-    {
+    public void StartFirstRoom() => 
         StartCoroutine(_rooms[0].LaunchingWaves.StartWave(_rooms[0].StartThisRoom, _rooms[0].DelayWave));
-    }
 
     private void StartedNewRoom(int number)
     {

@@ -9,6 +9,7 @@ namespace Source.Scripts.Infrastructure.Factory
 {
     public class GameFactory : IGameFactory
     {
+        private const string LaunchRoomTag = "LaunchRoom";
         private readonly IStaticDataService _staticDataEnemy;
         private readonly IAssetProvider _assetProvider;
 
@@ -35,6 +36,13 @@ namespace Source.Scripts.Infrastructure.Factory
         {
             ActorUI actorUI = _assetProvider.Instantiate(AssetPath.HUDPath).GetComponent<ActorUI>();
             actorUI.Construct(Player.PlayerHealth);
+        }
+
+        public void CreateStartScene()
+        {
+            StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();
+            LaunchRoom launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
+            startScene.Construct(this, launchRoom);
         }
 
         public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent)

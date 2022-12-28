@@ -1,16 +1,10 @@
-using Agava.YandexGames;
-using Dreamteck.Splines;
 using Source.Infrastructure;
-using Source.Scripts.Infrastructure.Factory;
 using UnityEngine;
 
-[RequireComponent(typeof(LaunchRoom))]
 public class StartScene : MonoBehaviour
 {
     [SerializeField] private int _hpPlayer;
     [SerializeField] private ActorUI _actorUI;
-    [SerializeField] private PlayerRespawn _playerRespawn;
-    [SerializeField] private SplineComputer _splineComputer;
     [SerializeField] private LaunchRoom _launchRoom;
     [SerializeField] private Movement _movement;
 
@@ -19,8 +13,14 @@ public class StartScene : MonoBehaviour
     private IAssetProvider _assetProvider;
     private int _number;
 
-    private void OnEnable() =>
+    public void Construct(IGameFactory gameFactory, LaunchRoom launchRoom)
+    {
+        _gameFactory = gameFactory;
+        _launchRoom = launchRoom;
         _launchRoom.Allowed += OnAllowed;
+        InitGameWorld();
+        StartGame();
+    }
 
     private void OnDisable() =>
         _launchRoom.Allowed -= OnAllowed;
@@ -29,37 +29,10 @@ public class StartScene : MonoBehaviour
     {
         _assetProvider = AllServices.Container.Single<IAssetProvider>();
         _staticDataEnemy = new StaticDataService();
-        //_gameFactory = new GameFactory(_assetProvider);
-        InitGameWorld();
     }
-
-    private void Start() =>
-        StartGame();
-
-    private void InitGameWorld()
-    {
-        // var player = _gameFactory.CreatePlayer(_playerRespawn.transform);
-        // PlayerConstruct(player);
-        // InitUI(player);
-         _launchRoom.Fill(AllServices.Container.Single<GameFactory>());
-    }
-
-    private void PlayerConstruct(Player player)
-    {
-        player.PlayerHealth.LoadProgress(NewProgress());
-        player.PlayerMove.Construct(_splineComputer);
-    }
-
-    private void InitUI(Player player) =>
-        _actorUI.Construct(player.PlayerHealth);
-
-    private PlayerProgress NewProgress()
-    {
-        var progress = new PlayerProgress();
-        progress.CarState.MaxHp = _hpPlayer;
-        progress.CarState.ResetHp();
-        return progress;
-    }
+    
+    private void InitGameWorld() => 
+        _launchRoom.Fill(_gameFactory);
 
     private void StartGame() =>
         _launchRoom.StartFirstRoom();

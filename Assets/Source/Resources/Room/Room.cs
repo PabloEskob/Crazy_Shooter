@@ -50,16 +50,18 @@ public class Room : MonoBehaviour
         _launchingWaves.Ended += LaunchingWavesOnEnded;
     }
 
-    private void LaunchingWavesOnEnded() =>
+    private void LaunchingWavesOnEnded()
+    {
         StartedNewRoom?.Invoke(Number);
+    }
 
 
-    public void FillInEnemySpawner(GameFactory gameFactory)
+    public void FillInEnemySpawner(IGameFactory gameFactory)
     {
         for (var i = 0; i < _enemySpawners.Count; i++)
         {
             var enemySpawner = _enemySpawners[i];
-            enemySpawner.Init(gameFactory);
+            enemySpawner.Construct(gameFactory);
             enemySpawner.SetNumber(i);
         }
     }

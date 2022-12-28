@@ -27,21 +27,20 @@ public class EnemySpawner : MonoBehaviour
             enemy.EnemyDeath.Happened -= TryTurnOnAnotherSpawner;
     }
 
-    private void Start()
+    public void Construct(IGameFactory gameFactory)
     {
+        _gameFactory = gameFactory;
+        
         _enemies = new List<Enemy>();
 
         if (_triggerSpawn != null)
             _triggerSpawn.Init(_number);
 
-        //CreateQuantityEnemy();
+        CreateQuantityEnemy();
 
         foreach (var enemy in _enemies)
             enemy.EnemyDeath.Happened += TryTurnOnAnotherSpawner;
     }
-
-    public void Init(IGameFactory gameFactory) =>
-        _gameFactory = gameFactory;
 
     public void SetNumber(int number) =>
         _number = number;
