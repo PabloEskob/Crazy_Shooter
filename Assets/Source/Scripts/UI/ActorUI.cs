@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ActorUI : MonoBehaviour
 {
-    [SerializeField] private HpBar _hpBar;
+    [SerializeField] private ProgressBarPro _hpBar;
 
     private PlayerHealth _playerHealth;
     private ButtonForward _buttonForward;
@@ -19,9 +18,7 @@ public class ActorUI : MonoBehaviour
 
     private void OnDisable()
     {
-        //_playerHealth.HealthChanged -= UpdateHpBar;
         _buttonForward.OnClick -= OnClick;
-        //_playerMove.Stopped -= PlayerMoveOnStopped;
         _buttonForward.Moved -= CanMoved;
     }
 
@@ -32,6 +29,7 @@ public class ActorUI : MonoBehaviour
     {
         _playerHealth = playerHealth;
         _playerMove = playerHealth.GetComponent<PlayerMove>();
+        _hpBar.SetMaxHpImage(_playerHealth.Max);
         _playerHealth.HealthChanged += UpdateHpBar;
         _playerHealth.Disabled += OnHealthDisabled;
         _playerMove.Stopped += PlayerMoveOnStopped;
