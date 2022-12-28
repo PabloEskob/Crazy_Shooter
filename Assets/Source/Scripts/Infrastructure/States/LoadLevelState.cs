@@ -13,11 +13,12 @@ namespace Source.Infrastructure
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
-        
+
         private const string PlayerInitialPointTag = "PlayerInitialPointTag";
         private const string EnemySpawnerTag = "EnemySpawner";
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IStorage storage,LoadingScreen loadingScreen, IGameFactory gameFactory, IStaticDataService staticData)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IStorage storage,
+            LoadingScreen loadingScreen, IGameFactory gameFactory, IStaticDataService staticData)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -26,7 +27,7 @@ namespace Source.Infrastructure
             _gameFactory = gameFactory;
             _staticData = staticData;
         }
-        
+
         public void Enter()
         {
             _loadingScreen.Show();
@@ -42,7 +43,6 @@ namespace Source.Infrastructure
             _gameStateMachine.Enter<GameLoopState>();
         }
 
-        
 
         private void InformProgressReaders()
         {
@@ -53,9 +53,10 @@ namespace Source.Infrastructure
         private void InitGameWorld()
         {
             Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
-            _gameFactory.CreateHUD();
+            // _gameFactory.CreateHUD();
             InitSpawners();
             _gameFactory.CreateStartScene();
+            _gameFactory.CreateHUD();
             // _launchRoom.Fill(_gameFactory);
         }
 
