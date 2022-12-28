@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     public bool CanMove { get; set; }
 
     public event Action Stopped;
+    public event Action Disabled;
 
     private void Awake()
     {

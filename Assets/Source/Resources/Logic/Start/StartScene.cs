@@ -18,12 +18,19 @@ public class StartScene : MonoBehaviour
         _gameFactory = gameFactory;
         _launchRoom = launchRoom;
         _launchRoom.Allowed += OnAllowed;
+        _launchRoom.Disabled += OnRoomDisabled;
         InitGameWorld();
         StartGame();
     }
 
-    private void OnDisable() =>
+    private void OnRoomDisabled()
+    {
         _launchRoom.Allowed -= OnAllowed;
+        _launchRoom.Disabled -= OnRoomDisabled;
+    }
+
+    // private void OnDisable() =>
+    //     _launchRoom.Allowed -= OnAllowed;
 
     private void Awake()
     {
