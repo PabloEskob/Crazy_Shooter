@@ -9,16 +9,10 @@ public class EnemyHealth : MonoBehaviour, IHealth
     [SerializeField] private BodyShot _bodyShot;
 
     private Effects _effects;
-
-    public Effects Effects
-    {
-        get => _effects;
-        set => _effects = value;
-    }
-
     private EnemyMove _enemyMove;
     private bool _canPlayHit = true;
 
+    public Effects Effects => _effects;
     public float Current { get; set; }
     public float Max { get; set; }
 
@@ -73,7 +67,14 @@ public class EnemyHealth : MonoBehaviour, IHealth
 
     private void HeadShot(int damage, Collision collision)
     {
-        TakeDamage(damage * 10);
-        _effects.PlayHeadShot();
+        TakeDamage(damage * 6);
+
+        if (Max > 0)
+            _effects.GetContactCollision(collision);
+        else
+        {
+            _headShot.KillEnemy();
+            _effects.PlayHeadShot();
+        }
     }
 }
