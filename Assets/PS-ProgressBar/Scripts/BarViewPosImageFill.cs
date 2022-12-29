@@ -73,12 +73,7 @@ public class BarViewPosImageFill : ProgressBarProView {
 			return new Vector2( 0.5f + radius * Mathf.Cos(Mathf.Deg2Rad * degrees), 0.5f + radius * Mathf.Sin(Mathf.Deg2Rad * degrees));
 		}
 
-		#if UNITY_EDITOR
-		protected override void Reset() {
-			base.Reset();
-			rectTrans = GetComponent<RectTransform>();
-		}
-		#endif
+		
 	}
 
 }

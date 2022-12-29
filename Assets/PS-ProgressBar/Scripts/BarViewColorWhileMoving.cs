@@ -2,12 +2,12 @@
 using UnityEngine.UI;
 using System.Collections;
 
-namespace PlayfulSystems.ProgressBar {
+namespace PlayfulSystems.ProgressBar
+{
     [RequireComponent(typeof(Graphic))]
-    public class BarViewColorWhileMoving : ProgressBarProView {
-
-        [SerializeField]
-        protected Graphic graphic;
+    public class BarViewColorWhileMoving : ProgressBarProView
+    {
+        [SerializeField] protected Graphic graphic;
 
         [SerializeField] Color colorStatic = Color.white;
         [SerializeField] Color colorMoving = Color.blue;
@@ -16,11 +16,13 @@ namespace PlayfulSystems.ProgressBar {
 
         private bool isMoving = false;
 
-        void OnEnable() {
+        void OnEnable()
+        {
             SetDefaultColor();
         }
 
-        public override void UpdateView(float currentValue, float targetValue) {
+        public override void UpdateView(float currentValue, float targetValue)
+        {
             bool isNotAtTarget = (currentValue != targetValue);
 
             if (isMoving == isNotAtTarget)
@@ -30,25 +32,14 @@ namespace PlayfulSystems.ProgressBar {
             graphic.CrossFadeColor(GetCurrentColor(), isMoving ? blendTimeOnMove : blendTimeOnStop, false, true);
         }
 
-        Color GetCurrentColor() {
-             return isMoving ? colorMoving : colorStatic;
+        Color GetCurrentColor()
+        {
+            return isMoving ? colorMoving : colorStatic;
         }
 
-        void SetDefaultColor() {
+        void SetDefaultColor()
+        {
             graphic.canvasRenderer.SetColor(GetCurrentColor());
         }
-
-#if UNITY_EDITOR
-        protected override void Reset() {
-            base.Reset();
-
-            graphic = GetComponent<Graphic>();
-        }
-
-        void OnValidate() {
-            SetDefaultColor();
-        }
-#endif
     }
-
 }

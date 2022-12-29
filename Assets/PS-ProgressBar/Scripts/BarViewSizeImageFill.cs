@@ -37,13 +37,7 @@ namespace PlayfulSystems.ProgressBar {
 
             return Mathf.Round(display * numSteps) / numSteps;
         }
-
-#if UNITY_EDITOR
-		protected override void Reset() {
-			base.Reset();
-            image = GetComponent<Image>();
-        }
-#endif
+        
     }
 
 }

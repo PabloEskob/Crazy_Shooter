@@ -72,13 +72,5 @@ namespace PlayfulSystems.ProgressBar
         {
             return num.ToString("N" + numDecimals);
         }
-
-#if UNITY_EDITOR
-        protected override void Reset()
-        {
-            base.Reset();
-            _textMeshPro = GetComponent<TextMeshProUGUI>();
-        }
-#endif
     }
 }

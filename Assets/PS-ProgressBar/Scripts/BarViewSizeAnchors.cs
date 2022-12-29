@@ -72,13 +72,6 @@ namespace PlayfulSystems.ProgressBar {
         void OnDisable() {
             m_Tracker.Clear();
         }
-
-#if UNITY_EDITOR
-		protected override void Reset() {
-			base.Reset();
-            rectTrans = GetComponent<RectTransform>();
-        }
-#endif
     }
 
 }

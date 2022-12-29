@@ -24,6 +24,7 @@ public class ProgressBarPro : MonoBehaviour
 
     [Space(10)] [SerializeField] ProgressBarProView[] views;
 
+    private CanvasGroup _takeDamageImage;
     private Coroutine sizeAnim;
 
     public void Start()
@@ -53,10 +54,19 @@ public class ProgressBarPro : MonoBehaviour
         }
     }
 
+    public void SetValueImage(CanvasGroup canvasGroup)
+    {
+        _takeDamageImage = canvasGroup;
+        _takeDamageImage.alpha = 0;
+    }
+
     public void SetValue(float value, float maxValue)
     {
         if (maxValue != 0f)
+        {
             SetValue(value / maxValue);
+            SetValueImageRedScreen(value / maxValue);
+        }
         else
             SetValue(0f);
     }
@@ -93,6 +103,7 @@ public class ProgressBarPro : MonoBehaviour
         return !Mathf.Approximately(displayValue, m_value);
     }
 
+
     // COLOR SETTINGS
 
     public void SetBarColor(Color color)
@@ -100,6 +111,7 @@ public class ProgressBarPro : MonoBehaviour
         for (int i = 0; i < views.Length; i++)
             views[i].SetBarColor(color);
     }
+
 
     // SIZE ANIMATION
 
@@ -110,6 +122,9 @@ public class ProgressBarPro : MonoBehaviour
 
         sizeAnim = StartCoroutine(DoBarSizeAnim());
     }
+
+    private void SetValueImageRedScreen(float percentage) =>
+        _takeDamageImage.alpha = 1 - percentage;
 
     IEnumerator DoBarSizeAnim()
     {
@@ -153,10 +168,8 @@ public class ProgressBarPro : MonoBehaviour
     // Update Bar on Animation
     // OnDidApplyAnimationProperties is an undocumented MonoBehavior Method
     // See: https://forum.unity.com/threads/help-please-with-animation-component-public-properties-custom-inspector.229328/
-    void OnDidApplyAnimationProperties()
-    {
+    void OnDidApplyAnimationProperties() =>
         SetValue(m_value, true);
-    }
 
     public void SetMaxHpImage(float playerHealthMax)
     {
@@ -164,50 +177,4 @@ public class ProgressBarPro : MonoBehaviour
         barValue.MaxValue = playerHealthMax;
         barValue.TextMeshPro.text = barValue.MaxValue.ToString(CultureInfo.InvariantCulture);
     }
-    // Update Bar in editor
-
-#if UNITY_EDITOR
-
-    // This "delayed" mechanism is required for case 1037681.
-
-    private bool m_DelayedUpdateVisuals = false;
-
-    private void OnValidate()
-    {
-        m_value = Mathf.Clamp01(m_value);
-
-        //Onvalidate is called before OnEnabled. We need to make sure not to touch any other objects before OnEnable is run.
-        if (isActiveAndEnabled)
-            m_DelayedUpdateVisuals = true;
-    }
-
-    private void Update()
-    {
-        if (m_DelayedUpdateVisuals)
-        {
-            m_DelayedUpdateVisuals = false;
-
-            // This is to also display shadows in editor
-            if (m_value >= 1f)
-                UpdateBarViews(m_value, 0.75f);
-            else
-                UpdateBarViews(m_value, m_value + (1 - m_value) / 2f);
-        }
-    }
-
-    private void Reset()
-    {
-        DetectViewObjects();
-    }
-
-    public void AddView(ProgressBarProView view)
-    {
-        DetectViewObjects();
-    }
-
-    public void DetectViewObjects()
-    {
-        views = GetComponentsInChildren<ProgressBarProView>(true);
-    }
-#endif
 }

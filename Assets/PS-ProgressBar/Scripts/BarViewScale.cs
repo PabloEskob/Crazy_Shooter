@@ -2,30 +2,35 @@
 using UnityEngine.UI;
 using System.Collections;
 
-namespace PlayfulSystems.ProgressBar {
+namespace PlayfulSystems.ProgressBar
+{
     [RequireComponent(typeof(RectTransform))]
-    public class BarViewScale : ProgressBarProView {
-
+    public class BarViewScale : ProgressBarProView
+    {
         [SerializeField] protected RectTransform graphic;
 
         [Header("Color Options")]
         [Tooltip("If true, then the scale animates for each change. Otherwise it scales constantly based on value")]
-        [SerializeField] bool animateOnChange = true;
+        [SerializeField]
+        bool animateOnChange = true;
 
         [SerializeField] Vector3 minSize = Vector3.one;
         [SerializeField] Vector3 maxSize = new Vector3(2f, 2f, 2f);
 
-        [Tooltip("A value of 0 is minSize, a value of 1 is maxSize. Time goes from 0 to 1.")]
-        [SerializeField] AnimationCurve scale;
+        [Tooltip("A value of 0 is minSize, a value of 1 is maxSize. Time goes from 0 to 1.")] [SerializeField]
+        AnimationCurve scale;
+
         [SerializeField] float animDuration = 0.2f;
 
         private Coroutine scaleAnim;
 
-        void OnEnable() {
+        void OnEnable()
+        {
             UpdateScale();
         }
 
-        public override void NewChangeStarted(float currentValue, float targetValue) {
+        public override void NewChangeStarted(float currentValue, float targetValue)
+        {
             if (gameObject.activeInHierarchy == false || !animateOnChange)
                 return; // No Coroutine if we're disabled
 
@@ -35,10 +40,12 @@ namespace PlayfulSystems.ProgressBar {
             scaleAnim = StartCoroutine(DoBarScaleAnim(animDuration));
         }
 
-        IEnumerator DoBarScaleAnim(float duration) {
+        IEnumerator DoBarScaleAnim(float duration)
+        {
             float time = 0f;
 
-            while (time < duration) {
+            while (time < duration)
+            {
                 UpdateScale(time / duration);
                 time += Time.deltaTime;
                 yield return null;
@@ -48,7 +55,8 @@ namespace PlayfulSystems.ProgressBar {
             scaleAnim = null;
         }
 
-        public override void UpdateView(float currentValue, float targetValue) {
+        public override void UpdateView(float currentValue, float targetValue)
+        {
             if (animateOnChange)
                 return;
 
@@ -56,25 +64,14 @@ namespace PlayfulSystems.ProgressBar {
                 UpdateScale(currentValue);
         }
 
-        void UpdateScale(float value = 0f) {
+        void UpdateScale(float value = 0f)
+        {
             graphic.localScale = GetCurrentScale(value);
         }
 
-        Vector3 GetCurrentScale(float percentage) {
+        Vector3 GetCurrentScale(float percentage)
+        {
             return Vector3.Lerp(minSize, maxSize, scale.Evaluate(percentage));
         }
-
-#if UNITY_EDITOR
-        protected override void Reset() {
-            base.Reset();
-
-            graphic = GetComponent<RectTransform>();
-        }
-
-        void OnValidate() {
-            UpdateScale();
-        }
-#endif
     }
-
 }

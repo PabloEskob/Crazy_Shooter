@@ -4,6 +4,7 @@ using UnityEngine;
 public class ActorUI : MonoBehaviour
 {
     [SerializeField] private ProgressBarPro _hpBar;
+    [SerializeField] private CanvasGroup _imageRedScreen;
 
     private PlayerHealth _playerHealth;
     private ButtonForward _buttonForward;
@@ -37,6 +38,7 @@ public class ActorUI : MonoBehaviour
         _playerHealth = playerHealth;
         _playerMove = playerHealth.GetComponent<PlayerMove>();
         _hpBar.SetMaxHpImage(_playerHealth.Max);
+        _hpBar.SetValueImage(_imageRedScreen);
         _playerHealth.HealthChanged += UpdateHpBar;
         _playerHealth.Disabled += OnHealthDisabled;
         _playerMove.Stopped += PlayerMoveOnStopped;
