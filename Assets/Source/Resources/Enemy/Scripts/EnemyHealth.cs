@@ -36,7 +36,6 @@ public class EnemyHealth : MonoBehaviour, IHealth
         _enemyMove = GetComponent<EnemyMove>();
     }
 
-
     public void OnHitEnded()
     {
         _canPlayHit = true;

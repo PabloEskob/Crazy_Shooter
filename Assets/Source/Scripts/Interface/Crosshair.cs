@@ -1,5 +1,6 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using System;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack.Interface
@@ -11,28 +12,26 @@ namespace InfimaGames.LowPolyShooterPack.Interface
     {
         #region FIELDS SERIALIZED
 
-        [Header("Settings")]
-        
-        [Tooltip("Visibility changing smoothness.")]
-        [SerializeField]
+        /*[Header("Settings")] [Tooltip("Visibility changing smoothness.")] [SerializeField]
         private float smoothing = 8.0f;
 
         [Tooltip("Minimum scale the Crosshair needs in order to be visible. Useful to avoid weird tiny images.")]
-        [SerializeField]
-        private float minimumScale = 0.15f;
-
+        [SerializeField]*/
+      //  private float minimumScale = 0.15f;
+        
         #endregion
 
         #region FIELDS
-        
+
         /// <summary>
         /// Current.
         /// </summary>
-        private float current = 1.0f;
+      //  private float current = 1.0f;
+
         /// <summary>
         /// Target.
         /// </summary>
-        private float target = 1.0f;
+      //  private float target = 1.0f;
 
         /// <summary>
         /// Rect.
@@ -40,9 +39,9 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         private RectTransform rectTransform;
 
         #endregion
-        
+
         #region UNITY
-        
+
         protected override void Awake()
         {
             //Base.
@@ -51,12 +50,12 @@ namespace InfimaGames.LowPolyShooterPack.Interface
             //Cache Rect Transform.
             rectTransform = GetComponent<RectTransform>();
         }
-
+        
         #endregion
-        
+
         #region METHODS
-        
-        protected override void Tick()
+
+        /*protected override void Tick()
         {
             //Check Visibility.
             bool visible = playerCharacter.IsCrosshairVisible();
@@ -67,12 +66,12 @@ namespace InfimaGames.LowPolyShooterPack.Interface
             current = Mathf.Lerp(current, target, Time.deltaTime * smoothing);
             //Scale.
             rectTransform.localScale = Vector3.one * current;
-            
+
             //Hide Crosshair Objects When Too Small.
             for (var i = 0; i < transform.childCount; i++)
                 transform.GetChild(i).gameObject.SetActive(current > minimumScale);
-        }
-        
+        }*/
+
         #endregion
     }
 }
