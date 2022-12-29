@@ -35,8 +35,7 @@ namespace Source.Scripts.Infrastructure.Factory
 
         public void CreateHUD()
         {
-            ActorUI actorUI = GameObject.FindGameObjectWithTag(ActorUiTag).GetComponent<ActorUI>();
-            actorUI.Construct(Player.PlayerHealth);
+            
         }
 
         public void CreateStartScene()

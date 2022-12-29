@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName = "EnemyData", menuName = "StaticData/Enemy")]
 public class EnemyStaticData : ScriptableObject
 {
-    [Range(1, 5)] [SerializeField] private int _hp;
+    [Range(1, 20)] [SerializeField] private int _hp;
 
     [Range(1, 5)] [SerializeField] private int _damage;
 

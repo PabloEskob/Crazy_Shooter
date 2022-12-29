@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ActorUI : MonoBehaviour
 {
@@ -24,6 +25,12 @@ public class ActorUI : MonoBehaviour
 
     private void Awake() =>
         _buttonForward = GetComponentInChildren<ButtonForward>();
+
+    private void Start()
+    {
+        _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        Construct(_playerHealth);
+    }
 
     public void Construct(PlayerHealth playerHealth)
     {

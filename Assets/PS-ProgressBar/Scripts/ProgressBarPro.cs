@@ -4,7 +4,7 @@ using System.Globalization;
 using PlayfulSystems;
 using PlayfulSystems.ProgressBar;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class ProgressBarPro : MonoBehaviour
 {
     public enum AnimationType
@@ -158,10 +158,18 @@ public class ProgressBarPro : MonoBehaviour
         SetValue(m_value, true);
     }
 
+    public void SetMaxHpImage(float playerHealthMax)
+    {
+        var barValue = GetComponentInChildren<BarViewValueText>();
+        barValue.MaxValue = playerHealthMax;
+        barValue.TextMeshPro.text = barValue.MaxValue.ToString(CultureInfo.InvariantCulture);
+    }
     // Update Bar in editor
 
 #if UNITY_EDITOR
+
     // This "delayed" mechanism is required for case 1037681.
+
     private bool m_DelayedUpdateVisuals = false;
 
     private void OnValidate()
@@ -195,13 +203,6 @@ public class ProgressBarPro : MonoBehaviour
     public void AddView(ProgressBarProView view)
     {
         DetectViewObjects();
-    }
-
-    public void SetMaxHpImage(float playerHealthMax)
-    {
-        var barValue = GetComponentInChildren<BarViewValueText>();
-        barValue.MaxValue = playerHealthMax;
-        barValue.TextMeshPro.text = barValue.MaxValue.ToString(CultureInfo.InvariantCulture);
     }
 
     public void DetectViewObjects()
