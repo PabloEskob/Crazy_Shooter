@@ -431,7 +431,7 @@ namespace InfimaGames.LowPolyShooterPack
                 SetSlideBack(1);
             
             //Play all muzzle effects.
-            muzzleBehaviour.Effect();
+            //muzzleBehaviour.Effect();
 
             //Spawn as many projectiles as we need.
             for (var i = 0; i < shotCount; i++)
@@ -453,7 +453,7 @@ namespace InfimaGames.LowPolyShooterPack
                 
                 //Spawn projectile from the projectile spawn point.
                 GameObject projectile = Instantiate(prefabProjectile, muzzleSocket.position, rotation);
-                //Add velocity to the projectile.
+                // //Add velocity to the projectile.
                 projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;   
             }
         }
