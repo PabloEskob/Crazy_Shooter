@@ -18,15 +18,13 @@ public class PlayerDeath : MonoBehaviour
     private void OnHealthChanged()
     {
         if (!_isDead && _playerHealth.Current <= 0)
-        {
             Die();
-        }
     }
 
     private void Die()
     {
         _isDead = true;
-        _particleSystem.Play();
+        // _particleSystem.Play();
         _animator.PlayDeath();
     }
 }

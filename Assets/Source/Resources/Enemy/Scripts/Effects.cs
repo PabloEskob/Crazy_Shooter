@@ -6,6 +6,7 @@ public class Effects : MonoBehaviour
     [SerializeField] private ParticleSystem _fxHeadShot;
     [SerializeField] private ParticleSystem _deathFx;
     [SerializeField] private ParticleSystem _blood;
+    [SerializeField] private AudioSource _headShot;
 
     public void GetContactCollision(Collision collision) =>
         _bloodEffectSpawner.Init(collision.GetContact(0).point);
@@ -13,6 +14,7 @@ public class Effects : MonoBehaviour
     public void PlayHeadShot()
     {
         _fxHeadShot.Play();
+        _headShot.Play();
         _blood.Play();
     }
 
