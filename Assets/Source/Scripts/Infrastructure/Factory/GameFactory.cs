@@ -13,6 +13,7 @@ namespace Source.Scripts.Infrastructure.Factory
         private const string ActorUiTag = "ActorUi";
         private readonly IStaticDataService _staticDataEnemy;
         private readonly IAssetProvider _assetProvider;
+        private ActorUI _actorUI;
 
         public Player Player { get; private set; }
         public List<ISavedProgressReader> ProgressReaders { get; }
@@ -33,16 +34,14 @@ namespace Source.Scripts.Infrastructure.Factory
         public Player CreatePlayer(GameObject initialPoint) =>
             InstantiateRegistered(AssetPath.PlayerPath, initialPoint.transform.position);
 
-        public void CreateHUD()
-        {
-            
-        }
+        public void CreateHUD() =>
+            _actorUI = GameObject.FindGameObjectWithTag(ActorUiTag).GetComponent<ActorUI>();
 
         public void CreateStartScene()
         {
             StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();
             LaunchRoom launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
-            startScene.Construct(this, launchRoom);
+            startScene.Construct(this, launchRoom, _actorUI);
         }
 
         public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent)
