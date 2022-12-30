@@ -1,5 +1,6 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using System;
 using UnityEngine;
 using System.Collections;
 using InfimaGames.LowPolyShooterPack;
@@ -9,8 +10,9 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 {
 	public class Projectile : MonoBehaviour
 	{
+		private Vector3 _defaultPosition;
 
-		[Range(5, 100)]
+		[Range(1, 100)]
 		[Tooltip("After how long time should the bullet prefab be destroyed?")]
 		public float destroyAfter;
 
@@ -29,6 +31,21 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 		public Transform[] metalImpactPrefabs;
 		public Transform[] dirtImpactPrefabs;
 		public Transform[] concreteImpactPrefabs;
+		
+		private void Awake()
+		{
+			_defaultPosition = transform.position;
+		}
+
+		private void OnEnable()
+		{
+			StartCoroutine(DestroyAfter());
+		}
+
+		private void OnDisable()
+		{
+			StopCoroutine(DestroyAfter());
+		}
 
 		private void Start()
 		{
@@ -39,7 +56,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 				GetComponent<Collider>());
 
 			//Start destroy timer
-			StartCoroutine(DestroyAfter());
+			//StartCoroutine(DestroyAfter());
 		}
 
 		//If the bullet collides with anything
@@ -72,7 +89,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			//Otherwise, destroy bullet on impact
 			else
 			{
-				Destroy(gameObject);
+				gameObject.SetActive(false);
 			}
 
 			//If bullet collides with "Blood" tag
@@ -83,7 +100,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 						(0, bloodImpactPrefabs.Length)], transform.position,
 					Quaternion.LookRotation(collision.contacts[0].normal));
 				//Destroy bullet object
-				Destroy(gameObject);
+				gameObject.SetActive(false);
+				ResetPosition();
 			}
 
 			//If bullet collides with "Metal" tag
@@ -94,7 +112,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 						(0, bloodImpactPrefabs.Length)], transform.position,
 					Quaternion.LookRotation(collision.contacts[0].normal));
 				//Destroy bullet object
-				Destroy(gameObject);
+				gameObject.SetActive(false);
+				ResetPosition();
 			}
 
 			//If bullet collides with "Dirt" tag
@@ -105,7 +124,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 						(0, bloodImpactPrefabs.Length)], transform.position,
 					Quaternion.LookRotation(collision.contacts[0].normal));
 				//Destroy bullet object
-				Destroy(gameObject);
+				gameObject.SetActive(false);
+				//ResetPosition();
 			}
 
 			//If bullet collides with "Concrete" tag
@@ -116,7 +136,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 						(0, bloodImpactPrefabs.Length)], transform.position,
 					Quaternion.LookRotation(collision.contacts[0].normal));
 				//Destroy bullet object
-				Destroy(gameObject);
+				gameObject.SetActive(false);
+				ResetPosition();
 			}
 
 			//If bullet collides with "Target" tag
@@ -126,7 +147,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 				collision.transform.gameObject.GetComponent
 					<TargetScript>().isHit = true;
 				//Destroy bullet object
-				Destroy(gameObject);
+				gameObject.SetActive(false);
+				ResetPosition();
 			}
 
 			//If bullet collides with "ExplosiveBarrel" tag
@@ -136,7 +158,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 				collision.transform.gameObject.GetComponent
 					<ExplosiveBarrelScript>().explode = true;
 				//Destroy bullet object
-				Destroy(gameObject);
+				gameObject.SetActive(false);
+				//ResetPosition();
 			}
 
 			//If bullet collides with "GasTank" tag
@@ -146,7 +169,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 				collision.transform.gameObject.GetComponent
 					<GasTankScript>().isHit = true;
 				//Destroy bullet object
-				Destroy(gameObject);
+				gameObject.SetActive(false);
+				ResetPosition();
 			}
 		}
 
@@ -156,7 +180,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			yield return new WaitForSeconds
 				(Random.Range(minDestroyTime, maxDestroyTime));
 			//Destroy bullet object
-			Destroy(gameObject);
+			gameObject.SetActive(false);
+			ResetPosition();
 		}
 
 		private IEnumerator DestroyAfter()
@@ -164,7 +189,13 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			//Wait for set amount of time
 			yield return new WaitForSeconds(destroyAfter);
 			//Destroy bullet object
-			Destroy(gameObject);
+			gameObject.SetActive(false);
+			ResetPosition();
 		}
+		
+		
+
+		private void ResetPosition() => 
+			transform.position = _defaultPosition;
 	}
 }

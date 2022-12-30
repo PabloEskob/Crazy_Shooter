@@ -2,10 +2,12 @@
 
 using System;
 using Agava.YandexGames;
+using InfimaGames.LowPolyShooterPack.Legacy;
 using Source.Scripts.Data;
 using Source.Scripts.SaveSystem;
 using Source.Scripts.StaticData;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -21,7 +23,7 @@ namespace InfimaGames.LowPolyShooterPack
         #region FIELDS SERIALIZED
 
         [SerializeField] private UpgradeConfig _upgradeConfig;
-
+        [SerializeField] private BulletPool _bulletPool;
         
         [Header("Settings")]
         
@@ -452,9 +454,13 @@ namespace InfimaGames.LowPolyShooterPack
                     rotation = Quaternion.LookRotation(hit.point + spreadValue - muzzleSocket.position);
                 
                 //Spawn projectile from the projectile spawn point.
-                GameObject projectile = Instantiate(prefabProjectile, muzzleSocket.position, rotation);
-                // //Add velocity to the projectile.
+                //GameObject projectile = Instantiate(prefabProjectile, muzzleSocket.position, rotation);
+                Projectile projectile = _bulletPool.CreateProjectile();
+                projectile.transform.rotation = rotation;
+                projectile.transform.position = muzzleSocket.position;
+                //Add velocity to the projectile.
                 projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;   
+                projectile.transform.parent = null;
             }
         }
 

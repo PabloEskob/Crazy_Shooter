@@ -335,6 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6446807073419998744}
   - component: {fileID: 6446807073412504062}
+  - component: {fileID: -497266499543662196}
   - component: {fileID: 8747414128452121418}
   - component: {fileID: 9116845346348752071}
   - component: {fileID: 6569541784406701985}
@@ -382,6 +383,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-497266499543662196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446807073419897400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cfb4d271bd4a43bb8c08281b63897c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _capacity: 5
+  _isAutoExpand: 1
+  _projectilePrefab: {fileID: 8787292203492939028, guid: 34fee30dc7338ff4ea8438c93eb43cbe, type: 3}
+  _container: {fileID: 8683723981801227819}
 --- !u!114 &8747414128452121418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,8 +411,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7170d51de97d79e4fb11d3321667acb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeConfig: {fileID: 0}
+  _bulletPool: {fileID: -497266499543662196}
   weaponName: Sniper 03
   multiplierMovementSpeed: 0.8
+  _weaponType: 
+  _isBought: 0
+  _isEquipped: 0
   automatic: 0
   boltAction: 0
   shotCount: 1
@@ -1020,6 +1042,8 @@ MonoBehaviour:
   fieldOfViewMultiplierAimWeapon: 0.7
   materialIndex: 3
   materialHidden: {fileID: 0}
+  _isBought: 0
+  _isEquipped: 0
 --- !u!1001 &2822594901094011383
 PrefabInstance:
   m_ObjectHideFlags: 0

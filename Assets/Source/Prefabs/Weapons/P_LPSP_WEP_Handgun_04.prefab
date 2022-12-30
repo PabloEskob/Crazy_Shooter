@@ -110,6 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 189091626146063571}
   - component: {fileID: 189091626155051829}
+  - component: {fileID: -3915064312712303141}
   - component: {fileID: 2624052788621826371}
   - component: {fileID: 6110289550021268199}
   - component: {fileID: 1375935857344257949}
@@ -157,6 +158,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-3915064312712303141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189091626145577203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cfb4d271bd4a43bb8c08281b63897c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _capacity: 5
+  _isAutoExpand: 1
+  _projectilePrefab: {fileID: 8787292203492939028, guid: 34fee30dc7338ff4ea8438c93eb43cbe, type: 3}
+  _container: {fileID: 7847972238633066374}
 --- !u!114 &2624052788621826371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +186,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7170d51de97d79e4fb11d3321667acb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeConfig: {fileID: 0}
+  _bulletPool: {fileID: -3915064312712303141}
   weaponName: Handgun 04
   multiplierMovementSpeed: 1.15
+  _weaponType: 
+  _isBought: 0
+  _isEquipped: 0
   automatic: 0
   boltAction: 0
   shotCount: 1
@@ -974,6 +996,8 @@ MonoBehaviour:
   fieldOfViewMultiplierAimWeapon: 0.7
   materialIndex: 3
   materialHidden: {fileID: 0}
+  _isBought: 0
+  _isEquipped: 0
 --- !u!4 &4293923752805310823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1a4418d8662b283468c14c5649bbfd23, type: 3}

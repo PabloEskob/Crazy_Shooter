@@ -14547,7 +14547,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4071997348075655003}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -14565,7 +14565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAfter: 5
-  destroyOnImpact: 0
+  destroyOnImpact: 1
   minDestroyTime: 0.01
   maxDestroyTime: 0.05
   bloodImpactPrefabs:
