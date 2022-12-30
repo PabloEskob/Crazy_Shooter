@@ -1,8 +1,11 @@
+using System;
 using Source.Infrastructure;
 using UnityEngine;
 
 public class StartScene : MonoBehaviour
 {
+    private const string ActorUiTag = "ActorUi";
+
     [SerializeField] private LaunchRoom _launchRoom;
     [SerializeField] private Movement _movement;
 
@@ -12,9 +15,8 @@ public class StartScene : MonoBehaviour
     private IAssetProvider _assetProvider;
     private int _number;
 
-    public void Construct(IGameFactory gameFactory, LaunchRoom launchRoom, ActorUI actorUI)
+    public void Construct(IGameFactory gameFactory, LaunchRoom launchRoom)
     {
-        _actorUI = actorUI;
         _gameFactory = gameFactory;
         _launchRoom = launchRoom;
         _launchRoom.Allowed += OnAllowed;
@@ -35,6 +37,11 @@ public class StartScene : MonoBehaviour
     {
         _assetProvider = AllServices.Container.Single<IAssetProvider>();
         _staticDataEnemy = new StaticDataService();
+    }
+
+    private void Start()
+    {
+        _actorUI = GameObject.FindGameObjectWithTag(ActorUiTag).GetComponent<ActorUI>();
     }
 
     private void InitGameWorld() =>
