@@ -10,7 +10,6 @@ namespace Source.Scripts.Infrastructure.Factory
     public class GameFactory : IGameFactory
     {
         private const string LaunchRoomTag = "LaunchRoom";
-        private const string ActorUiTag = "ActorUi";
         private readonly IStaticDataService _staticDataEnemy;
         private readonly IAssetProvider _assetProvider;
 

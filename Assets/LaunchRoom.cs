@@ -14,7 +14,7 @@ public class LaunchRoom : MonoBehaviour
     {
         foreach (var room in _rooms)
             room.StartedNewRoom -= StartedNewRoom;
-        
+
         Disabled?.Invoke();
     }
 
@@ -29,7 +29,7 @@ public class LaunchRoom : MonoBehaviour
         }
     }
 
-    public void StartFirstRoom() => 
+    public void StartFirstRoom() =>
         StartCoroutine(_rooms[0].LaunchingWaves.StartWave(_rooms[0].StartThisRoom, _rooms[0].DelayWave));
 
     private void StartedNewRoom(int number)
@@ -45,9 +45,6 @@ public class LaunchRoom : MonoBehaviour
             StartCoroutine(startWave);
         }
         else
-        {
             EndedRoom?.Invoke();
-            Debug.Log("тут конец");
-        }
     }
 }

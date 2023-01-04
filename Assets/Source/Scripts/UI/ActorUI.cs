@@ -3,14 +3,18 @@ using UnityEngine;
 
 public class ActorUI : MonoBehaviour
 {
+    private const string PlayerTag = "Player";
+
     [SerializeField] private ProgressBarPro _hpBar;
     [SerializeField] private CanvasGroup _imageRedScreen;
-
+    [SerializeField] private VictoryScreen _victoryScreen;
+    
     private PlayerHealth _playerHealth;
     private ButtonForward _buttonForward;
     private PlayerMove _playerMove;
 
     public ButtonForward ButtonForward => _buttonForward;
+    public VictoryScreen VictoryScreen => _victoryScreen;
 
     private void OnEnable()
     {
@@ -29,11 +33,11 @@ public class ActorUI : MonoBehaviour
 
     private void Start()
     {
-        _playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        _playerHealth = GameObject.FindGameObjectWithTag(PlayerTag).GetComponent<PlayerHealth>();
         Construct(_playerHealth);
     }
 
-    public void Construct(PlayerHealth playerHealth)
+    private void Construct(PlayerHealth playerHealth)
     {
         _playerHealth = playerHealth;
         _playerMove = playerHealth.GetComponent<PlayerMove>();

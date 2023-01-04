@@ -1,13 +1,15 @@
+using System;
 using Source.Infrastructure;
 using UnityEngine;
 
 public class StartScene : MonoBehaviour
 {
-    [SerializeField] private int _hpPlayer;
-    [SerializeField] private ActorUI _actorUI;
+    private const string ActorUiTag = "ActorUi";
+
     [SerializeField] private LaunchRoom _launchRoom;
     [SerializeField] private Movement _movement;
 
+    private ActorUI _actorUI;
     private StaticDataService _staticDataEnemy;
     private IGameFactory _gameFactory;
     private IAssetProvider _assetProvider;
@@ -19,6 +21,7 @@ public class StartScene : MonoBehaviour
         _launchRoom = launchRoom;
         _launchRoom.Allowed += OnAllowed;
         _launchRoom.Disabled += OnRoomDisabled;
+        _launchRoom.EndedRoom += LaunchVictoryScreen;
         InitGameWorld();
         StartGame();
     }
@@ -27,18 +30,21 @@ public class StartScene : MonoBehaviour
     {
         _launchRoom.Allowed -= OnAllowed;
         _launchRoom.Disabled -= OnRoomDisabled;
+        _launchRoom.EndedRoom -= LaunchVictoryScreen;
     }
-
-    // private void OnDisable() =>
-    //     _launchRoom.Allowed -= OnAllowed;
 
     private void Awake()
     {
         _assetProvider = AllServices.Container.Single<IAssetProvider>();
         _staticDataEnemy = new StaticDataService();
     }
-    
-    private void InitGameWorld() => 
+
+    private void Start()
+    {
+        _actorUI = GameObject.FindGameObjectWithTag(ActorUiTag).GetComponent<ActorUI>();
+    }
+
+    private void InitGameWorld() =>
         _launchRoom.Fill(_gameFactory);
 
     private void StartGame() =>
@@ -48,5 +54,10 @@ public class StartScene : MonoBehaviour
     {
         if (_movement == Movement.Move)
             _actorUI.ButtonForward.SwitchOn();
+    }
+
+    private void LaunchVictoryScreen()
+    {
+        _actorUI.VictoryScreen.Show();
     }
 }
