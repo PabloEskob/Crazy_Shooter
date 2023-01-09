@@ -13,34 +13,33 @@ namespace Source.Scripts.Ui
         [SerializeField] private Weapon _weapon;
         [SerializeField] private TMP_Text _weaponNameText;
         [SerializeField] private TMP_Text _weaponTypeText;
-        
-        [Header("Button Color Settings")]
-        [SerializeField] private Color32 _activeButtonColor = new Color(100,58,100);
-        [SerializeField] private Color32 _inactiveButtonColor = new Color(36,16,100);
 
-        [Header("Text Color Settings")] 
+        [Header("Button Color Settings")]
+        [SerializeField] private Color32 _activeButtonColor = new Color(100, 58, 100);
+        [SerializeField] private Color32 _inactiveButtonColor = new Color(36, 16, 100);
+
+        [Header("Text Color Settings")]
         [SerializeField] private Color32 _activeTextColor = Color.white;
-        [SerializeField] private Color32 _inactiveTextColor = new Color(22,35,100);
-        
+        [SerializeField] private Color32 _inactiveTextColor = new Color(22, 35, 100);
+
         private bool _isSelected;
-        
+
         public Weapon Weapon => _weapon;
-        
+
         public event Action<WeaponPlate, Weapon> WeaponSelected;
 
         private void Awake()
         {
-            _weaponNameText.text = _weapon.GetName();
-            _weaponTypeText.text = _weapon.GetWeaponType();
+            
         }
 
-        private void OnEnable() => 
+        private void OnEnable() =>
             _weaponButton.onClick.AddListener(OnButtonClick);
 
-        private void OnDisable() => 
+        private void OnDisable() =>
             _weaponButton.onClick.RemoveListener(OnButtonClick);
 
-        private void OnButtonClick() => 
+        private void OnButtonClick() =>
             WeaponSelected?.Invoke(this, _weapon);
 
         private ColorBlock GetColorBlock(Color color)
@@ -67,10 +66,17 @@ namespace Source.Scripts.Ui
             ChangeButtonView();
         }
 
-        public void ShowWeapon() => 
+        public void SetWeapon(Weapon weapon)
+        {
+            _weapon = weapon;
+            _weaponNameText.text = _weapon.GetName();
+            _weaponTypeText.text = _weapon.GetWeaponType();
+        }
+
+        public void ShowWeapon() =>
             _weapon.gameObject.SetActive(true);
 
-        public void HideWeapon() => 
+        public void HideWeapon() =>
             _weapon.gameObject.SetActive(false);
     }
 }
