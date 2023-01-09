@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,8 +9,11 @@ namespace Source.Scripts.Infrastructure.Factory
     public class GameFactory : IGameFactory
     {
         private const string LaunchRoomTag = "LaunchRoom";
+
         private readonly IStaticDataService _staticDataEnemy;
         private readonly IAssetProvider _assetProvider;
+
+        private GameStatusScreen _gameStatusScreen;
 
         public Player Player { get; private set; }
         public List<ISavedProgressReader> ProgressReaders { get; }
@@ -23,25 +25,20 @@ namespace Source.Scripts.Infrastructure.Factory
             _assetProvider = assetProvider;
         }
 
-        // public Player CreatePlayer(Transform position)
-        // {
-        //     Player = _assetProvider.Instantiate(AssetPath.PlayerPath,position).GetComponent<Player>();
-        //     return Player;
-        // }
-
         public Player CreatePlayer(GameObject initialPoint) =>
             InstantiateRegistered(AssetPath.PlayerPath, initialPoint.transform.position);
 
         public void CreateHUD()
         {
-            
+            _gameStatusScreen = _assetProvider.Instantiate(AssetPath.PathGameStatusScreen)
+                .GetComponent<GameStatusScreen>();
         }
 
         public void CreateStartScene()
         {
             StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();
             LaunchRoom launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
-            startScene.Construct(this, launchRoom);
+            startScene.Construct(this, launchRoom, _gameStatusScreen);
         }
 
         public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent)

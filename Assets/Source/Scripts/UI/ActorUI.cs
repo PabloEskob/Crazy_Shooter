@@ -7,14 +7,12 @@ public class ActorUI : MonoBehaviour
 
     [SerializeField] private ProgressBarPro _hpBar;
     [SerializeField] private CanvasGroup _imageRedScreen;
-    [SerializeField] private VictoryScreen _victoryScreen;
-    
+
     private PlayerHealth _playerHealth;
     private ButtonForward _buttonForward;
     private PlayerMove _playerMove;
 
     public ButtonForward ButtonForward => _buttonForward;
-    public VictoryScreen VictoryScreen => _victoryScreen;
 
     private void OnEnable()
     {

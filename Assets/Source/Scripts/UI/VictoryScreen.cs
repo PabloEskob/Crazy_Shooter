@@ -9,9 +9,12 @@ public class VictoryScreen : MonoBehaviour
     private CanvasGroup _canvasGroup;
     private Animation _animationComponent;
     private bool _cursorLocked;
+    private Canvas _canvas;
 
     private void Start()
     {
+        _canvas = GetComponentInParent<Canvas>();
+        _canvas.sortingOrder = -1;
         _canvasGroup = GetComponent<CanvasGroup>();
         _canvasGroup.alpha = 0;
         _animationComponent = GetComponent<Animation>();
@@ -20,6 +23,7 @@ public class VictoryScreen : MonoBehaviour
 
     public void Show()
     {
+        _canvas.sortingOrder = 1;
         CursorVisibility();
         _animationComponent.clip = _down;
         _animationComponent.Play();

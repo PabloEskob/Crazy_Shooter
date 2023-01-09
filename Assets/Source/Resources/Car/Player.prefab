@@ -2485,7 +2485,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_ActionId: 9beb2473-ee7d-4a54-857b-b42a64a66a65
     m_ActionName: Player/Lock Cursor[/Keyboard/escape]
   - m_PersistentCalls:
@@ -2645,7 +2645,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_ActionId: 4d7208d1-17d0-4afe-9d74-89b2ba1f71cd
     m_ActionName: MobileActionMap/Lock Cursor[/Keyboard/escape,/Keyboard/p]
   - m_PersistentCalls:
