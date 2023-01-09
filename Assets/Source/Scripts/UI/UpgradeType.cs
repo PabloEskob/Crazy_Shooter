@@ -20,7 +20,8 @@ namespace Source.Scripts.Ui
         public event Action<UpgradeType> UpgradeChoosed;
 
         private void OnEnable()
-        { 
+        {
+            Weapon = UpgradePanel.CurrentWeapon;
             UpgradePanel.WeaponSet += OnWeaponSet;
             UpgradeButton.onClick.AddListener(OnButtonClick);
         }
@@ -41,5 +42,8 @@ namespace Source.Scripts.Ui
 
         public void SwitchButtonState(bool value) => 
             IsUpgradeChoosed = value;
+
+        public void SwitchButtonInteractivity(bool value) => 
+            UpgradeButton.interactable = value;
     }
 }

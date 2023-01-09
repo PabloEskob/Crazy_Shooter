@@ -17,12 +17,9 @@ public class WeaponPlatesView : MonoBehaviour
 
     public IEnumerable<WeaponPlate> Plates => _plates;
 
-    public event Action<Weapon> WeaponSelected;
+    public Weapon CurrentWeapon { get; private set; }
 
-    //private void Awake()
-    //{
-    //    InitPlates();
-    //}
+    public event Action<Weapon> WeaponSelected;
 
     private void OnEnable()
     {
@@ -34,10 +31,6 @@ public class WeaponPlatesView : MonoBehaviour
     {
         foreach (WeaponPlate weaponPlate in _plates) 
             weaponPlate.WeaponSelected -= OnWeaponSelected;
-    }
-
-    private void Start()
-    {
     }
 
     private void OnWeaponSelected(WeaponPlate plate, Weapon weapon)
@@ -65,6 +58,7 @@ public class WeaponPlatesView : MonoBehaviour
         }
 
         _plates[_defaultWeaponIndex].SwitchButtonState(true);
+        CurrentWeapon = _plates[_defaultWeaponIndex].Weapon;
 
     }
 }

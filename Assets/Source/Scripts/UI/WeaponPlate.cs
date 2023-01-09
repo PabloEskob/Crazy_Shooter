@@ -28,11 +28,6 @@ namespace Source.Scripts.Ui
 
         public event Action<WeaponPlate, Weapon> WeaponSelected;
 
-        private void Awake()
-        {
-            
-        }
-
         private void OnEnable() =>
             _weaponButton.onClick.AddListener(OnButtonClick);
 

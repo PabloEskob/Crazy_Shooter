@@ -24,7 +24,11 @@ namespace InfimaGames.LowPolyShooterPack
 
         [SerializeField] private UpgradeConfig _upgradeConfig;
         [SerializeField] private BulletPool _bulletPool;
-        
+        [SerializeField] private float _damage;
+        [SerializeField] private float _fireRate;
+        [SerializeField] private float _reloadSpeed;
+        [SerializeField] private float _magazineSize;
+
         [Header("Settings")]
         
         [Tooltip("Weapon Name. Currently not used for anything, but in the future, we will use this for pickups!")]
@@ -174,11 +178,6 @@ namespace InfimaGames.LowPolyShooterPack
         #endregion
 
         #region FIELDS
-
-        private float _damage;
-        private float _fireRate;
-        private float _reloadSpeed;
-        private float _magazineSize;
         
         /// <summary>
         /// Weapon Animator.
@@ -236,6 +235,7 @@ namespace InfimaGames.LowPolyShooterPack
         private Transform playerCamera;
         
         #endregion
+        
         public UpgradeConfig UpgradeConfig => _upgradeConfig;
 
         #region UNITY
