@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 1173631881349560264}
   - component: {fileID: 4992435269036673208}
   - component: {fileID: -5958635422326733963}
+  - component: {fileID: 5622123122573328805}
   m_Layer: 3
   m_Name: BaseEnemy
   m_TagString: Untagged
@@ -200,7 +201,6 @@ MonoBehaviour:
   _fxHeadShot: {fileID: 0}
   _deathFx: {fileID: 1246534896543721760}
   _blood: {fileID: 0}
-  _shotSound: {fileID: 0}
   _headShot: {fileID: -5958635422326733963}
 --- !u!82 &-5958635422326733963
 AudioSource:
@@ -298,6 +298,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5622123122573328805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184830516390962201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db831026396d6f140992e2f8761bf74b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObject: {fileID: 3106334514117949788, guid: ac6d376b7a3cbb249b171612440bde8f, type: 3}
 --- !u!1 &8888104517242071759
 GameObject:
   m_ObjectHideFlags: 0

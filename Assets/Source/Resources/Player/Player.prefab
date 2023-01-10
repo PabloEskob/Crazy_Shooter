@@ -55,6 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMove: {fileID: -5496601752708824502}
   _playerHealth: {fileID: 2726731537384108982}
+  _targetPointer: {fileID: 5458613007620290653}
 --- !u!114 &2726731537384108982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +280,18 @@ PrefabInstance:
       propertyPath: yClamp.x
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 4810921135021838972, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810921135021838972, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810921135021838972, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5284803560652665282, guid: 1e078682981af594eb08df705e283869, type: 3}
       propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -367,5 +380,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cedea47162792a74cb9ec77109d20e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5458613007620290653 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2335006326241780921, guid: 1e078682981af594eb08df705e283869, type: 3}
+  m_PrefabInstance: {fileID: 7757301365099388132}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce15bc660dfceda49862d7645c31f78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
