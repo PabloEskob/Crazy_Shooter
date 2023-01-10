@@ -3,14 +3,19 @@ using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuyButton : MonoBehaviour
 {
+    [SerializeField] private Button _button;
     [SerializeField] private List<UpgradeType> _upgradeTypes;
     [SerializeField] private UpgradePanel _upgradePanel;
-    [SerializeField] private TMP_Text _price;
+    [SerializeField] private TMP_Text _priceText;
 
     private Weapon _weapon;
+    private int _currentPrice;
+
+    public Button Button => _button;
 
     private void OnEnable()
     {
@@ -32,7 +37,9 @@ public class BuyButton : MonoBehaviour
     private void OnWeaponSet(Weapon weapon)
     {
         _weapon = weapon;
-        SetPriceText(_weapon.UpgradeConfig.GunFrameUpgrades[0].Price);
+        SetPrice(_weapon.GetFrameUpgrade().Price);
+        DisplayPriceText();
+
     }
 
     private void OnUpgradeChoosed(UpgradeType upgrade)
@@ -40,24 +47,29 @@ public class BuyButton : MonoBehaviour
         switch (upgrade)
         {
             case FrameUpgrade:
-                SetPriceText(_weapon.UpgradeConfig.GunFrameUpgrades[0].Price);
+                SetPrice(_weapon.GetFrameUpgrade().Price);
                 break;
             case MuzzleUpgrade:
-                SetPriceText(_weapon.UpgradeConfig.MuzzleUpgrades[0].Price);
+                SetPrice(_weapon.GetMuzzleUpgrade().Price);
                 break;
             case ScopeUpgrade:
-                SetPriceText(_weapon.UpgradeConfig.ScopeUpgrades[0].Price);
+                SetPrice(_weapon.GetScopeUpgrade().Price);
                 break;
             case BulletsUpgrade:
-                SetPriceText(_weapon.UpgradeConfig.BulletUpgrades[0].Price);
+                SetPrice(_weapon.GetBulletsUpgrade().Price);
                 break;
             case MagazineUpgrade:
-                SetPriceText(_weapon.UpgradeConfig.MagazineUpgrades[0].Price);
+                SetPrice(_weapon.GetMagazineUpgrade().Price);
                 break;
         }
+
+        DisplayPriceText();
     }
 
+    private void DisplayPriceText() =>
+        _priceText.text = _currentPrice.ToString();
 
-    private void SetPriceText(int price) => 
-        _price.text = price.ToString();
+    private void SetPrice(int price) => 
+        _currentPrice = price;
+
 }

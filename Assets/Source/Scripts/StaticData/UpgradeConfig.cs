@@ -25,13 +25,7 @@ namespace Source.Scripts.StaticData
     [Serializable]
     public class GunFrameUpgrade : WeaponUpgrade
     {
-        public int Level => _level;
-        public float Damage => _damage;
-        public float FireRate => _fireRate;
-        public float Reload => _reload;
-        public float MagazineSize => _magazineSize;
-        public int Price => _price;
-
+       
         public override void GetName()
         {
             throw new NotImplementedException();
@@ -41,13 +35,6 @@ namespace Source.Scripts.StaticData
     [Serializable]
     public class MuzzleUpgrade : WeaponUpgrade
     {
-        public int Level => _level;
-        public float Damage => _damage;
-        public float FireRate => _fireRate;
-        public float Reload => _reload;
-        public float MagazineSize => _magazineSize;
-        public int Price => _price;
-
         public override void GetName()
         {
             throw new NotImplementedException();
@@ -57,13 +44,6 @@ namespace Source.Scripts.StaticData
     [Serializable]
     public class ScopeUpgrade : WeaponUpgrade
     {
-        public int Level => _level;
-        public float Damage => _damage;
-        public float FireRate => _fireRate;
-        public float Reload => _reload;
-        public float MagazineSize => _magazineSize;
-        public int Price => _price;
-
         public override void GetName()
         {
             throw new NotImplementedException();
@@ -73,13 +53,6 @@ namespace Source.Scripts.StaticData
     [Serializable]
     public class BulletUpgrade : WeaponUpgrade
     {
-        public int Level => _level;
-        public float Damage => _damage;
-        public float FireRate => _fireRate;
-        public float Reload => _reload;
-        public float MagazineSize => _magazineSize;
-        public int Price => _price;
-
         public override void GetName()
         {
             throw new NotImplementedException();
@@ -89,13 +62,6 @@ namespace Source.Scripts.StaticData
     [Serializable]
     public class MagazineUpgrade : WeaponUpgrade
     {
-        public int Level => _level;
-        public float Damage => _damage;
-        public float FireRate => _fireRate;
-        public float Reload => _reload;
-        public float MagazineSize => _magazineSize;
-        public int Price => _price;
-
         public override void GetName()
         {
             throw new NotImplementedException();
@@ -110,6 +76,13 @@ namespace Source.Scripts.StaticData
         [SerializeField] protected float _reload;
         [SerializeField] protected float _magazineSize;
         [SerializeField] protected int _price;
+
+        public int Level => _level;
+        public float Damage => _damage;
+        public float FireRate => _fireRate;
+        public float Reload => _reload;
+        public float MagazineSize => _magazineSize;
+        public int Price => _price;
 
         public abstract void GetName();
     }
