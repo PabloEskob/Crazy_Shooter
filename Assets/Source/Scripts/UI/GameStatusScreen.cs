@@ -2,8 +2,26 @@ using UnityEngine;
 
 public class GameStatusScreen : MonoBehaviour
 {
-    public VictoryScreen VictoryScreen { get; private set; }
+    private void OnDisable() =>
+        _playerDeath.OnDied -= PlayerOnDied;
+
+    private PlayerDeath _playerDeath;
+    private SwitchScreen _switchScreen;
+
+    public Player Player { get; set; }
 
     private void Awake() =>
-        VictoryScreen = GetComponentInChildren<VictoryScreen>();
+        _switchScreen = GetComponentInChildren<SwitchScreen>();
+
+    private void Start()
+    {
+        _playerDeath = Player.GetComponent<PlayerDeath>();
+        _playerDeath.OnDied += PlayerOnDied;
+    }
+
+    public void PlayerVictory() =>
+        _switchScreen.ShowVictoryScreen();
+
+    private void PlayerOnDied() =>
+        _switchScreen.ShowDefeatScreen();
 }

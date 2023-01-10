@@ -49,5 +49,5 @@ public class StartScene : MonoBehaviour
     }
 
     private void LaunchVictoryScreen() =>
-        _gameStatusScreen.VictoryScreen.Show();
+        _gameStatusScreen.PlayerVictory();
 }

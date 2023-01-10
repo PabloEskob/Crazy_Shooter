@@ -243,7 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5572710068416927441}
   m_Layer: 0
-  m_Name: P_LPSP_UI_Loading Screen
+  m_Name: LoadingScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

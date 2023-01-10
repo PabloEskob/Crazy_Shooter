@@ -28,10 +28,11 @@ namespace Source.Scripts.Infrastructure.Factory
         public Player CreatePlayer(GameObject initialPoint) =>
             InstantiateRegistered(AssetPath.PlayerPath, initialPoint.transform.position);
 
-        public void CreateHUD()
+        public void CreateHUD(Player player)
         {
             _gameStatusScreen = _assetProvider.Instantiate(AssetPath.PathGameStatusScreen)
                 .GetComponent<GameStatusScreen>();
+            _gameStatusScreen.Player = player;
         }
 
         public void CreateStartScene()

@@ -3,6 +3,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using InfimaGames.LowPolyShooterPack.Interface;
 using UnityEngine.InputSystem;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -78,6 +79,8 @@ namespace InfimaGames.LowPolyShooterPack
 
         [Tooltip("Grenade Throw Audio Clips.")] [SerializeField]
         private AudioClip[] audioClipsGrenadeThrow;
+
+        private ShotAimCrosshair _crosshair;
 
         #endregion
 
@@ -398,6 +401,9 @@ namespace InfimaGames.LowPolyShooterPack
                     break;
             }
 
+            if (_crosshair == null)
+                _crosshair = GetComponent<CanvasSpawner>().CurrentCanvas.GetComponent<ShotAimCrosshair>();
+
             //Holding the firing button.
             if (holdingButtonFire && _lock == false)
             {
@@ -717,6 +723,9 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void Fire()
         {
+           
+
+            _crosshair.Shot();
             //Save the shot time, so we can calculate the fire rate correctly.
             lastShotTime = Time.time;
             //Fire the weapon! Make sure that we also pass the scope's spread multiplier if we're aiming.

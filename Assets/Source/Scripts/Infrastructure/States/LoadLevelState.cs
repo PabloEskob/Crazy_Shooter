@@ -45,7 +45,7 @@ namespace Source.Infrastructure
         private void InitGameWorld()
         {
             Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
-            _gameFactory.CreateHUD();
+            _gameFactory.CreateHUD(player);
             InitSpawners();
             _gameFactory.CreateStartScene();
         }

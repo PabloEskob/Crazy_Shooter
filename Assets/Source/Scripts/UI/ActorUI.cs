@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ActorUI : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class ActorUI : MonoBehaviour
     private PlayerHealth _playerHealth;
     private ButtonForward _buttonForward;
     private PlayerMove _playerMove;
+    private GameStatusScreen _gameStatusScreen;
 
     public ButtonForward ButtonForward => _buttonForward;
 
