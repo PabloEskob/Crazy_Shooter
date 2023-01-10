@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class EnemyPointer : MonoBehaviour
@@ -11,18 +10,15 @@ public class EnemyPointer : MonoBehaviour
     private Vector3 _fromPlayerToEnemy;
     private Plane[] _planes;
     private EnemyDeath _enemyDeath;
-
-    private void OnDisable() => 
-        _enemyDeath.Happened -= RemovePointer;
-
+    
     private void Start()
     {
         _player = GetComponent<EnemyMove>().Player.GetComponent<Player>().TargetPointer.transform;
+        _enemyDeath = GetComponent<EnemyDeath>();
         _camera = Camera.main;
         _enemyPointers = GameObject.FindGameObjectWithTag("GameStatusScreen").GetComponentInChildren<EnemyPointers>();
         _point = _enemyPointers.InstantiatePoint();
-        _enemyDeath = GetComponent<EnemyDeath>();
-        _enemyDeath.Happened += RemovePointer;
+        _point.Construct(_enemyDeath);
     }
 
     private void LateUpdate()
@@ -58,7 +54,4 @@ public class EnemyPointer : MonoBehaviour
             _ => planeIndex == 3 ? Quaternion.Euler(0, 0, 0) : Quaternion.identity
         };
     }
-
-    private void RemovePointer() => 
-        _point.gameObject.SetActive(false);
 }
