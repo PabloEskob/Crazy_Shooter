@@ -31,7 +31,6 @@ namespace Source.Infrastructure
         public void Enter()
         {
             _loadingScreen.Show();
-            //_gameFactory.Cleanup();
             _sceneLoader.Load("NewScene", OnLoaded);
         }
 
@@ -43,20 +42,12 @@ namespace Source.Infrastructure
             _gameStateMachine.Enter<GameLoopState>();
         }
 
-
-        private void InformProgressReaders()
-        {
-            // foreach (ISavedProgressReader progressReader in _gameFactory.ProgressReaders)
-            //     progressReader.LoadProgress(_progressService.Progress);
-        }
-
         private void InitGameWorld()
         {
             Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
-            _gameFactory.CreateHUD();
+            _gameFactory.CreateHUD(player);
             InitSpawners();
             _gameFactory.CreateStartScene();
-            // _launchRoom.Fill(_gameFactory);
         }
 
         private void InitSpawners()

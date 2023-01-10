@@ -8,14 +8,11 @@ public class LaunchRoom : MonoBehaviour
 
     public event Action Allowed;
     public event Action EndedRoom;
-    public event Action Disabled;
 
     private void OnDisable()
     {
         foreach (var room in _rooms)
             room.StartedNewRoom -= StartedNewRoom;
-
-        Disabled?.Invoke();
     }
 
     public void Fill(IGameFactory gameFactory)

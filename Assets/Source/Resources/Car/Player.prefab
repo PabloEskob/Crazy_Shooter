@@ -554,7 +554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8220570216239197669}
   - component: {fileID: 1869058149268779877}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Camera Depth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1298,8 +1298,8 @@ GameObject:
   - component: {fileID: 1288191700920227960}
   - component: {fileID: 3473377719113845265}
   - component: {fileID: 4683947833910904630}
-  m_Layer: 9
-  m_Name: Camera
+  m_Layer: 0
+  m_Name: CameraMain
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2485,7 +2485,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_ActionId: 9beb2473-ee7d-4a54-857b-b42a64a66a65
     m_ActionName: Player/Lock Cursor[/Keyboard/escape]
   - m_PersistentCalls:
@@ -2645,7 +2645,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_ActionId: 4d7208d1-17d0-4afe-9d74-89b2ba1f71cd
     m_ActionName: MobileActionMap/Lock Cursor[/Keyboard/escape,/Keyboard/p]
   - m_PersistentCalls:
