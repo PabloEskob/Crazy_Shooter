@@ -88,6 +88,8 @@ MonoBehaviour:
   - {fileID: 4063320247077492113}
   - {fileID: 6120477373297522240}
   - {fileID: 7922444355933267288}
+  _buyButton: {fileID: 6349388993886727487}
+  _statsDisplay: {fileID: 5415976977219797099}
 --- !u!1 &74304107388811504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,6 +1215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023989fa067c489098d91909a47c9883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 8266206256095326958}
   _upgradeTypes:
   - {fileID: 5612749648428075571}
   - {fileID: 6696553724071454728}
@@ -1220,7 +1223,7 @@ MonoBehaviour:
   - {fileID: 6120477373297522240}
   - {fileID: 7922444355933267288}
   _upgradePanel: {fileID: 5899456178735791713}
-  _price: {fileID: 1864310818257692146}
+  _priceText: {fileID: 1864310818257692146}
 --- !u!1 &1751508649347282136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,6 +1797,7 @@ MonoBehaviour:
   - {fileID: 4063320247077492113}
   - {fileID: 6120477373297522240}
   - {fileID: 7922444355933267288}
+  _upgradePanel: {fileID: 5899456178735791713}
   _damageValue: {fileID: 6160791408419916452}
   _fireRateValue: {fileID: 622393873544665904}
   _reloadValue: {fileID: 4165923957514043155}

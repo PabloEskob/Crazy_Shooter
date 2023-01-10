@@ -1,11 +1,14 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
 using System;
+using System.Collections.Generic;
 using Agava.YandexGames;
 using InfimaGames.LowPolyShooterPack.Legacy;
 using Source.Scripts.Data;
 using Source.Scripts.SaveSystem;
 using Source.Scripts.StaticData;
+using Source.Scripts.Ui;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Serialization;
@@ -19,7 +22,7 @@ namespace InfimaGames.LowPolyShooterPack
     public class Weapon : WeaponBehaviour
     {
         private WeaponData _data = new WeaponData();
-        
+
         #region FIELDS SERIALIZED
 
         [SerializeField] private UpgradeConfig _upgradeConfig;
@@ -28,13 +31,21 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField] private float _fireRate;
         [SerializeField] private float _reloadSpeed;
         [SerializeField] private float _magazineSize;
+        [SerializeField] private int _maxUpgradeLevel = 4;
+
+        private int _frameUpgradeLevel;
+        private int _muzzleUpgradeLevel;
+        private int _scopeUpgradeLevel;
+        private int _bulletsUpgradeLevel;
+        private int _magazineSizeUpgradeLevel;
+
 
         [Header("Settings")]
-        
+
         [Tooltip("Weapon Name. Currently not used for anything, but in the future, we will use this for pickups!")]
-        [SerializeField] 
+        [SerializeField]
         private string weaponName;
-        
+
         [Tooltip("How much the character's movement speed is multiplied by when wielding this weapon.")]
         [SerializeField]
         private float multiplierMovementSpeed = 1.0f;
@@ -42,13 +53,13 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField] private string _weaponType;
         [SerializeField] private bool _isBought;
         [SerializeField] private bool _isEquipped;
-        
+
         [Header("Firing")]
 
         [Tooltip("Is this weapon automatic? If yes, then holding down the firing button will continuously fire.")]
-        [SerializeField] 
+        [SerializeField]
         private bool automatic;
-        
+
         [Tooltip("Is this weapon bolt-action? If yes, then a bolt-action animation will play after every shot.")]
         [SerializeField]
         private bool boltAction;
@@ -56,17 +67,17 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Amount of shots fired at once. Helpful for things like shotguns, where there are multiple projectiles fired at once.")]
         [SerializeField]
         private int shotCount = 1;
-        
+
         [Tooltip("How far the weapon can fire from the center of the screen.")]
         [SerializeField]
         private float spread = 0.25f;
-        
+
         [Tooltip("How fast the projectiles are.")]
         [SerializeField]
         private float projectileImpulse = 400.0f;
 
         [Tooltip("Amount of shots this weapon can shoot in a minute. It determines how fast the weapon shoots.")]
-        [SerializeField] 
+        [SerializeField]
         private int roundsPerMinutes = 200;
 
         [Tooltip("Mask of things recognized when firing.")]
@@ -78,11 +89,11 @@ namespace InfimaGames.LowPolyShooterPack
         private float maximumDistance = 500.0f;
 
         [Header("Reloading")]
-        
+
         [Tooltip("Determines if this weapon reloads in cycles, meaning that it inserts one bullet at a time, or not.")]
         [SerializeField]
         private bool cycledReload;
-        
+
         [Tooltip("Determines if the player can reload this weapon when it is full of ammunition.")]
         [SerializeField]
         private bool canReloadWhenFull = true;
@@ -108,7 +119,7 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Sway smoothing value. Makes the weapon sway smoother.")]
         [SerializeField]
         private float swaySmoothValue = 10.0f;
-        
+
         [Tooltip("Character arms sway when wielding this weapon.")]
         [SerializeField]
         private Sway sway;
@@ -118,19 +129,19 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Casing Prefab.")]
         [SerializeField]
         private GameObject prefabCasing;
-        
+
         [Tooltip("Projectile Prefab. This is the prefab spawned when the weapon shoots.")]
         [SerializeField]
         private GameObject prefabProjectile;
-        
+
         [Tooltip("The AnimatorController a player character needs to use while wielding this weapon.")]
-        [SerializeField] 
+        [SerializeField]
         public RuntimeAnimatorController controller;
 
         [Tooltip("Weapon Body Texture.")]
         [SerializeField]
         private Sprite spriteBody;
-        
+
         [Header("Audio Clips Holster")]
 
         [Tooltip("Holster Audio Clip.")]
@@ -140,37 +151,37 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Unholster Audio Clip.")]
         [SerializeField]
         private AudioClip audioClipUnholster;
-        
+
         [Header("Audio Clips Reloads")]
 
         [Tooltip("Reload Audio Clip.")]
         [SerializeField]
         private AudioClip audioClipReload;
-        
+
         [Tooltip("Reload Empty Audio Clip.")]
         [SerializeField]
         private AudioClip audioClipReloadEmpty;
-        
+
         [Header("Audio Clips Reloads Cycled")]
-        
+
         [Tooltip("Reload Open Audio Clip.")]
         [SerializeField]
         private AudioClip audioClipReloadOpen;
-        
+
         [Tooltip("Reload Insert Audio Clip.")]
         [SerializeField]
         private AudioClip audioClipReloadInsert;
-        
+
         [Tooltip("Reload Close Audio Clip.")]
         [SerializeField]
         private AudioClip audioClipReloadClose;
-        
+
         [Header("Audio Clips Other")]
 
         [Tooltip("AudioClip played when this weapon is fired without any ammunition.")]
         [SerializeField]
         private AudioClip audioClipFireEmpty;
-        
+
         [Tooltip("")]
         [SerializeField]
         private AudioClip audioClipBoltAction;
@@ -178,7 +189,7 @@ namespace InfimaGames.LowPolyShooterPack
         #endregion
 
         #region FIELDS
-        
+
         /// <summary>
         /// Weapon Animator.
         /// </summary>
@@ -194,12 +205,12 @@ namespace InfimaGames.LowPolyShooterPack
         private int ammunitionCurrent;
 
         #region Attachment Behaviours
-        
+
         /// <summary>
         /// Equipped scope Reference.
         /// </summary>
         private ScopeBehaviour scopeBehaviour;
-        
+
         /// <summary>
         /// Equipped Magazine Reference.
         /// </summary>
@@ -233,13 +244,13 @@ namespace InfimaGames.LowPolyShooterPack
         /// The player character's camera.
         /// </summary>
         private Transform playerCamera;
-        
+
         #endregion
-        
+
         public UpgradeConfig UpgradeConfig => _upgradeConfig;
 
         #region UNITY
-        
+
         protected override void Awake()
         {
             //Get Animator.
@@ -252,9 +263,9 @@ namespace InfimaGames.LowPolyShooterPack
             //Cache the player character.
             characterBehaviour = gameModeService.GetPlayerCharacter();
             //Cache the world camera. We use this in line traces.
-            if(characterBehaviour != null)
+            if (characterBehaviour != null)
                 playerCamera = characterBehaviour.GetCameraWorld().transform;
-            
+
             _data.WeaponName = weaponName;
             _data.IsBought = _isBought;
         }
@@ -264,7 +275,7 @@ namespace InfimaGames.LowPolyShooterPack
 
             //Get Scope.
             scopeBehaviour = attachmentManager.GetEquippedScope();
-            
+
             //Get Magazine.
             magazineBehaviour = attachmentManager.GetEquippedMagazine();
             //Get Muzzle.
@@ -289,14 +300,14 @@ namespace InfimaGames.LowPolyShooterPack
         public float FireRate => _fireRate;
         public float ReloadSpeed => _reloadSpeed;
         public float MagazineSize => _magazineSize;
-        
+
         public override string GetName() => weaponName;
-        
+
         public override string GetWeaponType() => _weaponType;
 
         public WeaponData GetData() => _data;
 
-        public void SetData(String name) => 
+        public void SetData(String name) =>
             _data = name.ToDeserialized<WeaponData>();
 
         public void SetBoolsFromData()
@@ -304,36 +315,36 @@ namespace InfimaGames.LowPolyShooterPack
             _isBought = _data.IsBought;
             _isEquipped = _data.IsEquipped;
         }
-        
+
         public override Offsets GetWeaponOffsets() => weaponOffsets;
-        
+
         public override float GetFieldOfViewMultiplierAim()
         {
             //Make sure we don't have any issues even with a broken setup!
-            if (scopeBehaviour != null) 
+            if (scopeBehaviour != null)
                 return scopeBehaviour.GetFieldOfViewMultiplierAim();
-            
+
             //Error.
             Debug.LogError("Weapon has no scope equipped!");
-  
+
             //Return.
             return 1.0f;
         }
         public override float GetFieldOfViewMultiplierAimWeapon()
         {
             //Make sure we don't have any issues even with a broken setup!
-            if (scopeBehaviour != null) 
+            if (scopeBehaviour != null)
                 return scopeBehaviour.GetFieldOfViewMultiplierAimWeapon();
-            
+
             //Error.
             Debug.LogError("Weapon has no scope equipped!");
-  
+
             //Return.
             return 1.0f;
         }
 
         public override Animator GetAnimator() => animator;
-        
+
         public override Sprite GetSpriteBody() => spriteBody;
         public override float GetMultiplierMovementSpeed() => multiplierMovementSpeed;
 
@@ -342,16 +353,16 @@ namespace InfimaGames.LowPolyShooterPack
 
         public override AudioClip GetAudioClipReload() => audioClipReload;
         public override AudioClip GetAudioClipReloadEmpty() => audioClipReloadEmpty;
-        
+
         public override AudioClip GetAudioClipReloadOpen() => audioClipReloadOpen;
         public override AudioClip GetAudioClipReloadInsert() => audioClipReloadInsert;
         public override AudioClip GetAudioClipReloadClose() => audioClipReloadClose;
 
         public override AudioClip GetAudioClipFireEmpty() => audioClipFireEmpty;
         public override AudioClip GetAudioClipBoltAction() => audioClipBoltAction;
-        
+
         public override AudioClip GetAudioClipFire() => muzzleBehaviour.GetAudioClipFire();
-        
+
         public override int GetAmmunitionCurrent() => ammunitionCurrent;
 
         public override int GetAmmunitionTotal() => magazineBehaviour.GetAmmunitionTotal();
@@ -368,13 +379,13 @@ namespace InfimaGames.LowPolyShooterPack
 
         public override bool CanReloadWhenFull() => canReloadWhenFull;
         public override float GetRateOfFire() => roundsPerMinutes;
-        
+
         public override bool IsFull() => ammunitionCurrent == magazineBehaviour.GetAmmunitionTotal();
         public override bool HasAmmunition() => ammunitionCurrent > 0;
 
         public override RuntimeAnimatorController GetAnimatorController() => controller;
         public override WeaponAttachmentManagerBehaviour GetAttachmentManager() => attachmentManager;
-        
+
         public override Sway GetSway() => sway;
         public override float GetSwaySmoothValue() => swaySmoothValue;
 
@@ -405,7 +416,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Set Reloading Bool. This helps cycled reloads know when they need to stop cycling.
             const string boolName = "Reloading";
             animator.SetBool(boolName, true);
-            
+
             //Play Reload Animation.
             animator.Play(cycledReload ? "Reload Open" : (HasAmmunition() ? "Reload" : "Reload Empty"), 0, 0.0f);
         }
@@ -414,14 +425,14 @@ namespace InfimaGames.LowPolyShooterPack
             //We need a muzzle in order to fire this weapon!
             if (muzzleBehaviour == null)
                 return;
-            
+
             //Make sure that we have a camera cached, otherwise we don't really have the ability to perform traces.
             if (playerCamera == null)
                 return;
 
             //Get Muzzle Socket. This is the point we fire from.
             Transform muzzleSocket = muzzleBehaviour.GetSocket();
-            
+
             //Play the firing animation.
             const string stateName = "Fire";
             animator.Play(stateName, 0, 0.0f);
@@ -431,7 +442,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Set the slide back if we just ran out of ammunition.
             if (ammunitionCurrent == 0)
                 SetSlideBack(1);
-            
+
             //Play all muzzle effects.
             //muzzleBehaviour.Effect();
 
@@ -444,22 +455,22 @@ namespace InfimaGames.LowPolyShooterPack
                 spreadValue.z = 0;
                 //Convert to world space.
                 spreadValue = muzzleSocket.TransformDirection(spreadValue);
-            
+
                 //Determine the rotation that we want to shoot our projectile in.
                 Quaternion rotation = Quaternion.LookRotation(playerCamera.forward * 1000.0f + spreadValue - muzzleSocket.position);
-            
+
                 //If there's something blocking, then we can aim directly at that thing, which will result in more accurate shooting.
                 if (Physics.Raycast(new Ray(playerCamera.position, playerCamera.forward),
                     out RaycastHit hit, maximumDistance, mask))
                     rotation = Quaternion.LookRotation(hit.point + spreadValue - muzzleSocket.position);
-                
+
                 //Spawn projectile from the projectile spawn point.
                 //GameObject projectile = Instantiate(prefabProjectile, muzzleSocket.position, rotation);
                 Projectile projectile = _bulletPool.CreateProjectile();
                 projectile.transform.rotation = rotation;
                 projectile.transform.position = muzzleSocket.position;
                 //Add velocity to the projectile.
-                projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;   
+                projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;
                 projectile.transform.parent = null;
             }
         }
@@ -467,7 +478,7 @@ namespace InfimaGames.LowPolyShooterPack
         public override void FillAmmunition(int amount)
         {
             //Update the value by a certain amount.
-            ammunitionCurrent = amount != 0 ? Mathf.Clamp(ammunitionCurrent + amount, 
+            ammunitionCurrent = amount != 0 ? Mathf.Clamp(ammunitionCurrent + amount,
                 0, GetAmmunitionTotal()) : magazineBehaviour.GetAmmunitionTotal();
         }
         public override void SetSlideBack(int back)
@@ -480,8 +491,112 @@ namespace InfimaGames.LowPolyShooterPack
         public override void EjectCasing()
         {
             //Spawn casing prefab at spawn point.
-            if(prefabCasing != null && socketEjection != null)
+            if (prefabCasing != null && socketEjection != null)
                 Instantiate(prefabCasing, socketEjection.position, socketEjection.rotation);
+        }
+
+        public void Upgrade(float damage, float fireRate, float reloadSpeed, float magazineSize)
+        {
+            _damage += damage;
+            _fireRate += fireRate;
+            _reloadSpeed += reloadSpeed;
+            _magazineSize += magazineSize;
+
+            switch (WeaponUpgrade)
+            {
+                case GunFrameUpgrade:
+                    _frameUpgradeLevel++;
+                    break;
+                case Source.Scripts.StaticData.MuzzleUpgrade:
+                    _muzzleUpgradeLevel++;
+                    break;
+                case BulletUpgrade:
+                    _bulletsUpgradeLevel++;
+                    break;
+                case Source.Scripts.StaticData.ScopeUpgrade:
+                    _scopeUpgradeLevel++;
+                    break;
+                case Source.Scripts.StaticData.MagazineUpgrade:
+                    _magazineSizeUpgradeLevel++;
+                    break;
+            }
+        }
+
+        public WeaponUpgrade WeaponUpgrade { get; private set; }
+
+        public WeaponUpgrade GetFrameUpgrade()
+        {
+            for (int i = 0; i < UpgradeConfig.GunFrameUpgrades.Count; i++)
+            {
+                int level = UpgradeConfig.GunFrameUpgrades[i].Level;
+
+                if (level - 1 == _frameUpgradeLevel)
+                {
+                    WeaponUpgrade = UpgradeConfig.GunFrameUpgrades[i];
+                    return WeaponUpgrade;
+                }
+            }
+            return null;
+        }
+
+        public WeaponUpgrade GetMuzzleUpgrade()
+        {
+            for (int i = 0; i < UpgradeConfig.MuzzleUpgrades.Count; i++)
+            {
+                int level = UpgradeConfig.MuzzleUpgrades[i].Level;
+
+                if (level - 1 == _muzzleUpgradeLevel)
+                {
+                    WeaponUpgrade = UpgradeConfig.MuzzleUpgrades[i];
+                    return WeaponUpgrade;
+                }
+            }
+            return null;
+        }
+
+        public WeaponUpgrade GetScopeUpgrade()
+        {
+            for (int i = 0; i < UpgradeConfig.ScopeUpgrades.Count; i++)
+            {
+                int level = UpgradeConfig.ScopeUpgrades[i].Level;
+
+                if (level - 1 == _scopeUpgradeLevel)
+                {
+                    WeaponUpgrade = UpgradeConfig.ScopeUpgrades[i];
+                    return WeaponUpgrade;
+                }
+            }
+            return null;
+        }
+
+        public WeaponUpgrade GetBulletsUpgrade()
+        {
+            for (int i = 0; i < UpgradeConfig.BulletUpgrades.Count; i++)
+            {
+                int level = UpgradeConfig.BulletUpgrades[i].Level;
+
+                if (level - 1 == _bulletsUpgradeLevel)
+                {
+                    WeaponUpgrade = UpgradeConfig.BulletUpgrades[i];
+                    return WeaponUpgrade;
+                }
+            }
+            return null;
+        }
+
+        public WeaponUpgrade GetMagazineUpgrade()
+        {
+            for (int i = 0; i < UpgradeConfig.MagazineUpgrades.Count; i++)
+            {
+                int level = UpgradeConfig.MagazineUpgrades[i].Level;
+
+                if (level - 1 == _magazineSizeUpgradeLevel)
+                {
+                    WeaponUpgrade = UpgradeConfig.MagazineUpgrades[i];
+                    return WeaponUpgrade;
+                }
+            }
+            return null;
         }
 
         #endregion
