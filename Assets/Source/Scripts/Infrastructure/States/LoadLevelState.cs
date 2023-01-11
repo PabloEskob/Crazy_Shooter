@@ -46,18 +46,7 @@ namespace Source.Infrastructure
         {
             Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
             _gameFactory.CreateHUD(player);
-            InitSpawners();
             _gameFactory.CreateStartScene();
-        }
-
-        private void InitSpawners()
-        {
-            foreach (GameObject spawnerGameObject in GameObject.FindGameObjectsWithTag(EnemySpawnerTag))
-            {
-                var spawner = spawnerGameObject.GetComponent<EnemySpawner>();
-                spawner.Construct(_gameFactory);
-                spawner.CreateQuantityEnemy();
-            }
         }
     }
 }
