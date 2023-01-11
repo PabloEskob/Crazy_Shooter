@@ -43,10 +43,8 @@ public class UpgradePanel : MonoBehaviour
         WeaponSet -= OnWeaponSet;
     }
 
-    private void OnValuesSet(float damage, float fireRate, float reloadSpeed, float magazineSize)
-    {
+    private void OnValuesSet(float damage, float fireRate, float reloadSpeed, float magazineSize) => 
         UpdateUpgradeValues(damage, fireRate, reloadSpeed, magazineSize);
-    }
 
     private void OnUpgradeChoosed(UpgradeType upgradeType)
     {
@@ -83,6 +81,7 @@ public class UpgradePanel : MonoBehaviour
     private void OnBuyButtonClick()
     {
         _currentWeapon.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
+        _currentWeapon.UpdateStatsToData();
         Upgraded?.Invoke();
     }
 }

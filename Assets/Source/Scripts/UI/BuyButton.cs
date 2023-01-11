@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
@@ -14,6 +15,7 @@ public class BuyButton : MonoBehaviour
 
     private Weapon _weapon;
     private int _currentPrice;
+    private UpgradeType _currentUpgrade;
 
     public Button Button => _button;
 
@@ -21,6 +23,7 @@ public class BuyButton : MonoBehaviour
     {
         _weapon = _upgradePanel.CurrentWeapon;
         _upgradePanel.WeaponSet += OnWeaponSet;
+        _upgradePanel.Upgraded += OnUpgraded;
 
         foreach (var upgrade in _upgradeTypes)
             upgrade.UpgradeChoosed += OnUpgradeChoosed;
@@ -29,9 +32,15 @@ public class BuyButton : MonoBehaviour
     private void OnDisable()
     {
         _upgradePanel.WeaponSet -= OnWeaponSet;
+        _upgradePanel.Upgraded -= OnUpgraded;
 
         foreach (var upgrade in _upgradeTypes)
             upgrade.UpgradeChoosed -= OnUpgradeChoosed;
+    }
+
+    private void OnUpgraded()
+    {
+        OnUpgradeChoosed(_currentUpgrade);
     }
 
     private void OnWeaponSet(Weapon weapon)
@@ -44,6 +53,8 @@ public class BuyButton : MonoBehaviour
 
     private void OnUpgradeChoosed(UpgradeType upgrade)
     {
+        _currentUpgrade = upgrade;
+
         switch (upgrade)
         {
             case FrameUpgrade:
@@ -69,7 +80,7 @@ public class BuyButton : MonoBehaviour
     private void DisplayPriceText() =>
         _priceText.text = _currentPrice.ToString();
 
-    private void SetPrice(int price) => 
+    private void SetPrice(int price) =>
         _currentPrice = price;
 
 }

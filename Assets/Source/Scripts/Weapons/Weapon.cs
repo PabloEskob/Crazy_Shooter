@@ -599,6 +599,32 @@ namespace InfimaGames.LowPolyShooterPack
             return null;
         }
 
+        public void UpdateStatsToData()
+        {
+            _data.Damage = _damage;
+            _data.FireRate = _fireRate;
+            _data.Reload = _reloadSpeed;
+            _data.MagazineSize = _magazineSize;
+            _data.FrameUpgradeLevel = _frameUpgradeLevel;
+            _data.MuzzleUpgradeLevel = _muzzleUpgradeLevel;
+            _data.ScopeUpgradeLevel = _scopeUpgradeLevel;
+            _data.BulletsUpgradeLevel = _bulletsUpgradeLevel;
+            _data.MagazineUpgradeLevel = _magazineSizeUpgradeLevel;
+        }
+
+        public void UpdateStatsFromData()
+        {
+            _damage = _data.Damage;
+            _fireRate = _data.FireRate;
+            _reloadSpeed = _data.Reload;
+            _magazineSize = _data.MagazineSize;
+            _frameUpgradeLevel = _data.FrameUpgradeLevel;
+            _muzzleUpgradeLevel = _data.MuzzleUpgradeLevel;
+            _scopeUpgradeLevel = _data.ScopeUpgradeLevel;
+            _bulletsUpgradeLevel = _data.BulletsUpgradeLevel;
+            _magazineSizeUpgradeLevel = _data.MagazineUpgradeLevel;
+        }
+
         #endregion
     }
 }

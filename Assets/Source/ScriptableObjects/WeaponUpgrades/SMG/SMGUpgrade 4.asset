@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b0666a4babd4249a1115f77031b11f, type: 3}
+  m_Name: SMGUpgrade 4
+  m_EditorClassIdentifier: 
+  _gunFrameUpgrades:
+  - _level: 1
+    _damage: 1.66
+    _fireRate: 0.1
+    _reload: 0
+    _magazineSize: 0
+    _price: 1000
+  - _level: 2
+    _damage: 2.2
+    _fireRate: 0.2
+    _reload: 0
+    _magazineSize: 0
+    _price: 2000
+  - _level: 3
+    _damage: 3.3
+    _fireRate: 0.3
+    _reload: 0
+    _magazineSize: 0
+    _price: 3000
+  - _level: 4
+    _damage: 4.4
+    _fireRate: 0.4
+    _reload: 0
+    _magazineSize: 0
+    _price: 4000
+  _muzzleUpgrades:
+  - _level: 1
+    _damage: 2.5
+    _fireRate: 0.1
+    _reload: 0
+    _magazineSize: 0
+    _price: 1001
+  - _level: 2
+    _damage: 2.5
+    _fireRate: 0.1
+    _reload: 0
+    _magazineSize: 0
+    _price: 1001
+  - _level: 3
+    _damage: 2.5
+    _fireRate: 0.1
+    _reload: 0
+    _magazineSize: 0
+    _price: 1001
+  - _level: 4
+    _damage: 2.5
+    _fireRate: 0.1
+    _reload: 0
+    _magazineSize: 0
+    _price: 1001
+  _scopeUpgrades:
+  - _level: 1
+    _damage: 0
+    _fireRate: 0.05
+    _reload: 0
+    _magazineSize: 0
+    _price: 1002
+  - _level: 2
+    _damage: 0
+    _fireRate: 0.05
+    _reload: 0
+    _magazineSize: 0
+    _price: 1002
+  - _level: 3
+    _damage: 0
+    _fireRate: 0.05
+    _reload: 0
+    _magazineSize: 0
+    _price: 1002
+  - _level: 4
+    _damage: 0
+    _fireRate: 0.05
+    _reload: 0
+    _magazineSize: 0
+    _price: 1002
+  _bulletsUpgrades:
+  - _level: 1
+    _damage: 2
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 0
+    _price: 1003
+  - _level: 2
+    _damage: 2
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 0
+    _price: 1003
+  - _level: 3
+    _damage: 2
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 0
+    _price: 1003
+  - _level: 4
+    _damage: 2
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 0
+    _price: 1003
+  _magazineUpgrades:
+  - _level: 1
+    _damage: 0
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 2
+    _price: 1004
+  - _level: 2
+    _damage: 0
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 2
+    _price: 1004
+  - _level: 3
+    _damage: 0
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 2
+    _price: 1004
+  - _level: 4
+    _damage: 0
+    _fireRate: 0
+    _reload: 0
+    _magazineSize: 2
+    _price: 1004
