@@ -1,5 +1,6 @@
 using Source.Infrastructure.States;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
+using UnityEngine;
 
 namespace Source.Infrastructure
 {
@@ -13,7 +14,11 @@ namespace Source.Infrastructure
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IStorage storage,LoadingScreen loadingScreen, IGameFactory gameFactory, IStaticDataService staticData)
+        private const string PlayerInitialPointTag = "PlayerInitialPointTag";
+        private const string EnemySpawnerTag = "EnemySpawner";
+
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IStorage storage,
+            LoadingScreen loadingScreen, IGameFactory gameFactory, IStaticDataService staticData)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -22,12 +27,10 @@ namespace Source.Infrastructure
             _gameFactory = gameFactory;
             _staticData = staticData;
         }
-        
+
         public void Enter()
         {
             _loadingScreen.Show();
-            //_gameFactory.Cleanup();
-            //_sceneLoader.Load(_staticData.ForLevel(_storage.GetLevel()).SceneName, OnLoaded);
             _sceneLoader.Load("NewScene", OnLoaded);
         }
 
@@ -36,24 +39,14 @@ namespace Source.Infrastructure
         private void OnLoaded()
         {
             InitGameWorld();
-            InformProgressReaders();
-
             _gameStateMachine.Enter<GameLoopState>();
-        }
-
-        private void InformProgressReaders()
-        {
-            // foreach (ISavedProgressReader progressReader in _gameFactory.ProgressReaders)
-            //     progressReader.LoadProgress(_progressService.Progress);
         }
 
         private void InitGameWorld()
         {
-            // GameObject player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
-            //
-            // Camera camera = Camera.main;
-            // camera.GetComponent<CameraController>().SetTarget(player.transform);
+            Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
+            _gameFactory.CreateHUD(player);
+            _gameFactory.CreateStartScene();
         }
-        
     }
 }

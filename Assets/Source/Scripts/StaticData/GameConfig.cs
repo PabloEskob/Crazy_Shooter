@@ -2,17 +2,16 @@
 
 namespace Source.Scripts.StaticData
 {
-    [CreateAssetMenu(fileName = "New_GameConfig", menuName = "Static Data/GameConfig")]
+    [CreateAssetMenu(fileName = "New_GameConfig", menuName = "StaticData/GameConfig")]
     public class GameConfig : ScriptableObject
     {
-        [Min(1)]
-        public int RepeatGameFromLevel = 1;
+        [Min(1)] public int RepeatGameFromLevel = 1;
         public LevelConfig[] LevelConfigs;
     }
 
-        [System.Serializable]
-        public class LevelConfig
+    [System.Serializable]
+    public class LevelConfig
     {
-            public string SceneName;
+        public string SceneName;
     }
 }

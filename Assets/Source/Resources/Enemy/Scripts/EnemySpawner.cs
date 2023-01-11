@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private TriggerSpawn _triggerSpawn;
 
     private int _number;
-    private GameFactory _gameFactory;
+    private IGameFactory _gameFactory;
     private List<Enemy> _enemies;
     private bool _released;
     private bool _clear;
@@ -27,8 +27,10 @@ public class EnemySpawner : MonoBehaviour
             enemy.EnemyDeath.Happened -= TryTurnOnAnotherSpawner;
     }
 
-    private void Start()
+    public void Construct(IGameFactory gameFactory)
     {
+        _gameFactory = gameFactory;
+        
         _enemies = new List<Enemy>();
 
         if (_triggerSpawn != null)
@@ -39,9 +41,6 @@ public class EnemySpawner : MonoBehaviour
         foreach (var enemy in _enemies)
             enemy.EnemyDeath.Happened += TryTurnOnAnotherSpawner;
     }
-
-    public void Init(GameFactory gameFactory) =>
-        _gameFactory = gameFactory;
 
     public void SetNumber(int number) =>
         _number = number;

@@ -6,29 +6,27 @@ public class EnemyMove : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _navMeshAgent;
 
-    private Player _player;
     private Enemy _enemy;
     private float _speed;
 
-    private void Awake()
-    {
+    public Player Player { get; set; }
+
+    private void Awake() =>
         _enemy = GetComponent<Enemy>();
-    }
 
     private void Update()
     {
         if (!_enemy.EnemyDeath.IsDied)
-        {
-            _navMeshAgent.destination = _player.transform.position;
-        }
+            _navMeshAgent.destination = Player.transform.position;
         else
+        {
             _navMeshAgent.speed = 0;
+            _navMeshAgent.enabled = false;
+        }
     }
 
-    public void Init(Player player)
-    {
-        _player = player;
-    }
+    public void Init(Player player) =>
+        Player = player;
 
     public void StopMove()
     {
@@ -36,8 +34,6 @@ public class EnemyMove : MonoBehaviour
         _navMeshAgent.speed = 0;
     }
 
-    public void ContinueMove()
-    {
+    public void ContinueMove() =>
         _navMeshAgent.speed = _speed;
-    }
 }

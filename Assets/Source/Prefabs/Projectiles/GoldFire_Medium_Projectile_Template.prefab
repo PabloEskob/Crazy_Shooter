@@ -14494,10 +14494,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4076906937512713127}
   - component: {fileID: 4054466963736418237}
-  - component: {fileID: 2941933713595411086}
   - component: {fileID: 8787292203492939028}
   - component: {fileID: 4198155060815434475}
   - component: {fileID: 4199084853458837477}
+  - component: {fileID: 215275944095592764}
   m_Layer: 10
   m_Name: GoldFire_Medium_Projectile_Template
   m_TagString: Untagged
@@ -14539,19 +14539,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!65 &2941933713595411086
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4071997348075655003}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8787292203492939028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14565,7 +14552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAfter: 5
-  destroyOnImpact: 0
+  destroyOnImpact: 1
   minDestroyTime: 0.01
   maxDestroyTime: 0.05
   bloodImpactPrefabs:
@@ -19367,3 +19354,16 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!135 &215275944095592764
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4071997348075655003}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.04
+  m_Center: {x: 0, y: 0, z: 0.45}

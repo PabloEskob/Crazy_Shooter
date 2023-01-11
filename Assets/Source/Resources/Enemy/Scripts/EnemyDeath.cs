@@ -6,11 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyHealth))]
 public class EnemyDeath : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem _deathFx;
     [SerializeField] private float _timeDied = 5f;
     [SerializeField] private EnemyHealth _enemyHealth;
     [SerializeField] private EnemyAnimator _enemyAnimator;
-
+    [SerializeField] private Waypoint_Indicator _waypointIndicator;
 
     public bool IsDied { get; private set; }
 
@@ -31,7 +30,8 @@ public class EnemyDeath : MonoBehaviour
         IsDied = true;
 
         _enemyAnimator.PlayDeath();
-        ShowBlood();
+        _waypointIndicator.enabled = false;
+        _enemyHealth.Effects.PlayDeath();
 
         StartCoroutine(DestroyTimer());
 
@@ -44,7 +44,4 @@ public class EnemyDeath : MonoBehaviour
         yield return newWaitForSeconds;
         gameObject.SetActive(false);
     }
-
-    private void ShowBlood() =>
-        _deathFx.Play();
 }

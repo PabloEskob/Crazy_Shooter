@@ -19,17 +19,20 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         [Tooltip("Canvas prefab spawned at start. Displays the player's user interface.")]
         [SerializeField]
         private GameObject _mobileCanvasPrefab;
-        [SerializeField]
-        private GameObject _pCCanvasPrefab;
-        
-        [Tooltip("Quality settings menu prefab spawned at start. Used for switching between different quality settings in-game.")]
+
+        [SerializeField] private GameObject _pCCanvasPrefab;
+
+        [Tooltip(
+            "Quality settings menu prefab spawned at start. Used for switching between different quality settings in-game.")]
         [SerializeField]
         private GameObject qualitySettingsPrefab;
+
+        public GameObject CurrentCanvas { get; set; }
 
         #endregion
 
         public event Action Spawned;
-        
+
         #region UNITY
 
         /// <summary>
@@ -44,9 +47,9 @@ namespace InfimaGames.LowPolyShooterPack.Interface
 #endif
 
 #if UNITY_EDITOR
-            Instantiate(_pCCanvasPrefab);
+            CurrentCanvas = Instantiate(_pCCanvasPrefab);
             //Instantiate(_mobileCanvasPrefab);
-            Instantiate(qualitySettingsPrefab);
+            // Instantiate(qualitySettingsPrefab);
 #endif
             //Spawn Quality Settings Menu.
         }
@@ -54,25 +57,24 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         private IEnumerator InstantiateRoutine()
         {
             yield return YandexGamesSdk.Initialize();
-            
+
             switch (Device.Type)
             {
                 case DeviceType.Desktop:
-                    Instantiate(_pCCanvasPrefab);
+                    CurrentCanvas = Instantiate(_pCCanvasPrefab);
                     break;
                 case DeviceType.Mobile:
-                    Instantiate(_mobileCanvasPrefab);
+                    CurrentCanvas = Instantiate(_mobileCanvasPrefab);
                     break;
                 case DeviceType.Tablet:
-                    Instantiate(_mobileCanvasPrefab);
+                    CurrentCanvas = Instantiate(_mobileCanvasPrefab);
                     break;
                 default:
-                    Instantiate(_pCCanvasPrefab);
+                    CurrentCanvas = Instantiate(_pCCanvasPrefab);
                     break;
-                        
             }
 
-            Instantiate(qualitySettingsPrefab);
+            //  Instantiate(qualitySettingsPrefab);
             Spawned?.Invoke();
         }
 

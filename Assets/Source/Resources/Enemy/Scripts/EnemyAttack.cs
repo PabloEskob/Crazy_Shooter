@@ -5,24 +5,34 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private EnemyAnimator _enemyAnimator;
 
-    private GameFactory _gameFactory;
+    private IGameFactory _gameFactory;
     private Player _player;
     private float _attackEnd;
     private bool _isAttacking;
     private bool _attackIsActive;
+    private PlayerHealth _playerHealth;
+    private PlayerDeath _playerDeath;
+    private bool _stopAttack;
 
     public float AttackCooldown { get; set; }
     public int Damage { get; set; }
 
     private void Update()
     {
+        if (_stopAttack) return;
         UpdateCooldown();
 
         if (CanAttack())
             StartAttack();
     }
 
-    public void Init(GameFactory gameFactory)
+    private void Start()
+    {
+        _playerHealth = _player.GetComponent<PlayerHealth>();
+        _playerDeath = _player.GetComponent<PlayerDeath>();
+    }
+
+    public void Init(IGameFactory gameFactory)
     {
         _gameFactory = gameFactory;
         _player = _gameFactory.Player;
@@ -42,21 +52,27 @@ public class EnemyAttack : MonoBehaviour
 
     private void StartAttack()
     {
-        transform.LookAt(_player.transform);
-        _enemyAnimator.PlayAttack();
-        _isAttacking = true;
+        if (!_playerDeath.IsDead)
+        {
+            transform.LookAt(_player.transform);
+            _enemyAnimator.PlayAttack();
+            _isAttacking = true;
+        }
+        else
+            _stopAttack = true;
     }
 
     private void OnAttackEnded()
     {
-        Debug.Log("рестарт");
         _enemyAnimator.PlayIdle();
         _attackEnd = AttackCooldown;
         _isAttacking = false;
     }
 
-    private void OnAttack() =>
-        _player.GetComponent<PlayerHealth>().TakeDamage(Damage);
+    private void OnAttack()
+    {
+        _playerHealth.TakeDamage(Damage);
+    }
 
     private bool CooldownIsUp() =>
         _attackEnd <= 0f;

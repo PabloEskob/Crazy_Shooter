@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - FX
+  - Target
+  - PlayerInitialPointTag
+  - EnemySpawner
+  - EnemySpawnerTag
+  - LaunchRoom
+  - ActorUi
+  - GameStatusScreen
   layers:
   - Default
   - TransparentFX

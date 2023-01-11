@@ -7,8 +7,16 @@ public class EnemyHealth : MonoBehaviour, IHealth
     [SerializeField] private EnemyAnimator _enemyAnimator;
     [SerializeField] private HeadShot _headShot;
     [SerializeField] private BodyShot _bodyShot;
-    [SerializeField] private BloodEffectSpawner _bloodEffectSpawner;
-    [SerializeField] private ParticleSystem _particleSystem;
+
+    private Effects _effects;
+    private EnemyMove _enemyMove;
+    private bool _canPlayHit = true;
+
+    public Effects Effects => _effects;
+    public float Current { get; set; }
+    public float Max { get; set; }
+
+    public event Action HealthChanged;
 
     private void OnEnable()
     {
@@ -22,16 +30,11 @@ public class EnemyHealth : MonoBehaviour, IHealth
         _bodyShot.Hitted -= TakeHitBody;
     }
 
-    private EnemyMove _enemyMove;
-    private bool _canPlayHit = true;
-
-    public float Current { get; set; }
-    public float Max { get; set; }
-
-    public event Action HealthChanged;
-
-    private void Start() =>
+    private void Start()
+    {
+        _effects = GetComponent<Effects>();
         _enemyMove = GetComponent<EnemyMove>();
+    }
 
     public void OnHitEnded()
     {
@@ -57,13 +60,20 @@ public class EnemyHealth : MonoBehaviour, IHealth
 
     private void TakeHitBody(int damage, Collision collision)
     {
+        _effects.GetContactCollision(collision);
         TakeDamage(damage);
-        _bloodEffectSpawner.Init(collision.GetContact(0).point);
     }
 
     private void HeadShot(int damage, Collision collision)
     {
-        TakeDamage(damage * 10);
-        _particleSystem.Play();
+        TakeDamage(damage * 6);
+
+        if (Max > 0)
+            _effects.GetContactCollision(collision);
+        else
+        {
+            _headShot.KillEnemy();
+            _effects.PlayHeadShot();
+        }
     }
 }

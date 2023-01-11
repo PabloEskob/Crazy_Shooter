@@ -10,6 +10,7 @@ namespace InfimaGames.LowPolyShooterPack
     /// </summary>
     public class Muzzle : MuzzleBehaviour
     {
+
         #region FIELDS SERIALIZED
 
         [Header("Settings")]
@@ -34,7 +35,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         [Tooltip("Number of particles to emit when firing.")]
         [SerializeField]
-        private int flashParticlesCount = 5;
+        private int flashParticlesCount = 1;
 
         [Header("Flash Light")]
 

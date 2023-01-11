@@ -208,7 +208,6 @@ namespace Source.Scripts.SaveSystem
         {
             _data.SaveTime = DateTime.Now.ToString();
             PlayerPrefs.SetString(_dataName, _data.ToJson());
-            Debug.Log(_data.ToJson());
         }
 
         public void ClearData()

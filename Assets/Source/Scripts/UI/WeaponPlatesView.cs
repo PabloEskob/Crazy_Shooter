@@ -1,18 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
 using UnityEngine;
 
 public class WeaponPlatesView : MonoBehaviour
 {
-    [SerializeField] private List<WeaponPlate> _plates;
+    [SerializeField] private WeaponPlate _plateTemplate;
+    [SerializeField] private Transform _container;
 
+    private List<WeaponPlate> _plates = new List<WeaponPlate>();
+    private Inventory _inventory;
     private int _defaultWeaponIndex;
 
-    public Action<Weapon> WeaponSelected;
-    
+    public IEnumerable<WeaponPlate> Plates => _plates;
+
+    public Weapon CurrentWeapon { get; private set; }
+
+    public event Action<Weapon> WeaponSelected;
+
     private void OnEnable()
     {
         foreach (WeaponPlate weaponPlate in _plates) 
@@ -25,9 +33,6 @@ public class WeaponPlatesView : MonoBehaviour
             weaponPlate.WeaponSelected -= OnWeaponSelected;
     }
 
-    private void Start() => 
-        _plates[_defaultWeaponIndex].SwitchButtonState(true);
-
     private void OnWeaponSelected(WeaponPlate plate, Weapon weapon)
     {
         foreach (var weaponPlate in _plates) 
@@ -39,4 +44,21 @@ public class WeaponPlatesView : MonoBehaviour
 
     public void SetDefaultIndex(int index) => 
         _defaultWeaponIndex = index;
+
+    public void SetInventory(Inventory inventory) =>
+        _inventory = inventory;
+
+    public void InitPlates()
+    {
+        foreach (var weapon in _inventory.Weapons)
+        {
+            var plate = Instantiate(_plateTemplate, _container);
+            plate.SetWeapon(weapon);
+            _plates.Add(plate);
+        }
+
+        _plates[_defaultWeaponIndex].SwitchButtonState(true);
+        CurrentWeapon = _plates[_defaultWeaponIndex].Weapon;
+
+    }
 }

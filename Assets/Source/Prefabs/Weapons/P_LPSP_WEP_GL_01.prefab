@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5708224683135757682}
   - component: {fileID: 5708224683145069204}
+  - component: {fileID: 8056379145349654202}
   - component: {fileID: 7885934060168530878}
   - component: {fileID: 4743257906437891677}
   - component: {fileID: 5908208318422964952}
@@ -281,6 +282,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8056379145349654202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5708224683135725906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cfb4d271bd4a43bb8c08281b63897c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _capacity: 5
+  _isAutoExpand: 1
+  _projectilePrefab: {fileID: 8787292203492939028, guid: 34fee30dc7338ff4ea8438c93eb43cbe, type: 3}
+  _container: {fileID: 6300937150105208026}
 --- !u!114 &7885934060168530878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,8 +310,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7170d51de97d79e4fb11d3321667acb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeConfig: {fileID: 0}
+  _bulletPool: {fileID: 8056379145349654202}
   weaponName: Grenade Launcher 01
   multiplierMovementSpeed: 1
+  _weaponType: 
+  _isBought: 0
+  _isEquipped: 0
   automatic: 0
   boltAction: 0
   shotCount: 1
@@ -989,6 +1011,8 @@ MonoBehaviour:
   fieldOfViewMultiplierAimWeapon: 0.7
   materialIndex: 3
   materialHidden: {fileID: 0}
+  _isBought: 0
+  _isEquipped: 0
 --- !u!1001 &3311929722450326084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1630,6 +1654,8 @@ MonoBehaviour:
   fieldOfViewMultiplierAimWeapon: 0.7
   materialIndex: 3
   materialHidden: {fileID: 0}
+  _isBought: 0
+  _isEquipped: 0
 --- !u!4 &8216898178091702730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3a3ac7de380e8a74f9cd68c0bc6abc78, type: 3}

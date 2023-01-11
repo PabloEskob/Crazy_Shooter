@@ -1,78 +1,73 @@
-﻿// Copyright 2021, Infima Games. All Rights Reserved.
-
+﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.Screen;
 
 namespace InfimaGames.LowPolyShooterPack.Interface
 {
-    /// <summary>
-    /// Crosshair.
-    /// </summary>
     public class Crosshair : Element
     {
-        #region FIELDS SERIALIZED
+        [SerializeField] private float smoothing = 8.0f;
+        [SerializeField] private float minimumScale = 0.15f;
+        [SerializeField] private AnimationClip _animationClip;
+        [SerializeField] private LayerMask _layerMask;
 
-        [Header("Settings")]
-        
-        [Tooltip("Visibility changing smoothness.")]
-        [SerializeField]
-        private float smoothing = 8.0f;
-
-        [Tooltip("Minimum scale the Crosshair needs in order to be visible. Useful to avoid weird tiny images.")]
-        [SerializeField]
-        private float minimumScale = 0.15f;
-
-        #endregion
-
-        #region FIELDS
-        
-        /// <summary>
-        /// Current.
-        /// </summary>
+        private Animation _animation;
         private float current = 1.0f;
-        /// <summary>
-        /// Target.
-        /// </summary>
         private float target = 1.0f;
-
-        /// <summary>
-        /// Rect.
-        /// </summary>
         private RectTransform rectTransform;
+        private Camera _camera;
+        private Vector3 _rayStartPosition;
+        private RaycastHit _hit;
 
-        #endregion
-        
-        #region UNITY
-        
         protected override void Awake()
         {
-            //Base.
             base.Awake();
-
-            //Cache Rect Transform.
             rectTransform = GetComponent<RectTransform>();
         }
 
-        #endregion
-        
-        #region METHODS
-        
+        private void Start()
+        {
+            _animation = GetComponent<Animation>();
+            _camera = Camera.main;
+            _rayStartPosition = new Vector3(width / 2, height / 2, 0);
+        }
+
         protected override void Tick()
         {
-            //Check Visibility.
-            bool visible = playerCharacter.IsCrosshairVisible();
-            //Update Target.
-            target = visible ? 1.0f : 0.0f;
+            FireABeam();
 
-            //Interpolate Current.
+            bool visible = playerCharacter.IsCrosshairVisible();
+            target = visible ? 1.0f : 0.0f;
             current = Mathf.Lerp(current, target, Time.deltaTime * smoothing);
-            //Scale.
             rectTransform.localScale = Vector3.one * current;
-            
-            //Hide Crosshair Objects When Too Small.
+
             for (var i = 0; i < transform.childCount; i++)
                 transform.GetChild(i).gameObject.SetActive(current > minimumScale);
         }
-        
-        #endregion
+
+        public void TurnOnAnimation()
+        {
+            _animation.clip = _animationClip;
+            _animation.Play();
+        }
+
+        private void FireABeam()
+        {
+            Ray ray = _camera.ScreenPointToRay(_rayStartPosition);
+
+            SetColorChild(Physics.Raycast(ray, out _hit, 100f, _layerMask, QueryTriggerInteraction.Ignore)
+                ? Color.red
+                : Color.white);
+        }
+
+        private void SetColorChild(Color color)
+        {
+            for (var i = 0; i < transform.childCount; i++)
+            {
+                var image = transform.GetChild(i).GetComponent<Image>();
+                image.color = color;
+            }
+        }
     }
 }
