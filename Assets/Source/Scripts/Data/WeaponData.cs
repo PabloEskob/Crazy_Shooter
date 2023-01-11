@@ -15,6 +15,10 @@ namespace Source.Scripts.Data
         public float FireRate;
         public float Reload;
         public float MagazineSize;
-
+        public int FrameUpgradeLevel;
+        public int MuzzleUpgradeLevel;
+        public int ScopeUpgradeLevel;
+        public int BulletsUpgradeLevel;
+        public int MagazineUpgradeLevel;
     }
 }

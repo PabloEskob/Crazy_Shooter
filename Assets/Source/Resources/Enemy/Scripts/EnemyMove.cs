@@ -6,9 +6,10 @@ public class EnemyMove : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _navMeshAgent;
 
-    private Player _player;
     private Enemy _enemy;
     private float _speed;
+
+    public Player Player { get; set; }
 
     private void Awake() =>
         _enemy = GetComponent<Enemy>();
@@ -16,7 +17,7 @@ public class EnemyMove : MonoBehaviour
     private void Update()
     {
         if (!_enemy.EnemyDeath.IsDied)
-            _navMeshAgent.destination = _player.transform.position;
+            _navMeshAgent.destination = Player.transform.position;
         else
         {
             _navMeshAgent.speed = 0;
@@ -25,7 +26,7 @@ public class EnemyMove : MonoBehaviour
     }
 
     public void Init(Player player) =>
-        _player = player;
+        Player = player;
 
     public void StopMove()
     {

@@ -9,6 +9,7 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] private float _timeDied = 5f;
     [SerializeField] private EnemyHealth _enemyHealth;
     [SerializeField] private EnemyAnimator _enemyAnimator;
+    [SerializeField] private Waypoint_Indicator _waypointIndicator;
 
     public bool IsDied { get; private set; }
 
@@ -29,6 +30,7 @@ public class EnemyDeath : MonoBehaviour
         IsDied = true;
 
         _enemyAnimator.PlayDeath();
+        _waypointIndicator.enabled = false;
         _enemyHealth.Effects.PlayDeath();
 
         StartCoroutine(DestroyTimer());

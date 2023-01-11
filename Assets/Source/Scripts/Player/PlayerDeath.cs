@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerHealth))]
@@ -7,7 +8,9 @@ public class PlayerDeath : MonoBehaviour
     [SerializeField] private PlayerAnimator _animator;
     [SerializeField] private ParticleSystem _particleSystem;
 
-    private bool _isDead;
+    public bool IsDead { get; set; }
+
+    public event Action OnDied;
 
     private void OnDisable() =>
         _playerHealth.HealthChanged -= OnHealthChanged;
@@ -17,14 +20,15 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnHealthChanged()
     {
-        if (!_isDead && _playerHealth.Current <= 0)
+        if (!IsDead && _playerHealth.Current <= 0)
             Die();
     }
 
     private void Die()
     {
-        _isDead = true;
+        IsDead = true;
         // _particleSystem.Play();
+        OnDied?.Invoke();
         _animator.PlayDeath();
     }
 }

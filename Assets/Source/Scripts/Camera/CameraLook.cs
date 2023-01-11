@@ -1,162 +1,67 @@
-﻿// Copyright 2021, Infima Games. All Rights Reserved.
-
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
 {
-    /// <summary>
-    /// Camera Look. Handles the rotation of the camera.
-    /// </summary>
     public class CameraLook : MonoBehaviour
     {
         #region FIELDS SERIALIZED
-        
-        [Header("Settings")]
-        
-        [Tooltip("Sensitivity when looking around.")]
-        [SerializeField]
-        private Vector2 sensitivity = new Vector2(1, 1);
 
-        [Tooltip("Minimum and maximum up/down rotation angle the camera can have.")]
-        [SerializeField]
-        private Vector2 yClamp = new Vector2(-60, 60);
-        
-        [Tooltip("Minimum and maximum left/right rotation angle the player can have.")]
-        [SerializeField]
-        private Vector2 xClamp = new Vector2(-60, 60);
+        [Header("Settings")] [Tooltip("Sensitivity when looking around.")] [SerializeField]
+        private Vector2 _sensitivity = new Vector2(1, 1);
 
-        [Tooltip("Should the look rotation be interpolated?")]
-        [SerializeField]
-        private bool smooth;
+        [Tooltip("Minimum and maximum up/down rotation angle the camera can have.")] [SerializeField]
+        private Vector2 _yClamp = new Vector2(-40, 60);
 
-        [Tooltip("The speed at which the look rotation is interpolated.")]
-        [SerializeField]
-        private float interpolationSpeed = 25.0f;
-        
+        [Tooltip("Minimum and maximum left/right rotation angle the player can have.")] [SerializeField]
+        private Vector2 _xClamp = new Vector2(-240, -120);
+
         #endregion
-        
+
         #region FIELDS
-        
-        /// <summary>
-        /// Player Character.
-        /// </summary>
-        private CharacterBehaviour playerCharacter;
-        /// <summary>
-        /// The player character's rigidbody component.
-        /// </summary>
-        private Rigidbody playerCharacterRigidbody;
 
-        /// <summary>
-        /// The player character's rotation.
-        /// </summary>
-        private Quaternion rotationCharacter;
-        /// <summary>
-        /// The camera's rotation.
-        /// </summary>
-        private Quaternion rotationCamera;
+        private CharacterBehaviour _playerCharacter;
+        private Quaternion _rotationCharacter;
+        private float _yaw;
+        private float _pitch;
 
         #endregion
-        
+
         #region UNITY
 
-        private void Awake()
-        {
-            //Get Player Character.
-            playerCharacter = ServiceLocator.Current.Get<IGameModeService>().GetPlayerCharacter();
-            //Cache the rigidbody.
-            playerCharacterRigidbody = playerCharacter.GetComponent<Rigidbody>();
-        }
-        private void Start()
-        {
-            //Cache the character's initial rotation.
-            rotationCharacter = playerCharacter.transform.localRotation;
-            //Cache the camera's initial rotation.
-            rotationCamera = transform.localRotation;
-        }
+        private void Awake() =>
+            _playerCharacter = ServiceLocator.Current.Get<IGameModeService>().GetPlayerCharacter();
+
+        private void Start() =>
+            _rotationCharacter = _playerCharacter.transform.localRotation;
+
         private void LateUpdate()
         {
-            //Frame Input. The Input to add this frame!
-            Vector2 frameInput = playerCharacter.IsCursorLocked() ? playerCharacter.GetInputLook() : default;
-            //Sensitivity.
-            frameInput *= sensitivity;
+            Vector2 frameInput = _playerCharacter.IsCursorLocked() ? _playerCharacter.GetInputLook() : default;
+            frameInput *= _sensitivity;
 
-            //Yaw.
-            Quaternion rotationYaw = Quaternion.Euler(0.0f, frameInput.x , 0.0f);
-            //Pitch.
+            _yaw += frameInput.x;
+            _pitch -= frameInput.y;
+
+            _yaw = Mathf.Clamp(_yaw, _xClamp.x, _xClamp.y);
+            _pitch = Mathf.Clamp(_pitch, _yClamp.x, _yClamp.y);
+
+            transform.eulerAngles = new Vector3(_pitch, _yaw, 0.0f);
+        }
+
+        private void TurnUp(Vector2 frameInput)
+        {
             Quaternion rotationPitch = Quaternion.Euler(-frameInput.y, 0.0f, 0.0f);
-            
-            //Save rotation. We use this for smooth rotation.
-            rotationCamera *= rotationPitch;
-            rotationCharacter *= rotationYaw;
-            
-            //Local Rotation.
             Quaternion localRotation = transform.localRotation;
+            localRotation *= rotationPitch;
 
-            //Smooth.
-            if (smooth)
-            {
-                //Interpolate local rotation.
-                localRotation = Quaternion.Slerp(localRotation, rotationCamera, Time.deltaTime * interpolationSpeed);
-                //Interpolate character rotation.
-                playerCharacterRigidbody.MoveRotation(Quaternion.Slerp(playerCharacterRigidbody.rotation, rotationCharacter, Time.deltaTime * interpolationSpeed));
-            }
-            else
-            {
-                //Rotate local.
-                localRotation *= rotationPitch;
-                //Clamp.
-                localRotation = Clamp(localRotation);
-                //Rotate character.
-                var angle = playerCharacter.transform.localRotation.eulerAngles.y;
-                    
-                if (playerCharacter.transform.localRotation.eulerAngles.y <= xClamp.x) 
-                    SetRotation(xClamp.x);
-
-                if (playerCharacter.transform.localRotation.eulerAngles.y >= xClamp.y) 
-                    SetRotation(xClamp.y);
-
-                playerCharacterRigidbody.MoveRotation(playerCharacterRigidbody.rotation * rotationYaw);
-            }
-            
-            //Set.
+            localRotation = Clamp(localRotation);
             transform.localRotation = localRotation;
-        }
-
-        private void SetRotation(float yValue)
-        {
-            var playerTransform = playerCharacter.transform;
-            var rotation = playerTransform.localRotation;
-            playerCharacter.transform.localRotation = Quaternion.Euler(rotation.eulerAngles.x, yValue, rotation.eulerAngles.z);
-            playerCharacterRigidbody.rotation = playerCharacter.transform.rotation;
-        }
-
-        private Quaternion ClampYaw(Quaternion rotationYaw)
-        {
-            rotationYaw.x /= rotationYaw.w;
-            rotationYaw.y /= rotationYaw.w;
-            rotationYaw.z /= rotationYaw.w;
-            rotationYaw.w = 1.0f;
-
-            //Pitch.
-            float pitch = 2.0f * Mathf.Rad2Deg * Mathf.Atan(rotationYaw.x);
-
-            //Clamp.
-            pitch = Mathf.Clamp(pitch, xClamp.x, xClamp.y);
-          //  float yRotation = 0f;
-            
-            rotationYaw.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * pitch);
-
-            //Return.
-            return rotationYaw;
         }
 
         #endregion
 
         #region FUNCTIONS
 
-        /// <summary>
-        /// Clamps the pitch of a quaternion according to our clamps.
-        /// </summary>
         private Quaternion Clamp(Quaternion rotation)
         {
             rotation.x /= rotation.w;
@@ -164,22 +69,11 @@ namespace InfimaGames.LowPolyShooterPack
             rotation.z /= rotation.w;
             rotation.w = 1.0f;
 
-            //Pitch.
             float pitch = 2.0f * Mathf.Rad2Deg * Mathf.Atan(rotation.x);
-
-            //Clamp.
-            pitch = Mathf.Clamp(pitch, yClamp.x, yClamp.y);
-           //float yRotation = 0f;
-            
+            pitch = Mathf.Clamp(pitch, _yClamp.x, _yClamp.y);
             rotation.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * pitch);
 
-            //Return.
             return rotation;
-        }
-
-        public void SetSensitivity()
-        {
-            
         }
 
         #endregion

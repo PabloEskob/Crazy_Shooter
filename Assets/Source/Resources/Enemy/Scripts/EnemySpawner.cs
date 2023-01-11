@@ -60,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
         return enemy;
     }
 
-    public void CreateQuantityEnemy()
+    private void CreateQuantityEnemy()
     {
         for (int i = 0; i < _count; i++)
             _enemies.Add(Spawn());

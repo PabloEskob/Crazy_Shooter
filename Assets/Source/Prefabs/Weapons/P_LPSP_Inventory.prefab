@@ -321,6 +321,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8866888881564896686, guid: 8c7ba79f8ec05794aba7ffdd3d8aba93, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866888881564896686, guid: 8c7ba79f8ec05794aba7ffdd3d8aba93, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866888881564896686, guid: 8c7ba79f8ec05794aba7ffdd3d8aba93, type: 3}
       propertyPath: gripArray.Array.data[1]
       value: 
       objectReference: {fileID: 0}
@@ -571,6 +579,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8578661464601570599, guid: e1be29c2c2f53c947819b92d236806c7, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578661464601570599, guid: e1be29c2c2f53c947819b92d236806c7, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578661464601570599, guid: e1be29c2c2f53c947819b92d236806c7, type: 3}
       propertyPath: gripArray.Array.data[1]
       value: 
       objectReference: {fileID: 0}
@@ -611,6 +627,10 @@ PrefabInstance:
     - target: {fileID: 2001368087282464131, guid: f985fca8d5251c049ab9579d483160b4, type: 3}
       propertyPath: muzzleIndex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001368087282464131, guid: f985fca8d5251c049ab9579d483160b4, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2001368087282464131, guid: f985fca8d5251c049ab9579d483160b4, type: 3}
       propertyPath: gripArray.Array.data[1]
@@ -859,6 +879,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7061427760487870545, guid: 91256867b7928854aa72388111406f90, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061427760487870545, guid: 91256867b7928854aa72388111406f90, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061427760487870545, guid: 91256867b7928854aa72388111406f90, type: 3}
       propertyPath: gripArray.Array.data[1]
       value: 
       objectReference: {fileID: 0}
@@ -1069,6 +1097,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8813108788367931271, guid: 4a4b8a3ad4e704d41951ddfdb2797d07, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813108788367931271, guid: 4a4b8a3ad4e704d41951ddfdb2797d07, type: 3}
       propertyPath: gripArray.Array.data[1]
       value: 
       objectReference: {fileID: 0}
@@ -1129,6 +1161,14 @@ PrefabInstance:
     - target: {fileID: 2551230045697249922, guid: d3308534d30856e42b7a585baa7a886b, type: 3}
       propertyPath: muzzleIndex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551230045697249922, guid: d3308534d30856e42b7a585baa7a886b, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551230045697249922, guid: d3308534d30856e42b7a585baa7a886b, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2551230045697249922, guid: d3308534d30856e42b7a585baa7a886b, type: 3}
       propertyPath: gripArray.Array.data[0]
@@ -1377,6 +1417,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7061427760487870545, guid: f01300d92eca1d34c977ec94fe940f2a, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061427760487870545, guid: f01300d92eca1d34c977ec94fe940f2a, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061427760487870545, guid: f01300d92eca1d34c977ec94fe940f2a, type: 3}
       propertyPath: gripArray.Array.data[1]
       value: 
       objectReference: {fileID: 0}
@@ -1473,6 +1521,14 @@ PrefabInstance:
     - target: {fileID: 7061427760487870545, guid: f7d11b288d7f05b4799e60acb906f217, type: 3}
       propertyPath: muzzleIndex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061427760487870545, guid: f7d11b288d7f05b4799e60acb906f217, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061427760487870545, guid: f7d11b288d7f05b4799e60acb906f217, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7061427760487870545, guid: f7d11b288d7f05b4799e60acb906f217, type: 3}
       propertyPath: gripArray.Array.data[1]
@@ -1625,6 +1681,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6110289550021268199, guid: 6ff85997fd470764cb6d04a3cdb9ef78, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6110289550021268199, guid: 6ff85997fd470764cb6d04a3cdb9ef78, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6110289550021268199, guid: 6ff85997fd470764cb6d04a3cdb9ef78, type: 3}
       propertyPath: gripArray.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -1681,6 +1745,14 @@ PrefabInstance:
     - target: {fileID: 7061427760487870545, guid: 1e8358d68aabf3b43a3af3491d2ce387, type: 3}
       propertyPath: muzzleIndex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061427760487870545, guid: 1e8358d68aabf3b43a3af3491d2ce387, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061427760487870545, guid: 1e8358d68aabf3b43a3af3491d2ce387, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7061427760487870545, guid: 1e8358d68aabf3b43a3af3491d2ce387, type: 3}
       propertyPath: gripArray.Array.data[1]
@@ -1779,6 +1851,14 @@ PrefabInstance:
     - target: {fileID: 7061427760487870545, guid: b0c409430ff16f9458eb5c4a87d637a1, type: 3}
       propertyPath: muzzleIndex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061427760487870545, guid: b0c409430ff16f9458eb5c4a87d637a1, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061427760487870545, guid: b0c409430ff16f9458eb5c4a87d637a1, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7061427760487870545, guid: b0c409430ff16f9458eb5c4a87d637a1, type: 3}
       propertyPath: gripArray.Array.data[1]
@@ -2001,6 +2081,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6110289550021268199, guid: 464d2b315a1ed6b408948cc2fc04e8f7, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6110289550021268199, guid: 464d2b315a1ed6b408948cc2fc04e8f7, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6110289550021268199, guid: 464d2b315a1ed6b408948cc2fc04e8f7, type: 3}
       propertyPath: gripArray.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -2109,6 +2197,14 @@ PrefabInstance:
     - target: {fileID: 8785017196919414568, guid: 8e4a73c62bb7a404db9c33a2c4369c16, type: 3}
       propertyPath: muzzleIndex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8785017196919414568, guid: 8e4a73c62bb7a404db9c33a2c4369c16, type: 3}
+      propertyPath: gripArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8785017196919414568, guid: 8e4a73c62bb7a404db9c33a2c4369c16, type: 3}
+      propertyPath: scopeArray.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8785017196919414568, guid: 8e4a73c62bb7a404db9c33a2c4369c16, type: 3}
       propertyPath: gripArray.Array.data[0]

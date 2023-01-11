@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 973253228936777432, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1173631881349560264, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: _bodyShot
       value: 
@@ -23,6 +27,50 @@ PrefabInstance:
       propertyPath: _bloodEffectSpawner
       value: 
       objectReference: {fileID: 3646772988293262341}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: enableText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: onScreenSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2d22028a34e85ee499530ea81f6d406b, type: 3}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: enableGameObject
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: toggleTextOptions
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: onScreenGameObject
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: onScreenSpriteSize
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: toggleParentOptions
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: toggleSpriteOptions
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: onScreenSpriteOffset.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: toggleGameObjectOptions
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547531318477014087, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: onScreenSpriteScaleWithRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3255986719442638800, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: _deathFx
       value: 

@@ -2,7 +2,6 @@ using System;
 using InfimaGames.LowPolyShooterPack;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Source.Scripts.Ui
@@ -20,16 +19,22 @@ namespace Source.Scripts.Ui
         public event Action<UpgradeType> UpgradeChoosed;
 
         private void OnEnable()
-        { 
+        {
+            Weapon = UpgradePanel.CurrentWeapon;
             UpgradePanel.WeaponSet += OnWeaponSet;
             UpgradeButton.onClick.AddListener(OnButtonClick);
+            UpgradePanel.Upgraded += OnUpgraded;
         }
 
         private void OnDisable()
         {
+            UpgradePanel.Upgraded -= OnUpgraded;
             UpgradePanel.WeaponSet -= OnWeaponSet;
             UpgradeButton.onClick.RemoveListener(OnButtonClick);
         }
+
+        private void OnUpgraded() => 
+            SetText();
 
         protected abstract void OnButtonClick();
         protected abstract void OnWeaponSet(Weapon weapon);
@@ -41,5 +46,8 @@ namespace Source.Scripts.Ui
 
         public void SwitchButtonState(bool value) => 
             IsUpgradeChoosed = value;
+
+        public void SwitchButtonInteractivity(bool value) => 
+            UpgradeButton.interactable = value;
     }
 }
