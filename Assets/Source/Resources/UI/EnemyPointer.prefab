@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6864872838859928386}
   - component: {fileID: 42339843020424732}
-  - component: {fileID: 4670012223405244868}
+  - component: {fileID: 7810189765604133138}
   m_Layer: 5
   m_Name: EnemyPointer
   m_TagString: Untagged
@@ -139,7 +139,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2586291848006761802}
   m_CullTransparentMesh: 1
---- !u!114 &4670012223405244868
+--- !u!114 &7810189765604133138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,6 +148,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2586291848006761802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d98cccbe114e8ba6784569119d4fb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 75d8b2ef55244f3cab1612ea6d231118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

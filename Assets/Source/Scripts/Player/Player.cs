@@ -6,10 +6,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private PlayerHealth _playerHealth;
-    [SerializeField] private TargetPointer _targetPointer;
-
-    public TargetPointer TargetPointer => _targetPointer;
-
+    
     public PlayerMove PlayerMove =>
         _playerMove;
 
