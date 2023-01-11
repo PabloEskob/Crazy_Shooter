@@ -29,14 +29,7 @@ public class PlayerMove : MonoBehaviour
         RemoveListenerSplineTrigger();
         Disabled?.Invoke();
     }
-
-    public void Construct(SplineComputer splineComputer)
-    {
-        // _constructSplineComputer = GetComponent<ConstructSplineComputer>();
-        // _constructSplineComputer.Construct(splineComputer);
-        
-    }
-
+    
     public void PlayMove()
     {
         if (CanMove)

@@ -45,7 +45,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// <summary>
         /// Destroys the audio source once it has finished playing.
         /// </summary>
-        private IEnumerator DestroySourceWhenFinished(AudioSource source)
+        /*private IEnumerator DestroySourceWhenFinished(AudioSource source)
         {
             //Wait for the audio source to complete playing the clip.
             yield return new WaitWhile(() => source.isPlaying);
@@ -53,7 +53,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Destroy the audio game object, since we're not using it anymore.
             //This isn't really too great for performance, but it works, for now.
             DestroyImmediate(source.gameObject);
-        }
+        }*/
 
         /// <summary>
         /// Waits for a certain amount of time before starting to play a one shot sound.
@@ -89,8 +89,8 @@ namespace InfimaGames.LowPolyShooterPack
             newAudioSource.PlayOneShot(clip);
             
             //Start a coroutine that will destroy the whole object once it is done!
-            if(settings.AutomaticCleanup && newAudioSource != null)
-                StartCoroutine(nameof(DestroySourceWhenFinished), newAudioSource);
+            /*if(settings.AutomaticCleanup && newAudioSource != null)
+                StartCoroutine(nameof(DestroySourceWhenFinished), newAudioSource);*/
         }
 
         #region Audio Manager Service Interface

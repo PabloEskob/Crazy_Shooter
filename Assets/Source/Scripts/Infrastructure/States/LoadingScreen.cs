@@ -6,12 +6,12 @@ namespace Source.Infrastructure
     public class LoadingScreen : MonoBehaviour
     {
         [SerializeField] private CanvasGroup _screen;
-        
+
         private void Awake()
         {
             DontDestroyOnLoad(this);
         }
-        
+
         public void Show()
         {
             gameObject.SetActive(true);
@@ -20,9 +20,10 @@ namespace Source.Infrastructure
 
         public void Hide()
         {
+            Show();
             StartCoroutine(FadeIn());
         }
-        
+
         private IEnumerator FadeIn()
         {
             float step = 0.03f;

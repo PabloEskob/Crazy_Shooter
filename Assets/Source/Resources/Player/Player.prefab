@@ -32,7 +32,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7757301364369313532}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -40,7 +40,7 @@ Transform:
   - {fileID: 901239087979614537}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!114 &6143311808326252644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,9 +199,9 @@ MonoBehaviour:
   _physicsMode: 0
   _motion:
     _hasOffset: 0
-    _hasRotationOffset: 1
+    _hasRotationOffset: 0
     _offset: {x: 0, y: 0}
-    _rotationOffset: {x: 0, y: 180, z: 0}
+    _rotationOffset: {x: 0, y: 0, z: 0}
     _baseScale: {x: 1, y: 1, z: 1}
     _2dMode: 0
     velocityHandleMode: 0
@@ -276,8 +276,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 7757301364369313535}
     m_Modifications:
     - target: {fileID: 3414421814590730736, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: _smooth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414421814590730736, guid: 1e078682981af594eb08df705e283869, type: 3}
       propertyPath: yClamp.x
       value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414421814590730736, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: _xClamp.x
+      value: -240
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414421814590730736, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: _xClamp.y
+      value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810921135021838972, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810921135021838972, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810921135021838972, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5284803560652665282, guid: 1e078682981af594eb08df705e283869, type: 3}
       propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size

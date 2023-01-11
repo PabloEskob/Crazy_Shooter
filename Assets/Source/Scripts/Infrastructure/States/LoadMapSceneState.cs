@@ -24,7 +24,6 @@ namespace Source.Infrastructure
             _loadingScreen = loadingScreen;
         }
         
-        
         public void Exit() => 
             _loadingScreen.Hide();
 

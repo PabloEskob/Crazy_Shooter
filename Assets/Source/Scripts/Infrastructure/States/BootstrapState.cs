@@ -25,6 +25,7 @@ namespace Source.Infrastructure
         private void RegisterServices()
         {
             RegisterStaticData();
+            _services.RegisterSingle<IGameStateMachine>(_stateMachine);
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IStaticDataService>()));
