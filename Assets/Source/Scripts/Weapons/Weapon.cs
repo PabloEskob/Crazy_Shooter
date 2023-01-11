@@ -39,6 +39,7 @@ namespace InfimaGames.LowPolyShooterPack
         private int _bulletsUpgradeLevel;
         private int _magazineSizeUpgradeLevel;
 
+        public int MaxUpgradeLevel => _maxUpgradeLevel;
 
         [Header("Settings")]
 

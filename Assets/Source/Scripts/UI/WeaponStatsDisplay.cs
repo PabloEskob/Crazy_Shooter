@@ -84,7 +84,7 @@ namespace Source.Scripts.Ui
 
         private void DisplayUpgradeValues()
         {
-            var frameUpgrade = _weapon.UpgradeConfig.GunFrameUpgrades[0];
+            var frameUpgrade = _weapon.GetFrameUpgrade();
             _upgradeDamageValue.text = $" +{frameUpgrade.Damage}";
             _upgradeFireRateValue.text = $" +{frameUpgrade.FireRate}";
             _upgradeReloadValue.text = $" +{frameUpgrade.Reload}";

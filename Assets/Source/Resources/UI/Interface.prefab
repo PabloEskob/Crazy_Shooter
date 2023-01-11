@@ -1224,6 +1224,7 @@ MonoBehaviour:
   - {fileID: 7922444355933267288}
   _upgradePanel: {fileID: 5899456178735791713}
   _priceText: {fileID: 1864310818257692146}
+  _buttonText: {fileID: 6922268756968893112}
 --- !u!1 &1751508649347282136
 GameObject:
   m_ObjectHideFlags: 0
@@ -5804,7 +5805,7 @@ GameObject:
   - component: {fileID: 3002493666744936691}
   - component: {fileID: 6922268756968893112}
   m_Layer: 5
-  m_Name: UpgradeText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

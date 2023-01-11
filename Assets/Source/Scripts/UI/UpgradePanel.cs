@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
+using TMPro;
 using UnityEngine;
 
 public class UpgradePanel : MonoBehaviour
@@ -11,6 +12,7 @@ public class UpgradePanel : MonoBehaviour
     [SerializeField] private WeaponStatsDisplay _statsDisplay;
 
     private Weapon _currentWeapon;
+    private UpgradeType _defaultUpgradeType;
     private float _additionalDamage;
     private float _additionalFireRate;
     private float _additionalReloadSpeed;
@@ -25,6 +27,9 @@ public class UpgradePanel : MonoBehaviour
     {
         _statsDisplay.ValuesSet += OnValuesSet;
         _buyButton.Button.onClick.AddListener(OnBuyButtonClick);
+
+        _defaultUpgradeType = _upgradeTypeButtons[0];
+        OnUpgradeChoosed(_defaultUpgradeType);
 
         foreach (UpgradeType button in _upgradeTypeButtons)
             button.UpgradeChoosed += OnUpgradeChoosed;
@@ -43,7 +48,7 @@ public class UpgradePanel : MonoBehaviour
         WeaponSet -= OnWeaponSet;
     }
 
-    private void OnValuesSet(float damage, float fireRate, float reloadSpeed, float magazineSize) => 
+    private void OnValuesSet(float damage, float fireRate, float reloadSpeed, float magazineSize) =>
         UpdateUpgradeValues(damage, fireRate, reloadSpeed, magazineSize);
 
     private void OnUpgradeChoosed(UpgradeType upgradeType)
@@ -70,18 +75,42 @@ public class UpgradePanel : MonoBehaviour
     {
         _currentWeapon = weapon;
         WeaponSet?.Invoke(_currentWeapon);
+
+
+        foreach (UpgradeType typeButton in _upgradeTypeButtons)
+        {
+            typeButton.SetWeapon(weapon);
+            typeButton.SetText();
+        }
     }
 
     private void OnWeaponSet(Weapon weapon)
     {
         foreach (var button in _upgradeTypeButtons)
             button.SwitchButtonInteractivity(weapon.IsBought());
+
+        if (!weapon.IsBought())
+            _buyButton.ChangeButtonText("Buy");
+        else
+            _buyButton.ChangeButtonText("Upgrade");
+
+        foreach (UpgradeType typeButton in _upgradeTypeButtons)
+            typeButton.SetText();
     }
 
     private void OnBuyButtonClick()
     {
-        _currentWeapon.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
-        _currentWeapon.UpdateStatsToData();
-        Upgraded?.Invoke();
+        if (_currentWeapon.IsBought())
+        {
+            _currentWeapon.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
+            _currentWeapon.UpdateStatsToData();
+            Upgraded?.Invoke();
+        }
+        else
+        {
+            _currentWeapon.SetIsBought();
+            OnWeaponSet(_currentWeapon);
+        }
+
     }
 }
