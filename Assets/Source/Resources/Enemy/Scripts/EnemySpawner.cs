@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private MonsterTypeId _monsterTypeId;
     [SerializeField] private int _count;
+    [SerializeField] private bool _move = true;
 
     private int _number;
     private IGameFactory _gameFactory;
@@ -26,9 +27,9 @@ public class EnemySpawner : MonoBehaviour
     public void Construct(IGameFactory gameFactory)
     {
         _gameFactory = gameFactory;
-        
+
         _enemies = new List<Enemy>();
-        
+
         CreateQuantityEnemy();
 
         foreach (var enemy in _enemies)
@@ -40,14 +41,13 @@ public class EnemySpawner : MonoBehaviour
 
     public void TurnOnEnemy()
     {
-        foreach (var enemy in _enemies) 
+        foreach (var enemy in _enemies)
             enemy.gameObject.SetActive(true);
-        
     }
 
     private Enemy Spawn()
     {
-        Enemy enemy = _gameFactory.CreateEnemy(_monsterTypeId, transform);
+        Enemy enemy = _gameFactory.CreateEnemy(_monsterTypeId, transform, _move);
         InitEnemy(enemy);
         return enemy;
     }
