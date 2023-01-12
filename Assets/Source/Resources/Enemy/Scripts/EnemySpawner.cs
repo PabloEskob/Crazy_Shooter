@@ -6,17 +6,13 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private MonsterTypeId _monsterTypeId;
     [SerializeField] private int _count;
-    [SerializeField] private TriggerSpawn _triggerSpawn;
 
     private int _number;
     private IGameFactory _gameFactory;
     private List<Enemy> _enemies;
-    private bool _released;
     private bool _clear;
 
     public bool Clear => _clear;
-    public TriggerSpawn TriggerSpawn => _triggerSpawn;
-    public bool Released => _released;
     public int Number => _number;
 
     public event Action OnTurnedSpawner;
@@ -32,10 +28,7 @@ public class EnemySpawner : MonoBehaviour
         _gameFactory = gameFactory;
         
         _enemies = new List<Enemy>();
-
-        if (_triggerSpawn != null)
-            _triggerSpawn.Init(_number);
-
+        
         CreateQuantityEnemy();
 
         foreach (var enemy in _enemies)
@@ -49,8 +42,7 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (var enemy in _enemies) 
             enemy.gameObject.SetActive(true);
-
-        _released = true;
+        
     }
 
     private Enemy Spawn()

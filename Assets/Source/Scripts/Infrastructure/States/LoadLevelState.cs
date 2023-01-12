@@ -15,7 +15,6 @@ namespace Source.Infrastructure
         private readonly IStaticDataService _staticData;
 
         private const string PlayerInitialPointTag = "PlayerInitialPointTag";
-        private const string EnemySpawnerTag = "EnemySpawner";
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IStorage storage,
             LoadingScreen loadingScreen, IGameFactory gameFactory, IStaticDataService staticData)
@@ -30,8 +29,8 @@ namespace Source.Infrastructure
 
         public void Enter()
         {
-            _loadingScreen.Show();
-            _sceneLoader.Load("NewScene", OnLoaded);
+            _sceneLoader.Load("Level 1", OnLoaded);
+          //  _sceneLoader.Load("NewScene", OnLoaded);
         }
 
         public void Exit() => _loadingScreen.Hide();

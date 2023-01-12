@@ -291,6 +291,10 @@ PrefabInstance:
       propertyPath: _xClamp.y
       value: -120
       objectReference: {fileID: 0}
+    - target: {fileID: 3414421814590730736, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: _allRoundView
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4810921135021838972, guid: 1e078682981af594eb08df705e283869, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
