@@ -11,12 +11,11 @@ public class Currency
 
     public void Add(int value)
     {
-        if (value <= 0)
-            throw new ArgumentOutOfRangeException(nameof(value));
+        //if (value <= 0)
+        //    throw new ArgumentOutOfRangeException(nameof(value));
 
         _value += value;
         Changed?.Invoke();
-        Debug.Log("Changed");
     }
 
     public void Spend(int value)

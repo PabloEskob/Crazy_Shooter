@@ -22,19 +22,19 @@ public abstract class CurrencyHolder : MonoBehaviour
         _storage = AllServices.Container.Single<IStorage>();
     }
 
-    private void OnDisable() => 
+    private void OnDisable() =>
         _currency.Changed -= OnBalanceChanged;
 
     private void Start() => 
         _currency.Add(_storage.GetSoft());
 
-    public void AddSoft(int value) => 
+    public void AddSoft(int value) =>
         _currency.Add(value);
 
-    public void AddReward(int value) => 
+    public void AddReward(int value) =>
         _currency.Add(value);
 
-    public void Spend(int value) => 
+    public void Spend(int value) =>
         _currency.Spend(value);
 
     private void OnBalanceChanged()
