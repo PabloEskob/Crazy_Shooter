@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using Source.Infrastructure;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class CurrencyHolder : MonoBehaviour
 {
+    private IStorage _storage;
     private Currency _currency;
 
     public event UnityAction<int> BalanceChanged;
@@ -18,10 +19,14 @@ public abstract class CurrencyHolder : MonoBehaviour
     {
         _currency = InitCurrency();
         _currency.Changed += OnBalanceChanged;
+        _storage = AllServices.Container.Single<IStorage>();
     }
 
     private void OnDisable() => 
         _currency.Changed -= OnBalanceChanged;
+
+    private void Start() => 
+        _currency.Add(_storage.GetSoft());
 
     public void AddSoft(int value) => 
         _currency.Add(value);
@@ -32,8 +37,12 @@ public abstract class CurrencyHolder : MonoBehaviour
     public void Spend(int value) => 
         _currency.Spend(value);
 
-    private void OnBalanceChanged() => 
+    private void OnBalanceChanged()
+    {
         BalanceChanged?.Invoke(_currency.Value);
+        _storage.SetSoft(_currency.Value);
+        _storage.Save();
+    }
 
     public bool CheckSolvency(int price) =>
         Value >= price;

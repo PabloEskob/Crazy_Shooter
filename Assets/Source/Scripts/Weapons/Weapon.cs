@@ -32,6 +32,7 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField] private float _reloadSpeed;
         [SerializeField] private float _magazineSize;
         [SerializeField] private int _maxUpgradeLevel = 4;
+        [SerializeField] private int Price = 100;
 
         private int _frameUpgradeLevel;
         private int _muzzleUpgradeLevel;
@@ -40,6 +41,9 @@ namespace InfimaGames.LowPolyShooterPack
         private int _magazineSizeUpgradeLevel;
 
         public int MaxUpgradeLevel => _maxUpgradeLevel;
+        public int WeaponPrice => Price;
+
+        public event Action Bought;
 
         [Header("Settings")]
 
@@ -398,6 +402,7 @@ namespace InfimaGames.LowPolyShooterPack
         {
             _isBought = true;
             _data.IsBought = _isBought;
+            Bought?.Invoke();
         }
 
         public override void SetEquipped()

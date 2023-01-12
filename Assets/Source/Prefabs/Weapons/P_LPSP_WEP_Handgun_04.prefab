@@ -186,8 +186,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7170d51de97d79e4fb11d3321667acb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeConfig: {fileID: 0}
+  _upgradeConfig: {fileID: 11400000, guid: 4ab88ef9b72fa264b8be1695c5bbca1b, type: 2}
   _bulletPool: {fileID: -3915064312712303141}
+  _damage: 0
+  _fireRate: 0
+  _reloadSpeed: 0
+  _magazineSize: 0
+  _maxUpgradeLevel: 4
+  Price: 150
   weaponName: Handgun 04
   multiplierMovementSpeed: 1.15
   _weaponType: Pistol

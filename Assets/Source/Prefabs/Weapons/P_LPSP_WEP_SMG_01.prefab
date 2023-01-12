@@ -341,8 +341,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7170d51de97d79e4fb11d3321667acb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeConfig: {fileID: 0}
+  _upgradeConfig: {fileID: 11400000, guid: 53cc5af42c86dd549bb2a539f28fcd24, type: 2}
   _bulletPool: {fileID: -6623991647944643097}
+  _damage: 0
+  _fireRate: 0
+  _reloadSpeed: 0
+  _magazineSize: 0
+  _maxUpgradeLevel: 4
+  Price: 150
   weaponName: SMG 01
   multiplierMovementSpeed: 1
   _weaponType: SMG

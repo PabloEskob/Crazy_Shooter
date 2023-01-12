@@ -10,6 +10,7 @@ public class UpgradePanel : MonoBehaviour
     [SerializeField] private List<UpgradeType> _upgradeTypeButtons;
     [SerializeField] private BuyButton _buyButton;
     [SerializeField] private WeaponStatsDisplay _statsDisplay;
+    [SerializeField] private SoftCurrencyHolder _softCurrencyHolder;
 
     private Weapon _currentWeapon;
     private UpgradeType _defaultUpgradeType;
@@ -99,16 +100,21 @@ public class UpgradePanel : MonoBehaviour
 
     private void OnBuyButtonClick()
     {
-        if (_currentWeapon.IsBought())
+        if (_softCurrencyHolder.CheckSolvency(_buyButton.CurrentPrice))
         {
-            _currentWeapon.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
-            _currentWeapon.UpdateStatsToData();
-            Upgraded?.Invoke();
-        }
-        else
-        {
-            _currentWeapon.SetIsBought();
-            OnWeaponSet(_currentWeapon);
+            if (_currentWeapon.IsBought())
+            {
+                _softCurrencyHolder.Spend(_buyButton.CurrentPrice);
+                _currentWeapon.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
+                _currentWeapon.UpdateStatsToData();
+                Upgraded?.Invoke();
+            }
+            else
+            {
+                _softCurrencyHolder.Spend(_buyButton.CurrentPrice);
+                _currentWeapon.SetIsBought();
+                OnWeaponSet(_currentWeapon);
+            }
         }
 
     }

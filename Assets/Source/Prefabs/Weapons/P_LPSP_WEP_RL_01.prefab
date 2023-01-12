@@ -189,6 +189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 0}
   _bulletPool: {fileID: 1409543502508093904}
+  _damage: 0
+  _fireRate: 0
+  _reloadSpeed: 0
+  _magazineSize: 0
+  _maxUpgradeLevel: 4
+  Price: 150
   weaponName: Rocket Launcher 01
   multiplierMovementSpeed: 1
   _weaponType: 

@@ -16,6 +16,7 @@ public class Currency
 
         _value += value;
         Changed?.Invoke();
+        Debug.Log("Changed");
     }
 
     public void Spend(int value)
