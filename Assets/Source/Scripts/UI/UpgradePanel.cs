@@ -76,7 +76,6 @@ public class UpgradePanel : MonoBehaviour
         _currentWeapon = weapon;
         WeaponSet?.Invoke(_currentWeapon);
 
-
         foreach (UpgradeType typeButton in _upgradeTypeButtons)
         {
             typeButton.SetWeapon(weapon);

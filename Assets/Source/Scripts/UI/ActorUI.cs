@@ -31,6 +31,8 @@ public class ActorUI : MonoBehaviour
 
     private void Start()
     {
+        QualitySettings.SetQualityLevel(0);
+        Debug.Log(QualitySettings.GetQualityLevel());
         _playerHealth = GameObject.FindGameObjectWithTag(PlayerTag).GetComponent<PlayerHealth>();
         Construct(_playerHealth);
     }
