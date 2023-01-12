@@ -42,11 +42,11 @@ namespace Source.Scripts.Infrastructure.Factory
             startScene.Construct(this, launchRoom, _gameStatusScreen);
         }
 
-        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent)
+        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent, bool move)
         {
             var enemyStaticData = _staticDataEnemy.ForEnemy(monsterTypeId);
             var enemy = Object.Instantiate(enemyStaticData.Prefab, parent.position, Quaternion.identity);
-            CreateStatsEnemy(enemy, enemyStaticData);
+            CreateStatsEnemy(enemy, enemyStaticData, move);
             CreateStatsNavMesh(enemy, enemyStaticData);
             return enemy;
         }
@@ -67,11 +67,12 @@ namespace Source.Scripts.Infrastructure.Factory
             return progress;
         }
 
-        private static void CreateStatsEnemy(Enemy enemy, EnemyStaticData enemyStaticData)
+        private static void CreateStatsEnemy(Enemy enemy, EnemyStaticData enemyStaticData, bool move)
         {
             enemy.EnemyHealth.Max = enemyStaticData.Hp;
             enemy.EnemyAttack.Damage = enemyStaticData.Damage;
             enemy.EnemyAttack.AttackCooldown = enemyStaticData.AttackCooldown;
+            enemy.EnemyMove.CanMove(move);
         }
 
         private void CreateStatsNavMesh(Enemy enemy, EnemyStaticData enemyStaticData)

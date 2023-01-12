@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Source.Scripts.Infrastructure.Factory;
 using UnityEngine;
 
 public class Room : MonoBehaviour
@@ -8,6 +7,8 @@ public class Room : MonoBehaviour
     [SerializeField] private List<EnemySpawner> _enemySpawners;
     [SerializeField] private float _delayWave;
     [SerializeField] private float _startThisRoom;
+
+    private Player _player;
 
     private LaunchingWaves _launchingWaves;
 
@@ -23,13 +24,8 @@ public class Room : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (var enemySpawner in _enemySpawners)
-        {
+        foreach (var enemySpawner in _enemySpawners) 
             enemySpawner.OnTurnedSpawner -= _launchingWaves.TurnOnSpawn;
-
-            if (enemySpawner.TriggerSpawn != null)
-                enemySpawner.TriggerSpawn.TriggerEnter -= _launchingWaves.TurnOnSpawn;
-        }
 
         _launchingWaves.Ended -= LaunchingWavesOnEnded;
     }
@@ -39,21 +35,14 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
-        foreach (var enemySpawner in _enemySpawners)
-        {
+        foreach (var enemySpawner in _enemySpawners) 
             enemySpawner.OnTurnedSpawner += _launchingWaves.TurnOnSpawn;
-
-            if (enemySpawner.TriggerSpawn != null)
-                enemySpawner.TriggerSpawn.TriggerEnter += _launchingWaves.TurnOnSpawn;
-        }
 
         _launchingWaves.Ended += LaunchingWavesOnEnded;
     }
 
-    private void LaunchingWavesOnEnded()
-    {
+    private void LaunchingWavesOnEnded() => 
         StartedNewRoom?.Invoke(Number);
-    }
 
 
     public void FillInEnemySpawner(IGameFactory gameFactory)

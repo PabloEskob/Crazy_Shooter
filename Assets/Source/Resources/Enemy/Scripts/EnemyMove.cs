@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,14 +9,17 @@ public class EnemyMove : MonoBehaviour
 
     private Enemy _enemy;
     private float _speed;
+    private bool _move;
 
     public Player Player { get; set; }
+
 
     private void Awake() =>
         _enemy = GetComponent<Enemy>();
 
     private void Update()
     {
+        if (!_move) return;
         if (!_enemy.EnemyDeath.IsDied)
             _navMeshAgent.destination = Player.transform.position;
         else
@@ -24,6 +28,9 @@ public class EnemyMove : MonoBehaviour
             _navMeshAgent.enabled = false;
         }
     }
+
+    public void CanMove(bool move) =>
+        _move = move;
 
     public void Init(Player player) =>
         Player = player;
@@ -34,6 +41,9 @@ public class EnemyMove : MonoBehaviour
         _navMeshAgent.speed = 0;
     }
 
-    public void ContinueMove() =>
+    public void ContinueMove()
+    {
+        _move = true;
         _navMeshAgent.speed = _speed;
+    }
 }

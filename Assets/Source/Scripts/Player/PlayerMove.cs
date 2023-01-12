@@ -1,7 +1,6 @@
 ﻿using System;
 using Dreamteck.Splines;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ConstructSplineComputer))]
 public class PlayerMove : MonoBehaviour
@@ -32,17 +31,9 @@ public class PlayerMove : MonoBehaviour
     
     public void PlayMove()
     {
-        if (CanMove)
-            _constructSplineComputer.SetSpeed(_speed);
+        _constructSplineComputer.SetSpeed(_speed);
     }
-
-    public void PlayMove(InputAction.CallbackContext context)
-    {
-        if (CanMove)
-            _constructSplineComputer.SetSpeed(_speed);
-    }
-
-
+    
     private void CreateSplineTrigger()
     {
         foreach (var triggerGroup in _constructSplineComputer.GetTriggerGroup())

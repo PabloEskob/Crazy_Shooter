@@ -12,16 +12,16 @@ namespace Source.Infrastructure
             DontDestroyOnLoad(this);
         }
 
-        public void Show()
-        {
-            gameObject.SetActive(true);
-            _screen.alpha = 1;
-        }
-
         public void Hide()
         {
             Show();
             StartCoroutine(FadeIn());
+        }
+
+        private void Show()
+        {
+            gameObject.SetActive(true);
+            _screen.alpha = 1;
         }
 
         private IEnumerator FadeIn()
