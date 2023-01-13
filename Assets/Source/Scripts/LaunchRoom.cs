@@ -6,7 +6,7 @@ public class LaunchRoom : MonoBehaviour
 {
     [SerializeField] private List<Room> _rooms;
 
-    public event Action Allowed;
+    private PlayerMove _player;
     public event Action EndedRoom;
 
     private void OnDisable()
@@ -14,7 +14,7 @@ public class LaunchRoom : MonoBehaviour
         foreach (var room in _rooms)
             room.StartedNewRoom -= StartedNewRoom;
     }
-
+    
     public void Fill(IGameFactory gameFactory)
     {
         for (var i = 0; i < _rooms.Count; i++)
@@ -24,6 +24,8 @@ public class LaunchRoom : MonoBehaviour
             room.Number = i;
             room.StartedNewRoom += StartedNewRoom;
         }
+        
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
     }
 
     public void StartFirstRoom() =>
@@ -31,7 +33,7 @@ public class LaunchRoom : MonoBehaviour
 
     private void StartedNewRoom(int number)
     {
-        Allowed?.Invoke();
+        _player.PlayMove();
 
         var numberRoom = number + 1;
 

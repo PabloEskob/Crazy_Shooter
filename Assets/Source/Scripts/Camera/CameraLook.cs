@@ -15,6 +15,8 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("Minimum and maximum left/right rotation angle the player can have.")] [SerializeField]
         private Vector2 _xClamp = new Vector2(-240, -120);
 
+        [SerializeField] private bool _allRoundView;
+
         #endregion
 
         #region FIELDS
@@ -42,9 +44,12 @@ namespace InfimaGames.LowPolyShooterPack
             _yaw += frameInput.x;
             _pitch -= frameInput.y;
 
-            _yaw = Mathf.Clamp(_yaw, _xClamp.x, _xClamp.y);
-            _pitch = Mathf.Clamp(_pitch, _yClamp.x, _yClamp.y);
+            if (_allRoundView != true)
+            {
+                _yaw = Mathf.Clamp(_yaw, _xClamp.x, _xClamp.y);
+            }
 
+            _pitch = Mathf.Clamp(_pitch, _yClamp.x, _yClamp.y);
             transform.eulerAngles = new Vector3(_pitch, _yaw, 0.0f);
         }
 

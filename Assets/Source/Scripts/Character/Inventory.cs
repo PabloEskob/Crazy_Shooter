@@ -51,6 +51,7 @@ namespace InfimaGames.LowPolyShooterPack
                     {
                         weapon.SetData(_storage.GetString(weapon.GetName()));
                         weapon.SetBoolsFromData();
+                        weapon.UpdateStatsFromData();
                     }
                 }
 
@@ -72,8 +73,6 @@ namespace InfimaGames.LowPolyShooterPack
             //Equip(equippedAtStart);
             Equip(equippedWeaponIndex);
             Initialized?.Invoke();
-
-
         }
 
         public override WeaponBehaviour Equip(int index)

@@ -49,7 +49,7 @@ namespace InfimaGames.LowPolyShooterPack
         {
             //Wait for the audio source to complete playing the clip.
             yield return new WaitWhile(() => source.isPlaying);
-            
+
             //Destroy the audio game object, since we're not using it anymore.
             //This isn't really too great for performance, but it works, for now.
             DestroyImmediate(source.gameObject);
@@ -87,9 +87,9 @@ namespace InfimaGames.LowPolyShooterPack
             
             //Play the clip!
             newAudioSource.PlayOneShot(clip);
-            
+
             //Start a coroutine that will destroy the whole object once it is done!
-            if(settings.AutomaticCleanup && newAudioSource != null)
+            if (settings.AutomaticCleanup && newAudioSource != null)
                 StartCoroutine(nameof(DestroySourceWhenFinished), newAudioSource);
         }
 

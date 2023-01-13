@@ -41,7 +41,7 @@ namespace Source.Scripts.Ui
 
         public abstract void SetText();
 
-        protected void SendEvent() => 
+        public void SendEvent() => 
             UpgradeChoosed?.Invoke(this);
 
         public void SwitchButtonState(bool value) => 
@@ -49,5 +49,10 @@ namespace Source.Scripts.Ui
 
         public void SwitchButtonInteractivity(bool value) => 
             UpgradeButton.interactable = value;
+
+        public void SetWeapon(Weapon weapon)
+        {
+            Weapon = weapon;
+        }
     }
 }

@@ -217,8 +217,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7170d51de97d79e4fb11d3321667acb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeConfig: {fileID: 0}
+  _upgradeConfig: {fileID: 11400000, guid: a9b2fea6fd09ad7458125fb74e5f62c9, type: 2}
   _bulletPool: {fileID: 6991186361083951537}
+  _damage: 0
+  _fireRate: 0
+  _reloadSpeed: 0
+  _magazineSize: 0
+  _maxUpgradeLevel: 4
+  Price: 150
   weaponName: Assault Rifle 03
   multiplierMovementSpeed: 1
   _weaponType: Assault Rifle

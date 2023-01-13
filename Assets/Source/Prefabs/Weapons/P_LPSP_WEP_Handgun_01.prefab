@@ -607,12 +607,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7170d51de97d79e4fb11d3321667acb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeConfig: {fileID: 0}
+  _upgradeConfig: {fileID: 11400000, guid: d743917f29c0fc949a70457e4d87b13a, type: 2}
   _bulletPool: {fileID: -5843777053924511980}
   _damage: 12
   _fireRate: 5
   _reloadSpeed: 3
   _magazineSize: 10
+  _maxUpgradeLevel: 4
+  Price: 150
   weaponName: Handgun 01
   multiplierMovementSpeed: 1.15
   _weaponType: Pistol

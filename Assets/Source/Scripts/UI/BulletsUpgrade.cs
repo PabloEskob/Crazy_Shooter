@@ -1,5 +1,4 @@
 using InfimaGames.LowPolyShooterPack;
-using UnityEngine;
 
 namespace Source.Scripts.Ui
 {

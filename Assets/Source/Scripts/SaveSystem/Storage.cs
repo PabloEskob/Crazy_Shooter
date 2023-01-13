@@ -9,19 +9,23 @@ namespace Source.Scripts.SaveSystem
 {
     public class Storage : IStorage
     {
-        private readonly string _dataName;
+        private const string CurrentDataName = "DataName";
 
+        private readonly string _dataName;
         private readonly SaveMode _mode;
         private Data _data;
 
         public event Action Changed;
 
-        public Storage(string dataName = "DataName", SaveMode mode = SaveMode.Delayed)
+        public Storage(string dataName = CurrentDataName, SaveMode mode = SaveMode.Delayed)
         {
             _dataName = dataName;
             _mode = mode;
             _data = Load();
         }
+
+        public string GetDataName() =>
+            _dataName;
 
         public void SetFloat(string key, float value)
         {

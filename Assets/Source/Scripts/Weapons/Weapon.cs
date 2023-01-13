@@ -32,6 +32,7 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField] private float _reloadSpeed;
         [SerializeField] private float _magazineSize;
         [SerializeField] private int _maxUpgradeLevel = 4;
+        [SerializeField] private int Price = 100;
 
         private int _frameUpgradeLevel;
         private int _muzzleUpgradeLevel;
@@ -39,6 +40,10 @@ namespace InfimaGames.LowPolyShooterPack
         private int _bulletsUpgradeLevel;
         private int _magazineSizeUpgradeLevel;
 
+        public int MaxUpgradeLevel => _maxUpgradeLevel;
+        public int WeaponPrice => Price;
+
+        public event Action Bought;
 
         [Header("Settings")]
 
@@ -397,6 +402,7 @@ namespace InfimaGames.LowPolyShooterPack
         {
             _isBought = true;
             _data.IsBought = _isBought;
+            Bought?.Invoke();
         }
 
         public override void SetEquipped()
@@ -597,6 +603,32 @@ namespace InfimaGames.LowPolyShooterPack
                 }
             }
             return null;
+        }
+
+        public void UpdateStatsToData()
+        {
+            _data.Damage = _damage;
+            _data.FireRate = _fireRate;
+            _data.Reload = _reloadSpeed;
+            _data.MagazineSize = _magazineSize;
+            _data.FrameUpgradeLevel = _frameUpgradeLevel;
+            _data.MuzzleUpgradeLevel = _muzzleUpgradeLevel;
+            _data.ScopeUpgradeLevel = _scopeUpgradeLevel;
+            _data.BulletsUpgradeLevel = _bulletsUpgradeLevel;
+            _data.MagazineUpgradeLevel = _magazineSizeUpgradeLevel;
+        }
+
+        public void UpdateStatsFromData()
+        {
+            _damage = _data.Damage;
+            _fireRate = _data.FireRate;
+            _reloadSpeed = _data.Reload;
+            _magazineSize = _data.MagazineSize;
+            _frameUpgradeLevel = _data.FrameUpgradeLevel;
+            _muzzleUpgradeLevel = _data.MuzzleUpgradeLevel;
+            _scopeUpgradeLevel = _data.ScopeUpgradeLevel;
+            _bulletsUpgradeLevel = _data.BulletsUpgradeLevel;
+            _magazineSizeUpgradeLevel = _data.MagazineUpgradeLevel;
         }
 
         #endregion

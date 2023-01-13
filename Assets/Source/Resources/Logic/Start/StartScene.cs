@@ -13,18 +13,14 @@ public class StartScene : MonoBehaviour
     private IAssetProvider _assetProvider;
     private int _number;
 
-    private void OnDisable()
-    {
-        _launchRoom.Allowed -= OnAllowed;
+    private void OnDisable() => 
         _launchRoom.EndedRoom -= LaunchVictoryScreen;
-    }
 
     public void Construct(IGameFactory gameFactory, LaunchRoom launchRoom, GameStatusScreen gameStatusScreen)
     {
         _gameStatusScreen = gameStatusScreen;
         _gameFactory = gameFactory;
         _launchRoom = launchRoom;
-        _launchRoom.Allowed += OnAllowed;
         _launchRoom.EndedRoom += LaunchVictoryScreen;
         InitGameWorld();
         StartGame();
@@ -41,13 +37,7 @@ public class StartScene : MonoBehaviour
 
     private void StartGame() =>
         _launchRoom.StartFirstRoom();
-
-    private void OnAllowed()
-    {
-        // if (_movement == Movement.Move)
-        //     _actorUI.ButtonForward.SwitchOn();
-    }
-
+    
     private void LaunchVictoryScreen() =>
         _gameStatusScreen.PlayerVictory();
 }
