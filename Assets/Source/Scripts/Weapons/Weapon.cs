@@ -21,7 +21,6 @@ namespace InfimaGames.LowPolyShooterPack
     /// </summary>
     public class Weapon : WeaponBehaviour
     {
-        private WeaponData _data = new WeaponData();
 
         #region FIELDS SERIALIZED
 
@@ -251,7 +250,9 @@ namespace InfimaGames.LowPolyShooterPack
         private Transform playerCamera;
 
         #endregion
+        private WeaponData _data = new WeaponData();
 
+        public WeaponUpgrade WeaponUpgrade { get; private set; }
         public UpgradeConfig UpgradeConfig => _upgradeConfig;
 
         #region UNITY
@@ -528,7 +529,6 @@ namespace InfimaGames.LowPolyShooterPack
             }
         }
 
-        public WeaponUpgrade WeaponUpgrade { get; private set; }
 
         public WeaponUpgrade GetFrameUpgrade()
         {
