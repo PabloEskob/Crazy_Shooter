@@ -18,6 +18,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// Array of all weapons. These are gotten in the order that they are parented to this object.
         /// </summary>
         public Weapon[] weapons;
+        public Weapon[] _availableWeapons;
 
         /// <summary>
         /// Currently equipped WeaponBehaviour.
@@ -55,18 +56,20 @@ namespace InfimaGames.LowPolyShooterPack
                     }
                 }
 
-            var availableWeapons = weapons.Where(w => w.IsBought()).ToArray();
+            _availableWeapons = weapons.Where(w => w.IsBought()).ToArray();
 
             //Disable all weapons. This makes it easier for us to only activate the one we need.
-            foreach (Weapon weapon in availableWeapons)
+            foreach (Weapon weapon in _availableWeapons)
                 weapon.gameObject.SetActive(false);
 
             int equippedWeaponIndex = 0;
 
-            for (int i = 0; i < availableWeapons.Length; i++)
+            for (int i = 0; i < _availableWeapons.Length; i++)
             {
-                if (availableWeapons[i].IsEquipped())
+                if (_availableWeapons[i].IsEquipped())
+                {
                     equippedWeaponIndex = i;
+                }
             }
 
             //Equip.
@@ -79,11 +82,11 @@ namespace InfimaGames.LowPolyShooterPack
         {
             Weapon current;
             //If we have no weapons, we can't really equip anything.
-            if (weapons == null)
+            if (_availableWeapons == null)
                 return equipped;
 
             //The index needs to be within the array's bounds.
-            if (index > weapons.Length - 1)
+            if (index > _availableWeapons.Length - 1)
                 return equipped;
 
             //No point in allowing equipping the already-equipped weapon.
@@ -108,7 +111,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Update index.
             equippedIndex = index;
             //Update equipped.
-            equipped = weapons[equippedIndex];
+            equipped = _availableWeapons[equippedIndex];
             //Activate the newly-equipped weapon.
             equipped.gameObject.SetActive(true);
             equipped.SetEquipped();
@@ -134,7 +137,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Get last index with wrap around.
             int newIndex = equippedIndex - 1;
             if (newIndex < 0)
-                newIndex = weapons.Length - 1;
+                newIndex = _availableWeapons.Length - 1;
 
             //Return.
             return newIndex;
@@ -144,7 +147,7 @@ namespace InfimaGames.LowPolyShooterPack
         {
             //Get next index with wrap around.
             int newIndex = equippedIndex + 1;
-            if (newIndex > weapons.Length - 1)
+            if (newIndex > _availableWeapons.Length - 1)
                 newIndex = 0;
 
             //Return.

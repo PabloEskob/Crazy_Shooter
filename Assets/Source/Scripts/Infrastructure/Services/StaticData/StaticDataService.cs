@@ -34,11 +34,8 @@ public class StaticDataService : IStaticDataService
         ? _gameConfig.LevelConfigs[levelIndex]
         : null;
 
-    public void LoadGameConfig()
-    {
+    public void LoadGameConfig() => 
         _gameConfig = Resources.Load<GameConfig>(GameDataPath);
-        Debug.Log($"Level configs count - {_gameConfig.LevelConfigs.Length}");
-    }
 
     public GameConfig GetGameConfig() => _gameConfig;
 }
