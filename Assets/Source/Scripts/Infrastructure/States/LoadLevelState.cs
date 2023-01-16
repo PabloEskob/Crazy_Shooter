@@ -32,7 +32,7 @@ namespace Source.Infrastructure
 
         public void Enter()
         {
-            _sceneLoader.Load(LevelName, OnLoaded);
+            _sceneLoader.Load(GetNextLevelName(), OnLoaded);
         }
 
         public void Exit() => _loadingScreen.Hide();
