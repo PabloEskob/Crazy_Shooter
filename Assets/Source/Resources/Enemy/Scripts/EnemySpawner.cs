@@ -8,6 +8,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int _count;
     [SerializeField] private bool _move = true;
 
+    [Range(1, 20)] [SerializeField] private int _hp = 5;
+    [Range(1, 5)] [SerializeField] private int _damage = 3;
+    [Range(1, 20)] [SerializeField] private float _speed = 2;
+    [Range(1, 20)] [SerializeField] private float _attackCooldown = 3;
+
     private int _number;
     private IGameFactory _gameFactory;
     private List<Enemy> _enemies;
@@ -15,6 +20,12 @@ public class EnemySpawner : MonoBehaviour
 
     public bool Clear => _clear;
     public int Number => _number;
+    public int Hp => _hp;
+    public int Damage => _damage;
+    public float EffectiveDistance => 3.1f;
+
+    public float Speed => _speed;
+    public float AttackCooldown => _attackCooldown;
 
     public event Action OnTurnedSpawner;
 
@@ -47,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
 
     private Enemy Spawn()
     {
-        Enemy enemy = _gameFactory.CreateEnemy(_monsterTypeId, transform, _move);
+        Enemy enemy = _gameFactory.CreateEnemy(_monsterTypeId, transform, _move, this);
         InitEnemy(enemy);
         return enemy;
     }
