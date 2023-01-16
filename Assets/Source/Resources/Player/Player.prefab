@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _speedRotate: 2
 --- !u!114 &3295479651965937352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +284,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3414421814590730736, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: _xClamp.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414421814590730736, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: _xClamp.y
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 7432804505493573037, guid: 1e078682981af594eb08df705e283869, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -330,6 +339,10 @@ PrefabInstance:
     - target: {fileID: 7434638856081251855, guid: 1e078682981af594eb08df705e283869, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464390969389293097, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e078682981af594eb08df705e283869, type: 3}

@@ -723,8 +723,6 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void Fire()
         {
-           
-
             _crosshair.Shot();
             //Save the shot time, so we can calculate the fire rate correctly.
             lastShotTime = Time.time;

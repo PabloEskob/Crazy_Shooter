@@ -12,6 +12,7 @@ TagManager:
   - LaunchRoom
   - ActorUi
   - GameStatusScreen
+  - TurningPoints
   layers:
   - Default
   - TransparentFX

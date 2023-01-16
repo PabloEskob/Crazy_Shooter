@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -41,16 +42,21 @@ namespace InfimaGames.LowPolyShooterPack
             Vector2 frameInput = _playerCharacter.IsCursorLocked() ? _playerCharacter.GetInputLook() : default;
             frameInput *= _sensitivity;
 
-            _yaw += frameInput.x;
-            _pitch -= frameInput.y;
+            var transformLocalRotation = transform.localRotation;
+            Vector3 rot = transformLocalRotation.eulerAngles + new Vector3(-frameInput.y, frameInput.x, 0f);
 
-            if (_allRoundView != true)
-            {
-                _yaw = Mathf.Clamp(_yaw, _xClamp.x, _xClamp.y);
-            }
+            if (_allRoundView) 
+                rot.y = ClampAngle(rot.y, _xClamp.x, _xClamp.y);
 
-            _pitch = Mathf.Clamp(_pitch, _yClamp.x, _yClamp.y);
-            transform.eulerAngles = new Vector3(_pitch, _yaw, 0.0f);
+            rot.x = ClampAngle(rot.x, _yClamp.x, _yClamp.y);
+            transformLocalRotation.eulerAngles = rot;
+            transform.localRotation = transformLocalRotation;
+        }
+
+        private float ClampAngle(float angle, float from, float to)
+        {
+            if (angle < 0f) angle = 360 + angle;
+            return angle > 180f ? Mathf.Max(angle, 360 + from) : Mathf.Min(angle, to);
         }
 
         private void TurnUp(Vector2 frameInput)
@@ -74,8 +80,8 @@ namespace InfimaGames.LowPolyShooterPack
             rotation.z /= rotation.w;
             rotation.w = 1.0f;
 
-            float pitch = 2.0f * Mathf.Rad2Deg * Mathf.Atan(rotation.x);
-            pitch = Mathf.Clamp(pitch, _yClamp.x, _yClamp.y);
+            float pitch = 2.0f * Mathf.Rad2Deg * Mathf.Atan(rotation.y);
+            pitch = Mathf.Clamp(pitch, _xClamp.x, _xClamp.y);
             rotation.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * pitch);
 
             return rotation;
