@@ -1,6 +1,5 @@
 using Source.Infrastructure.States;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
-using Source.Scripts.StaticData;
 using UnityEngine;
 
 namespace Source.Infrastructure
