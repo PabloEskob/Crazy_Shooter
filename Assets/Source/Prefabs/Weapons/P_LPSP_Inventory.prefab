@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2480563158121336328}
   - component: {fileID: 2480563158121336331}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: P_LPSP_Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons: []
+  _availableWeapons: []
 --- !u!1001 &1411692018244775762
 PrefabInstance:
   m_ObjectHideFlags: 0
