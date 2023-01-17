@@ -7,8 +7,8 @@ public class PlayerAnimator : MonoBehaviour
 
     private Animator _animator;
 
-    private void Awake() =>
-        _animator = GetComponent<Animator>();
+    private void Awake() => 
+        _animator = GetComponentInChildren<Animator>();
 
     public void PlayDeath()
     {
