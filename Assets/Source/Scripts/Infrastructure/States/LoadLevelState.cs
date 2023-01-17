@@ -14,7 +14,10 @@ namespace Source.Infrastructure
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
 
+        private string LevelName = "Level 1";
+
         private const string PlayerInitialPointTag = "PlayerInitialPointTag";
+
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IStorage storage,
             LoadingScreen loadingScreen, IGameFactory gameFactory, IStaticDataService staticData)
@@ -29,8 +32,7 @@ namespace Source.Infrastructure
 
         public void Enter()
         {
-            _sceneLoader.Load("Level 1", OnLoaded);
-          //  _sceneLoader.Load("NewScene", OnLoaded);
+            _sceneLoader.Load(GetNextLevelName(), OnLoaded);
         }
 
         public void Exit() => _loadingScreen.Hide();
@@ -47,5 +49,8 @@ namespace Source.Infrastructure
             _gameFactory.CreateHUD(player);
             _gameFactory.CreateStartScene();
         }
+
+        private string GetNextLevelName() =>
+            _staticData.ForLevel(_storage.GetLevel()).SceneName;
     }
 }

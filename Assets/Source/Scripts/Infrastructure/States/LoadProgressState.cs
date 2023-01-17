@@ -36,8 +36,5 @@ namespace Source.Infrastructure
         {
             _coroutineRunner.StartCoroutine(_storage.SyncRemoteSave(onRemoteDataLoaded));
         }
-        
-        private PlayerProgress NewProgress() => 
-            new PlayerProgress("ShootingTest");
     }
 }

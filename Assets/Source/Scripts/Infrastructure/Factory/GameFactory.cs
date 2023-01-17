@@ -9,6 +9,7 @@ namespace Source.Scripts.Infrastructure.Factory
     public class GameFactory : IGameFactory
     {
         private const string LaunchRoomTag = "LaunchRoom";
+        private const string FinishLevel = "FinishLevel";
 
         private readonly IStaticDataService _staticDataEnemy;
         private readonly IAssetProvider _assetProvider;
@@ -39,15 +40,16 @@ namespace Source.Scripts.Infrastructure.Factory
         {
             StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();
             LaunchRoom launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
-            startScene.Construct(this, launchRoom, _gameStatusScreen);
+            FinishLevel finishLevel = GameObject.FindGameObjectWithTag(FinishLevel).GetComponent<FinishLevel>();
+            startScene.Construct(this, launchRoom, _gameStatusScreen,finishLevel);
         }
 
-        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent, bool move)
+        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent, bool move, EnemySpawner enemySpawner)
         {
             var enemyStaticData = _staticDataEnemy.ForEnemy(monsterTypeId);
             var enemy = Object.Instantiate(enemyStaticData.Prefab, parent.position, Quaternion.identity);
-            CreateStatsEnemy(enemy, enemyStaticData, move);
-            CreateStatsNavMesh(enemy, enemyStaticData);
+            CreateStatsEnemy(enemy, move, enemySpawner);
+            CreateStatsNavMesh(enemy, enemySpawner);
             return enemy;
         }
 
@@ -67,19 +69,19 @@ namespace Source.Scripts.Infrastructure.Factory
             return progress;
         }
 
-        private static void CreateStatsEnemy(Enemy enemy, EnemyStaticData enemyStaticData, bool move)
+        private static void CreateStatsEnemy(Enemy enemy, bool move, EnemySpawner enemySpawner)
         {
-            enemy.EnemyHealth.Max = enemyStaticData.Hp;
-            enemy.EnemyAttack.Damage = enemyStaticData.Damage;
-            enemy.EnemyAttack.AttackCooldown = enemyStaticData.AttackCooldown;
+            enemy.EnemyHealth.Max = enemySpawner.Hp;
+            enemy.EnemyAttack.Damage = enemySpawner.Damage;
+            enemy.EnemyAttack.AttackCooldown = enemySpawner.AttackCooldown;
             enemy.EnemyMove.CanMove(move);
         }
 
-        private void CreateStatsNavMesh(Enemy enemy, EnemyStaticData enemyStaticData)
+        private void CreateStatsNavMesh(Enemy enemy, EnemySpawner enemySpawner)
         {
             var stats = enemy.GetComponent<NavMeshAgent>();
-            stats.speed = enemyStaticData.Speed;
-            stats.stoppingDistance = enemyStaticData.EffectiveDistance;
+            stats.speed = enemySpawner.Speed;
+            stats.stoppingDistance = enemySpawner.EffectiveDistance;
         }
 
         private void RegisterProgressWatchers(GameObject instantiatePlayer)

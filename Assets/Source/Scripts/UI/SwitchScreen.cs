@@ -12,10 +12,10 @@ public class SwitchScreen : MonoBehaviour
     private Character _player;
     private bool _cursorLocked;
     private Canvas _canvas;
-    
+
     public VictoryScreen VictoryScreen => _victoryScreen;
     public DefeatScreen DefeatScreen => _defeatScreen;
-    
+
     private void Awake()
     {
         _victoryScreen = GetComponentInChildren<VictoryScreen>();
@@ -24,7 +24,7 @@ public class SwitchScreen : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Character>();
     }
 
-    private void Start() => 
+    private void Start() =>
         _canvas.sortingOrder = -1;
 
     public void ShowVictoryScreen()

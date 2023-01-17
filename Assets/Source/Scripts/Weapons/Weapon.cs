@@ -21,7 +21,6 @@ namespace InfimaGames.LowPolyShooterPack
     /// </summary>
     public class Weapon : WeaponBehaviour
     {
-        private WeaponData _data = new WeaponData();
 
         #region FIELDS SERIALIZED
 
@@ -251,7 +250,9 @@ namespace InfimaGames.LowPolyShooterPack
         private Transform playerCamera;
 
         #endregion
+        private WeaponData _data = new WeaponData();
 
+        public WeaponUpgrade WeaponUpgrade { get; private set; }
         public UpgradeConfig UpgradeConfig => _upgradeConfig;
 
         #region UNITY
@@ -473,11 +474,11 @@ namespace InfimaGames.LowPolyShooterPack
                 //Spawn projectile from the projectile spawn point.
                 //GameObject projectile = Instantiate(prefabProjectile, muzzleSocket.position, rotation);
                 Projectile projectile = _bulletPool.CreateProjectile();
-                projectile.transform.rotation = rotation;
                 projectile.transform.position = muzzleSocket.position;
+                projectile.transform.rotation = rotation;
                 //Add velocity to the projectile.
-                projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;
-                projectile.transform.parent = null;
+                projectile.GetComponent<Rigidbody>().velocity = playerCamera.transform.forward * projectileImpulse;
+                //projectile.transform.parent = null;
             }
         }
 
@@ -528,7 +529,6 @@ namespace InfimaGames.LowPolyShooterPack
             }
         }
 
-        public WeaponUpgrade WeaponUpgrade { get; private set; }
 
         public WeaponUpgrade GetFrameUpgrade()
         {

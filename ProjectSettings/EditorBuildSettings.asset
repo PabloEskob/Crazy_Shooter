@@ -15,13 +15,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level 1.unity
     guid: 7aa79c2f0bbc2534a84a820e6a814e55
   - enabled: 0
-    path: Assets/Scenes/NewScene.unity
-    guid: 7493d57017e452941be12b4b7febbe7e
+    path: Assets/Scenes/Levels/Level 2.unity
+    guid: 18a601b2795a4644ca4cf1fadbe84d35
   - enabled: 0
-    path: Assets/Scenes/ShootingTest.unity
-    guid: fed2951867596ef43b6d2ee83254bde4
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Levels/Level 3.unity
+    guid: d7f0028089398844d897d3842638d563
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9eb07e2d669e9c94e9d7d3c782a916f7, type: 2}

@@ -56,9 +56,10 @@ namespace InfimaGames.LowPolyShooterPack.Interface
         {
             Ray ray = _camera.ScreenPointToRay(_rayStartPosition);
 
-            SetColorChild(Physics.Raycast(ray, out _hit, 100f, _layerMask, QueryTriggerInteraction.Ignore)
-                ? Color.red
-                : Color.white);
+            if (Physics.Raycast(ray, out _hit, 100f, _layerMask, QueryTriggerInteraction.Ignore))
+                SetColorChild(_hit.collider.GetComponentInParent<Enemy>() ? Color.red : Color.white);
+            else
+                SetColorChild(Color.white);
         }
 
         private void SetColorChild(Color color)

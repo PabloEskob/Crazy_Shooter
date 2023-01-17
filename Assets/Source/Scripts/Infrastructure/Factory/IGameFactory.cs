@@ -5,11 +5,10 @@ using UnityEngine;
 
 public interface IGameFactory : IService
 {
-    
     Player CreatePlayer(GameObject initialPoint);
     public void CreateHUD(Player player);
     public void CreateStartScene();
-    Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent,bool move);
+    Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent,bool move,EnemySpawner enemySpawner);
     Player Player { get; }
     
     List<ISavedProgressReader> ProgressReaders { get; }

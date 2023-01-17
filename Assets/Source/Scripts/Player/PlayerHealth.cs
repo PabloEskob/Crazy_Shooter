@@ -3,15 +3,17 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IHealth
 {
-    [SerializeField] private PlayerAnimator _playerAnimator;
-
     private State _carState;
+    private Player _player;
 
     public event Action HealthChanged;
     public event Action Disabled;
 
     private void OnDisable() => 
         Disabled?.Invoke();
+
+    private void Awake() => 
+        _player = GetComponent<Player>();
 
     public float Current
     {
@@ -41,6 +43,6 @@ public class PlayerHealth : MonoBehaviour, IHealth
             return;
 
         Current -= damage;
-       _playerAnimator.PlayHit();
+       _player.PlayerAnimator.PlayHit();
     }
 }

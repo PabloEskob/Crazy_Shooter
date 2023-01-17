@@ -54,8 +54,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animationClipVictory: {fileID: 7400000, guid: e08842500cd5f7c4ba6c273c5125e56a, type: 2}
   _animationClipDefeat: {fileID: 7400000, guid: 32559732baf2fd74d9dc32f99321e8f7, type: 2}
-  _victoryScreen: {fileID: 7832155404188834554}
-  _defeatScreen: {fileID: 1614942185701236431}
 --- !u!114 &4133270839397890970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9e3fc52f254d34cadd7b91fd9a9557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isSuccess: 0
 --- !u!1 &935016312966337139
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9e3fc52f254d34cadd7b91fd9a9557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isSuccess: 1
 --- !u!1 &5098231954004395517
 GameObject:
   m_ObjectHideFlags: 0

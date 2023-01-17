@@ -723,25 +723,26 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void Fire()
         {
-           
+            if (_lock == false)
+            {
+                _crosshair.Shot();
+                //Save the shot time, so we can calculate the fire rate correctly.
+                lastShotTime = Time.time;
+                //Fire the weapon! Make sure that we also pass the scope's spread multiplier if we're aiming.
+                equippedWeapon.Fire(aiming ? equippedWeaponScope.GetMultiplierSpread() : 1.0f);
 
-            _crosshair.Shot();
-            //Save the shot time, so we can calculate the fire rate correctly.
-            lastShotTime = Time.time;
-            //Fire the weapon! Make sure that we also pass the scope's spread multiplier if we're aiming.
-            equippedWeapon.Fire(aiming ? equippedWeaponScope.GetMultiplierSpread() : 1.0f);
+                //Play firing animation.
+                const string stateName = "Fire";
+                characterAnimator.CrossFade(stateName, 0.05f, layerOverlay, 0);
 
-            //Play firing animation.
-            const string stateName = "Fire";
-            characterAnimator.CrossFade(stateName, 0.05f, layerOverlay, 0);
+                //Play bolt actioning animation if needed, and if we have ammunition. We don't play this for the last shot.
+                if (equippedWeapon.IsBoltAction() && equippedWeapon.HasAmmunition())
+                    UpdateBolt(true);
 
-            //Play bolt actioning animation if needed, and if we have ammunition. We don't play this for the last shot.
-            if (equippedWeapon.IsBoltAction() && equippedWeapon.HasAmmunition())
-                UpdateBolt(true);
-
-            //Automatically reload the weapon if we need to. This is very helpful for things like grenade launchers or rocket launchers.
-            if (!equippedWeapon.HasAmmunition() && equippedWeapon.GetAutomaticallyReloadOnEmpty())
-                StartCoroutine(nameof(TryReloadAutomatic));
+                //Automatically reload the weapon if we need to. This is very helpful for things like grenade launchers or rocket launchers.
+                if (!equippedWeapon.HasAmmunition() && equippedWeapon.GetAutomaticallyReloadOnEmpty())
+                    StartCoroutine(nameof(TryReloadAutomatic));
+            }
         }
 
         private void PlayReloadAnimation()

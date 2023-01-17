@@ -37,6 +37,7 @@ namespace Source.Infrastructure
         {
             IStaticDataService staticData = new StaticDataService();
             staticData.LoadEnemy();
+            staticData.LoadGameConfig();
             _services.RegisterSingle(staticData);
         }
 

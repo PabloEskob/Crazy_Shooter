@@ -9,6 +9,8 @@ public class PlayerMove : MonoBehaviour
 
     private ConstructSplineComputer _constructSplineComputer;
     private TriggerGroup _triggerGroup;
+    private bool _move;
+    private Player _player;
 
     public bool CanMove { get; set; }
 
@@ -17,8 +19,9 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
-        _constructSplineComputer = GetComponent<ConstructSplineComputer>();
+        _player = GetComponent<Player>();
         SplineComputer spline = FindObjectOfType<SplineComputer>();
+        _constructSplineComputer = GetComponent<ConstructSplineComputer>();
         _constructSplineComputer.Construct(spline);
         CreateSplineTrigger();
     }
@@ -28,12 +31,13 @@ public class PlayerMove : MonoBehaviour
         RemoveListenerSplineTrigger();
         Disabled?.Invoke();
     }
-    
+
     public void PlayMove()
     {
         _constructSplineComputer.SetSpeed(_speed);
+        _player.PlayerRotate.RotateReturn();
     }
-    
+
     private void CreateSplineTrigger()
     {
         foreach (var triggerGroup in _constructSplineComputer.GetTriggerGroup())
@@ -50,6 +54,7 @@ public class PlayerMove : MonoBehaviour
 
     private void StopMove(SplineUser arg0)
     {
+        _player.PlayerRotate.StartRotate();
         Stopped?.Invoke();
         CanMove = false;
         _constructSplineComputer.SetSpeed(0);

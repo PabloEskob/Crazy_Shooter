@@ -8,6 +8,11 @@ ShaderVariantCollection:
   m_PrefabAsset: {fileID: 0}
   m_Name: NewShaderVariants
   m_Shaders:
+  - first: {fileID: 64, guid: 0000000000000000f000000000000000, type: 0}
+    second:
+      variants:
+      - keywords: SHADOWS_SPLIT_SPHERES
+        passType: 0
   - first: {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
@@ -32,7 +37,7 @@ ShaderVariantCollection:
   - first: {fileID: 47, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
-      - keywords: DIRECTIONAL LIGHTPROBE_SH SHADOWS_SCREEN _NORMALMAP _SPECGLOSSMAP
+      - keywords: DIRECTIONAL LIGHTPROBE_SH SHADOWS_SCREEN _NORMALMAP
         passType: 4
       - keywords: DIRECTIONAL LIGHTPROBE_SH SHADOWS_SCREEN _SPECGLOSSMAP
         passType: 4
@@ -55,27 +60,27 @@ ShaderVariantCollection:
   - first: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
-      - keywords: 
+      - keywords: SOFTPARTICLES_ON
         passType: 0
   - first: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
-      - keywords: 
+      - keywords: SOFTPARTICLES_ON
         passType: 0
   - first: {fileID: 205, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
-      - keywords: 
+      - keywords: SOFTPARTICLES_ON
         passType: 0
   - first: {fileID: 207, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
-      - keywords: 
+      - keywords: SOFTPARTICLES_ON
         passType: 0
   - first: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
-      - keywords: _ALPHABLEND_ON _FADING_ON
+      - keywords: SOFTPARTICLES_ON _ALPHABLEND_ON _FADING_ON
         passType: 0
       - keywords: PROCEDURAL_INSTANCING_ON _ALPHABLEND_ON
         passType: 8
@@ -131,12 +136,12 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 0
-  - first: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
+  - first: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
     second:
       variants:
       - keywords: 
         passType: 0
-  - first: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
+  - first: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
     second:
       variants:
       - keywords: 

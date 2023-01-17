@@ -481,7 +481,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5836565387966040056}
   - component: {fileID: 5836565387975108638}
-  - component: {fileID: 5118530492775925853}
   - component: {fileID: 8137163820050006698}
   - component: {fileID: 8578661464601570599}
   - component: {fileID: 3803130821125631615}
@@ -529,22 +528,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5118530492775925853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5836565387965750232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94cfb4d271bd4a43bb8c08281b63897c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _capacity: 5
-  _isAutoExpand: 1
-  _projectilePrefab: {fileID: 8787292203492939028, guid: 34fee30dc7338ff4ea8438c93eb43cbe, type: 3}
-  _container: {fileID: 3798321690618626611}
 --- !u!114 &8137163820050006698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 11400000, guid: 55d087660aa02e140914d2ccdaa62ba7, type: 2}
-  _bulletPool: {fileID: 5118530492775925853}
+  _bulletPool: {fileID: 0}
   _damage: 0
   _fireRate: 0
   _reloadSpeed: 0
@@ -581,8 +564,8 @@ MonoBehaviour:
     m_Bits: 1
   maximumDistance: 500
   cycledReload: 1
-  canReloadWhenFull: 1
-  automaticReloadOnEmpty: 0
+  canReloadWhenFull: 0
+  automaticReloadOnEmpty: 1
   automaticReloadOnEmptyDelay: 0.25
   socketEjection: {fileID: 868494328774025956}
   weaponOffsets:
