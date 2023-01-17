@@ -199,9 +199,9 @@ MonoBehaviour:
   _dontLerpDirection: 0
   _physicsMode: 0
   _motion:
-    _hasOffset: 0
+    _hasOffset: 1
     _hasRotationOffset: 0
-    _offset: {x: 0, y: 0}
+    _offset: {x: 0, y: 1}
     _rotationOffset: {x: 0, y: 0, z: 0}
     _baseScale: {x: 1, y: 1, z: 1}
     _2dMode: 0
@@ -292,6 +292,10 @@ PrefabInstance:
       propertyPath: _xClamp.y
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 7039537345946688258, guid: 1e078682981af594eb08df705e283869, type: 3}
+      propertyPath: _container
+      value: 
+      objectReference: {fileID: 4439934684242376781}
     - target: {fileID: 7432804505493573037, guid: 1e078682981af594eb08df705e283869, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -349,5 +353,10 @@ PrefabInstance:
 --- !u!4 &901239087979614537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7432804505493573037, guid: 1e078682981af594eb08df705e283869, type: 3}
+  m_PrefabInstance: {fileID: 7757301365099388132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4439934684242376781 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6213464932438320297, guid: 1e078682981af594eb08df705e283869, type: 3}
   m_PrefabInstance: {fileID: 7757301365099388132}
   m_PrefabAsset: {fileID: 0}
