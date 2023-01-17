@@ -5,7 +5,7 @@ public class Screen : MonoBehaviour
     private CanvasGroup _canvasGroup;
     private Animation _animationComponent;
     private ButtonToMap _buttonToMap;
-    
+
     public ButtonToMap ButtonToMap => _buttonToMap;
 
     private void Awake()
@@ -15,7 +15,7 @@ public class Screen : MonoBehaviour
         _buttonToMap = GetComponentInChildren<ButtonToMap>();
     }
 
-    private void Start() =>
+    private void Start() => 
         _canvasGroup.alpha = 0;
 
     public void Show(AnimationClip animationClip)

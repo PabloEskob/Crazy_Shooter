@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     private bool _move;
     private int _number;
     private float _currentSpeedRotate;
+    private float _elapsedTime;
 
     public bool CanMove { get; set; }
 
@@ -37,10 +38,10 @@ public class PlayerMove : MonoBehaviour
         Disabled?.Invoke();
     }
 
-    private void Start() => 
+    private void Start() =>
         _turningPoints = GameObject.FindGameObjectWithTag("TurningPoints").GetComponent<TurningPoints>();
 
-    public void PlayMove() => 
+    public void PlayMove() =>
         _constructSplineComputer.SetSpeed(_speed);
 
     private void CreateSplineTrigger()
@@ -58,39 +59,55 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    private IEnumerator StartRotate()
+    private void StartRotate()
     {
-        _currentSpeedRotate = 0;
         var value = _number;
         var newVector = SetNewVector(value);
+
+        StartCoroutine(RotateSplineFollower(newVector));
+
+        _number++;
+    }
+
+
+    private IEnumerator RotateSplineFollower(Vector3 vector)
+    {
+        _currentSpeedRotate = 0;
 
         while (_currentSpeedRotate <= _speedRotate)
         {
             yield return new WaitForSeconds(0.01f);
             _currentSpeedRotate += 0.01f;
-            _splineFollower.motion.rotationOffset = Vector3.Lerp(_splineFollower.motion.rotationOffset, newVector, _currentSpeedRotate);
+            _splineFollower.motion.rotationOffset =
+                Vector3.Lerp(_splineFollower.motion.rotationOffset, vector, _currentSpeedRotate);
+            Debug.Log($"{_splineFollower.motion.rotationOffset}-{vector}");
         }
-        Stop(StartRotate());
+
+        Stop(RotateSplineFollower(vector));
     }
 
     private Vector3 SetNewVector(int value)
     {
-        Vector3 directionToFace = _turningPoints.GetPoint(value).transform.position - transform.position;
-        float angleBetween = Vector3.SignedAngle(directionToFace, Vector3.back, Vector3.up);
-        var newVector = new Vector3(0, -angleBetween, 0);
-        return newVector;
+        var turningPoint = _turningPoints.GetPoint(value);
+
+        if (turningPoint != null)
+        {
+            Vector3 directionToFace = turningPoint.transform.position - transform.position;
+            float angleBetween = Vector3.SignedAngle(directionToFace, Vector3.back, Vector3.up);
+            var newVector = new Vector3(0, -angleBetween, 0);
+            return newVector;
+        }
+
+        return _splineFollower.motion.rotationOffset;
     }
 
 
-    private void Stop(IEnumerator enumerator)
-    {
+    private void Stop(IEnumerator enumerator) =>
         StopCoroutine(enumerator);
-        _number++;
-    }
 
     private void StopMove(SplineUser arg0)
     {
-        StartCoroutine(StartRotate());
+        StartRotate();
         Stopped?.Invoke();
         CanMove = false;
         _constructSplineComputer.SetSpeed(0);
