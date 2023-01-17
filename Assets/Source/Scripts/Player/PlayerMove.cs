@@ -31,7 +31,7 @@ public class PlayerMove : MonoBehaviour
         RemoveListenerSplineTrigger();
         Disabled?.Invoke();
     }
-    
+
     public void PlayMove()
     {
         _constructSplineComputer.SetSpeed(_speed);

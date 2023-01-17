@@ -9,6 +9,7 @@ namespace Source.Scripts.Infrastructure.Factory
     public class GameFactory : IGameFactory
     {
         private const string LaunchRoomTag = "LaunchRoom";
+        private const string FinishLevel = "FinishLevel";
 
         private readonly IStaticDataService _staticDataEnemy;
         private readonly IAssetProvider _assetProvider;
@@ -39,15 +40,16 @@ namespace Source.Scripts.Infrastructure.Factory
         {
             StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();
             LaunchRoom launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
-            startScene.Construct(this, launchRoom, _gameStatusScreen);
+            FinishLevel finishLevel = GameObject.FindGameObjectWithTag(FinishLevel).GetComponent<FinishLevel>();
+            startScene.Construct(this, launchRoom, _gameStatusScreen,finishLevel);
         }
 
-        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent, bool move,EnemySpawner enemySpawner)
+        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent, bool move, EnemySpawner enemySpawner)
         {
             var enemyStaticData = _staticDataEnemy.ForEnemy(monsterTypeId);
             var enemy = Object.Instantiate(enemyStaticData.Prefab, parent.position, Quaternion.identity);
-            CreateStatsEnemy(enemy, move,enemySpawner);
-            CreateStatsNavMesh(enemy,enemySpawner);
+            CreateStatsEnemy(enemy, move, enemySpawner);
+            CreateStatsNavMesh(enemy, enemySpawner);
             return enemy;
         }
 
@@ -75,7 +77,7 @@ namespace Source.Scripts.Infrastructure.Factory
             enemy.EnemyMove.CanMove(move);
         }
 
-        private void CreateStatsNavMesh(Enemy enemy,EnemySpawner enemySpawner)
+        private void CreateStatsNavMesh(Enemy enemy, EnemySpawner enemySpawner)
         {
             var stats = enemy.GetComponent<NavMeshAgent>();
             stats.speed = enemySpawner.Speed;

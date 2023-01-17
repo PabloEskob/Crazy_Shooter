@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class LaunchRoom : MonoBehaviour
 {
+    private const string PlayerTag = "Player";
+    
     [SerializeField] private List<Room> _rooms;
 
     private PlayerMove _player;
+    
     public event Action EndedRoom;
 
     private void OnDisable()
@@ -25,7 +28,7 @@ public class LaunchRoom : MonoBehaviour
             room.StartedNewRoom += StartedNewRoom;
         }
         
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
+        _player = GameObject.FindGameObjectWithTag(PlayerTag).GetComponent<PlayerMove>();
     }
 
     public void StartFirstRoom() =>
