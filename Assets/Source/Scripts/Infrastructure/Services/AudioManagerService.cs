@@ -82,6 +82,7 @@ namespace InfimaGames.LowPolyShooterPack
 
             //Set volume.
             newAudioSource.volume = settings.Volume;
+            Debug.Log(settings.Volume);
             //Set spatial blend.
             newAudioSource.spatialBlend = settings.SpatialBlend;
             
