@@ -14,7 +14,7 @@ namespace Source.Infrastructure
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
 
-        private string LevelName = "Level 1";
+         private string LevelName = "Level 1";
 
         private const string PlayerInitialPointTag = "PlayerInitialPointTag";
 
@@ -30,10 +30,10 @@ namespace Source.Infrastructure
             _staticData = staticData;
         }
 
-        public void Enter(int level) => 
+        public void Enter(int level) =>
             _sceneLoader.Load(GetNextLevelNameByNumber(level), OnLoaded);
 
-        public void Enter() => 
+        public void Enter() =>
             _sceneLoader.Load(GetNextLevelName(), OnLoaded);
 
         public void Exit() => _loadingScreen.Hide();

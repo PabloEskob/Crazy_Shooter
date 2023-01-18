@@ -236,6 +236,7 @@ MonoBehaviour:
   _enemyDeath: {fileID: 3255986719442638800}
   _enemyHealth: {fileID: 1173631881349560264}
   _enemyMove: {fileID: 6970252418325554411}
+  _enemyAnimator: {fileID: 5427714518127054878}
 --- !u!195 &6625414601667408847
 NavMeshAgent:
   m_ObjectHideFlags: 0
