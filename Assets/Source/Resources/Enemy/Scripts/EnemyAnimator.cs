@@ -9,6 +9,7 @@ public class EnemyAnimator : MonoBehaviour
     private static readonly int Idle = Animator.StringToHash("Idle");
 
     private Animator _animator;
+    private bool _canMove = true;
 
     private void Awake() =>
         _animator = GetComponent<Animator>();
@@ -25,9 +26,15 @@ public class EnemyAnimator : MonoBehaviour
     public void PlayAttack() =>
         _animator.SetTrigger(Attack);
 
-    public void Move() =>
-        _animator.SetBool(IsMoving, true);
+    public void Move()
+    {
+        if (_canMove)
+        {
+            _animator.SetBool(IsMoving, true);
+            _canMove = false;
+        }
+    }
 
-    public void StopMove() =>
+    public void StopMove() => 
         _animator.SetBool(IsMoving, false);
 }

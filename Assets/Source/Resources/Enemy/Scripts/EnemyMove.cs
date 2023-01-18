@@ -17,15 +17,23 @@ public class EnemyMove : MonoBehaviour
     private void Awake() =>
         _enemy = GetComponent<Enemy>();
 
+    private void Start() => 
+        _enemy.EnemyAnimator.StopMove();
+
     private void Update()
     {
-        if (!_move) return;
-        if (!_enemy.EnemyDeath.IsDied)
-            _navMeshAgent.destination = Player.transform.position;
-        else
+        if (_move)
         {
-            _navMeshAgent.speed = 0;
-            _navMeshAgent.enabled = false;
+            if (!_enemy.EnemyDeath.IsDied)
+            {
+                _enemy.EnemyAnimator.Move();
+                _navMeshAgent.destination = Player.transform.position;
+            }
+            else
+            {
+                _navMeshAgent.speed = 0;
+                _navMeshAgent.enabled = false;
+            }
         }
     }
 
