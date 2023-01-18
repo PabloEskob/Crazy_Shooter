@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using Dreamteck.Splines;
+﻿using Dreamteck.Splines;
+using InfimaGames.LowPolyShooterPack;
 using UnityEngine;
 
 public class PlayerRotate : MonoBehaviour
@@ -16,20 +16,24 @@ public class PlayerRotate : MonoBehaviour
     private Vector3 _targetVector;
     private bool _canRotate;
     private bool _canReturn;
+    private CameraLook _cameraLook;
 
-    private void Awake() =>
+    private void Awake()
+    {
         _splineFollower = GetComponent<SplineFollower>();
+        _cameraLook = GetComponentInChildren<CameraLook>();
+    }
 
     private void Start() =>
         _turningPoints = GameObject.FindGameObjectWithTag(TurningPointsTag).GetComponent<TurningPoints>();
 
     private void Update()
     {
-        if (_canRotate) 
-            Rotate(_targetVector);
+        if (_canRotate)
+            RotateToEnemy(_targetVector);
 
-        if (_canReturn) 
-            Rotate(Vector3.zero);
+        if (_canReturn)
+            RotateToZero(Vector3.zero);
     }
 
     public void StartRotate()
@@ -39,26 +43,43 @@ public class PlayerRotate : MonoBehaviour
         _number++;
     }
 
-    public void RotateReturn() => 
+    public void RotateReturn()
+    {
         _canReturn = true;
+        _cameraLook.Switch();
+    }
 
-    private void Rotate(Vector3 target)
+    private void RotateToEnemy(Vector3 target)
     {
         if (_splineFollower.motion.rotationOffset != target)
+            Rotate(target);
+        else
         {
-            _elapsedTime += Time.deltaTime;
-            float percentageCompleted = _elapsedTime / _speedRotate;
-            _splineFollower.motion.rotationOffset =
-                Vector3.MoveTowards(_splineFollower.motion.rotationOffset, target, percentageCompleted);
+            _cameraLook.Switch();
+            _elapsedTime = 0;
+            _canRotate = false;
         }
+    }
+
+    private void RotateToZero(Vector3 target)
+    {
+        if (_splineFollower.motion.rotationOffset != target)
+            Rotate(target);
         else
         {
             _elapsedTime = 0;
-            _canRotate = false;
             _canReturn = false;
         }
     }
-    
+
+    private void Rotate(Vector3 target)
+    {
+        _elapsedTime += Time.deltaTime;
+        float percentageCompleted = _elapsedTime / _speedRotate;
+        _splineFollower.motion.rotationOffset =
+            Vector3.MoveTowards(_splineFollower.motion.rotationOffset, target, percentageCompleted);
+    }
+
     private Vector3 SetNewVector(int value)
     {
         var turningPoint = _turningPoints.GetPoint(value);
@@ -73,5 +94,4 @@ public class PlayerRotate : MonoBehaviour
 
         return _splineFollower.motion.rotationOffset;
     }
-    
 }
