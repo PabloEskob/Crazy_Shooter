@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Source.Scripts.UI;
+using Source.Infrastructure;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
+using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -26,6 +29,7 @@ namespace InfimaGames.LowPolyShooterPack
         private float _yaw;
         private float _pitch;
         private bool _canRotate = true;
+        private IStorage _storage;
 
         #endregion
 
@@ -34,9 +38,14 @@ namespace InfimaGames.LowPolyShooterPack
         private void Awake() =>
             _playerCharacter = ServiceLocator.Current.Get<IGameModeService>().GetPlayerCharacter();
 
-        private void Start() =>
+        private void Start()
+        {
             _rotationCharacter = _playerCharacter.transform.localRotation;
+            _storage = AllServices.Container.Single<IStorage>();
 
+            if (_storage.HasKeyFloat(SettingsNames.SensitivityKey))
+                SetSensitivity(_storage.GetFloat(SettingsNames.SensitivityKey));
+        }
 
         private void LateUpdate()
         {
@@ -98,6 +107,9 @@ namespace InfimaGames.LowPolyShooterPack
 
             return rotation;
         }
+
+        private void SetSensitivity(float value) => 
+            _sensitivity = new Vector2(value, value);
 
         #endregion
     }

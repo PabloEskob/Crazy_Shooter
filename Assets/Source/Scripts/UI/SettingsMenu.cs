@@ -20,12 +20,18 @@ namespace Source.Scripts.Ui
 
         IStorage _storage;
 
+        private const int DefaultSliderValue = 1;
+
         private void Awake()
         {
             _storage = AllServices.Container.Single<IStorage>();
             _cameraSensitivitySlider.minValue = 0.1f;
             _cameraSensitivitySlider.maxValue = 2.0f;
-            _cameraSensitivitySlider.value = _storage.GetFloat(SettingsNames.SensitivityKey);
+
+            if (_storage.HasKeyFloat(SettingsNames.SensitivityKey))
+                SetSliderValue(_storage.GetFloat(SettingsNames.SensitivityKey));
+            else
+                SetSliderValue(DefaultSliderValue);
 
             Hide();
         }
@@ -47,9 +53,10 @@ namespace Source.Scripts.Ui
             _russianLanguageButton.onClick.RemoveListener(SwitchLanguage);
             _turkishLanguageButton.onClick.RemoveListener(SwitchLanguage);
             _cameraSensitivitySlider.onValueChanged.RemoveListener(SaveSliderSettings);
+            _storage.Save();
         }
 
-        private void SaveSliderSettings(float value) => 
+        private void SaveSliderSettings(float value) =>
             _storage.SetFloat(SettingsNames.SensitivityKey, value);
 
         private void SwitchLanguage()
@@ -57,10 +64,13 @@ namespace Source.Scripts.Ui
             throw new NotImplementedException();
         }
 
-        private void Hide() => 
+        private void SetSliderValue(float value) => 
+            _cameraSensitivitySlider.value = value;
+
+        private void Hide() =>
             gameObject.SetActive(false);
 
-        public void Show() => 
+        public void Show() =>
             gameObject.SetActive(true);
     }
 }
