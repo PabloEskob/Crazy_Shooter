@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [Range(1, 5)] [SerializeField] private int _damage = 3;
     [Range(1, 20)] [SerializeField] private float _speed = 2;
     [Range(1, 20)] [SerializeField] private float _attackCooldown = 3;
+    [Range(1, 20)] [SerializeField] private float _effectiveDistance = 2.5f;
 
     private int _number;
     private IGameFactory _gameFactory;
@@ -22,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     public int Number => _number;
     public int Hp => _hp;
     public int Damage => _damage;
-    public float EffectiveDistance => 3.1f;
+    public float EffectiveDistance => _effectiveDistance;
     public float Speed => _speed;
     public float AttackCooldown => _attackCooldown;
 
