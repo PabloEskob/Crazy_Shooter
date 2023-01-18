@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -26,6 +25,7 @@ namespace InfimaGames.LowPolyShooterPack
         private Quaternion _rotationCharacter;
         private float _yaw;
         private float _pitch;
+        private bool _canRotate = true;
 
         #endregion
 
@@ -37,6 +37,7 @@ namespace InfimaGames.LowPolyShooterPack
         private void Start() =>
             _rotationCharacter = _playerCharacter.transform.localRotation;
 
+
         private void LateUpdate()
         {
             Vector2 frameInput = _playerCharacter.IsCursorLocked() ? _playerCharacter.GetInputLook() : default;
@@ -45,13 +46,24 @@ namespace InfimaGames.LowPolyShooterPack
             var transformLocalRotation = transform.localRotation;
             Vector3 rot = transformLocalRotation.eulerAngles + new Vector3(-frameInput.y, frameInput.x, 0f);
 
-            if (_allRoundView) 
-                rot.y = ClampAngle(rot.y, _xClamp.x, _xClamp.y);
+            if (_canRotate)
+            {
+                if (_allRoundView)
+                    rot.y = ClampAngle(rot.y, _xClamp.x, _xClamp.y);
 
-            rot.x = ClampAngle(rot.x, _yClamp.x, _yClamp.y);
-            transformLocalRotation.eulerAngles = rot;
-            transform.localRotation = transformLocalRotation;
+                rot.x = ClampAngle(rot.x, _yClamp.x, _yClamp.y);
+                transformLocalRotation.eulerAngles = rot;
+                transform.localRotation = transformLocalRotation;
+            }
+            else
+            {
+                transform.localRotation =
+                    Quaternion.Lerp(transform.localRotation, new Quaternion(0, 0, 0, 1f), Time.deltaTime);
+            }
         }
+
+        public void Switch() =>
+            _canRotate = _canRotate != true;
 
         private float ClampAngle(float angle, float from, float to)
         {
