@@ -34,6 +34,7 @@ public class PlayerMove : MonoBehaviour
 
     public void PlayMove()
     {
+        _player.PlayerAnimator.PlayWalking();
         _constructSplineComputer.SetSpeed(_speed);
         _player.PlayerRotate.RotateReturn();
     }
@@ -54,6 +55,7 @@ public class PlayerMove : MonoBehaviour
 
     private void StopMove(SplineUser arg0)
     {
+        _player.PlayerAnimator.StopWalking();
         _player.PlayerRotate.StartRotate();
         Stopped?.Invoke();
         CanMove = false;

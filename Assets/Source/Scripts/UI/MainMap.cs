@@ -28,7 +28,6 @@ namespace Source.Scripts.Ui
             
             foreach (var button in _startLevelButtons)
                 button.Clicked += StartLevel;
-            
         }
 
         private void OnDisable()
