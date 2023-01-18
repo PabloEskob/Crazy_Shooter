@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Source.Scripts.Analytics
 {
-    public class AnalyticNames
+    public static class AnalyticNames
     {
         public const string GameStart = "game_start-";
         public const string LevelStart = "level_start";

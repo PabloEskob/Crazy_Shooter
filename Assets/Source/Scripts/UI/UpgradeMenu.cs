@@ -40,18 +40,18 @@ namespace Source.Scripts.Ui
             _weaponPlatesView.WeaponSelected += OnWeaponSelected;
         }
 
-        private void OnUpgraded()
-        {
-            _storage = AllServices.Container.Single<IStorage>();
-            _storage.SetString(_currentWeapon.GetName(), _currentWeapon.GetData().ToJson());
-            _storage.Save();
-        }
 
         private void OnDisable()
         {
             _inventory.Initialized -= OnInitialized;
             _exitButton.onClick.RemoveListener(Hide);
             _weaponPlatesView.WeaponSelected -= OnWeaponSelected;
+        }
+        private void OnUpgraded()
+        {
+            _storage = AllServices.Container.Single<IStorage>();
+            _storage.SetString(_currentWeapon.GetName(), _currentWeapon.GetData().ToJson());
+            _storage.Save();
         }
 
         private void Hide() =>
@@ -73,7 +73,7 @@ namespace Source.Scripts.Ui
             _currentWeapon = _weaponHolder.DefaultWeapon;
             _weaponHolder.UpdateView(_currentWeapon);
             _upgradePanel.SetWeapon(_currentWeapon);
-            gameObject.SetActive(false);
+            Hide();
         }
 
         public void Show() =>
