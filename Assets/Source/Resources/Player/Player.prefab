@@ -537,6 +537,7 @@ GameObject:
   - component: {fileID: 3158789171847798089}
   - component: {fileID: 1322509416427480302}
   - component: {fileID: -526046293033402693}
+  - component: {fileID: -7832786067592942493}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1327,7 +1328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b24d692a3f46ef8f681d894778e3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerAnimator: {fileID: 5756454215434784704}
 --- !u!114 &-2928366559629522326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,7 +1341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _speedRotate: 2
 --- !u!114 &4765231475943667280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1354,8 +1353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb6115fdb65412a982e1f3b7bd6cafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMove: {fileID: -2928366559629522326}
-  _playerHealth: {fileID: -1148198282704936161}
 --- !u!114 &5756454215434784704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,8 +1377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789b3d50ff4111245b25adcec8f022bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHealth: {fileID: -1148198282704936161}
-  _animator: {fileID: 5756454215434784704}
   _particleSystem: {fileID: 0}
 --- !u!114 &1322509416427480302
 MonoBehaviour:
@@ -1513,6 +1508,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _splineFollower: {fileID: 1322509416427480302}
+--- !u!114 &-7832786067592942493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609891775957787187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113b6471814b43768bc2669fd393f89e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedRotate: 0.3
 --- !u!1 &1619462904432454414
 GameObject:
   m_ObjectHideFlags: 0

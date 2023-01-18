@@ -4,12 +4,14 @@
 [RequireComponent(typeof(PlayerMove))]
 [RequireComponent(typeof(PlayerAnimator))]
 [RequireComponent(typeof(PlayerDeath))]
+[RequireComponent(typeof(PlayerRotate))]
 public class Player : MonoBehaviour
 {
     private PlayerMove _playerMove;
     private PlayerHealth _playerHealth;
     private PlayerAnimator _playerAnimator;
     private PlayerDeath _playerDeath;
+    private PlayerRotate _playerRotate;
 
     private void Awake()
     {
@@ -17,6 +19,7 @@ public class Player : MonoBehaviour
         _playerAnimator = GetComponent<PlayerAnimator>();
         _playerHealth = GetComponent<PlayerHealth>();
         _playerDeath = GetComponent<PlayerDeath>();
+        _playerRotate = GetComponent<PlayerRotate>();
     }
 
     public PlayerMove PlayerMove =>
@@ -25,9 +28,12 @@ public class Player : MonoBehaviour
     public PlayerHealth PlayerHealth =>
         _playerHealth;
 
-    public PlayerDeath PlayerDeath => 
+    public PlayerDeath PlayerDeath =>
         _playerDeath;
 
     public PlayerAnimator PlayerAnimator =>
         _playerAnimator;
+
+    public PlayerRotate PlayerRotate =>
+        _playerRotate;
 }

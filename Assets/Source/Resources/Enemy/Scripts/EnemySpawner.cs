@@ -23,7 +23,6 @@ public class EnemySpawner : MonoBehaviour
     public int Hp => _hp;
     public int Damage => _damage;
     public float EffectiveDistance => 3.1f;
-
     public float Speed => _speed;
     public float AttackCooldown => _attackCooldown;
 
