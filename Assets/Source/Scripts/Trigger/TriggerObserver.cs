@@ -9,14 +9,9 @@ public class TriggerObserver : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Player>())
-        {
             TriggerEnter?.Invoke(other);
-        }
-        
     }
 
-    private void OnTriggerExit(Collider other)
-    {
+    private void OnTriggerExit(Collider other) =>
         TriggerExit?.Invoke(other);
-    }
 }
