@@ -36,5 +36,9 @@ namespace Source.Infrastructure
             GameObject mainMap = AllServices.Container.Single<IAssetProvider>().Instantiate(InterfaceDataPath);
             mainMap.GetComponent<MainMap>().Cunstruct(_sceneLoader, _stateMachine, _storage);
         }
+
+        public void Enter(int level)
+        {
+        }
     }
 }

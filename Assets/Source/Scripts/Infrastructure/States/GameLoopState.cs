@@ -16,5 +16,9 @@ namespace Source.Infrastructure
         public void Enter()
         {
         }
+
+        public void Enter(int level)
+        {
+        }
     }
 }

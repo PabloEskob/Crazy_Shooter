@@ -30,10 +30,11 @@ namespace Source.Infrastructure
             _staticData = staticData;
         }
 
-        public void Enter()
-        {
+        public void Enter(int level) => 
+            _sceneLoader.Load(GetNextLevelNameByNumber(level), OnLoaded);
+
+        public void Enter() => 
             _sceneLoader.Load(GetNextLevelName(), OnLoaded);
-        }
 
         public void Exit() => _loadingScreen.Hide();
 
@@ -52,5 +53,8 @@ namespace Source.Infrastructure
 
         private string GetNextLevelName() =>
             _staticData.ForLevel(_storage.GetLevel()).SceneName;
+
+        public string GetNextLevelNameByNumber(int levelNumber) =>
+            _staticData.ForLevel(levelNumber).SceneName;
     }
 }

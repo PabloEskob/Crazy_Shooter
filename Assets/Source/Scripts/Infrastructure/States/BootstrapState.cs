@@ -41,10 +41,8 @@ namespace Source.Infrastructure
             _services.RegisterSingle(staticData);
         }
 
-        public void Enter()
-        {
+        public void Enter() => 
             _sceneLoader.Load(InitSceneName, onLoaded: EnterLoadLevel);
-        }
 
         public void Exit()
         {
@@ -52,6 +50,11 @@ namespace Source.Infrastructure
 
         private void EnterLoadLevel() => 
             _stateMachine.Enter<LoadProgressState>();
+
+        public void Enter(int level)
+        {
+            _sceneLoader.Load(InitSceneName, onLoaded: EnterLoadLevel);
+        }
     }
 
     public class PersistentProgressService : IPersistentProgressService

@@ -8,7 +8,7 @@ namespace Source.Scripts.Ui
     public class MainMap : MonoBehaviour
     {
         [SerializeField] private Button _upgradeMenuButton;
-        [SerializeField] private Button _startLevelButton;
+        [SerializeField] private StartLevelButton[] _startLevelButtons;
         [SerializeField] private UpgradeMenu _upgradeMenu;
 
         private SceneLoader _sceneLoader;
@@ -25,19 +25,24 @@ namespace Source.Scripts.Ui
         private void OnEnable()
         {
             _upgradeMenuButton.onClick.AddListener(OpenUpgradeMenu);
-            _startLevelButton.onClick.AddListener(StartLevel);
+            
+            foreach (var button in _startLevelButtons)
+                button.Clicked += StartLevel;
+            
         }
 
         private void OnDisable()
         {
             _upgradeMenuButton.onClick.RemoveListener(OpenUpgradeMenu);
-            _startLevelButton.onClick.RemoveListener(StartLevel);
+            
+            foreach (var button in _startLevelButtons)
+                button.Clicked += StartLevel;
         }
 
-        private void OpenUpgradeMenu() => 
+        private void OpenUpgradeMenu() =>
             _upgradeMenu.Show();
 
-        private void StartLevel() => 
-            _stateMachine.Enter<LoadLevelState>();
+        private void StartLevel(int level) =>
+            _stateMachine.Enter<LoadLevelState>(level);
     }
 }

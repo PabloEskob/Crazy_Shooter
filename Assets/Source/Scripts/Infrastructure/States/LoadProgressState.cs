@@ -36,5 +36,9 @@ namespace Source.Infrastructure
         {
             _coroutineRunner.StartCoroutine(_storage.SyncRemoteSave(onRemoteDataLoaded));
         }
+
+        public void Enter(int level)
+        {
+        }
     }
 }

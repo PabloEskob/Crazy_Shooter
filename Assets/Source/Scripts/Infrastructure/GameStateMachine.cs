@@ -50,6 +50,12 @@ namespace Source.Infrastructure
             return state;
         }
 
+        public void Enter<TState>(int level) where TState : class, IState
+        {
+            IState state = ChangeState<TState>();
+            state.Enter(level);
+        }
+
         private TState GetState<TState>() where TState : class, IExitableState =>
             _states[typeof(TState)] as TState;
     }
