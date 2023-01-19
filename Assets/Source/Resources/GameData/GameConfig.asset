@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   LevelNames:
+  - SceneName: InitScene
+    LevelNumber: 0
   - SceneName: Level 1
     LevelNumber: 1
   - SceneName: Level 2
