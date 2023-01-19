@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930def8d002d4320beceb0af82d37c4a, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  LevelConfigs:
-  - SceneName: InitScene
+  LevelNames:
   - SceneName: Level 1
+    LevelNumber: 1
   - SceneName: Level 2
+    LevelNumber: 2
   - SceneName: Level 3
+    LevelNumber: 3

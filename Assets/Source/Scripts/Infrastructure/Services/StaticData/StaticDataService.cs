@@ -30,8 +30,8 @@ public class StaticDataService : IStaticDataService
     }
 
     public LevelNames ForLevel(int levelIndex) => 
-        levelIndex >= 0 && levelIndex < _gameConfig.LevelConfigs.Length
-        ? _gameConfig.LevelConfigs[levelIndex]
+        levelIndex >= 0 && levelIndex < _gameConfig.LevelNames.Length
+        ? _gameConfig.LevelNames[levelIndex]
         : null;
 
     public void LoadGameConfig() => 
