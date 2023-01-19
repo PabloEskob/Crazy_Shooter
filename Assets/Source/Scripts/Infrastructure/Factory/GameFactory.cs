@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.Design;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,8 +14,9 @@ namespace Source.Scripts.Infrastructure.Factory
 
         private readonly IStaticDataService _staticDataEnemy;
         private readonly IAssetProvider _assetProvider;
-
         private GameStatusScreen _gameStatusScreen;
+        private LevelStateMachine _levelStateMachine;
+        private LaunchRoom _launchRoom;
 
         public Player Player { get; private set; }
         public List<ISavedProgressReader> ProgressReaders { get; }
@@ -38,12 +40,12 @@ namespace Source.Scripts.Infrastructure.Factory
 
         public void CreateStartScene()
         {
+            _launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
             StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();
-            LaunchRoom launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
             FinishLevel finishLevel = GameObject.FindGameObjectWithTag(FinishLevel).GetComponent<FinishLevel>();
-            startScene.Construct(this, launchRoom, _gameStatusScreen,finishLevel);
+            startScene.Construct(this, _launchRoom, _gameStatusScreen, finishLevel);
         }
-
+        
         public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent, bool move, EnemySpawner enemySpawner)
         {
             var enemyStaticData = _staticDataEnemy.ForEnemy(monsterTypeId);
@@ -52,6 +54,9 @@ namespace Source.Scripts.Infrastructure.Factory
             CreateStatsNavMesh(enemy, enemySpawner);
             return enemy;
         }
+
+        public void CreateLevelStateMachine(Player player) => 
+            _levelStateMachine = new LevelStateMachine(player,_launchRoom);
 
         private Player InstantiateRegistered(string prefabPath, Vector3 position)
         {

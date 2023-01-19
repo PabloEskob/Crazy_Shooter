@@ -16,7 +16,6 @@ public class StartScene : MonoBehaviour
 
     private void OnDisable()
     {
-       // _launchRoom.EndedRoom -= LaunchVictoryScreen;
         _finishLevel.EndedLevel -= LaunchVictoryScreen;
     }
 
@@ -28,9 +27,7 @@ public class StartScene : MonoBehaviour
         _launchRoom = launchRoom;
         _finishLevel = finishLevel;
         _finishLevel.EndedLevel += LaunchVictoryScreen;
-        // _launchRoom.EndedRoom += LaunchVictoryScreen;
         InitGameWorld();
-        StartGame();
     }
 
     public void LaunchVictoryScreen()
@@ -47,6 +44,5 @@ public class StartScene : MonoBehaviour
     private void InitGameWorld() =>
         _launchRoom.Fill(_gameFactory);
 
-    private void StartGame() =>
-        _launchRoom.StartFirstRoom();
+    
 }

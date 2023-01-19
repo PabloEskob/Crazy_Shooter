@@ -7,24 +7,22 @@ public class Room : MonoBehaviour
     [SerializeField] private List<EnemySpawner> _enemySpawners;
     [SerializeField] private float _delayWave;
     [SerializeField] private float _startThisRoom;
+    [SerializeField] private TurningPoint _turningPoint;
 
     private Player _player;
-
     private LaunchingWaves _launchingWaves;
-
     private bool _clear;
 
     public float DelayWave => _delayWave;
     public float StartThisRoom => _startThisRoom;
-
     public LaunchingWaves LaunchingWaves => _launchingWaves;
     public int Number { get; set; }
 
-    public event Action<int> StartedNewRoom;
+    public event Action OnRoomCleared;
 
     private void OnDisable()
     {
-        foreach (var enemySpawner in _enemySpawners) 
+        foreach (var enemySpawner in _enemySpawners)
             enemySpawner.OnTurnedSpawner -= _launchingWaves.TurnOnSpawn;
 
         _launchingWaves.Ended -= LaunchingWavesOnEnded;
@@ -35,15 +33,17 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
-        foreach (var enemySpawner in _enemySpawners) 
+        foreach (var enemySpawner in _enemySpawners)
             enemySpawner.OnTurnedSpawner += _launchingWaves.TurnOnSpawn;
 
         _launchingWaves.Ended += LaunchingWavesOnEnded;
     }
 
-    private void LaunchingWavesOnEnded() => 
-        StartedNewRoom?.Invoke(Number);
+    public TurningPoint GetTurningPoint() =>
+        _turningPoint != null ? _turningPoint : null;
 
+    private void LaunchingWavesOnEnded() =>
+        OnRoomCleared?.Invoke();
 
     public void FillInEnemySpawner(IGameFactory gameFactory)
     {

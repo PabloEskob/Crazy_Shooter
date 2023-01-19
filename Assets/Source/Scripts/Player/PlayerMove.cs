@@ -9,14 +9,11 @@ public class PlayerMove : MonoBehaviour
 
     private ConstructSplineComputer _constructSplineComputer;
     private TriggerGroup _triggerGroup;
-    private bool _move;
     private Player _player;
-
-    public bool CanMove { get; set; }
-
-    public event Action Stopped;
-    public event Action Disabled;
-
+    
+    public event Action OnStopped;
+    public event Action OnMove;
+    
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -29,36 +26,35 @@ public class PlayerMove : MonoBehaviour
     private void OnDisable()
     {
         RemoveListenerSplineTrigger();
-        Disabled?.Invoke();
     }
 
     public void PlayMove()
     {
         _player.PlayerAnimator.PlayWalking();
         _constructSplineComputer.SetSpeed(_speed);
-        _player.PlayerRotate.RotateReturn();
+        OnMove?.Invoke();
+    }
+
+    public void StopMove()
+    {
+        _player.PlayerAnimator.StopWalking();
+        _constructSplineComputer.SetSpeed(0);
     }
 
     private void CreateSplineTrigger()
     {
         foreach (var triggerGroup in _constructSplineComputer.GetTriggerGroup())
         foreach (var splineTrigger in triggerGroup.triggers)
-            splineTrigger.AddListener(StopMove);
+            splineTrigger.AddListener(Stop);
     }
 
     private void RemoveListenerSplineTrigger()
     {
         foreach (var triggerGroup in _constructSplineComputer.GetTriggerGroup())
         foreach (var splineTrigger in triggerGroup.triggers)
-            splineTrigger.RemoveListener(StopMove);
+            splineTrigger.RemoveListener(Stop);
     }
 
-    private void StopMove(SplineUser arg0)
-    {
-        _player.PlayerAnimator.StopWalking();
-        _player.PlayerRotate.StartRotate();
-        Stopped?.Invoke();
-        CanMove = false;
-        _constructSplineComputer.SetSpeed(0);
-    }
+    private void Stop(SplineUser arg0) => 
+        OnStopped?.Invoke();
 }

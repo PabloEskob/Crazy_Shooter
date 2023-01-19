@@ -1,15 +1,12 @@
-﻿using Dreamteck.Splines;
+﻿using System;
+using Dreamteck.Splines;
 using InfimaGames.LowPolyShooterPack;
 using UnityEngine;
 
 public class PlayerRotate : MonoBehaviour
 {
-    private const string TurningPointsTag = "TurningPoints";
-
     [SerializeField] private float _speedRotate = 0.3f;
-
-    private TurningPoints _turningPoints;
-    private int _number;
+    
     private float _currentSpeedRotate;
     private SplineFollower _splineFollower;
     private float _elapsedTime;
@@ -18,60 +15,57 @@ public class PlayerRotate : MonoBehaviour
     private bool _canReturn;
     private CameraLook _cameraLook;
 
+    public event Action OnTurnedAround;
+
     private void Awake()
     {
         _splineFollower = GetComponent<SplineFollower>();
         _cameraLook = GetComponentInChildren<CameraLook>();
     }
-
-    private void Start() =>
-        _turningPoints = GameObject.FindGameObjectWithTag(TurningPointsTag).GetComponent<TurningPoints>();
-
+    
     private void Update()
     {
         if (_canRotate)
-            RotateToEnemy(_targetVector);
+            RotateTo(_targetVector);
 
         if (_canReturn)
-            RotateToZero(Vector3.zero);
+            RotateTo(Vector3.zero);
     }
 
-    public void StartRotate()
+    public void StartRotate(TurningPoint turningPoint)
     {
-        _targetVector = SetNewVector(_number);
-        _canRotate = true;
-        _number++;
+        if (turningPoint == null)
+            RotateReturn();
+        else
+        {
+            _targetVector = SetNewVector(turningPoint);
+            _canRotate = true;
+        }
+        
     }
 
-    public void RotateReturn()
-    {
+    public void RotateReturn() => 
         _canReturn = true;
-        _cameraLook.Switch();
-    }
 
-    private void RotateToEnemy(Vector3 target)
+    public void DisableCameraLock() => 
+        _cameraLook.Switch(false);
+
+    public void EnableCameraLock() => 
+        _cameraLook.Switch(true);
+
+    private void RotateTo(Vector3 target)
     {
         if (_splineFollower.motion.rotationOffset != target)
             Rotate(target);
         else
         {
-            _cameraLook.Switch();
+            OnTurnedAround?.Invoke();
             _elapsedTime = 0;
             _canRotate = false;
-        }
-    }
-
-    private void RotateToZero(Vector3 target)
-    {
-        if (_splineFollower.motion.rotationOffset != target)
-            Rotate(target);
-        else
-        {
-            _elapsedTime = 0;
             _canReturn = false;
         }
     }
-
+    
     private void Rotate(Vector3 target)
     {
         _elapsedTime += Time.deltaTime;
@@ -80,10 +74,8 @@ public class PlayerRotate : MonoBehaviour
             Vector3.MoveTowards(_splineFollower.motion.rotationOffset, target, percentageCompleted);
     }
 
-    private Vector3 SetNewVector(int value)
+    private Vector3 SetNewVector(TurningPoint turningPoint)
     {
-        var turningPoint = _turningPoints.GetPoint(value);
-
         if (turningPoint != null)
         {
             Vector3 directionToFace = turningPoint.transform.position - transform.position;

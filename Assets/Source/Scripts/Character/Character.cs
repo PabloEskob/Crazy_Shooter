@@ -258,6 +258,7 @@ namespace InfimaGames.LowPolyShooterPack
         private bool cursorLocked;
 
         private bool _lock;
+        private bool _canFire = true;
 
         #endregion
 
@@ -366,6 +367,7 @@ namespace InfimaGames.LowPolyShooterPack
         protected override void Start()
         {
             _lock = false;
+            _canFire = true;
             //Max out the grenades.
             grenadeCount = grenadeTotal;
 
@@ -723,7 +725,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void Fire()
         {
-            if (_lock == false)
+            if (_lock == false && _canFire)
             {
                 _crosshair.Shot();
                 //Save the shot time, so we can calculate the fire rate correctly.
@@ -1424,6 +1426,12 @@ namespace InfimaGames.LowPolyShooterPack
 
         public void LockCursor() =>
             _lock = true;
+
+        public void YesFire() =>
+            _canFire = true;
+
+        public void NoFire() =>
+            _canFire = false;
 
         public void OnLockCursor(InputAction.CallbackContext context)
         {

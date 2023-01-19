@@ -8,6 +8,7 @@ public interface IGameFactory : IService
     Player CreatePlayer(GameObject initialPoint);
     public void CreateHUD(Player player);
     public void CreateStartScene();
+    public void CreateLevelStateMachine(Player player);
     Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent,bool move,EnemySpawner enemySpawner);
     Player Player { get; }
     

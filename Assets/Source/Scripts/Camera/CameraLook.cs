@@ -71,8 +71,8 @@ namespace InfimaGames.LowPolyShooterPack
             }
         }
 
-        public void Switch() =>
-            _canRotate = _canRotate != true;
+        public void Switch(bool value) => 
+            _canRotate = value;
 
         private float ClampAngle(float angle, float from, float to)
         {
@@ -108,7 +108,7 @@ namespace InfimaGames.LowPolyShooterPack
             return rotation;
         }
 
-        private void SetSensitivity(float value) => 
+        private void SetSensitivity(float value) =>
             _sensitivity = new Vector2(value, value);
 
         #endregion

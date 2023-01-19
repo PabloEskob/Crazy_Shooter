@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using InfimaGames.LowPolyShooterPack;
+using UnityEngine;
 
 [RequireComponent(typeof(PlayerHealth))]
 [RequireComponent(typeof(PlayerMove))]
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     private PlayerAnimator _playerAnimator;
     private PlayerDeath _playerDeath;
     private PlayerRotate _playerRotate;
+    private Character _character;
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
         _playerHealth = GetComponent<PlayerHealth>();
         _playerDeath = GetComponent<PlayerDeath>();
         _playerRotate = GetComponent<PlayerRotate>();
+        _character = GetComponent<Character>();
     }
 
     public PlayerMove PlayerMove =>
@@ -36,4 +39,7 @@ public class Player : MonoBehaviour
 
     public PlayerRotate PlayerRotate =>
         _playerRotate;
+
+    public Character Character =>
+        _character;
 }

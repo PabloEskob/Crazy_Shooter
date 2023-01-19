@@ -14,7 +14,7 @@ namespace Source.Infrastructure
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
 
-         private string LevelName = "Level 1";
+        private string LevelName = "Level 1";
 
         private const string PlayerInitialPointTag = "PlayerInitialPointTag";
 
@@ -49,6 +49,7 @@ namespace Source.Infrastructure
             Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
             _gameFactory.CreateHUD(player);
             _gameFactory.CreateStartScene();
+            _gameFactory.CreateLevelStateMachine(player);
         }
 
         private string GetNextLevelName() =>
