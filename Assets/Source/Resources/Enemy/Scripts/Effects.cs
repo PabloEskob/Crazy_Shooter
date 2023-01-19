@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Source.Scripts.UI;
+using Source.Infrastructure;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
+using UnityEngine;
 
 public class Effects : MonoBehaviour
 {
@@ -7,6 +10,16 @@ public class Effects : MonoBehaviour
     [SerializeField] private ParticleSystem _deathFx;
     [SerializeField] private ParticleSystem _blood;
     [SerializeField] private AudioSource _headShot;
+
+    private IStorage _storage;
+
+    private void Start()
+    {
+        _storage = AllServices.Container.Single<IStorage>();
+
+        if (_storage.HasKeyInt(SettingsNames.SoundSettingsKey))
+            _headShot.volume = _storage.GetInt(SettingsNames.SoundSettingsKey);
+    }
 
     public void GetContactCollision(Collision collision) =>
         _bloodEffectSpawner.Init(collision.GetContact(0).point);

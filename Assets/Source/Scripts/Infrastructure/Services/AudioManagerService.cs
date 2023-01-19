@@ -2,6 +2,9 @@
 
 using UnityEngine;
 using System.Collections;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
+using Source.Infrastructure;
+using Assets.Source.Scripts.UI;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -42,6 +45,15 @@ namespace InfimaGames.LowPolyShooterPack
             }
         }
 
+        private IStorage _storage;
+        private int _volume;
+
+        private void Start()
+        {
+            
+
+        }
+
         /// <summary>
         /// Destroys the audio source once it has finished playing.
         /// </summary>
@@ -71,6 +83,12 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void PlayOneShot_Internal(AudioClip clip, AudioSettings settings)
         {
+            _storage = AllServices.Container.Single<IStorage>();
+
+            if (_storage.HasKeyInt(SettingsNames.SoundSettingsKey))
+                _volume = _storage.GetInt(SettingsNames.SoundSettingsKey);
+
+
             //No need to do absolutely anything if the clip is null.
             if (clip == null)
                 return;
@@ -79,9 +97,8 @@ namespace InfimaGames.LowPolyShooterPack
             var newSourceObject = new GameObject($"Audio Source -> {clip.name}");
             //Add an audio source component to that object.
             var newAudioSource = newSourceObject.AddComponent<AudioSource>();
-
             //Set volume.
-            newAudioSource.volume = settings.Volume;
+            newAudioSource.volume = _volume;
             //Set spatial blend.
             newAudioSource.spatialBlend = settings.SpatialBlend;
             

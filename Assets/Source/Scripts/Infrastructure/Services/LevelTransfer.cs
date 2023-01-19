@@ -1,6 +1,7 @@
 ﻿using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Source.Scripts.Infrastructure.Services
 {
@@ -13,8 +14,8 @@ namespace Source.Scripts.Infrastructure.Services
 
         private void OnDisable()
         {
-            _switchScreen.DefeatScreen.ButtonToMap.Click -= GoToMap;
-            _switchScreen.VictoryScreen.ButtonToMap.Click -= GoToMap;
+            _switchScreen.DefeatScreen.ButtonToMap.Click -= OnGoToMapButtonClick;
+            _switchScreen.VictoryScreen.ButtonToMap.Click -= OnGoToMapButtonClick;
         }
 
         private void Awake()
@@ -27,17 +28,22 @@ namespace Source.Scripts.Infrastructure.Services
         private void Start()
         {
             _switchScreen = GetComponent<SwitchScreen>();
-            _switchScreen.DefeatScreen.ButtonToMap.Click += GoToMap;
-            _switchScreen.VictoryScreen.ButtonToMap.Click += GoToMap;
+            _switchScreen.DefeatScreen.ButtonToMap.Click += OnGoToMapButtonClick;
+            _switchScreen.VictoryScreen.ButtonToMap.Click += OnGoToMapButtonClick;
         }
 
-        private void GoToMap(bool _isSuccess)
+        private void OnGoToMapButtonClick(bool _isSuccess)
         {
-            Debug.Log($"current level - {_storage.GetLevel()}");
-            Debug.Log($"level config length - {_staticData.GetGameConfig().LevelConfigs.Length}");
-            if (_staticData.GetGameConfig().LevelConfigs.Length - 1 != _storage.GetLevel() && _isSuccess == true)
+            var gameConfig = _staticData.GetGameConfig();
+            var lastCompletedLevelNumber = _storage.GetLevel();
+            var currentLevelName = SceneManager.GetActiveScene().name;
+            var lastCompletedLevelName = gameConfig.GetLevelNameByNumber(lastCompletedLevelNumber);
+
+            if (gameConfig.LevelNames.Length - 1 != lastCompletedLevelNumber 
+                && _isSuccess == true 
+                && currentLevelName == lastCompletedLevelName)
             {
-                _storage.SetLevel(_storage.GetLevel() + 1);
+                _storage.SetLevel(lastCompletedLevelNumber + 1);
                 _storage.Save();
             }
 

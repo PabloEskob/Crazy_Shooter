@@ -12,5 +12,12 @@ public class BodyShot : MonoBehaviour, IShot
         {
             Hitted?.Invoke(1, collision);
         }
+
+        if (collision.collider.TryGetComponent(out GrenadeScript grenade))
+        {
+            grenade.ReduceExplosionTime();
+            grenade.RestartCoroutine();
+            Hitted?.Invoke(grenade.Damage, collision);
+        }
     }
 }
