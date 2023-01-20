@@ -1,4 +1,5 @@
-﻿public class TurnState : ILevelState
+﻿
+public class TurnState : ILevelState
 {
     private readonly LevelStateMachine _levelStateMachine;
     private readonly Player _player;

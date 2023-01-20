@@ -144,11 +144,11 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			if (collision.transform.tag == "Target")
 			{
 				//Toggle "isHit" on target object
-				collision.transform.gameObject.GetComponent
+				/*collision.transform.gameObject.GetComponent
 					<TargetScript>().isHit = true;
 				//Destroy bullet object
 				gameObject.SetActive(false);
-				ResetPosition();
+				ResetPosition();*/
 			}
 
 			//If bullet collides with "ExplosiveBarrel" tag

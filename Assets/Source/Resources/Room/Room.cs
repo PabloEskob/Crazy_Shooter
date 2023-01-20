@@ -7,8 +7,8 @@ public class Room : MonoBehaviour
     [SerializeField] private List<EnemySpawner> _enemySpawners;
     [SerializeField] private float _delayWave;
     [SerializeField] private float _startThisRoom;
-    [SerializeField] private TurningPoint _turningPoint;
 
+    private TurningPoint _turningPoint;
     private Player _player;
     private LaunchingWaves _launchingWaves;
     private bool _clear;
@@ -33,6 +33,8 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
+        _turningPoint = GetComponentInChildren<TurningPoint>();
+
         foreach (var enemySpawner in _enemySpawners)
             enemySpawner.OnTurnedSpawner += _launchingWaves.TurnOnSpawn;
 

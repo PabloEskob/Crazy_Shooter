@@ -1,4 +1,6 @@
-﻿public class AttackState : ILevelState
+﻿using UnityEngine;
+
+public class AttackState : ILevelState
 {
     private LevelStateMachine _levelStateMachine;
     private LaunchRoom _launchRoom;
@@ -12,6 +14,7 @@
 
     public void Enter()
     {
+        Debug.Log("AttackEnter");
         _room = _launchRoom.GetRoom();
         _room.OnRoomCleared += StartMoving;
     }
