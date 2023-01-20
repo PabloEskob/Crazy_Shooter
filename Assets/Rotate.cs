@@ -3,15 +3,17 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    [SerializeField] private TurningPoint _turningPointq;
+    [SerializeField] private float _speed = 1f;
+    [SerializeField] private float _speedReturn;
+    
     private Vector3 _turningPoint;
     private bool _canRotate;
     private float _elapsedTime;
-    private float _speed = 1f;
-    private bool _return;
+    private bool _canReturn;
+    private TurningPoint _playerPoint;
 
     public event Action OnTurned;
-
+    
     private void Update()
     {
         if (_canRotate)
@@ -21,11 +23,11 @@ public class Rotate : MonoBehaviour
             LookAtXZ(transform, _turningPoint, percentageCompleted);
         }
 
-        if (_canRotate == false && _return)
+        if (_canRotate == false && _canReturn)
         {
             _elapsedTime += Time.deltaTime;
-            float percentageCompleted = _elapsedTime / 0.5f;
-            LookAtXZ(transform, _turningPointq.transform.position, percentageCompleted);
+            float percentageCompleted = _elapsedTime / _speedReturn;
+            LookAtXZ(transform, _playerPoint.transform.position, percentageCompleted);
         }
     }
 
@@ -44,15 +46,16 @@ public class Rotate : MonoBehaviour
 
         if (transform.rotation == Quaternion.LookRotation(direction))
         {
-            _return = false;
+            _canReturn = false;
             _canRotate = false;
             OnTurned?.Invoke();
         }
     }
 
-    public void Return()
+    public void Return(TurningPoint turningPoint)
     {
-        _return = true;
+        _playerPoint = turningPoint;
+        _canReturn = true;
         _elapsedTime = 0;
     }
 }

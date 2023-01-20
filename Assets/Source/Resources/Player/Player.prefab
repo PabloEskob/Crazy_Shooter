@@ -1521,7 +1521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113b6471814b43768bc2669fd393f89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedRotate: 0.3
 --- !u!1 &1619462904432454414
 GameObject:
   m_ObjectHideFlags: 0
@@ -3023,7 +3022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aacb9a17c35125f478f87eb2643d2ca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turningPointq: {fileID: 1965314559085035130}
+  _speed: 0.3
+  _speedReturn: 0.3
 --- !u!1 &6107521959119264059
 GameObject:
   m_ObjectHideFlags: 0
@@ -3849,11 +3849,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 763838788532224658, guid: 05e4b21176355d746b3e5c9dec4ea6f5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.336
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 763838788532224658, guid: 05e4b21176355d746b3e5c9dec4ea6f5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.98681337
       objectReference: {fileID: 0}
     - target: {fileID: 763838788532224658, guid: 05e4b21176355d746b3e5c9dec4ea6f5, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3861,7 +3861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 763838788532224658, guid: 05e4b21176355d746b3e5c9dec4ea6f5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.16186216
       objectReference: {fileID: 0}
     - target: {fileID: 763838788532224658, guid: 05e4b21176355d746b3e5c9dec4ea6f5, type: 3}
       propertyPath: m_LocalRotation.z
@@ -3873,7 +3873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 763838788532224658, guid: 05e4b21176355d746b3e5c9dec4ea6f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -18.63
       objectReference: {fileID: 0}
     - target: {fileID: 763838788532224658, guid: 05e4b21176355d746b3e5c9dec4ea6f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3885,17 +3885,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05e4b21176355d746b3e5c9dec4ea6f5, type: 3}
---- !u!114 &1965314559085035130 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4521765417210509680, guid: 05e4b21176355d746b3e5c9dec4ea6f5, type: 3}
-  m_PrefabInstance: {fileID: 2704053811035555594}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98047b850adbdac408a686265511dbae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &3395443405175653784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 763838788532224658, guid: 05e4b21176355d746b3e5c9dec4ea6f5, type: 3}
