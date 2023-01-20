@@ -14,7 +14,6 @@ public class AttackState : ILevelState
 
     public void Enter()
     {
-        Debug.Log("AttackEnter");
         _room = _launchRoom.GetRoom();
         _room.OnRoomCleared += StartMoving;
     }

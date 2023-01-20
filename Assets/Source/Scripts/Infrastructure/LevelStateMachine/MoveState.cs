@@ -11,10 +11,10 @@
 
     public void Enter()
     {
-        _player.Character.NoFire();
-        _player.PlayerMove.PlayMove();
         _player.PlayerRotate.RotateReturn();
         _player.PlayerRotate.DisableCameraLock();
+        _player.Character.NoFire();
+        _player.PlayerMove.PlayMove();
         _player.PlayerMove.OnStopped += Stopped;
     }
 
