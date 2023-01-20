@@ -15,7 +15,7 @@ MonoBehaviour:
   LevelNames:
   - SceneName: InitScene
     LevelNumber: 0
-  - SceneName: Level 1
+  - SceneName: Level Pavel
     LevelNumber: 1
   - SceneName: Level 2
     LevelNumber: 2

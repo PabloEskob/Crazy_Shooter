@@ -141,15 +141,15 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 			}
 
 			//If bullet collides with "Target" tag
-			if (collision.transform.tag == "Target")
-			{
-				//Toggle "isHit" on target object
-				/*collision.transform.gameObject.GetComponent
-					<TargetScript>().isHit = true;
-				//Destroy bullet object
-				gameObject.SetActive(false);
-				ResetPosition();*/
-			}
+			//if (collision.transform.tag == "Target")
+			//{
+			//	//Toggle "isHit" on target object
+			//	collision.transform.gameObject.GetComponent
+			//		<TargetScript>().isHit = true;
+			//	//Destroy bullet object
+			//	gameObject.SetActive(false);
+			//	ResetPosition();
+			//}
 
 			//If bullet collides with "ExplosiveBarrel" tag
 			if (collision.transform.tag == "ExplosiveBarrel")

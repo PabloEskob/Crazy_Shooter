@@ -28,6 +28,7 @@ public class EnemySpawner : MonoBehaviour
     public float AttackCooldown => _attackCooldown;
 
     public event Action OnTurnedSpawner;
+    public event Action EnemyDied;
 
     private void OnDisable()
     {
@@ -80,6 +81,7 @@ public class EnemySpawner : MonoBehaviour
     private void TryTurnOnAnotherSpawner()
     {
         _count--;
+        EnemyDied?.Invoke();
 
         if (_count != 0) return;
         _clear = true;

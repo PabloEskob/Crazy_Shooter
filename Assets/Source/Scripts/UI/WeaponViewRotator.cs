@@ -20,6 +20,8 @@ public class WeaponViewRotator : MonoBehaviour
     private Weapon _currentWeapon;
     private readonly Timer _timer = new Timer();
     private bool isCurrentWeaponNotNull;
+    
+    private const string MouseXAxis = "Mouse X";
 
     public Weapon CurrentWeapon => _currentWeapon;
 
@@ -73,12 +75,12 @@ public class WeaponViewRotator : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        float XAxis = Input.GetAxis("Mouse X") * _manualRotationSpeed;
+        float XAxis = Input.GetAxis(MouseXAxis) * _manualRotationSpeed;
 
         SwitchRotationState(false);
         _timer.Stop();
 
-        if (Input.GetAxis("Mouse X") != 0)
+        if (Input.GetAxis(MouseXAxis) != 0)
             _currentWeapon.transform.Rotate(Vector3.up, XAxis);
     }
 
