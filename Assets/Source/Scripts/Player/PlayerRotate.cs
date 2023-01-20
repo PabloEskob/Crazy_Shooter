@@ -33,8 +33,10 @@ public class PlayerRotate : MonoBehaviour
         _rotate.Init(turningPoint != null ? turningPoint.transform.position : new Vector3(0f,10f,0f));
     }
 
-    public void RotateReturn() =>
+    public void RotateReturn()
+    {
         _rotate.Return();
+    }
 
     public void DisableCameraLock() =>
         _cameraLook.Switch(false);

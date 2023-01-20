@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
+    [SerializeField] private TurningPoint _turningPointq;
     private Vector3 _turningPoint;
     private bool _canRotate;
     private float _elapsedTime;
@@ -20,12 +21,12 @@ public class Rotate : MonoBehaviour
             LookAtXZ(transform, _turningPoint, percentageCompleted);
         }
 
-        /*if (_canRotate == false && _return)
+        if (_canRotate == false && _return)
         {
             _elapsedTime += Time.deltaTime;
-            float percentageCompleted = _elapsedTime / _speed;
-            LookAtXZ(transform, Vector3.up, percentageCompleted);
-        }*/
+            float percentageCompleted = _elapsedTime / 0.5f;
+            LookAtXZ(transform, _turningPointq.transform.position, percentageCompleted);
+        }
     }
 
     public void Init(Vector3 turningPoint)
