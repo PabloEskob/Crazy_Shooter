@@ -40,6 +40,10 @@ public class PlayerRotate : MonoBehaviour
     public void EnableCameraLock() =>
         _cameraLook.Switch(true);
 
+    public void LookAt(TurningPoint finishLevelTurningPoint) => 
+        _rotate.LookAt(finishLevelTurningPoint);
+
+    
     private void OnTurned() =>
         OnTurnedAround?.Invoke();
 }

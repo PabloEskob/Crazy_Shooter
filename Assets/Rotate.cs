@@ -5,15 +5,16 @@ public class Rotate : MonoBehaviour
 {
     [SerializeField] private float _speed = 1f;
     [SerializeField] private float _speedReturn;
-    
+
     private Vector3 _turningPoint;
     private bool _canRotate;
     private float _elapsedTime;
     private bool _canReturn;
     private TurningPoint _playerPoint;
+    private bool _finish;
 
     public event Action OnTurned;
-    
+
     private void Update()
     {
         if (_canRotate)
@@ -29,6 +30,7 @@ public class Rotate : MonoBehaviour
             float percentageCompleted = _elapsedTime / _speedReturn;
             LookAtXZ(transform, _playerPoint.transform.position, percentageCompleted);
         }
+        
     }
 
     public void Init(Vector3 turningPoint)
@@ -37,6 +39,20 @@ public class Rotate : MonoBehaviour
         _elapsedTime = 0;
         _canRotate = true;
     }
+
+    public void Return(TurningPoint turningPoint)
+    {
+        _playerPoint = turningPoint;
+        _canReturn = true;
+        _elapsedTime = 0;
+    }
+
+    public void LookAt(TurningPoint finishLevelTurningPoint)
+    {
+        _turningPoint = finishLevelTurningPoint.transform.position;
+        _finish = true;
+    }
+
 
     private void LookAtXZ(Transform transform, Vector3 point, float speed)
     {
@@ -50,12 +66,5 @@ public class Rotate : MonoBehaviour
             _canRotate = false;
             OnTurned?.Invoke();
         }
-    }
-
-    public void Return(TurningPoint turningPoint)
-    {
-        _playerPoint = turningPoint;
-        _canReturn = true;
-        _elapsedTime = 0;
     }
 }
