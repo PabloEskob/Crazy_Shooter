@@ -2807,6 +2807,7 @@ MonoBehaviour:
   _yClamp: {x: -40, y: 60}
   _xClamp: {x: -60, y: 60}
   _allRoundView: 1
+  _speedRotateToFinish: 2
 --- !u!1 &5689293956906447026
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,8 @@ public class Rotate : MonoBehaviour
     private float _elapsedTime;
     private bool _canReturn;
     private TurningPoint _playerPoint;
-    private bool _finish;
+    private bool _lookFinish;
+    private Vector3 _positionToLook;
 
     public event Action OnTurned;
 
@@ -36,8 +37,8 @@ public class Rotate : MonoBehaviour
     public void Init(Vector3 turningPoint)
     {
         _turningPoint = turningPoint;
-        _elapsedTime = 0;
         _canRotate = true;
+        _elapsedTime = 0;
     }
 
     public void Return(TurningPoint turningPoint)
@@ -46,14 +47,7 @@ public class Rotate : MonoBehaviour
         _canReturn = true;
         _elapsedTime = 0;
     }
-
-    public void LookAt(TurningPoint finishLevelTurningPoint)
-    {
-        _turningPoint = finishLevelTurningPoint.transform.position;
-        _finish = true;
-    }
-
-
+    
     private void LookAtXZ(Transform transform, Vector3 point, float speed)
     {
         var direction = (point - transform.position).normalized;
