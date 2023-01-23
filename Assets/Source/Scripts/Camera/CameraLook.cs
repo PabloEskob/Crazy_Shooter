@@ -1,4 +1,5 @@
-﻿using Assets.Source.Scripts.UI;
+﻿using System;
+using Assets.Source.Scripts.UI;
 using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -30,9 +31,9 @@ namespace InfimaGames.LowPolyShooterPack
         private float _pitch;
         private bool _canRotate = true;
         private IStorage _storage;
-        private bool _rotateToAt;
         private Vector3 _positionToLook;
-        private Transform _targetPosition;
+
+        public event Action LookedAtTarget; 
 
         #endregion
 
@@ -49,34 +50,27 @@ namespace InfimaGames.LowPolyShooterPack
                 SetSensitivity(_storage.GetFloat(SettingsNames.SensitivityKey));
         }
 
-        private void LateUpdate()
+        private void Update()
         {
-            if (_rotateToAt)
+            Vector2 frameInput = _playerCharacter.IsCursorLocked() ? _playerCharacter.GetInputLook() : default;
+            frameInput *= _sensitivity;
+
+            var transformLocalRotation = transform.localRotation;
+            Vector3 rot = transformLocalRotation.eulerAngles + new Vector3(-frameInput.y, frameInput.x, 0f);
+
+            if (_canRotate)
             {
-                UpdatePositionToLookAt();
+                if (_allRoundView)
+                    rot.y = ClampAngle(rot.y, _xClamp.x, _xClamp.y);
+
+                rot.x = ClampAngle(rot.x, _yClamp.x, _yClamp.y);
+                transformLocalRotation.eulerAngles = rot;
+                transform.localRotation = transformLocalRotation;
             }
             else
             {
-                Vector2 frameInput = _playerCharacter.IsCursorLocked() ? _playerCharacter.GetInputLook() : default;
-                frameInput *= _sensitivity;
-
-                var transformLocalRotation = transform.localRotation;
-                Vector3 rot = transformLocalRotation.eulerAngles + new Vector3(-frameInput.y, frameInput.x, 0f);
-
-                if (_canRotate)
-                {
-                    if (_allRoundView)
-                        rot.y = ClampAngle(rot.y, _xClamp.x, _xClamp.y);
-
-                    rot.x = ClampAngle(rot.x, _yClamp.x, _yClamp.y);
-                    transformLocalRotation.eulerAngles = rot;
-                    transform.localRotation = transformLocalRotation;
-                }
-                else
-                {
-                    transform.localRotation =
-                        Quaternion.Lerp(transform.localRotation, Quaternion.identity, Time.deltaTime);
-                }
+                transform.localRotation =
+                    Quaternion.Lerp(transform.localRotation, Quaternion.identity, Time.deltaTime);
             }
         }
 
@@ -98,24 +92,18 @@ namespace InfimaGames.LowPolyShooterPack
             _sensitivity = new Vector2(value, value);
 
         #endregion
-
-        public void LookAt(TurningPoint finishLevelTurningPoint)
+        
+        public void UpdatePositionToLookAt(TurningPoint finishLevelTurningPoint)
         {
-            _rotateToAt = true;
-            _targetPosition = finishLevelTurningPoint.transform;
-        }
-
-        private void UpdatePositionToLookAt()
-        {
-            Vector3 positionDiff = _targetPosition.position - transform.position;
+            Vector3 positionDiff = finishLevelTurningPoint.transform.position - transform.position;
             _positionToLook = positionDiff;
             transform.rotation = SmoothedRotation(transform.rotation, _positionToLook);
         }
 
         private Quaternion SmoothedRotation(Quaternion rotation, Vector3 positionToLook)
         {
-            if (rotation==TargetRotation(positionToLook)) 
-                _rotateToAt = false;
+            if (rotation == TargetRotation(positionToLook))
+               LookedAtTarget?.Invoke();
             return Quaternion.Lerp(rotation, TargetRotation(positionToLook), SpeedFactor());
         }
 

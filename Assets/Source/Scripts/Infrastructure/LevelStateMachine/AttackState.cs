@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class AttackState : ILevelState
+﻿public class AttackState : ILevelState
 {
     private LevelStateMachine _levelStateMachine;
     private LaunchRoom _launchRoom;
