@@ -46,10 +46,10 @@ namespace InfimaGames.LowPolyShooterPack
         public override void SetMagazineSize(int amount) =>
             _magazineSize = amount;
 
-        public override void TryToDecreaseTotalAmmunition()
+        public override void TryToDecreaseTotalAmmunition(int amount)
         {
             if (ammunitionTotal > 0)
-                ammunitionTotal--;
+                ammunitionTotal -= amount;
         }
 
         #endregion

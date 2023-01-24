@@ -600,7 +600,7 @@ MonoBehaviour:
   _magazineSize: 8
   _maxUpgradeLevel: 4
   Price: 150
-  _isInfinityAmmo: 0
+  _isInfinityAmmo: 1
   weaponName: Shotgun 01
   multiplierMovementSpeed: 1
   attachmentManager: {fileID: 8578661464601570599}

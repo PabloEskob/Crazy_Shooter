@@ -53,14 +53,10 @@ namespace InfimaGames.LowPolyShooterPack
                         weapon.SetData(_storage.GetString(weapon.GetName()));
                         weapon.SetBoolsFromData();
                         weapon.UpdateStatsFromData();
-                        Debug.Log($"AttachmentManager - {weapon.GetAttachmentManager()}");
-                        Debug.Log($"Get from data");
                     }
                     else
                     {
                         weapon.UpdateStatsToData();
-
-                        Debug.Log($"Set to data");
                     }
                 }
 

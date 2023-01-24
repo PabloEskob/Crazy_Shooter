@@ -1637,7 +1637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965555d451af4a2299927c4e3dd7ee09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunitionTotal: 120
+  ammunitionTotal: 90
   sprite: {fileID: 21300000, guid: 8bce1303c6b5f14469edd2dd5ab51a4d, type: 3}
   _magazineSize: 30
 --- !u!4 &9124807429235727098 stripped

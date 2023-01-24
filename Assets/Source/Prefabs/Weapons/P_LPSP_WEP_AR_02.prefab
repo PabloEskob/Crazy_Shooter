@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965555d451af4a2299927c4e3dd7ee09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunitionTotal: 120
+  ammunitionTotal: 96
   sprite: {fileID: 21300000, guid: 51de79cbf170f52488db474948f8db57, type: 3}
   _magazineSize: 32
 --- !u!1001 &2725058654829939673
