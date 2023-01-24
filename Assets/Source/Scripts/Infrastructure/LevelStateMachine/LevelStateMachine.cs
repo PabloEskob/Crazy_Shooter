@@ -6,9 +6,9 @@ public class LevelStateMachine
     private Dictionary<Type, ILevelState> _states;
     private ILevelState _currentLevelState;
 
-    public LevelStateMachine(Player player, LaunchRoom launchRoom)
+    public LevelStateMachine(Player player, LaunchRoom launchRoom, FinishLevel finishLevel)
     {
-        InitStates(player, launchRoom);
+        InitStates(player, launchRoom,finishLevel);
         Enter<SpawnEnemyState>();
     }
 
@@ -18,7 +18,7 @@ public class LevelStateMachine
         state.Enter();
     }
 
-    private void InitStates(Player player, LaunchRoom launchRoom)
+    private void InitStates(Player player, LaunchRoom launchRoom,FinishLevel finishLevel)
     {
         _states = new Dictionary<Type, ILevelState>
         {
@@ -26,7 +26,7 @@ public class LevelStateMachine
             [typeof(AttackState)] = new AttackState(this, launchRoom),
             [typeof(MoveState)] = new MoveState(this, player),
             [typeof(TurnState)] = new TurnState(this, player, launchRoom),
-            [typeof(FinishState)] = new FinishState(this, player),
+            [typeof(FinishState)] = new FinishState(this, player,finishLevel),
         };
     }
 

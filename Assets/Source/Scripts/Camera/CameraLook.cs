@@ -1,4 +1,5 @@
-﻿using Assets.Source.Scripts.UI;
+﻿using System;
+using Assets.Source.Scripts.UI;
 using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -19,17 +20,20 @@ namespace InfimaGames.LowPolyShooterPack
         private Vector2 _xClamp = new Vector2(-240, -120);
 
         [SerializeField] private bool _allRoundView;
+        [SerializeField] private float _speedRotateToFinish;
 
         #endregion
 
         #region FIELDS
 
         private CharacterBehaviour _playerCharacter;
-        private Quaternion _rotationCharacter;
         private float _yaw;
         private float _pitch;
         private bool _canRotate = true;
         private IStorage _storage;
+        private Vector3 _positionToLook;
+
+        public event Action LookedAtTarget; 
 
         #endregion
 
@@ -40,14 +44,13 @@ namespace InfimaGames.LowPolyShooterPack
 
         private void Start()
         {
-            _rotationCharacter = _playerCharacter.transform.localRotation;
             _storage = AllServices.Container.Single<IStorage>();
 
             if (_storage.HasKeyFloat(SettingsNames.SensitivityKey))
                 SetSensitivity(_storage.GetFloat(SettingsNames.SensitivityKey));
         }
 
-        private void LateUpdate()
+        private void Update()
         {
             Vector2 frameInput = _playerCharacter.IsCursorLocked() ? _playerCharacter.GetInputLook() : default;
             frameInput *= _sensitivity;
@@ -67,50 +70,47 @@ namespace InfimaGames.LowPolyShooterPack
             else
             {
                 transform.localRotation =
-                    Quaternion.Lerp(transform.localRotation, new Quaternion(0, 0, 0, 1f), Time.deltaTime);
+                    Quaternion.Lerp(transform.localRotation, Quaternion.identity, Time.deltaTime);
             }
         }
 
-        public void Switch(bool value) => 
+        public void Switch(bool value) =>
             _canRotate = value;
 
         private float ClampAngle(float angle, float from, float to)
         {
-            if (angle < 0f) angle = 360 + angle;
+            if (angle < 0f)
+                angle = 360 + angle;
             return angle > 180f ? Mathf.Max(angle, 360 + from) : Mathf.Min(angle, to);
-        }
-
-        private void TurnUp(Vector2 frameInput)
-        {
-            Quaternion rotationPitch = Quaternion.Euler(-frameInput.y, 0.0f, 0.0f);
-            Quaternion localRotation = transform.localRotation;
-            localRotation *= rotationPitch;
-
-            localRotation = Clamp(localRotation);
-            transform.localRotation = localRotation;
         }
 
         #endregion
 
         #region FUNCTIONS
 
-        private Quaternion Clamp(Quaternion rotation)
-        {
-            rotation.x /= rotation.w;
-            rotation.y /= rotation.w;
-            rotation.z /= rotation.w;
-            rotation.w = 1.0f;
-
-            float pitch = 2.0f * Mathf.Rad2Deg * Mathf.Atan(rotation.y);
-            pitch = Mathf.Clamp(pitch, _xClamp.x, _xClamp.y);
-            rotation.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * pitch);
-
-            return rotation;
-        }
-
         private void SetSensitivity(float value) =>
             _sensitivity = new Vector2(value, value);
 
         #endregion
+        
+        public void UpdatePositionToLookAt(TurningPoint finishLevelTurningPoint)
+        {
+            Vector3 positionDiff = finishLevelTurningPoint.transform.position - transform.position;
+            _positionToLook = positionDiff;
+            transform.rotation = SmoothedRotation(transform.rotation, _positionToLook);
+        }
+
+        private Quaternion SmoothedRotation(Quaternion rotation, Vector3 positionToLook)
+        {
+            if (rotation == TargetRotation(positionToLook))
+               LookedAtTarget?.Invoke();
+            return Quaternion.Lerp(rotation, TargetRotation(positionToLook), SpeedFactor());
+        }
+
+        private float SpeedFactor() =>
+            _speedRotateToFinish * Time.deltaTime;
+
+        private Quaternion TargetRotation(Vector3 positionToLook) =>
+            Quaternion.LookRotation(positionToLook);
     }
 }

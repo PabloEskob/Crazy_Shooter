@@ -14,10 +14,8 @@ public class StartScene : MonoBehaviour
     private int _number;
     private FinishLevel _finishLevel;
 
-    private void OnDisable()
-    {
-        _finishLevel.EndedLevel -= LaunchVictoryScreen;
-    }
+    private void OnDisable() => 
+        _finishLevel.OnEndedLevel -= LaunchVictoryScreen;
 
     public void Construct(IGameFactory gameFactory, LaunchRoom launchRoom, GameStatusScreen gameStatusScreen,
         FinishLevel finishLevel)
@@ -26,14 +24,12 @@ public class StartScene : MonoBehaviour
         _gameFactory = gameFactory;
         _launchRoom = launchRoom;
         _finishLevel = finishLevel;
-        _finishLevel.EndedLevel += LaunchVictoryScreen;
+        _finishLevel.OnEndedLevel += LaunchVictoryScreen;
         InitGameWorld();
     }
 
-    public void LaunchVictoryScreen()
-    {
+    private void LaunchVictoryScreen() => 
         _gameStatusScreen.PlayerVictory();
-    }
 
     private void Awake()
     {

@@ -32,47 +32,35 @@ namespace InfimaGames.LowPolyShooterPack
             public Vector3 Update(Vector3 target, float smoothTime) => Value = Vector3.SmoothDamp(Value,
                 target, ref currentVelocity, smoothTime);
         }
-        
+
         #region FIELDS SERIALIZED
 
-        [Header("Audio Clips")]
-        
-        [Tooltip("The audio clip that is played while walking.")]
-        [SerializeField]
+        [Header("Audio Clips")] [Tooltip("The audio clip that is played while walking.")] [SerializeField]
         private AudioClip audioClipWalking;
 
-        [Tooltip("The audio clip that is played while running.")]
-        [SerializeField]
+        [Tooltip("The audio clip that is played while running.")] [SerializeField]
         private AudioClip audioClipRunning;
 
-        [Header("Speeds")]
+        [Header("Speeds")] [SerializeField] private float speedWalking = 5.0f;
 
-        [SerializeField]
-        private float speedWalking = 5.0f;
-        
-        [Tooltip("How fast the player moves while aiming.")]
-        [SerializeField]
+        [Tooltip("How fast the player moves while aiming.")] [SerializeField]
         private float speedAiming = 3.0f;
 
         [Tooltip("How fast the player moves while running."), SerializeField]
         private float speedRunning = 9.0f;
-        
-        [Header("Walking Multipliers")]
-        
-        [Tooltip("How fast the character moves forward."), SerializeField]
+
+        [Header("Walking Multipliers")] [Tooltip("How fast the character moves forward."), SerializeField]
         private float walkingMultiplierForward = 1.0f;
 
-        [Tooltip("How fast the character moves sideways.")]
-        [SerializeField]
+        [Tooltip("How fast the character moves sideways.")] [SerializeField]
         private float walkingMultiplierSideways = 0.8f;
 
-        [Tooltip("How fast the character moves backwards.")]
-        [SerializeField]
+        [Tooltip("How fast the character moves backwards.")] [SerializeField]
         private float walkingMultiplierBackwards = 0.8f;
-        
-        [Header("Interpolation")]
 
-        [Tooltip("Approximately the amount of time it will take for the player to reach maximum running or walking speed.")]
+        [Header("Interpolation")]
+        [Tooltip(
+            "Approximately the amount of time it will take for the player to reach maximum running or walking speed.")]
         [SerializeField]
         private float movementSmoothness = 0.125f;
 
@@ -97,20 +85,22 @@ namespace InfimaGames.LowPolyShooterPack
         /// Attached Rigidbody.
         /// </summary>
         private Rigidbody rigidBody;
+
         /// <summary>
         /// Attached CapsuleCollider.
         /// </summary>
         private CapsuleCollider capsule;
+
         /// <summary>
         /// Attached AudioSource.
         /// </summary>
         private AudioSource audioSource;
-        
+
         /// <summary>
         /// Velocity Smoothing Helper. Basically does what it says, it helps us make the velocity smoother.
         /// </summary>
         private SmoothVelocity smoothVelocity;
-        
+
         /// <summary>
         /// True if the character is currently grounded.
         /// </summary>
@@ -120,15 +110,18 @@ namespace InfimaGames.LowPolyShooterPack
         /// Player Character.
         /// </summary>
         private CharacterBehaviour playerCharacter;
+
         /// <summary>
         /// The player character's equipped weapon.
         /// </summary>
         private WeaponBehaviour equippedWeapon;
-        
+
         /// <summary>
         /// Array of RaycastHits used for ground checking.
         /// </summary>
         private readonly RaycastHit[] groundHits = new RaycastHit[8];
+
+        private bool _canMove;
 
         #endregion
 
@@ -144,7 +137,7 @@ namespace InfimaGames.LowPolyShooterPack
         }
 
         /// Initializes the FpsController on start.
-        protected override  void Start()
+        protected override void Start()
         {
             //Rigidbody Setup.
             rigidBody = GetComponent<Rigidbody>();
@@ -156,7 +149,7 @@ namespace InfimaGames.LowPolyShooterPack
             audioSource = GetComponent<AudioSource>();
             audioSource.clip = audioClipWalking;
             audioSource.loop = true;
-            
+
             //Create our smooth velocity helper. Will be useful to get some smoother motion.
             smoothVelocity = new SmoothVelocity();
         }
@@ -170,15 +163,15 @@ namespace InfimaGames.LowPolyShooterPack
             Vector3 extents = bounds.extents;
             //Radius.
             float radius = extents.x - 0.01f;
-            
+
             //Cast. This checks whether there is indeed ground, or not.
             Physics.SphereCastNonAlloc(bounds.center, radius, Vector3.down,
                 groundHits, extents.y - radius * 0.5f, ~0, QueryTriggerInteraction.Ignore);
-            
+
             //We can ignore the rest if we don't have any proper hits.
-            if (!groundHits.Any(hit => hit.collider != null && hit.collider != capsule)) 
+            if (!groundHits.Any(hit => hit.collider != null && hit.collider != capsule))
                 return;
-            
+
             //Store RaycastHits.
             for (var i = 0; i < groundHits.Length; i++)
                 groundHits[i] = new RaycastHit();
@@ -186,22 +179,22 @@ namespace InfimaGames.LowPolyShooterPack
             //Set grounded. Now we know for sure that we're grounded.
             grounded = true;
         }
-			
+
         protected override void FixedUpdate()
         {
             //Move.
-            MoveCharacter();
-            
+            // MoveCharacter();
+
             //Unground.
-            grounded = false;
+            // grounded = false;
         }
 
         /// Moves the camera to the character, processes jumping and plays sounds every frame.
-        protected override  void Update()
+        protected override void Update()
         {
             //Get the equipped weapon!
             equippedWeapon = playerCharacter.GetInventory().GetEquipped();
-            
+
             //Play Sounds!
             PlayFootstepSounds();
         }
@@ -209,6 +202,12 @@ namespace InfimaGames.LowPolyShooterPack
         #endregion
 
         #region METHODS
+
+        public void CanMove() => 
+            _canMove = true;
+
+        public void NoMove() => 
+            _canMove = false;
 
         private void MoveCharacter()
         {
@@ -218,9 +217,9 @@ namespace InfimaGames.LowPolyShooterPack
             Vector2 frameInput = playerCharacter.GetInputMovement();
             //Calculate local-space direction by using the player's input.
             var movement = new Vector3(frameInput.x, 0.0f, frameInput.y);
-            
+
             //Running speed calculation.
-            if(playerCharacter.IsRunning())
+            if (playerCharacter.IsRunning())
                 movement *= speedRunning;
             else
             {
@@ -245,7 +244,7 @@ namespace InfimaGames.LowPolyShooterPack
                 movement *= equippedWeapon.GetMultiplierMovementSpeed();
 
             #endregion
-            
+
             //Update Velocity.
             Velocity = new Vector3(movement.x, 0.0f, movement.z);
         }
@@ -256,10 +255,11 @@ namespace InfimaGames.LowPolyShooterPack
         private void PlayFootstepSounds()
         {
             //Check if we're moving on the ground. We don't need footsteps in the air.
-            if (grounded && rigidBody.velocity.sqrMagnitude > 0.1f)
+            if (_canMove)
             {
                 //Select the correct audio clip to play.
-                audioSource.clip = playerCharacter.IsRunning() ? audioClipRunning : audioClipWalking;
+               // audioSource.clip = playerCharacter.IsRunning() ? audioClipRunning : audioClipWalking;
+               audioSource.clip = audioClipWalking;
                 //Play it!
                 if (!audioSource.isPlaying)
                     audioSource.Play();

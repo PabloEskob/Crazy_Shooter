@@ -21,7 +21,7 @@ public class TurnState : ILevelState
 
     public void Exit()
     {
-        _player.PlayerRotate.EnableCameraLock();
+        _player.PlayerRotate.CameraLook.Switch(true);
         _player.PlayerRotate.OnTurnedAround -= Turned;
     }
 

@@ -17,6 +17,7 @@ namespace Source.Scripts.Infrastructure.Factory
         private GameStatusScreen _gameStatusScreen;
         private LevelStateMachine _levelStateMachine;
         private LaunchRoom _launchRoom;
+        private FinishLevel _finishLevel;
 
         public Player Player { get; private set; }
         public List<ISavedProgressReader> ProgressReaders { get; }
@@ -41,9 +42,9 @@ namespace Source.Scripts.Infrastructure.Factory
         public void CreateStartScene()
         {
             _launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
+            _finishLevel = GameObject.FindGameObjectWithTag(FinishLevel).GetComponent<FinishLevel>();
             StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();
-            FinishLevel finishLevel = GameObject.FindGameObjectWithTag(FinishLevel).GetComponent<FinishLevel>();
-            startScene.Construct(this, _launchRoom, _gameStatusScreen, finishLevel);
+            startScene.Construct(this, _launchRoom, _gameStatusScreen, _finishLevel);
         }
         
         public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent, bool move, EnemySpawner enemySpawner)
@@ -56,7 +57,7 @@ namespace Source.Scripts.Infrastructure.Factory
         }
 
         public void CreateLevelStateMachine(Player player) => 
-            _levelStateMachine = new LevelStateMachine(player,_launchRoom);
+            _levelStateMachine = new LevelStateMachine(player,_launchRoom,_finishLevel);
 
         private Player InstantiateRegistered(string prefabPath, Vector3 position)
         {
