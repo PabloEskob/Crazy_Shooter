@@ -545,7 +545,7 @@ MonoBehaviour:
   _damage: 1
   _fireRate: 1
   _reloadSpeed: 1
-  _magazineSize: 1
+  _magazineSize: 7
   _maxUpgradeLevel: 4
   Price: 150
   _isInfinityAmmo: 0
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965555d451af4a2299927c4e3dd7ee09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunitionTotal: 7
+  ammunitionTotal: 21
   sprite: {fileID: 0}
   _magazineSize: 7
 --- !u!4 &2657098032119006043 stripped
