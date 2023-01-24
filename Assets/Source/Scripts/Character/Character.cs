@@ -22,62 +22,87 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField]
         private int weaponIndexEquippedAtStart;
 
-        [Tooltip("Inventory.")] [SerializeField]
+        [Tooltip("Inventory.")]
+        [SerializeField]
         private InventoryBehaviour inventory;
 
-        [Header("Grenade")] [Tooltip("If true, the character's grenades will never run out.")] [SerializeField]
+        [Header("Grenade")]
+        [Tooltip("If true, the character's grenades will never run out.")]
+        [SerializeField]
         private bool grenadesUnlimited;
 
-        [Tooltip("Total amount of grenades at start.")] [SerializeField]
+        [Tooltip("Total amount of grenades at start.")]
+        [SerializeField]
         private int grenadeTotal = 10;
 
-        [Tooltip("Grenade spawn offset from the character's camera.")] [SerializeField]
+        [Tooltip("Grenade spawn offset from the character's camera.")]
+        [SerializeField]
         private float grenadeSpawnOffset = 1.0f;
 
-        [Tooltip("Grenade Prefab. Spawned when throwing a grenade.")] [SerializeField]
+        [Tooltip("Grenade Prefab. Spawned when throwing a grenade.")]
+        [SerializeField]
         private GameObject grenadePrefab;
 
-        [Header("Knife")] [Tooltip("Knife GameObject.")] [SerializeField]
+        [Header("Knife")]
+        [Tooltip("Knife GameObject.")]
+        [SerializeField]
         private GameObject knife;
 
-        [Header("Cameras")] [Tooltip("Normal Camera.")] [SerializeField]
+        [Header("Cameras")]
+        [Tooltip("Normal Camera.")]
+        [SerializeField]
         private Camera cameraWorld;
 
-        [Tooltip("Weapon-Only Camera. Depth.")] [SerializeField]
+        [Tooltip("Weapon-Only Camera. Depth.")]
+        [SerializeField]
         private Camera cameraDepth;
 
-        [Header("Animation")] [Tooltip("Determines how smooth the turning animation is.")] [SerializeField]
+        [Header("Animation")]
+        [Tooltip("Determines how smooth the turning animation is.")]
+        [SerializeField]
         private float dampTimeTurning = 0.4f;
 
-        [Tooltip("Determines how smooth the locomotion blendspace is.")] [SerializeField]
+        [Tooltip("Determines how smooth the locomotion blendspace is.")]
+        [SerializeField]
         private float dampTimeLocomotion = 0.15f;
 
-        [Tooltip("How smoothly we play aiming transitions. Beware that this affects lots of things!")] [SerializeField]
+        [Tooltip("How smoothly we play aiming transitions. Beware that this affects lots of things!")]
+        [SerializeField]
         private float dampTimeAiming = 0.3f;
 
-        [Tooltip("Determines how fast the character's weapons are aimed.")] [SerializeField]
+        [Tooltip("Determines how fast the character's weapons are aimed.")]
+        [SerializeField]
         private float aimingSpeedMultiplier = 1.0f;
 
-        [Header("Animation Procedural")] [Tooltip("Weapon Bone.")] [SerializeField]
+        [Header("Animation Procedural")]
+        [Tooltip("Weapon Bone.")]
+        [SerializeField]
         private Transform boneWeapon;
 
-        [Tooltip("Character Animator.")] [SerializeField]
+        [Tooltip("Character Animator.")]
+        [SerializeField]
         private Animator characterAnimator;
 
         [SerializeField] private bool enableWeaponSway = true;
 
         [SerializeField] private float weaponSwaySmoothValueInput = 8.0f;
 
-        [Header("Field Of View")] [Tooltip("Normal world field of view.")] [SerializeField]
+        [Header("Field Of View")]
+        [Tooltip("Normal world field of view.")]
+        [SerializeField]
         private float fieldOfView = 100.0f;
 
-        [Tooltip("Weapon-specific field of view.")] [SerializeField]
+        [Tooltip("Weapon-specific field of view.")]
+        [SerializeField]
         private float fieldOfViewWeapon = 55.0f;
 
-        [Header("Audio Clips")] [Tooltip("Melee Audio Clips.")] [SerializeField]
+        [Header("Audio Clips")]
+        [Tooltip("Melee Audio Clips.")]
+        [SerializeField]
         private AudioClip[] audioClipsMelee;
 
-        [Tooltip("Grenade Throw Audio Clips.")] [SerializeField]
+        [Tooltip("Grenade Throw Audio Clips.")]
+        [SerializeField]
         private AudioClip[] audioClipsGrenadeThrow;
 
         private ShotAimCrosshair _crosshair;
@@ -264,6 +289,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region CONSTANTS
 
+        private const int DefaultAnimatorSpeed = 1;
         /// <summary>
         /// Left Arm Constraint Alpha.
         /// </summary>
@@ -742,7 +768,9 @@ namespace InfimaGames.LowPolyShooterPack
                     UpdateBolt(true);
 
                 //Automatically reload the weapon if we need to. This is very helpful for things like grenade launchers or rocket launchers.
-                if (!equippedWeapon.HasAmmunition() && equippedWeapon.GetAutomaticallyReloadOnEmpty())
+                if (!equippedWeapon.HasAmmunition() 
+                    && equippedWeapon.GetAutomaticallyReloadOnEmpty() 
+                    && equippedWeapon.GetAttachmentManager().GetEquippedMagazine().GetAmmunitionTotal() != 0)
                     StartCoroutine(nameof(TryReloadAutomatic));
             }
         }
@@ -751,7 +779,9 @@ namespace InfimaGames.LowPolyShooterPack
         {
             #region Animation
 
-            if (_lock == false)
+            characterAnimator.speed = equippedWeapon.GetReloadSpeed();
+
+            if (_lock == false && weaponAttachmentManager.GetEquippedMagazine().GetAmmunitionTotal() != 0)
             {
                 //Get the name of the animation state to play, which depends on weapon settings, and ammunition!
                 string stateName = equippedWeapon.HasCycledReload()
@@ -762,13 +792,12 @@ namespace InfimaGames.LowPolyShooterPack
                 characterAnimator.Play(stateName, layerActions, 0.0f);
 
                 #endregion
+                    //Set Reloading Bool. This helps cycled reloads know when they need to stop cycling.
+                    const string boolName = "Reloading";
+                    characterAnimator.SetBool(boolName, reloading = true);
 
-                //Set Reloading Bool. This helps cycled reloads know when they need to stop cycling.
-                const string boolName = "Reloading";
-                characterAnimator.SetBool(boolName, reloading = true);
-
-                //Reload.
-                equippedWeapon.Reload();
+                    //Reload
+                    equippedWeapon.Reload();
             }
         }
 
@@ -1275,10 +1304,10 @@ namespace InfimaGames.LowPolyShooterPack
                     //Started.
                     holdingButtonAim = !holdingButtonAim;
                     break;
-                // case InputActionPhase.Canceled:
-                // 	//Canceled.
-                // 	holdingButtonAim = false;
-                // 	break;
+                    // case InputActionPhase.Canceled:
+                    // 	//Canceled.
+                    // 	holdingButtonAim = false;
+                    // 	break;
             }
         }
 
@@ -1553,6 +1582,7 @@ namespace InfimaGames.LowPolyShooterPack
         {
             //Stop reloading!
             reloading = false;
+            characterAnimator.speed = DefaultAnimatorSpeed;
         }
 
         public override void AnimationEndedGrenadeThrow()

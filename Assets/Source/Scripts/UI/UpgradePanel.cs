@@ -19,6 +19,9 @@ public class UpgradePanel : MonoBehaviour
     private float _additionalReloadSpeed;
     private float _additionalMagazinSize;
 
+    private const string BuyText = "Buy";
+    private const string UpgradeText = "Upgrade";
+
     public Weapon CurrentWeapon => _currentWeapon;
 
     public event Action<Weapon> WeaponSet;
@@ -90,9 +93,9 @@ public class UpgradePanel : MonoBehaviour
             button.SwitchButtonInteractivity(weapon.IsBought());
 
         if (!weapon.IsBought())
-            _buyButton.ChangeButtonText("Buy");
+            _buyButton.ChangeButtonText(BuyText);
         else
-            _buyButton.ChangeButtonText("Upgrade");
+            _buyButton.ChangeButtonText(UpgradeText);
 
         foreach (UpgradeType typeButton in _upgradeTypeButtons)
             typeButton.SetText();

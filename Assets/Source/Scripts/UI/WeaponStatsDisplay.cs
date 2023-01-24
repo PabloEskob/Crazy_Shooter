@@ -1,7 +1,5 @@
 using InfimaGames.LowPolyShooterPack;
-using Source.Scripts.StaticData;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -59,8 +57,8 @@ namespace Source.Scripts.Ui
 
         private void OnEnable()
         {
+            SetWeapon(_platesView.CurrentWeapon);
             _upgradePanel.Upgraded += OnUpgraded;
-            _weapon = _platesView.CurrentWeapon;
             _platesView.WeaponSelected += OnWeaponSelected;
 
             foreach (var upgrade in _upgradeTypes)
@@ -68,7 +66,6 @@ namespace Source.Scripts.Ui
 
             DisplayCurrentStats();
             DisplayUpgradeValues();
-
             UpdateBars();
         }
 
@@ -81,10 +78,20 @@ namespace Source.Scripts.Ui
                 upgrade.UpgradeChoosed -= OnUpgradeChoosed;
         }
 
+        private void OnWeaponInitialized()
+        {
+            DisplayCurrentStats();
+            DisplayUpgradeValues();
+            UpdateBars();
+
+            _weapon.WeaponInitialized -= OnWeaponInitialized;
+        }
+
         private void OnUpgraded()
         {
             DisplayCurrentStats();
             DisplayUpgradeValues(_currentUpgrade);
+            UpdateBars();
         }
 
         private void OnUpgradeChoosed(UpgradeType upgrade)
@@ -99,6 +106,8 @@ namespace Source.Scripts.Ui
             DisplayCurrentStats();
             DisplayUpgradeValues();
             UpdateBars();
+
+            Debug.Log("On Weapon Selected");
         }
 
         private void DisplayCurrentStats()
@@ -178,20 +187,30 @@ namespace Source.Scripts.Ui
             ValuesSet?.Invoke(_damage, _fireRate, _reload, _magazineSize);
         }
 
-        public void SetWeapon(Weapon weapon) =>
+        public void SetWeapon(Weapon weapon)
+        {
             _weapon = weapon;
-
+            _weapon.WeaponInitialized += OnWeaponInitialized;
+        }
 
         private void UpdateBars()
         {
-            _currentDamageValue.rectTransform.sizeDelta = new Vector2(_weapon.Damage, _currentDamageValue.rectTransform.sizeDelta.y);
-            _upgradedDamageValue.rectTransform.sizeDelta = new Vector2(_weapon.Damage + _damage, _upgradedDamageValue.rectTransform.sizeDelta.y);
-            _currentFireRateValue.rectTransform.sizeDelta = new Vector2(_weapon.FireRate, _currentFireRateValue.rectTransform.sizeDelta.y);
-            _upgradedFireRateValue.rectTransform.sizeDelta = new Vector2(_weapon.FireRate + _fireRate, _upgradedFireRateValue.rectTransform.sizeDelta.y);
-            _currentReloadValue.rectTransform.sizeDelta = new Vector2(_weapon.ReloadSpeed, _currentReloadValue.rectTransform.sizeDelta.y);
-            _upgradedReloadValue.rectTransform.sizeDelta = new Vector2(_weapon.ReloadSpeed + _reload, _upgradedReloadValue.rectTransform.sizeDelta.y);
-            _currentMagazineSizeValue.rectTransform.sizeDelta = new Vector2(_weapon.MagazineSize, _currentMagazineSizeValue.rectTransform.sizeDelta.y);
-            _upgradedMagazineSizeValue.rectTransform.sizeDelta = new Vector2(_weapon.MagazineSize + _magazineSize, _upgradedMagazineSizeValue.rectTransform.sizeDelta.y);
+            _currentDamageValue.rectTransform.sizeDelta = 
+                new Vector2(_weapon.Damage, _currentDamageValue.rectTransform.sizeDelta.y);
+            _upgradedDamageValue.rectTransform.sizeDelta = 
+                new Vector2(_weapon.Damage + _damage, _upgradedDamageValue.rectTransform.sizeDelta.y);
+            _currentFireRateValue.rectTransform.sizeDelta = 
+                new Vector2(_weapon.FireRate, _currentFireRateValue.rectTransform.sizeDelta.y);
+            _upgradedFireRateValue.rectTransform.sizeDelta = 
+                new Vector2(_weapon.FireRate + _fireRate, _upgradedFireRateValue.rectTransform.sizeDelta.y);
+            _currentReloadValue.rectTransform.sizeDelta = 
+                new Vector2(_weapon.ReloadSpeed, _currentReloadValue.rectTransform.sizeDelta.y);
+            _upgradedReloadValue.rectTransform.sizeDelta = 
+                new Vector2(_weapon.ReloadSpeed + _reload, _upgradedReloadValue.rectTransform.sizeDelta.y);
+            _currentMagazineSizeValue.rectTransform.sizeDelta = 
+                new Vector2(_weapon.MagazineSize, _currentMagazineSizeValue.rectTransform.sizeDelta.y);
+            _upgradedMagazineSizeValue.rectTransform.sizeDelta = 
+                new Vector2(_weapon.MagazineSize + _magazineSize, _upgradedMagazineSizeValue.rectTransform.sizeDelta.y);
         }
 
     }

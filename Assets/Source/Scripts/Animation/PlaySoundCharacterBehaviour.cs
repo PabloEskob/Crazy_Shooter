@@ -74,7 +74,6 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            Debug.Log($"InPlaySoundCharacterBehaviour audioSettings.Volume - {audioSettings.Volume}");
             //We need to get the character component.
             playerCharacter ??= ServiceLocator.Current.Get<IGameModeService>().GetPlayerCharacter();
 

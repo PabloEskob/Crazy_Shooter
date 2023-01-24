@@ -1,3 +1,5 @@
+using Source.Infrastructure;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +14,8 @@ public class StartLevelButton : MonoBehaviour
     [SerializeField] private Button _startButton;
     [SerializeField] private TMP_Text _buttonText;
     [SerializeField] private Image _image;
+
+    private IStorage _storage;
 
     public int LevelNumber => _levelNumber;
     public Button StartButton => _startButton;
@@ -28,8 +32,12 @@ public class StartLevelButton : MonoBehaviour
     private void Start() =>
         SetText();
 
-    private void OnButtonClick() =>
+    private void OnButtonClick()
+    {
+        _storage = AllServices.Container.Single<IStorage>();
+        _storage.Save();
         Clicked(_levelNumber);
+    }
 
     private void SetText() =>
         _buttonText.text += _levelNumber;

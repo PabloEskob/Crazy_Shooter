@@ -53,6 +53,14 @@ namespace InfimaGames.LowPolyShooterPack
                         weapon.SetData(_storage.GetString(weapon.GetName()));
                         weapon.SetBoolsFromData();
                         weapon.UpdateStatsFromData();
+                        Debug.Log($"AttachmentManager - {weapon.GetAttachmentManager()}");
+                        Debug.Log($"Get from data");
+                    }
+                    else
+                    {
+                        weapon.UpdateStatsToData();
+
+                        Debug.Log($"Set to data");
                     }
                 }
 
@@ -67,9 +75,7 @@ namespace InfimaGames.LowPolyShooterPack
             for (int i = 0; i < _availableWeapons.Length; i++)
             {
                 if (_availableWeapons[i].IsEquipped())
-                {
                     equippedWeaponIndex = i;
-                }
             }
 
             //Equip.
