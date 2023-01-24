@@ -202,7 +202,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// Weapon Animator.
         /// </summary>
         private Animator animator;
-        
+
         /// <summary>
         /// Amount of ammunition left.
         /// </summary>
@@ -456,10 +456,8 @@ namespace InfimaGames.LowPolyShooterPack
             //Reduce ammunition! We just shot, so we need to get rid of one!
             ammunitionCurrent = Mathf.Clamp(ammunitionCurrent - 1, 0, magazineBehaviour.GetMagazineSize());
 
-            if (_isInfinityAmmo == false)
-                magazineBehaviour.TryToDecreaseTotalAmmunition();
+            
 
-            Debug.Log(GetAmmunitionTotal());
 
             //Set the slide back if we just ran out of ammunition.
             if (ammunitionCurrent == 0)
@@ -503,6 +501,9 @@ namespace InfimaGames.LowPolyShooterPack
             //Update the value by a certain amount.
             ammunitionCurrent = amount != 0 ? Mathf.Clamp(ammunitionCurrent + amount,
                 0, GetAvaliableAmmunition()) : GetAvaliableAmmunition();
+
+            if (_isInfinityAmmo == false)
+                magazineBehaviour.TryToDecreaseTotalAmmunition(ammunitionCurrent);
         }
 
         private int GetAvaliableAmmunition()

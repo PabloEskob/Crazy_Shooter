@@ -24,7 +24,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         public abstract void SetMagazineSize(int amount);
 
-        public abstract void TryToDecreaseTotalAmmunition();
+        public abstract void TryToDecreaseTotalAmmunition(int amount);
 
         #endregion
     }

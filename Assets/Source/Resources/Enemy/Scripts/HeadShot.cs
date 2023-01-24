@@ -12,10 +12,7 @@ public class HeadShot : MonoBehaviour, IShot
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.TryGetComponent(out Projectile projectile))
-        {
-            Debug.Log($"HeadShot Damage - {projectile.Damage}");
             Hitted?.Invoke((int)projectile.Damage, collision);
-        }
     }
 
     public void KillEnemy()

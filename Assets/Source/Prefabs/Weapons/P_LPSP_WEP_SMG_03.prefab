@@ -563,7 +563,7 @@ MonoBehaviour:
   _damage: 1
   _fireRate: 1
   _reloadSpeed: 1
-  _magazineSize: 1
+  _magazineSize: 35
   _maxUpgradeLevel: 4
   Price: 150
   _isInfinityAmmo: 0
@@ -997,7 +997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965555d451af4a2299927c4e3dd7ee09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunitionTotal: 35
+  ammunitionTotal: 105
   sprite: {fileID: 21300000, guid: 068896edfce609e4c98c6ef4755801ba, type: 3}
   _magazineSize: 35
 --- !u!4 &6680030361498937935 stripped

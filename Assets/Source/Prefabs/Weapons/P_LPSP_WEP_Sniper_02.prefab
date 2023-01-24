@@ -473,10 +473,10 @@ MonoBehaviour:
   _damage: 1
   _fireRate: 1
   _reloadSpeed: 1
-  _magazineSize: 1
+  _magazineSize: 9
   _maxUpgradeLevel: 4
   Price: 150
-  _isInfinityAmmo: 0
+  _isInfinityAmmo: 1
   weaponName: Sniper 02
   multiplierMovementSpeed: 0.8
   attachmentManager: {fileID: 9116845346348752071}
