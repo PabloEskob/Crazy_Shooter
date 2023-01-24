@@ -1,7 +1,7 @@
 ﻿public class MoveState : ILevelState
 {
     private readonly Player _player;
-    private LevelStateMachine _levelStateMachine;
+    private readonly LevelStateMachine _levelStateMachine;
 
     public MoveState(LevelStateMachine levelStateMachine, Player player)
     {
@@ -20,6 +20,7 @@
 
     public void Exit()
     {
+        _player.PlayerRotate.CameraLook.StopRoutine();
         _player.PlayerMove.OnStopped -= Stopped;
         _player.PlayerMove.StopMove();
         _player.Character.YesFire();

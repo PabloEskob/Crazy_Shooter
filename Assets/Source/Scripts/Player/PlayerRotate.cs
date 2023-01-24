@@ -37,7 +37,10 @@ public class PlayerRotate : MonoBehaviour
 
     public void DisableCameraLock() =>
         CameraLook.Switch(false);
-    
+
+    public void EnableCameraLock() =>
+        CameraLook.Switch(true);
+
     private void OnTurned() =>
         OnTurnedAround?.Invoke();
 }
