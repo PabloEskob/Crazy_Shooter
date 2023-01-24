@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.Design;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.AI;
@@ -47,10 +46,10 @@ namespace Source.Scripts.Infrastructure.Factory
             startScene.Construct(this, _launchRoom, _gameStatusScreen, _finishLevel);
         }
         
-        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent, bool move, EnemySpawner enemySpawner)
+        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Vector3 parent, bool move, EnemySpawner enemySpawner)
         {
             var enemyStaticData = _staticDataEnemy.ForEnemy(monsterTypeId);
-            var enemy = Object.Instantiate(enemyStaticData.Prefab, parent.position, Quaternion.identity);
+            var enemy = Object.Instantiate(enemyStaticData.Prefab, parent, Quaternion.identity);
             CreateStatsEnemy(enemy, move, enemySpawner);
             CreateStatsNavMesh(enemy, enemySpawner);
             return enemy;
@@ -80,13 +79,13 @@ namespace Source.Scripts.Infrastructure.Factory
             enemy.EnemyHealth.Max = enemySpawner.Hp;
             enemy.EnemyAttack.Damage = enemySpawner.Damage;
             enemy.EnemyAttack.AttackCooldown = enemySpawner.AttackCooldown;
-            enemy.EnemyMove.CanMove(move);
+            enemy.EnemyMove.SetCanMove(move);
         }
 
         private void CreateStatsNavMesh(Enemy enemy, EnemySpawner enemySpawner)
         {
             var stats = enemy.GetComponent<NavMeshAgent>();
-            stats.speed = enemySpawner.Speed;
+            enemy.EnemyMove.Speed = enemySpawner.Speed;
             stats.stoppingDistance = enemySpawner.EffectiveDistance;
         }
 

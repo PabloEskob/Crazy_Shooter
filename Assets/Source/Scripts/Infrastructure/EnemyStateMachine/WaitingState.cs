@@ -1,10 +1,12 @@
 ﻿public class WaitingEnemyState : IEnemyState
 {
-    private Enemy _enemy;
+    private readonly Enemy _enemy;
+    private EnemyStateMachine _enemyStateMachine;
     
-    public WaitingEnemyState(Enemy enemy)
+    public WaitingEnemyState(Enemy enemy,EnemyStateMachine enemyStateMachine)
     {
         _enemy = enemy;
+        _enemyStateMachine = enemyStateMachine;
     }
 
     public void Enter()
@@ -14,5 +16,6 @@
 
     public void Exit()
     {
+        
     }
 }

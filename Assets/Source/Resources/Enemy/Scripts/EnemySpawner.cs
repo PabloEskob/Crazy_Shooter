@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -53,12 +54,14 @@ public class EnemySpawner : MonoBehaviour
     public void TurnOnEnemy()
     {
         foreach (var enemy in _enemies)
-            enemy.gameObject.SetActive(true);
+            enemy.EnemyStateMachine.Enter<MoveEnemyState>();
     }
 
     private Enemy Spawn()
     {
-        Enemy enemy = _gameFactory.CreateEnemy(_monsterTypeId, transform, _move, this);
+        Enemy enemy =
+            _gameFactory.CreateEnemy(_monsterTypeId,
+                transform.position + new Vector3(Random.Range(0, 0.1f), 0, Random.Range(0, 0.1f)), _move, this);
         InitEnemy(enemy);
         return enemy;
     }
@@ -71,8 +74,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void InitEnemy(Enemy enemy)
     {
-        enemy.GetComponent<EnemyMove>().Init(_gameFactory.Player);
-        enemy.GetComponent<EnemyAttack>().Init(_gameFactory);
+        enemy.EnemyStateMachine.Enter<WaitingEnemyState>();
+        enemy.EnemyMove.Init(_gameFactory.Player);
+        enemy.EnemyAttack.Init(_gameFactory);
         enemy.transform.parent = transform;
     }
 

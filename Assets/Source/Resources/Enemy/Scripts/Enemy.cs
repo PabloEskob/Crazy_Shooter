@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     private EnemyMove _enemyMove;
     private EnemyAnimator _enemyAnimator;
     private EnemyStateMachine _enemyStateMachine;
+    private Waypoint_Indicator _waypointIndicator;
+
 
     public EnemyStateMachine EnemyStateMachine
     {
@@ -15,6 +17,8 @@ public class Enemy : MonoBehaviour
         set => _enemyStateMachine = value;
     }
 
+
+    public Waypoint_Indicator WaypointIndicator => _waypointIndicator;
     public EnemyHealth EnemyHealth => _enemyHealth;
     public EnemyDeath EnemyDeath => _enemyDeath;
     public EnemyAttack EnemyAttack => _enemyAttack;
@@ -28,5 +32,6 @@ public class Enemy : MonoBehaviour
         _enemyDeath = GetComponent<EnemyDeath>();
         _enemyHealth = GetComponent<EnemyHealth>();
         _enemyMove = GetComponent<EnemyMove>();
+        _waypointIndicator = GetComponentInChildren<Waypoint_Indicator>();
     }
 }

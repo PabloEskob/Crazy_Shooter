@@ -9,7 +9,7 @@ public interface IGameFactory : IService
     public void CreateHUD(Player player);
     public void CreateStartScene();
     public void CreateLevelStateMachine(Player player);
-    Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent,bool move,EnemySpawner enemySpawner);
+    Enemy CreateEnemy(MonsterTypeId monsterTypeId, Vector3 parent,bool move,EnemySpawner enemySpawner);
     Player Player { get; }
     
     List<ISavedProgressReader> ProgressReaders { get; }
