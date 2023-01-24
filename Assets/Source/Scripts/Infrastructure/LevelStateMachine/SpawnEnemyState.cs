@@ -26,7 +26,7 @@
         if (_launchRoom.Number > _value)
         {
             _launchRoom.StartRoom(_value);
-            _levelStateMachine.Enter<TurnState>();
+            _levelStateMachine.Enter<TurnStateToTarget>();
         }
         else
         {

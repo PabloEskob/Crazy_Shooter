@@ -1,11 +1,11 @@
 ﻿
-public class TurnState : ILevelState
+public class TurnStateToTarget : ILevelState
 {
     private readonly LevelStateMachine _levelStateMachine;
     private readonly Player _player;
     private readonly LaunchRoom _launchRoom;
 
-    public TurnState(LevelStateMachine levelStateMachine, Player player, LaunchRoom launchRoom)
+    public TurnStateToTarget(LevelStateMachine levelStateMachine, Player player, LaunchRoom launchRoom)
     {
         _launchRoom = launchRoom;
         _levelStateMachine = levelStateMachine;
@@ -21,7 +21,6 @@ public class TurnState : ILevelState
 
     public void Exit()
     {
-        _player.PlayerRotate.EnableCameraLock();
         _player.PlayerRotate.OnTurnedAround -= Turned;
     }
 

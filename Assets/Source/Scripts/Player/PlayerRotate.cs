@@ -10,8 +10,9 @@ public class PlayerRotate : MonoBehaviour
     private Vector3 _targetVector;
     private bool _canRotate;
     private bool _canReturn;
-    private CameraLook _cameraLook;
     private TurningPoint _playerPoint;
+
+    public CameraLook CameraLook { get; private set; }
 
     public event Action OnTurnedAround;
 
@@ -22,23 +23,23 @@ public class PlayerRotate : MonoBehaviour
     {
         _playerPoint = GetComponentInChildren<TurningPoint>();
         _rotate = GetComponentInChildren<Rotate>();
-        _cameraLook = GetComponentInChildren<CameraLook>();
+        CameraLook = GetComponentInChildren<CameraLook>();
     }
 
     private void OnDisable() =>
         _rotate.OnTurned -= OnTurned;
 
-    public void StartRotate(TurningPoint turningPoint) => 
-        _rotate.Init(turningPoint != null ? turningPoint.transform.position : new Vector3(0f,10f,0f));
+    public void StartRotate(TurningPoint turningPoint) =>
+        _rotate.Init(turningPoint != null ? turningPoint.transform.position : new Vector3(0f, 10f, 0f));
 
-    public void RotateReturn() => 
+    public void RotateReturn() =>
         _rotate.Return(_playerPoint);
 
     public void DisableCameraLock() =>
-        _cameraLook.Switch(false);
+        CameraLook.Switch(false);
 
     public void EnableCameraLock() =>
-        _cameraLook.Switch(true);
+        CameraLook.Switch(true);
 
     private void OnTurned() =>
         OnTurnedAround?.Invoke();

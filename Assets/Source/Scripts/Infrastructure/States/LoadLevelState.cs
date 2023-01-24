@@ -14,7 +14,7 @@ namespace Source.Infrastructure
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
 
-        private string LevelName = "Level 1";
+       // private string LevelName = "Level 1";
 
         private const string PlayerInitialPointTag = "PlayerInitialPointTag";
 
