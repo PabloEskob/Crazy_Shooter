@@ -48,6 +48,8 @@ namespace InfimaGames.LowPolyShooterPack
         private IStorage _storage;
         private int _volume;
 
+        private const int DefaultVolume = 1;
+
         private void Start()
         {
             
@@ -87,6 +89,8 @@ namespace InfimaGames.LowPolyShooterPack
 
             if (_storage.HasKeyInt(SettingsNames.SoundSettingsKey))
                 _volume = _storage.GetInt(SettingsNames.SoundSettingsKey);
+            else
+                _volume = DefaultVolume;
 
 
             //No need to do absolutely anything if the clip is null.

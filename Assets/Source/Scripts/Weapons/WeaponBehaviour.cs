@@ -32,6 +32,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region GETTERS
 
+        public abstract float GetReloadSpeed();
         /// <summary>
         /// Returns the sprite to use when displaying the weapon's body.
         /// </summary>

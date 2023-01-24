@@ -1,17 +1,10 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
 using System;
-using System.Collections.Generic;
-using Agava.YandexGames;
 using InfimaGames.LowPolyShooterPack.Legacy;
 using Source.Scripts.Data;
-using Source.Scripts.SaveSystem;
 using Source.Scripts.StaticData;
-using Source.Scripts.Ui;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Pool;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -26,12 +19,15 @@ namespace InfimaGames.LowPolyShooterPack
 
         [SerializeField] private UpgradeConfig _upgradeConfig;
         [SerializeField] private BulletPool _bulletPool;
+
+        [Header("")]
         [SerializeField] private float _damage;
         [SerializeField] private float _fireRate;
         [SerializeField] private float _reloadSpeed;
         [SerializeField] private float _magazineSize;
         [SerializeField] private int _maxUpgradeLevel = 4;
         [SerializeField] private int Price = 100;
+        [SerializeField] private bool _isInfinityAmmo;
 
         private int _frameUpgradeLevel;
         private int _muzzleUpgradeLevel;
@@ -41,6 +37,8 @@ namespace InfimaGames.LowPolyShooterPack
 
         public int MaxUpgradeLevel => _maxUpgradeLevel;
         public int WeaponPrice => Price;
+
+        private const int FireRateDelta = 100;
 
         public event Action Bought;
 
@@ -53,6 +51,12 @@ namespace InfimaGames.LowPolyShooterPack
         [Tooltip("How much the character's movement speed is multiplied by when wielding this weapon.")]
         [SerializeField]
         private float multiplierMovementSpeed = 1.0f;
+
+        /// <summary>
+        /// Attachment Manager.
+        /// </summary>
+        [SerializeField] private WeaponAttachmentManagerBehaviour attachmentManager;
+
 
         [SerializeField] private string _weaponType;
         [SerializeField] private bool _isBought;
@@ -82,7 +86,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         [Tooltip("Amount of shots this weapon can shoot in a minute. It determines how fast the weapon shoots.")]
         [SerializeField]
-        private int roundsPerMinutes = 200;
+        private float roundsPerMinutes = 200;
 
         [Tooltip("Mask of things recognized when firing.")]
         [SerializeField]
@@ -198,11 +202,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// Weapon Animator.
         /// </summary>
         private Animator animator;
-        /// <summary>
-        /// Attachment Manager.
-        /// </summary>
-        private WeaponAttachmentManagerBehaviour attachmentManager;
-
+        
         /// <summary>
         /// Amount of ammunition left.
         /// </summary>
@@ -255,6 +255,8 @@ namespace InfimaGames.LowPolyShooterPack
         public WeaponUpgrade WeaponUpgrade { get; private set; }
         public UpgradeConfig UpgradeConfig => _upgradeConfig;
 
+        public event Action WeaponInitialized;
+
         #region UNITY
 
         protected override void Awake()
@@ -294,8 +296,13 @@ namespace InfimaGames.LowPolyShooterPack
 
             #endregion
 
+
             //Max Out Ammo.
-            ammunitionCurrent = magazineBehaviour.GetAmmunitionTotal();
+            magazineBehaviour.SetMagazineSize((int)_magazineSize);
+            ammunitionCurrent = magazineBehaviour.GetMagazineSize();
+            _fireRate = roundsPerMinutes / FireRateDelta;
+            _data.FireRate = _fireRate;
+            WeaponInitialized?.Invoke();
         }
 
         #endregion
@@ -351,6 +358,8 @@ namespace InfimaGames.LowPolyShooterPack
 
         public override Animator GetAnimator() => animator;
 
+        public override float GetReloadSpeed() => _reloadSpeed;
+
         public override Sprite GetSpriteBody() => spriteBody;
         public override float GetMultiplierMovementSpeed() => multiplierMovementSpeed;
 
@@ -386,7 +395,7 @@ namespace InfimaGames.LowPolyShooterPack
         public override bool CanReloadWhenFull() => canReloadWhenFull;
         public override float GetRateOfFire() => roundsPerMinutes;
 
-        public override bool IsFull() => ammunitionCurrent == magazineBehaviour.GetAmmunitionTotal();
+        public override bool IsFull() => ammunitionCurrent == magazineBehaviour.GetMagazineSize();
         public override bool HasAmmunition() => ammunitionCurrent > 0;
 
         public override RuntimeAnimatorController GetAnimatorController() => controller;
@@ -420,6 +429,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         public override void Reload()
         {
+            animator.speed = _reloadSpeed;
             //Set Reloading Bool. This helps cycled reloads know when they need to stop cycling.
             const string boolName = "Reloading";
             animator.SetBool(boolName, true);
@@ -444,7 +454,12 @@ namespace InfimaGames.LowPolyShooterPack
             const string stateName = "Fire";
             animator.Play(stateName, 0, 0.0f);
             //Reduce ammunition! We just shot, so we need to get rid of one!
-            ammunitionCurrent = Mathf.Clamp(ammunitionCurrent - 1, 0, magazineBehaviour.GetAmmunitionTotal());
+            ammunitionCurrent = Mathf.Clamp(ammunitionCurrent - 1, 0, magazineBehaviour.GetMagazineSize());
+
+            if (_isInfinityAmmo == false)
+                magazineBehaviour.TryToDecreaseTotalAmmunition();
+
+            Debug.Log(GetAmmunitionTotal());
 
             //Set the slide back if we just ran out of ammunition.
             if (ammunitionCurrent == 0)
@@ -474,6 +489,7 @@ namespace InfimaGames.LowPolyShooterPack
                 //Spawn projectile from the projectile spawn point.
                 //GameObject projectile = Instantiate(prefabProjectile, muzzleSocket.position, rotation);
                 Projectile projectile = _bulletPool.CreateProjectile();
+                projectile.SetDamage(_damage);
                 projectile.transform.position = muzzleSocket.position;
                 projectile.transform.rotation = rotation;
                 //Add velocity to the projectile.
@@ -486,8 +502,16 @@ namespace InfimaGames.LowPolyShooterPack
         {
             //Update the value by a certain amount.
             ammunitionCurrent = amount != 0 ? Mathf.Clamp(ammunitionCurrent + amount,
-                0, GetAmmunitionTotal()) : magazineBehaviour.GetAmmunitionTotal();
+                0, GetAvaliableAmmunition()) : GetAvaliableAmmunition();
         }
+
+        private int GetAvaliableAmmunition()
+        {
+            int magazineSize = magazineBehaviour.GetMagazineSize();
+            int ammunitionLeft = magazineBehaviour.GetAmmunitionTotal();
+            return ammunitionLeft > magazineSize ? magazineSize : ammunitionLeft;
+        }
+
         public override void SetSlideBack(int back)
         {
             //Set the slide back bool.
@@ -608,6 +632,7 @@ namespace InfimaGames.LowPolyShooterPack
         public void UpdateStatsToData()
         {
             _data.Damage = _damage;
+            //_fireRate = roundsPerMinutes / FireRateDelta;
             _data.FireRate = _fireRate;
             _data.Reload = _reloadSpeed;
             _data.MagazineSize = _magazineSize;
@@ -622,6 +647,7 @@ namespace InfimaGames.LowPolyShooterPack
         {
             _damage = _data.Damage;
             _fireRate = _data.FireRate;
+            roundsPerMinutes = _fireRate * FireRateDelta;
             _reloadSpeed = _data.Reload;
             _magazineSize = _data.MagazineSize;
             _frameUpgradeLevel = _data.FrameUpgradeLevel;
