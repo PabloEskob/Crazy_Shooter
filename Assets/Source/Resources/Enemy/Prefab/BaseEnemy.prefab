@@ -39,7 +39,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929974403645522686}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8057c976b872b494aba079f605e2e5b4, type: 3}
   m_Name: 
@@ -232,11 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4b0ccf132a388408a00dd636a7e7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyAttack: {fileID: 1536784074449121643}
-  _enemyDeath: {fileID: 3255986719442638800}
-  _enemyHealth: {fileID: 1173631881349560264}
-  _enemyMove: {fileID: 6970252418325554411}
-  _enemyAnimator: {fileID: 5427714518127054878}
 --- !u!195 &6625414601667408847
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -342,6 +337,7 @@ MonoBehaviour:
   _enemyAnimator: {fileID: 5427714518127054878}
   _headShot: {fileID: 0}
   _bodyShot: {fileID: 0}
+  DamageMultiplier: 6
 --- !u!114 &4992435269036673208
 MonoBehaviour:
   m_ObjectHideFlags: 0

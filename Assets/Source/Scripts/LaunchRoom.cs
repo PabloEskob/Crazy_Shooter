@@ -4,10 +4,10 @@ using UnityEngine;
 public class LaunchRoom : MonoBehaviour
 {
     [SerializeField] private List<Room> _rooms;
-    
+
     private int _numberRoom;
     public int Number => _rooms.Count;
-    
+
     public void Fill(IGameFactory gameFactory)
     {
         for (var i = 0; i < _rooms.Count; i++)
@@ -29,8 +29,7 @@ public class LaunchRoom : MonoBehaviour
 
     private void StartNewRoom()
     {
-        var startWave = _rooms[_numberRoom].LaunchingWaves
-            .StartWave(_rooms[_numberRoom].StartThisRoom, _rooms[_numberRoom].DelayWave);
-        StartCoroutine(startWave);
+        var startWave = _rooms[_numberRoom].LaunchingWaves;
+        startWave.StartWave();
     }
 }

@@ -5,16 +5,12 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField] private List<EnemySpawner> _enemySpawners;
-    [SerializeField] private float _delayWave;
-    [SerializeField] private float _startThisRoom;
 
     private TurningPoint _turningPoint;
     private Player _player;
     private LaunchingWaves _launchingWaves;
     private bool _clear;
 
-    public float DelayWave => _delayWave;
-    public float StartThisRoom => _startThisRoom;
     public LaunchingWaves LaunchingWaves => _launchingWaves;
     public int Number { get; set; }
 
@@ -28,8 +24,10 @@ public class Room : MonoBehaviour
         _launchingWaves.Ended -= LaunchingWavesOnEnded;
     }
 
-    private void Awake() =>
+    private void Awake()
+    {
         _launchingWaves = new LaunchingWaves(_enemySpawners);
+    }
 
     private void Start()
     {

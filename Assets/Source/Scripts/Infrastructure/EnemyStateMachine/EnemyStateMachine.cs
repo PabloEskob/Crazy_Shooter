@@ -6,10 +6,9 @@ public class EnemyStateMachine
     private Dictionary<Type, IEnemyState> _states;
     private IEnemyState _currentLevelState;
 
-    public EnemyStateMachine()
+    public EnemyStateMachine(Enemy enemy)
     {
-        InitStates();
-        Enter<WaitingEnemyState>();
+        InitStates(enemy);
     }
 
     public void Enter<TState>() where TState : class, IEnemyState
@@ -18,11 +17,11 @@ public class EnemyStateMachine
         state.Enter();
     }
 
-    private void InitStates()
+    private void InitStates(Enemy enemy)
     {
         _states = new Dictionary<Type, IEnemyState>
         {
-            [typeof(WaitingEnemyState)] = new WaitingEnemyState(),
+            [typeof(WaitingEnemyState)] = new WaitingEnemyState(enemy),
             [typeof(AttackEnemyState)] = new AttackEnemyState(),
             [typeof(StateOfDeathEnemy)] = new StateOfDeathEnemy(),
             [typeof(MoveEnemyState)]= new MoveEnemyState()

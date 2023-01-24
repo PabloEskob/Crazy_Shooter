@@ -4807,6 +4807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af427f450ca4c549b6e1a694cd11c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skinnedMeshRenderer: {fileID: 0}
+  _collider: {fileID: 0}
 --- !u!1 &1307560425424783832
 GameObject:
   m_ObjectHideFlags: 0
@@ -7086,7 +7088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1310132187101113148
 Transform:
   m_ObjectHideFlags: 0

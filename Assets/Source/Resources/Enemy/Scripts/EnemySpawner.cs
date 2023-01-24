@@ -39,7 +39,6 @@ public class EnemySpawner : MonoBehaviour
     public void Construct(IGameFactory gameFactory)
     {
         _gameFactory = gameFactory;
-
         _enemies = new List<Enemy>();
 
         CreateQuantityEnemy();
@@ -75,7 +74,6 @@ public class EnemySpawner : MonoBehaviour
         enemy.GetComponent<EnemyMove>().Init(_gameFactory.Player);
         enemy.GetComponent<EnemyAttack>().Init(_gameFactory);
         enemy.transform.parent = transform;
-        enemy.gameObject.SetActive(false);
     }
 
     private void TryTurnOnAnotherSpawner()
