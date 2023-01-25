@@ -496,21 +496,24 @@ namespace InfimaGames.LowPolyShooterPack
             }
         }
 
+           private int ammunitionLeftInMagazine;
         public override void FillAmmunition(int amount)
         {
+            ammunitionLeftInMagazine = ammunitionCurrent;
             //Update the value by a certain amount.
             ammunitionCurrent = amount != 0 ? Mathf.Clamp(ammunitionCurrent + amount,
                 0, GetAvaliableAmmunition()) : GetAvaliableAmmunition();
 
             if (_isInfinityAmmo == false)
-                magazineBehaviour.TryToDecreaseTotalAmmunition(ammunitionCurrent);
+                magazineBehaviour.TryToDecreaseTotalAmmunition(magazineBehaviour.GetMagazineSize() - ammunitionLeftInMagazine);
         }
 
         private int GetAvaliableAmmunition()
         {
             int magazineSize = magazineBehaviour.GetMagazineSize();
             int ammunitionLeft = magazineBehaviour.GetAmmunitionTotal();
-            return ammunitionLeft > magazineSize ? magazineSize : ammunitionLeft;
+            Debug.Log(ammunitionCurrent);
+            return ammunitionLeft > magazineSize ? magazineSize : ammunitionLeftInMagazine + ammunitionLeft;
         }
 
         public override void SetSlideBack(int back)
