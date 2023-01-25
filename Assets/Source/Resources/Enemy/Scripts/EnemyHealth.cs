@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
     [SerializeField] private EnemyAnimator _enemyAnimator;
     [SerializeField] private HeadShot _headShot;
     [SerializeField] private BodyShot _bodyShot;
-    [SerializeField] private int DamageMultiplier = 6;
+    [SerializeField] private int _damageMultiplier = 6;
 
     private Effects _effects;
     private EnemyMove _enemyMove;
@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public Effects Effects => _effects;
     public float Current { get; set; }
     public float Max { get; set; }
+    public bool CanHit { get; set; }
 
     public event Action HealthChanged;
 
@@ -51,12 +52,16 @@ public class EnemyHealth : MonoBehaviour, IHealth
 
     public void TakeDamage(int damage)
     {
-        Max -= damage;
+        if (CanHit)
+        {
+            Max -= damage;
 
-        if (_canPlayHit)
-            _enemyAnimator.PlayHit();
+            if (_canPlayHit)
+                _enemyAnimator.PlayHit();
 
-        HealthChanged?.Invoke();
+            HealthChanged?.Invoke();
+        }
+        
     }
 
     private void TakeHitBody(int damage, Collision collision)
@@ -67,7 +72,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
 
     private void HeadShot(int damage, Collision collision)
     {
-        TakeDamage(damage * DamageMultiplier);
+        TakeDamage(damage * _damageMultiplier);
 
         if (Max > 0)
             _effects.GetContactCollision(collision);

@@ -266,7 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab76f20231e1c484ba0a46b5373a159c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navMeshAgent: {fileID: 6625414601667408847}
 --- !u!114 &5427714518127054878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6478d350f246aca457699f1cff409d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animationClip: {fileID: -4506338696897810887, guid: 2bcb7d9b368c716448cc4b0153aca9bc, type: 3}
 --- !u!114 &1536784074449121643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,9 +318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeDied: 7
-  _enemyHealth: {fileID: 1173631881349560264}
-  _enemyAnimator: {fileID: 5427714518127054878}
-  _waypointIndicator: {fileID: 2547531318477014087}
 --- !u!114 &1173631881349560264
 MonoBehaviour:
   m_ObjectHideFlags: 0

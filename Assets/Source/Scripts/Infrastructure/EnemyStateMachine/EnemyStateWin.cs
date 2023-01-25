@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class EnemyStateWin : IEnemyState
+﻿public class EnemyStateWin : IEnemyState
 {
     private Enemy _enemy;
 

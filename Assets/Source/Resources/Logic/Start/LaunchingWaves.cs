@@ -18,15 +18,11 @@ public class LaunchingWaves
 
         if (firstOrDefault != null) return;
         Ended?.Invoke();
-        Debug.Log($" волны закончились , Начало новой зоны   ");
     }
 
     public void StartWave()
     {
-        foreach (var enemySpawner in _enemySpawners)
-        {
-            Debug.Log($"Запуск новой волны ");
+        foreach (var enemySpawner in _enemySpawners) 
             enemySpawner.TurnOnEnemy();
-        }
     }
 }

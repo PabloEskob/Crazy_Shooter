@@ -2,6 +2,8 @@
 
 public class EnemyAnimator : MonoBehaviour
 {
+    [SerializeField] private AnimationClip _animationClip;
+    
     private static readonly int Die = Animator.StringToHash("Die");
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int IsMoving = Animator.StringToHash("Move");
@@ -12,6 +14,7 @@ public class EnemyAnimator : MonoBehaviour
     private Animator _animator;
     private string _clipName;
     private Animation _animation;
+    private static readonly int Change = Animator.StringToHash("Change");
 
     private void Awake() =>
         _animator = GetComponent<Animator>();
@@ -19,7 +22,7 @@ public class EnemyAnimator : MonoBehaviour
     public void PlayHit() =>
         _animator.SetTrigger(Hit);
 
-    public void PlayIdle() =>
+    public void PlayIdle() => 
         _animator.SetTrigger(Idle);
 
     public void PlayDeath() =>
@@ -36,4 +39,11 @@ public class EnemyAnimator : MonoBehaviour
 
     public void StopMove() =>
         _animator.SetBool(IsMoving, false);
+
+    public void ChangeAnimation()
+    {
+        var value = Random.Range(0, 3);
+        _animator.SetFloat(Change,value);
+
+    }
 }

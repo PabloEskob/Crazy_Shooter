@@ -54,7 +54,9 @@ public class EnemySpawner : MonoBehaviour
     public void TurnOnEnemy()
     {
         foreach (var enemy in _enemies)
+        {
             enemy.EnemyStateMachine.Enter<MoveEnemyState>();
+        }
     }
 
     private Enemy Spawn()

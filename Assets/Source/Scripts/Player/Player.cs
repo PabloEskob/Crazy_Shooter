@@ -14,6 +14,19 @@ public class Player : MonoBehaviour
     private PlayerDeath _playerDeath;
     private PlayerRotate _playerRotate;
     private Character _character;
+    
+    public PlayerMove PlayerMove =>
+        _playerMove;
+    public PlayerHealth PlayerHealth =>
+        _playerHealth;
+    public PlayerDeath PlayerDeath =>
+        _playerDeath;
+    public PlayerAnimator PlayerAnimator =>
+        _playerAnimator;
+    public PlayerRotate PlayerRotate =>
+        _playerRotate;
+    public Character Character =>
+        _character;
 
     private void Awake()
     {
@@ -24,22 +37,4 @@ public class Player : MonoBehaviour
         _playerRotate = GetComponent<PlayerRotate>();
         _character = GetComponent<Character>();
     }
-
-    public PlayerMove PlayerMove =>
-        _playerMove;
-
-    public PlayerHealth PlayerHealth =>
-        _playerHealth;
-
-    public PlayerDeath PlayerDeath =>
-        _playerDeath;
-
-    public PlayerAnimator PlayerAnimator =>
-        _playerAnimator;
-
-    public PlayerRotate PlayerRotate =>
-        _playerRotate;
-
-    public Character Character =>
-        _character;
 }

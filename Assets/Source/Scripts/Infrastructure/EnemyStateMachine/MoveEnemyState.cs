@@ -4,8 +4,8 @@ public class MoveEnemyState : IEnemyState
 {
     private readonly Enemy _enemy;
     private readonly EnemyStateMachine _enemyStateMachine;
-    
-    public MoveEnemyState(Enemy enemy,EnemyStateMachine enemyStateMachine)
+
+    public MoveEnemyState(Enemy enemy, EnemyStateMachine enemyStateMachine)
     {
         _enemyStateMachine = enemyStateMachine;
         _enemy = enemy;
@@ -13,6 +13,8 @@ public class MoveEnemyState : IEnemyState
 
     public void Enter()
     {
+        _enemy.EnemyHealth.CanHit = true;
+        
         switch (_enemy.EnemyMove.CanMove)
         {
             case true:
@@ -26,6 +28,5 @@ public class MoveEnemyState : IEnemyState
 
     public void Exit()
     {
-       
     }
 }

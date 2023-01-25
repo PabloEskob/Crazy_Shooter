@@ -11,6 +11,7 @@
 
     public void Enter()
     {
+        _enemy.EnemyAnimator.ChangeAnimation();
         _enemy.EnemyMove.StopMove();
     }
 

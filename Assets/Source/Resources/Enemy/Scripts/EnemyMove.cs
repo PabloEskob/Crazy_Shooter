@@ -35,8 +35,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
-
-        _enemy.EnemyAnimator.StopMove();
+        
         _navMeshAgent.speed = 0;
     }
 
