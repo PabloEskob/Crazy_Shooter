@@ -14,8 +14,8 @@ public class BuyButton : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private List<UpgradeType> _upgradeTypes;
     [SerializeField] private UpgradePanel _upgradePanel;
-    [SerializeField] private TMP_Text _priceText;
-    [SerializeField] private TMP_Text _buttonText;
+    [SerializeField] private Text _priceText;
+    [SerializeField] private Text _buttonText;
     [SerializeField] private SoftCurrencyHolder _softCurrencyHolder;
 
     private Weapon _weapon;
@@ -26,10 +26,10 @@ public class BuyButton : MonoBehaviour
     private const string FreeText = "Free";
 
     public int CurrentPrice { get; private set; }
-    public TMP_Text PriceText => _priceText;
+    public Text PriceText => _priceText;
     public Button Button => _button;
 
-    private void Awake() => 
+    private void Awake() =>
         _defaultUpgrade = _upgradeTypes[0];
 
     private void OnEnable()
@@ -58,7 +58,7 @@ public class BuyButton : MonoBehaviour
 
     private void OnWeaponBought()
     {
-        Display();
+        SetPriceText();
 
         _storage = AllServices.Container.Single<IStorage>();
 
@@ -69,7 +69,7 @@ public class BuyButton : MonoBehaviour
         }
     }
 
-    private void OnUpgraded() => 
+    private void OnUpgraded() =>
         OnUpgradeChoosed(_currentUpgrade);
 
     private void OnWeaponSet(Weapon weapon)
@@ -78,22 +78,17 @@ public class BuyButton : MonoBehaviour
         _weapon = weapon;
         _weapon.Bought += OnWeaponBought;
 
-        Display();
+        SetPriceText();
+        DisplayPriceText();
+        ChengeButtonInteractable(_weapon.GetFrameUpgrade().Level);
     }
 
-    private void Display()
+    private void SetPriceText()
     {
         if (_weapon.IsBought())
-        {
             SetPrice(_weapon.GetFrameUpgrade().Price);
-            DisplayPriceText();
-            ChengeButtonInteractable(_weapon.GetFrameUpgrade().Level);
-        }
         else
-        {
             SetPrice(_weapon.WeaponPrice);
-            DisplayPriceText();
-        }
     }
 
     private void OnUpgradeChoosed(UpgradeType upgrade)
@@ -127,7 +122,7 @@ public class BuyButton : MonoBehaviour
         DisplayPriceText();
     }
 
-    private void DisplayPriceText() => 
+    private void DisplayPriceText() =>
         _priceText.text = CurrentPrice == 0 ? FreeText : CurrentPrice.ToString();
 
     private void SetPrice(int price) =>

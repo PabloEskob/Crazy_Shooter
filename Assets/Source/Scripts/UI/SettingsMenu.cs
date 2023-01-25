@@ -14,14 +14,20 @@ namespace Source.Scripts.Ui
         [SerializeField] private Slider _soundVolumeSlider;
         [SerializeField] private Slider _musicVolumeSlider;
         [SerializeField] private Slider _cameraSensitivitySlider;
-        [SerializeField] private Button _russianLanguageButton;
-        [SerializeField] private Button _englishLaguageButton;
-        [SerializeField] private Button _turkishLanguageButton;
+        [SerializeField] private Button _nextLanguageButton;
+        [SerializeField] private Button _previousLaguageButton;
         [SerializeField] private Button _exitButton;
+        [SerializeField] private Text _languageText;
 
         [Header("Sensitivity slider values settings")]
         [SerializeField] private float _minValue = 0.1f;
         [SerializeField] private float _maxValue = 2.0f;
+
+        private const string RussianLanguage = "Русский";
+        private const string EnglishLanguage = "English";
+        private const string TürkLanguage = "Türk";
+
+        private string[] _languageTexts = new string[3] {RussianLanguage, EnglishLanguage, TürkLanguage };
 
         IStorage _storage;
 
@@ -39,9 +45,7 @@ namespace Source.Scripts.Ui
         private void OnEnable()
         {
             _exitButton.onClick.AddListener(Hide);
-            //_englishLaguageButton.onClick.AddListener(SwitchLanguage);
-            //_russianLanguageButton.onClick.AddListener(SwitchLanguage);
-            //_turkishLanguageButton.onClick.AddListener(SwitchLanguage);
+            _nextLanguageButton.onClick.AddListener(SwitchLanguage);
             _soundVolumeSlider.onValueChanged.AddListener(OnSoundSliderValueChanged);
             _musicVolumeSlider.onValueChanged.AddListener(OnMusicSliderValueChanged);
             _cameraSensitivitySlider.onValueChanged.AddListener(OnSensitivitySliderValueChanged);
@@ -51,9 +55,7 @@ namespace Source.Scripts.Ui
         {
             _storage.Save();
             _exitButton.onClick.RemoveListener(Hide);
-            //_englishLaguageButton.onClick.RemoveListener(SwitchLanguage);
-            //_russianLanguageButton.onClick.RemoveListener(SwitchLanguage);
-            //_turkishLanguageButton.onClick.RemoveListener(SwitchLanguage);
+            _nextLanguageButton.onClick.RemoveListener(SwitchLanguage);
             _soundVolumeSlider.onValueChanged.RemoveListener(OnSoundSliderValueChanged);
             _musicVolumeSlider.onValueChanged.RemoveListener(OnMusicSliderValueChanged);
             _cameraSensitivitySlider.onValueChanged.RemoveListener(OnSensitivitySliderValueChanged);
@@ -70,7 +72,7 @@ namespace Source.Scripts.Ui
 
         private void SwitchLanguage()
         {
-            throw new NotImplementedException();
+            
         }
 
         private void SetSliderValue(Slider slider, float value) =>

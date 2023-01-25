@@ -57,6 +57,8 @@ public class UpgradePanel : MonoBehaviour
 
     private void OnUpgradeChoosed(UpgradeType upgradeType)
     {
+        Debug.Log("OnUpgradeChoosed");
+
         foreach (UpgradeType typeButton in _upgradeTypeButtons)
         {
             typeButton.SwitchButtonState(false);
@@ -78,6 +80,7 @@ public class UpgradePanel : MonoBehaviour
     public void SetWeapon(Weapon weapon)
     {
         _currentWeapon = weapon;
+        DisplayText(_currentWeapon);
         WeaponSet?.Invoke(_currentWeapon);
 
         foreach (UpgradeType typeButton in _upgradeTypeButtons)
@@ -89,16 +92,23 @@ public class UpgradePanel : MonoBehaviour
 
     private void OnWeaponSet(Weapon weapon)
     {
+        Debug.Log("On weapon set");
+
         foreach (var button in _upgradeTypeButtons)
             button.SwitchButtonInteractivity(weapon.IsBought());
 
+        DisplayText(weapon);
+
+        foreach (UpgradeType typeButton in _upgradeTypeButtons)
+            typeButton.SetText();
+    }
+
+    private void DisplayText(Weapon weapon)
+    {
         if (!weapon.IsBought())
             _buyButton.ChangeButtonText(BuyText);
         else
             _buyButton.ChangeButtonText(UpgradeText);
-
-        foreach (UpgradeType typeButton in _upgradeTypeButtons)
-            typeButton.SetText();
     }
 
     private void OnBuyButtonClick()
