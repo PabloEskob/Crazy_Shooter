@@ -63,9 +63,9 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 
             _storage = AllServices.Container.Single<IStorage>();
 
-            if (_storage.HasKeyInt(SettingsNames.SoundSettingsKey))
+            if (_storage.HasKeyFloat(SettingsNames.SoundSettingsKey))
             {
-                int currentVolume = _storage.GetInt(SettingsNames.SoundSettingsKey);
+                float currentVolume = _storage.GetFloat(SettingsNames.SoundSettingsKey);
                 impactSound.volume = currentVolume;
                 explosionPrefab.GetComponent<AudioSource>().volume = currentVolume;
             }

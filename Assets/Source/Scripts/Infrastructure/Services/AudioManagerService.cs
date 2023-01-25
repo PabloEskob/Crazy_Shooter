@@ -46,15 +46,10 @@ namespace InfimaGames.LowPolyShooterPack
         }
 
         private IStorage _storage;
-        private int _volume;
+        private float _volume;
 
-        private const int DefaultVolume = 1;
+        private const float DefaultVolume = 1;
 
-        private void Start()
-        {
-            
-
-        }
 
         /// <summary>
         /// Destroys the audio source once it has finished playing.
@@ -87,8 +82,8 @@ namespace InfimaGames.LowPolyShooterPack
         {
             _storage = AllServices.Container.Single<IStorage>();
 
-            if (_storage.HasKeyInt(SettingsNames.SoundSettingsKey))
-                _volume = _storage.GetInt(SettingsNames.SoundSettingsKey);
+            if (_storage.HasKeyFloat(SettingsNames.SoundSettingsKey))
+                _volume = _storage.GetFloat(SettingsNames.SoundSettingsKey);
             else
                 _volume = DefaultVolume;
 

@@ -39,9 +39,9 @@ namespace Source.Scripts.Ui
         private void OnEnable()
         {
             _exitButton.onClick.AddListener(Hide);
-            _englishLaguageButton.onClick.AddListener(SwitchLanguage);
-            _russianLanguageButton.onClick.AddListener(SwitchLanguage);
-            _turkishLanguageButton.onClick.AddListener(SwitchLanguage);
+            //_englishLaguageButton.onClick.AddListener(SwitchLanguage);
+            //_russianLanguageButton.onClick.AddListener(SwitchLanguage);
+            //_turkishLanguageButton.onClick.AddListener(SwitchLanguage);
             _soundVolumeSlider.onValueChanged.AddListener(OnSoundSliderValueChanged);
             _musicVolumeSlider.onValueChanged.AddListener(OnMusicSliderValueChanged);
             _cameraSensitivitySlider.onValueChanged.AddListener(OnSensitivitySliderValueChanged);
@@ -51,9 +51,9 @@ namespace Source.Scripts.Ui
         {
             _storage.Save();
             _exitButton.onClick.RemoveListener(Hide);
-            _englishLaguageButton.onClick.RemoveListener(SwitchLanguage);
-            _russianLanguageButton.onClick.RemoveListener(SwitchLanguage);
-            _turkishLanguageButton.onClick.RemoveListener(SwitchLanguage);
+            //_englishLaguageButton.onClick.RemoveListener(SwitchLanguage);
+            //_russianLanguageButton.onClick.RemoveListener(SwitchLanguage);
+            //_turkishLanguageButton.onClick.RemoveListener(SwitchLanguage);
             _soundVolumeSlider.onValueChanged.RemoveListener(OnSoundSliderValueChanged);
             _musicVolumeSlider.onValueChanged.RemoveListener(OnMusicSliderValueChanged);
             _cameraSensitivitySlider.onValueChanged.RemoveListener(OnSensitivitySliderValueChanged);
@@ -86,12 +86,12 @@ namespace Source.Scripts.Ui
             else
                 SetSliderValue(_cameraSensitivitySlider, DefaultSliderValue);
 
-            if (_storage.HasKeyInt(SettingsNames.SoundSettingsKey))
+            if (_storage.HasKeyFloat(SettingsNames.SoundSettingsKey))
                 SetSliderValue(_soundVolumeSlider, _storage.GetFloat(SettingsNames.SoundSettingsKey));
             else
                 SetSliderValue(_soundVolumeSlider, DefaultSliderValue);
 
-            if (_storage.HasKeyInt(SettingsNames.MusicSettingsKey))
+            if (_storage.HasKeyFloat(SettingsNames.MusicSettingsKey))
                 SetSliderValue(_musicVolumeSlider, _storage.GetFloat(SettingsNames.MusicSettingsKey));
             else
                 SetSliderValue(_musicVolumeSlider, DefaultSliderValue);
