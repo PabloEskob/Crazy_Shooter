@@ -1,4 +1,6 @@
-﻿public class MoveEnemyState : IEnemyState
+﻿using UnityEngine;
+
+public class MoveEnemyState : IEnemyState
 {
     private readonly Enemy _enemy;
     private readonly EnemyStateMachine _enemyStateMachine;

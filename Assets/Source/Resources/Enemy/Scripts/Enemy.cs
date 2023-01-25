@@ -9,15 +9,13 @@ public class Enemy : MonoBehaviour
     private EnemyAnimator _enemyAnimator;
     private EnemyStateMachine _enemyStateMachine;
     private Waypoint_Indicator _waypointIndicator;
-
-
+    
     public EnemyStateMachine EnemyStateMachine
     {
         get => _enemyStateMachine ??= new EnemyStateMachine(this);
         set => _enemyStateMachine = value;
     }
-
-
+    
     public Waypoint_Indicator WaypointIndicator => _waypointIndicator;
     public EnemyHealth EnemyHealth => _enemyHealth;
     public EnemyDeath EnemyDeath => _enemyDeath;

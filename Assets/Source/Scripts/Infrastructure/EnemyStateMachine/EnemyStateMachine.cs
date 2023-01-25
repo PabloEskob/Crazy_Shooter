@@ -23,8 +23,9 @@ public class EnemyStateMachine
         _states = new Dictionary<Type, IEnemyState>
         {
             [typeof(WaitingEnemyState)] = new WaitingEnemyState(enemy,this),
-            [typeof(AttackEnemyState)] = new AttackEnemyState(),
-            [typeof(StateOfDeathEnemy)] = new StateOfDeathEnemy(),
+            [typeof(AttackEnemyState)] = new AttackEnemyState(enemy),
+            [typeof(StateOfDeathEnemy)] = new StateOfDeathEnemy(enemy),
+            [typeof(EnemyStateWin)] = new EnemyStateWin(enemy),
             [typeof(MoveEnemyState)]= new MoveEnemyState(enemy,this)
         };
     }

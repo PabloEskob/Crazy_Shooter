@@ -7,35 +7,31 @@ using UnityEngine;
 public class EnemyDeath : MonoBehaviour
 {
     [SerializeField] private float _timeDied = 5f;
-    [SerializeField] private EnemyHealth _enemyHealth;
-    [SerializeField] private EnemyAnimator _enemyAnimator;
-    [SerializeField] private Waypoint_Indicator _waypointIndicator;
 
-    public bool IsDied { get; private set; }
+    private Enemy _enemy;
+    public event Action OnHappened;
+    public bool IsDie { get; private set; }
 
-    public event Action Happened;
+    private void Awake() =>
+        _enemy = GetComponent<Enemy>();
 
     private void Start() =>
-        _enemyHealth.HealthChanged += OnHealthChanged;
+        _enemy.EnemyHealth.HealthChanged += OnHealthChanged;
 
     private void OnHealthChanged()
     {
-        if (_enemyHealth.Max <= 0)
+        if (_enemy.EnemyHealth.Max <= 0)
             Die();
     }
 
     private void Die()
     {
-        _enemyHealth.HealthChanged -= OnHealthChanged;
-        IsDied = true;
-
-        _enemyAnimator.PlayDeath();
-        _waypointIndicator.enabled = false;
-        _enemyHealth.Effects.PlayDeath();
-
+        _enemy.EnemyHealth.HealthChanged -= OnHealthChanged;
+        IsDie = true;
+        _enemy.EnemyStateMachine.Enter<StateOfDeathEnemy>();
+        _enemy.WaypointIndicator.enabled = false;
         StartCoroutine(DestroyTimer());
-
-        Happened?.Invoke();
+        OnHappened?.Invoke();
     }
 
     private IEnumerator DestroyTimer()

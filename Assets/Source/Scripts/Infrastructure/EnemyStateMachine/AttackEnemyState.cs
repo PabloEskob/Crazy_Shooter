@@ -1,12 +1,18 @@
 ﻿public class AttackEnemyState : IEnemyState
 {
+    private readonly Enemy _enemy;
+    public AttackEnemyState(Enemy enemy)
+    {
+        _enemy = enemy;
+    }
+
     public void Enter()
     {
-        throw new System.NotImplementedException();
+        _enemy.EnemyAttack.StartAttackRoutine();
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+       _enemy.EnemyAttack.StopAttack();
     }
 }

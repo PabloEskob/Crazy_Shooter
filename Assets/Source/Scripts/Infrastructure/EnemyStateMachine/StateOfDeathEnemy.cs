@@ -1,12 +1,22 @@
-﻿public class StateOfDeathEnemy : IEnemyState
+﻿using UnityEngine;
+
+public class StateOfDeathEnemy : IEnemyState
 {
+    private Enemy _enemy;
+
+    public StateOfDeathEnemy(Enemy enemy)
+    {
+        _enemy = enemy;
+    }
+
     public void Enter()
     {
-        throw new System.NotImplementedException();
+        _enemy.EnemyAnimator.PlayDeath();
+        _enemy.EnemyHealth.Effects.PlayDeath();
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Exit");
     }
 }

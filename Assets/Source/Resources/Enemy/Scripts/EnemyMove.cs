@@ -5,22 +5,25 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMove : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent _navMeshAgent;
-    
+    private NavMeshAgent _navMeshAgent;
     private Enemy _enemy;
     private bool _canMove;
     private Player _player;
     private bool _idleState;
     private Coroutine _coroutine;
-    
+
     public bool CanMove => _canMove;
+
     public float Speed { get; set; }
 
-    private void Awake() => 
+    private void Awake()
+    {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         _enemy = GetComponent<Enemy>();
+    }
 
-    private void Start() =>
-        _enemy.EnemyAnimator.StopMove();
+    private void Start() => 
+        transform.LookAt(_player.transform);
 
     public void SetCanMove(bool move) =>
         _canMove = move;
@@ -30,9 +33,10 @@ public class EnemyMove : MonoBehaviour
 
     public void StopMove()
     {
-        if (_coroutine != null) 
+        if (_coroutine != null)
             StopCoroutine(_coroutine);
-        
+
+        _enemy.EnemyAnimator.StopMove();
         _navMeshAgent.speed = 0;
     }
 
@@ -45,8 +49,8 @@ public class EnemyMove : MonoBehaviour
     public void StartMove()
     {
         _enemy.WaypointIndicator.enabled = true;
-        _enemy.EnemyAnimator.Move();
         _navMeshAgent.speed = Speed;
+        _enemy.EnemyAnimator.Move(_navMeshAgent.speed);
         _coroutine = StartCoroutine(Move());
     }
 

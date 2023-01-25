@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
     private void OnDisable()
     {
         foreach (var enemy in _enemies)
-            enemy.EnemyDeath.Happened -= TryTurnOnAnotherSpawner;
+            enemy.EnemyDeath.OnHappened -= TryTurnOnAnotherSpawner;
     }
 
     public void Construct(IGameFactory gameFactory)
@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
         CreateQuantityEnemy();
 
         foreach (var enemy in _enemies)
-            enemy.EnemyDeath.Happened += TryTurnOnAnotherSpawner;
+            enemy.EnemyDeath.OnHappened += TryTurnOnAnotherSpawner;
     }
 
     public void SetNumber(int number) =>

@@ -7,9 +7,11 @@ public class EnemyAnimator : MonoBehaviour
     private static readonly int IsMoving = Animator.StringToHash("Move");
     private static readonly int Hit = Animator.StringToHash("Hit");
     private static readonly int Idle = Animator.StringToHash("Idle");
+    private static readonly int Speed = Animator.StringToHash("Speed");
 
     private Animator _animator;
-    private bool _canMove = true;
+    private string _clipName;
+    private Animation _animation;
 
     private void Awake() =>
         _animator = GetComponent<Animator>();
@@ -26,15 +28,12 @@ public class EnemyAnimator : MonoBehaviour
     public void PlayAttack() =>
         _animator.SetTrigger(Attack);
 
-    public void Move()
+    public void Move(float speed)
     {
-        if (_canMove)
-        {
-            _animator.SetBool(IsMoving, true);
-            _canMove = false;
-        }
+        _animator.SetBool(IsMoving, true);
+        _animator.SetFloat(Speed, 1 + speed / 10);
     }
 
-    public void StopMove() => 
+    public void StopMove() =>
         _animator.SetBool(IsMoving, false);
 }
