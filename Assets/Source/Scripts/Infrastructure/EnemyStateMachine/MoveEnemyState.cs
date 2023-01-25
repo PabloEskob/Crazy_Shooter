@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class MoveEnemyState : IEnemyState
+﻿public class MoveEnemyState : IEnemyState
 {
     private readonly Enemy _enemy;
     private readonly EnemyStateMachine _enemyStateMachine;
@@ -13,6 +11,8 @@ public class MoveEnemyState : IEnemyState
 
     public void Enter()
     {
+        _enemy.EnemyAnimator.ChangeAnimation();
+        
         _enemy.EnemyHealth.CanHit = true;
         
         switch (_enemy.EnemyMove.CanMove)
