@@ -17,9 +17,9 @@ public abstract class CurrencyHolder : MonoBehaviour
 
     private void OnEnable()
     {
+        _storage = AllServices.Container.Single<IStorage>();
         _currency = InitCurrency();
         _currency.Changed += OnBalanceChanged;
-        _storage = AllServices.Container.Single<IStorage>();
     }
 
     private void OnDisable() =>

@@ -17,8 +17,8 @@ public class Effects : MonoBehaviour
     {
         _storage = AllServices.Container.Single<IStorage>();
 
-        if (_storage.HasKeyInt(SettingsNames.SoundSettingsKey))
-            _headShot.volume = _storage.GetInt(SettingsNames.SoundSettingsKey);
+        if (_storage.HasKeyFloat(SettingsNames.SoundSettingsKey))
+            _headShot.volume = _storage.GetFloat(SettingsNames.SoundSettingsKey);
     }
 
     public void GetContactCollision(Collision collision) =>

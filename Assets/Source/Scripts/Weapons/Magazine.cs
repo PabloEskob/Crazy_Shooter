@@ -50,6 +50,9 @@ namespace InfimaGames.LowPolyShooterPack
         {
             if (ammunitionTotal > 0)
                 ammunitionTotal -= amount;
+
+            if (ammunitionTotal < 0)
+                ammunitionTotal = 0;
         }
 
         #endregion

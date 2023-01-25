@@ -99,8 +99,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
             audioSource.clip = casingSounds
                 [Random.Range(0, casingSounds.Length)];
             //Play the random casing sound
-            if (_storage.HasKeyInt(SettingsNames.SoundSettingsKey))
-                audioSource.volume = _storage.GetInt(SettingsNames.SoundSettingsKey);
+            if (_storage.HasKeyFloat(SettingsNames.SoundSettingsKey))
+                audioSource.volume = _storage.GetFloat(SettingsNames.SoundSettingsKey);
             
             audioSource.Play();
         }

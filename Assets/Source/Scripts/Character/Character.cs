@@ -1322,7 +1322,6 @@ namespace InfimaGames.LowPolyShooterPack
         {
             if (_canFire)
             {
-                Debug.Log(_canFire);
                 //Block while the cursor is unlocked.
                 if (!cursorLocked)
                     return;
