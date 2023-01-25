@@ -11,15 +11,15 @@ namespace Source.Scripts.Ui
 {
     public class SettingsMenu : MonoBehaviour
     {
-        [SerializeField] private Toggle _soundToggle;
-        [SerializeField] private Toggle _musicToggle;
+        [SerializeField] private Slider _soundVolumeSlider;
+        [SerializeField] private Slider _musicVolumeSlider;
         [SerializeField] private Slider _cameraSensitivitySlider;
         [SerializeField] private Button _russianLanguageButton;
         [SerializeField] private Button _englishLaguageButton;
         [SerializeField] private Button _turkishLanguageButton;
         [SerializeField] private Button _exitButton;
 
-        [Header("Slider values settings")]
+        [Header("Sensitivity slider values settings")]
         [SerializeField] private float _minValue = 0.1f;
         [SerializeField] private float _maxValue = 2.0f;
 
@@ -36,27 +36,14 @@ namespace Source.Scripts.Ui
             Hide();
         }
 
-        private void OnLoad()
-        {
-            if (_storage.HasKeyFloat(SettingsNames.SensitivityKey))
-                SetSliderValue(_storage.GetFloat(SettingsNames.SensitivityKey));
-            else
-                SetSliderValue(DefaultSliderValue);
-
-            if (_storage.HasKeyInt(SettingsNames.SoundSettingsKey))
-                _soundToggle.isOn = DataExtensions.IntToBool(_storage.GetInt(SettingsNames.SoundSettingsKey));
-
-            if (_storage.HasKeyInt(SettingsNames.MusicSettingsKey))
-                _musicToggle.isOn = DataExtensions.IntToBool(_storage.GetInt(SettingsNames.MusicSettingsKey));
-        }
-
         private void OnEnable()
         {
             _exitButton.onClick.AddListener(Hide);
             _englishLaguageButton.onClick.AddListener(SwitchLanguage);
             _russianLanguageButton.onClick.AddListener(SwitchLanguage);
             _turkishLanguageButton.onClick.AddListener(SwitchLanguage);
-            _soundToggle.onValueChanged.AddListener(OnToogleSwitched);
+            _soundVolumeSlider.onValueChanged.AddListener(OnSoundSliderValueChanged);
+            _musicVolumeSlider.onValueChanged.AddListener(OnMusicSliderValueChanged);
             _cameraSensitivitySlider.onValueChanged.AddListener(OnSensitivitySliderValueChanged);
         }
 
@@ -67,12 +54,16 @@ namespace Source.Scripts.Ui
             _englishLaguageButton.onClick.RemoveListener(SwitchLanguage);
             _russianLanguageButton.onClick.RemoveListener(SwitchLanguage);
             _turkishLanguageButton.onClick.RemoveListener(SwitchLanguage);
-            _soundToggle.onValueChanged.RemoveListener(OnToogleSwitched);
+            _soundVolumeSlider.onValueChanged.RemoveListener(OnSoundSliderValueChanged);
+            _musicVolumeSlider.onValueChanged.RemoveListener(OnMusicSliderValueChanged);
             _cameraSensitivitySlider.onValueChanged.RemoveListener(OnSensitivitySliderValueChanged);
         }
 
-        private void OnToogleSwitched(bool value) => 
-            _storage.SetInt(SettingsNames.SoundSettingsKey, DataExtensions.BoolToInt(value));
+        private void OnSoundSliderValueChanged(float value) =>
+            _storage.SetFloat(SettingsNames.SoundSettingsKey, value);
+
+        private void OnMusicSliderValueChanged(float value) =>
+            _storage.SetFloat(SettingsNames.MusicSettingsKey, value);
 
         private void OnSensitivitySliderValueChanged(float value) =>
             _storage.SetFloat(SettingsNames.SensitivityKey, value);
@@ -82,11 +73,29 @@ namespace Source.Scripts.Ui
             throw new NotImplementedException();
         }
 
-        private void SetSliderValue(float value) =>
-            _cameraSensitivitySlider.value = value;
+        private void SetSliderValue(Slider slider, float value) =>
+            slider.value = value;
 
         private void Hide() =>
             gameObject.SetActive(false);
+
+        private void OnLoad()
+        {
+            if (_storage.HasKeyFloat(SettingsNames.SensitivityKey))
+                SetSliderValue(_cameraSensitivitySlider, _storage.GetFloat(SettingsNames.SensitivityKey));
+            else
+                SetSliderValue(_cameraSensitivitySlider, DefaultSliderValue);
+
+            if (_storage.HasKeyInt(SettingsNames.SoundSettingsKey))
+                SetSliderValue(_soundVolumeSlider, _storage.GetFloat(SettingsNames.SoundSettingsKey));
+            else
+                SetSliderValue(_soundVolumeSlider, DefaultSliderValue);
+
+            if (_storage.HasKeyInt(SettingsNames.MusicSettingsKey))
+                SetSliderValue(_musicVolumeSlider, _storage.GetFloat(SettingsNames.MusicSettingsKey));
+            else
+                SetSliderValue(_musicVolumeSlider, DefaultSliderValue);
+        }
 
         public void Show() =>
             gameObject.SetActive(true);
