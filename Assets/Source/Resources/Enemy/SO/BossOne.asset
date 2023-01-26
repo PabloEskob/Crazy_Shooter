@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bd112241884160851d7e6f85ce91fd, type: 3}
   m_Name: BossOne
   m_EditorClassIdentifier: 
-  _monsterTypeId: 3
-  _prefab: {fileID: 2941556048402982490, guid: 5bfff69a2e1a72f46991184a9cdabc06, type: 3}
+  _monsterTypeId: 1
+  _prefabs:
+  - {fileID: 2941556048402982490, guid: 5bfff69a2e1a72f46991184a9cdabc06, type: 3}
