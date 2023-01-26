@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyAnimator : MonoBehaviour
 {
@@ -15,9 +17,17 @@ public class EnemyAnimator : MonoBehaviour
     private string _clipName;
     private Animation _animation;
     private static readonly int Change = Animator.StringToHash("Change");
+    private int _layerBase;
+    private int _layerHit;
 
     private void Awake() =>
         _animator = GetComponent<Animator>();
+
+    private void Start()
+    {
+        _layerBase = _animator.GetLayerIndex("Base Layer");
+        _layerHit = _animator.GetLayerIndex("Hit");
+    }
 
     public void PlayHit() =>
         _animator.SetTrigger(Hit);
@@ -25,8 +35,10 @@ public class EnemyAnimator : MonoBehaviour
     public void PlayIdle() => 
         _animator.SetTrigger(Idle);
 
-    public void PlayDeath() =>
-        _animator.SetTrigger(Die);
+    public void PlayDeath()
+    {
+        _animator.CrossFade("Die", 0, _layerHit);
+    }
 
     public void PlayAttack() =>
         _animator.SetTrigger(Attack);
