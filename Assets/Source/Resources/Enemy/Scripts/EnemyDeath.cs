@@ -26,11 +26,11 @@ public class EnemyDeath : MonoBehaviour
 
     private void Die()
     {
-        _enemy.EnemyHealth.HealthChanged -= OnHealthChanged;
-        IsDie = true;
         _enemy.EnemyStateMachine.Enter<StateOfDeathEnemy>();
+        IsDie = true;
         _enemy.WaypointIndicator.enabled = false;
         StartCoroutine(DestroyTimer());
+        _enemy.EnemyHealth.HealthChanged -= OnHealthChanged;
         OnHappened?.Invoke();
     }
 

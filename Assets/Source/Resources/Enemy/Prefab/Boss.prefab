@@ -126,7 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 2634890695393038479}
     - target: {fileID: 3664594156753173555, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4992435269036673208, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: _blood

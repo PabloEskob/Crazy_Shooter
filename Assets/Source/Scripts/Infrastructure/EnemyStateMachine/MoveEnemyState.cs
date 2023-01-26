@@ -28,5 +28,6 @@
 
     public void Exit()
     {
+        _enemy.EnemyMove.StopMove();
     }
 }
