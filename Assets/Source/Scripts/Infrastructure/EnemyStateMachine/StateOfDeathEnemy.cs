@@ -2,7 +2,7 @@
 
 public class StateOfDeathEnemy : IEnemyState
 {
-    private Enemy _enemy;
+    private readonly Enemy _enemy;
 
     public StateOfDeathEnemy(Enemy enemy)
     {
@@ -11,6 +11,7 @@ public class StateOfDeathEnemy : IEnemyState
 
     public void Enter()
     {
+        _enemy.EnemyAnimator.ChangeAnimation();
         _enemy.EnemyAnimator.PlayDeath();
         _enemy.EnemyHealth.Effects.PlayDeath();
     }

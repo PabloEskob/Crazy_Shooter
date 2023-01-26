@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 2634890695393038479}
     - target: {fileID: 3664594156753173555, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4992435269036673208, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: _blood
@@ -46,10 +46,6 @@ PrefabInstance:
     - target: {fileID: 6184830516390962201, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: m_Name
       value: Son
-      objectReference: {fileID: 0}
-    - target: {fileID: 6625414601667408847, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
-      propertyPath: m_Radius
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6818236782372126371, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: m_RootOrder
@@ -98,7 +94,7 @@ PrefabInstance:
     - target: {fileID: 7912165017643291299, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 9000000, guid: 5cb0b3457f083dd4aa5b504a23f3c47b, type: 3}
+      objectReference: {fileID: 9000000, guid: 26ca44abf67562148bd22d0d3f352001, type: 3}
     - target: {fileID: 7912165017643291299, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: m_Enabled
       value: 1
