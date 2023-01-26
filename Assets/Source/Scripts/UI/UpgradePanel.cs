@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradePanel : MonoBehaviour
 {
@@ -11,6 +11,8 @@ public class UpgradePanel : MonoBehaviour
     [SerializeField] private BuyButton _buyButton;
     [SerializeField] private WeaponStatsDisplay _statsDisplay;
     [SerializeField] private SoftCurrencyHolder _softCurrencyHolder;
+    [SerializeField] private Text _buyText;
+    [SerializeField] private Text _upgradeText;
 
     private Weapon _currentWeapon;
     private UpgradeType _defaultUpgradeType;
@@ -18,9 +20,6 @@ public class UpgradePanel : MonoBehaviour
     private float _additionalFireRate;
     private float _additionalReloadSpeed;
     private float _additionalMagazinSize;
-
-    private const string BuyText = "Buy";
-    private const string UpgradeText = "Upgrade";
 
     public Weapon CurrentWeapon => _currentWeapon;
 
@@ -57,8 +56,6 @@ public class UpgradePanel : MonoBehaviour
 
     private void OnUpgradeChoosed(UpgradeType upgradeType)
     {
-        Debug.Log("OnUpgradeChoosed");
-
         foreach (UpgradeType typeButton in _upgradeTypeButtons)
         {
             typeButton.SwitchButtonState(false);
@@ -92,8 +89,6 @@ public class UpgradePanel : MonoBehaviour
 
     private void OnWeaponSet(Weapon weapon)
     {
-        Debug.Log("On weapon set");
-
         foreach (var button in _upgradeTypeButtons)
             button.SwitchButtonInteractivity(weapon.IsBought());
 
@@ -106,9 +101,9 @@ public class UpgradePanel : MonoBehaviour
     private void DisplayText(Weapon weapon)
     {
         if (!weapon.IsBought())
-            _buyButton.ChangeButtonText(BuyText);
+            _buyButton.ChangeButtonText(_buyText.text);
         else
-            _buyButton.ChangeButtonText(UpgradeText);
+            _buyButton.ChangeButtonText(_upgradeText.text);
     }
 
     private void OnBuyButtonClick()
@@ -129,6 +124,13 @@ public class UpgradePanel : MonoBehaviour
                 OnWeaponSet(_currentWeapon);
             }
         }
+    }
 
+    public void UpdateTexts()
+    {
+        foreach (UpgradeType button in _upgradeTypeButtons)
+            button.SetText();
+
+        DisplayText(_currentWeapon);
     }
 }

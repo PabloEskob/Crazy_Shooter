@@ -5,5 +5,6 @@
         public const string SensitivityKey = "sensitivity";
         public const string SoundSettingsKey = "soundSettings";
         public const string MusicSettingsKey = "musicSettings";
+        public const string LanguageSettingsKey = "languageSettings";
     }
 }

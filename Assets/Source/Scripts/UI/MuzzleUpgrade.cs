@@ -15,6 +15,8 @@ namespace Source.Scripts.Ui
         }
 
         public override void SetText() =>
-            ButtonText.text = IsUpgradeChoosed ? $"{UpgradeName}-lvl {Weapon.GetMuzzleUpgrade().Level}" : $"lvl {Weapon.GetMuzzleUpgrade().Level}";
+            ButtonText.text = 
+            IsUpgradeChoosed ? $"{UpgradeName.text}-{LevelText.text} {Weapon.GetMuzzleUpgrade().Level}" : 
+            $"{LevelText.text} {Weapon.GetMuzzleUpgrade().Level}";
     }
 }

@@ -65,7 +65,7 @@ namespace Source.Scripts.Ui
         {
             _weapon = weapon;
             _weaponNameText.text = _weapon.GetName();
-            _weaponTypeText.text = _weapon.GetWeaponType();
+            _weaponTypeText.text = _weapon.GetWeaponType().ToString();
         }
 
         public void ShowWeapon() =>

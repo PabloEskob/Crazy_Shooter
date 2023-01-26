@@ -9,9 +9,10 @@ namespace Source.Scripts.Ui
     public abstract class UpgradeType : MonoBehaviour
     {
         [SerializeField] protected UpgradePanel UpgradePanel;
-        [SerializeField] protected string UpgradeName;
+        [SerializeField] protected Text UpgradeName;
         [SerializeField] protected Button UpgradeButton;
-        [SerializeField] protected TMP_Text ButtonText;
+        [SerializeField] protected Text ButtonText;
+        [SerializeField] protected Text LevelText;
 
         protected Weapon Weapon;
         protected bool IsUpgradeChoosed;
@@ -50,9 +51,6 @@ namespace Source.Scripts.Ui
         public void SwitchButtonInteractivity(bool value) => 
             UpgradeButton.interactable = value;
 
-        public void SetWeapon(Weapon weapon)
-        {
-            Weapon = weapon;
-        }
+        public void SetWeapon(Weapon weapon) => Weapon = weapon;
     }
 }

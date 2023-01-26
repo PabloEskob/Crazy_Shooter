@@ -22,6 +22,7 @@ namespace Source.Scripts.Ui
         private Weapon _currentWeapon;
         
         private const int _defaultWeaponIndex = 0;
+        private const float InvokeDelay = 0.1f;
 
         public Weapon CurrentWeapon => _currentWeapon;
         public Inventory Inventory => _inventory;
@@ -38,6 +39,7 @@ namespace Source.Scripts.Ui
             _upgradePanel.Upgraded += OnUpgraded;
             _exitButton.onClick.AddListener(Hide);
             _weaponPlatesView.WeaponSelected += OnWeaponSelected;
+            Invoke(nameof(UpdateUpgradePanelTexts), InvokeDelay);
         }
 
 
@@ -53,9 +55,6 @@ namespace Source.Scripts.Ui
             _storage.SetString(_currentWeapon.GetName(), _currentWeapon.GetData().ToJson());
             _storage.Save();
         }
-
-        private void Hide() =>
-            gameObject.SetActive(false);
 
         private void OnWeaponSelected(Weapon weapon)
         {
@@ -76,10 +75,10 @@ namespace Source.Scripts.Ui
             Hide();
         }
 
-        public void Show() =>
-            gameObject.SetActive(true);
+        private void Hide() => gameObject.SetActive(false);
 
-        
+        private void UpdateUpgradePanelTexts() => _upgradePanel.UpdateTexts();
 
+        public void Show() => gameObject.SetActive(true);
     }
 }
