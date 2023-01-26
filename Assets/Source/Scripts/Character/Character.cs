@@ -258,6 +258,7 @@ namespace InfimaGames.LowPolyShooterPack
         private bool cursorLocked;
 
         private bool _lock;
+        private bool _canFire = true;
 
         #endregion
 
@@ -366,6 +367,7 @@ namespace InfimaGames.LowPolyShooterPack
         protected override void Start()
         {
             _lock = false;
+            _canFire = true;
             //Max out the grenades.
             grenadeCount = grenadeTotal;
 
@@ -383,22 +385,25 @@ namespace InfimaGames.LowPolyShooterPack
 
         protected override void Update()
         {
-            //Match Aim.
-            aiming = holdingButtonAim && CanAim();
-            //Match Run.
-            running = holdingButtonRun && CanRun();
-
-            //Check if we're aiming.
-            switch (aiming)
+            if (_lock == false)
             {
-                //Just Started.
-                case true when !wasAiming:
-                    equippedWeaponScope.OnAim();
-                    break;
-                //Just Stopped.
-                case false when wasAiming:
-                    equippedWeaponScope.OnAimStop();
-                    break;
+                //Match Aim.
+                aiming = holdingButtonAim && CanAim();
+                //Match Run.
+                running = holdingButtonRun && CanRun();
+
+                //Check if we're aiming.
+                switch (aiming)
+                {
+                    //Just Started.
+                    case true when !wasAiming:
+                        equippedWeaponScope.OnAim();
+                        break;
+                    //Just Stopped.
+                    case false when wasAiming:
+                        equippedWeaponScope.OnAimStop();
+                        break;
+                }
             }
 
             if (_crosshair == null)
@@ -723,50 +728,48 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void Fire()
         {
-           
+            if (_lock == false && _canFire)
+            {
+                _crosshair.Shot();
+                //Save the shot time, so we can calculate the fire rate correctly.
+                lastShotTime = Time.time;
+                //Fire the weapon! Make sure that we also pass the scope's spread multiplier if we're aiming.
+                equippedWeapon.Fire(aiming ? equippedWeaponScope.GetMultiplierSpread() : 1.0f);
 
-            _crosshair.Shot();
-            //Save the shot time, so we can calculate the fire rate correctly.
-            lastShotTime = Time.time;
-            //Fire the weapon! Make sure that we also pass the scope's spread multiplier if we're aiming.
-            equippedWeapon.Fire(aiming ? equippedWeaponScope.GetMultiplierSpread() : 1.0f);
+                //Play firing animation.
+                const string stateName = "Fire";
+                characterAnimator.CrossFade(stateName, 0.05f, layerOverlay, 0);
 
-            //Play firing animation.
-            const string stateName = "Fire";
-            characterAnimator.CrossFade(stateName, 0.05f, layerOverlay, 0);
+                //Play bolt actioning animation if needed, and if we have ammunition. We don't play this for the last shot.
+                if (equippedWeapon.IsBoltAction() && equippedWeapon.HasAmmunition())
+                    UpdateBolt(true);
 
-            //Play bolt actioning animation if needed, and if we have ammunition. We don't play this for the last shot.
-            if (equippedWeapon.IsBoltAction() && equippedWeapon.HasAmmunition())
-                UpdateBolt(true);
-
-            //Automatically reload the weapon if we need to. This is very helpful for things like grenade launchers or rocket launchers.
-            if (!equippedWeapon.HasAmmunition() && equippedWeapon.GetAutomaticallyReloadOnEmpty())
-                StartCoroutine(nameof(TryReloadAutomatic));
+                //Automatically reload the weapon if we need to. This is very helpful for things like grenade launchers or rocket launchers.
+                if (!equippedWeapon.HasAmmunition() && equippedWeapon.GetAutomaticallyReloadOnEmpty())
+                    StartCoroutine(nameof(TryReloadAutomatic));
+            }
         }
 
         private void PlayReloadAnimation()
         {
             #region Animation
 
-            if (_lock == false)
-            {
-                //Get the name of the animation state to play, which depends on weapon settings, and ammunition!
-                string stateName = equippedWeapon.HasCycledReload()
-                    ? "Reload Open"
-                    : (equippedWeapon.HasAmmunition() ? "Reload" : "Reload Empty");
+            //Get the name of the animation state to play, which depends on weapon settings, and ammunition!
+            string stateName = equippedWeapon.HasCycledReload()
+                ? "Reload Open"
+                : (equippedWeapon.HasAmmunition() ? "Reload" : "Reload Empty");
 
-                //Play the animation state!
-                characterAnimator.Play(stateName, layerActions, 0.0f);
+            //Play the animation state!
+            characterAnimator.Play(stateName, layerActions, 0.0f);
 
-                #endregion
+            #endregion
 
-                //Set Reloading Bool. This helps cycled reloads know when they need to stop cycling.
-                const string boolName = "Reloading";
-                characterAnimator.SetBool(boolName, reloading = true);
+            //Set Reloading Bool. This helps cycled reloads know when they need to stop cycling.
+            const string boolName = "Reloading";
+            characterAnimator.SetBool(boolName, reloading = true);
 
-                //Reload.
-                equippedWeapon.Reload();
-            }
+            //Reload.
+            equippedWeapon.Reload();
         }
 
         /// <summary>
@@ -862,16 +865,19 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void PlayGrenadeThrow()
         {
-            //Start State.
-            throwingGrenade = true;
+            if (_lock == false)
+            {
+                //Start State.
+                throwingGrenade = true;
 
-            //Play Normal.
-            characterAnimator.CrossFade("Grenade Throw", 0.15f,
-                characterAnimator.GetLayerIndex("Layer Actions Arm Left"), 0.0f);
+                //Play Normal.
+                characterAnimator.CrossFade("Grenade Throw", 0.15f,
+                    characterAnimator.GetLayerIndex("Layer Actions Arm Left"), 0.0f);
 
-            //Play Additive.
-            characterAnimator.CrossFade("Grenade Throw", 0.05f,
-                characterAnimator.GetLayerIndex("Layer Actions Arm Right"), 0.0f);
+                //Play Additive.
+                characterAnimator.CrossFade("Grenade Throw", 0.05f,
+                    characterAnimator.GetLayerIndex("Layer Actions Arm Right"), 0.0f);
+            }
         }
 
         /// <summary>
@@ -879,16 +885,19 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void PlayMelee()
         {
-            //Start State.
-            meleeing = true;
+            if (_lock == false)
+            {
+                //Start State.
+                meleeing = true;
 
-            //Play Normal.
-            characterAnimator.CrossFade("Knife Attack", 0.05f,
-                characterAnimator.GetLayerIndex("Layer Actions Arm Left"), 0.0f);
+                //Play Normal.
+                characterAnimator.CrossFade("Knife Attack", 0.05f,
+                    characterAnimator.GetLayerIndex("Layer Actions Arm Left"), 0.0f);
 
-            //Play Additive.
-            characterAnimator.CrossFade("Knife Attack", 0.05f,
-                characterAnimator.GetLayerIndex("Layer Actions Arm Right"), 0.0f);
+                //Play Additive.
+                characterAnimator.CrossFade("Knife Attack", 0.05f,
+                    characterAnimator.GetLayerIndex("Layer Actions Arm Right"), 0.0f);
+            }
         }
 
         /// <summary>
@@ -1106,7 +1115,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// <returns></returns>
         private bool CanAim()
         {
-            if (_lock == false)
+            if (_lock == false && _canFire)
             {
                 //Block.
                 if (holstered || inspecting)
@@ -1311,19 +1320,22 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryThrowGrenade(InputAction.CallbackContext context)
         {
-            //Block while the cursor is unlocked.
-            if (!cursorLocked && _lock == false)
-                return;
-
-            //Switch.
-            switch (context.phase)
+            if (_canFire)
             {
-                //Performed.
-                case InputActionPhase.Performed:
-                    //Try Play.
-                    if (CanPlayAnimationGrenadeThrow())
-                        PlayGrenadeThrow();
-                    break;
+                //Block while the cursor is unlocked.
+                if (!cursorLocked)
+                    return;
+
+                //Switch.
+                switch (context.phase)
+                {
+                    //Performed.
+                    case InputActionPhase.Performed:
+                        //Try Play.
+                        if (CanPlayAnimationGrenadeThrow())
+                            PlayGrenadeThrow();
+                        break;
+                }
             }
         }
 
@@ -1332,19 +1344,22 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryMelee(InputAction.CallbackContext context)
         {
-            //Block while the cursor is unlocked.
-            if (!cursorLocked && _lock == false)
-                return;
-
-            //Switch.
-            switch (context.phase)
+            if (_canFire)
             {
-                //Performed.
-                case InputActionPhase.Performed:
-                    //Try Play.
-                    if (CanPlayAnimationMelee())
-                        PlayMelee();
-                    break;
+                //Block while the cursor is unlocked.
+                if (!cursorLocked && _lock == false)
+                    return;
+
+                //Switch.
+                switch (context.phase)
+                {
+                    //Performed.
+                    case InputActionPhase.Performed:
+                        //Try Play.
+                        if (CanPlayAnimationMelee())
+                            PlayMelee();
+                        break;
+                }
             }
         }
 
@@ -1423,6 +1438,12 @@ namespace InfimaGames.LowPolyShooterPack
 
         public void LockCursor() =>
             _lock = true;
+
+        public void YesFire() =>
+            _canFire = true;
+
+        public void NoFire() =>
+            _canFire = false;
 
         public void OnLockCursor(InputAction.CallbackContext context)
         {

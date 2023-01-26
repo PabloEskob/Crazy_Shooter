@@ -1,81 +1,135 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using Assets.Source.Scripts.UI;
+using Source.Infrastructure;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
+using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
 {
     public class CameraLook : MonoBehaviour
     {
-        #region FIELDS SERIALIZED
-
         [Header("Settings")] [Tooltip("Sensitivity when looking around.")] [SerializeField]
-        private Vector2 _sensitivity = new Vector2(1, 1);
+        private Vector2 _sensitivity = new(1, 1);
 
         [Tooltip("Minimum and maximum up/down rotation angle the camera can have.")] [SerializeField]
-        private Vector2 _yClamp = new Vector2(-40, 60);
+        private Vector2 _yClamp = new(-40, 60);
 
         [Tooltip("Minimum and maximum left/right rotation angle the player can have.")] [SerializeField]
-        private Vector2 _xClamp = new Vector2(-240, -120);
+        private Vector2 _xClamp = new(-240, -120);
 
-        #endregion
+        [SerializeField] private bool _allRoundView;
+        [SerializeField] private float _speedRotateToFinish;
 
-        #region FIELDS
-
+        private Coroutine _coroutine;
         private CharacterBehaviour _playerCharacter;
-        private Quaternion _rotationCharacter;
         private float _yaw;
         private float _pitch;
-
-        #endregion
-
-        #region UNITY
+        private IStorage _storage;
+        private Vector3 _positionToLook;
+        private bool _canRotate;
+        
 
         private void Awake() =>
             _playerCharacter = ServiceLocator.Current.Get<IGameModeService>().GetPlayerCharacter();
 
-        private void Start() =>
-            _rotationCharacter = _playerCharacter.transform.localRotation;
+        private void Start()
+        {
+            _storage = AllServices.Container.Single<IStorage>();
 
-        private void LateUpdate()
+            if (_storage.HasKeyFloat(SettingsNames.SensitivityKey))
+                SetSensitivity(_storage.GetFloat(SettingsNames.SensitivityKey));
+        }
+
+        public void Switch(bool value)
+        {
+            _canRotate = value;
+            StartRoutine();
+        }
+
+        public void StopRoutine() =>
+            StopCoroutine(_coroutine);
+
+        public void StartRotateToFinish(TurningPoint turningPoint) => 
+            _coroutine = StartCoroutine(StartRotateToTarget(turningPoint));
+
+        private IEnumerator StartRotateToTarget(TurningPoint turningPoint)
+        {
+            while (true)
+            {
+                UpdatePositionToLookAt(turningPoint);
+                yield return null;
+            }
+        }
+
+        private void UpdatePositionToLookAt(TurningPoint finishLevelTurningPoint)
+        {
+            Vector3 positionDiff = finishLevelTurningPoint.transform.position - transform.position;
+            _positionToLook = positionDiff;
+            transform.rotation = SmoothedRotation(transform.rotation, _positionToLook);
+        }
+
+        private void StartRoutine() =>
+            _coroutine = StartCoroutine(StartRotate());
+
+        private float ClampAngle(float angle, float from, float to)
+        {
+            if (angle < 0f)
+                angle = 360 + angle;
+            return angle > 180f ? Mathf.Max(angle, 360 + from) : Mathf.Min(angle, to);
+        }
+
+        private void DisableCamera()
+        {
+            transform.localRotation =
+                Quaternion.Lerp(transform.localRotation, Quaternion.identity, Time.deltaTime);
+        }
+
+        private IEnumerator StartRotate()
+        {
+            while (true)
+            {
+                if (_canRotate)
+                    RotationOfWeaponAndCameras();
+                else
+                    DisableCamera();
+
+                yield return null;
+            }
+        }
+
+        private void SetSensitivity(float value) =>
+            _sensitivity = new Vector2(value, value);
+
+        private void RotationOfWeaponAndCameras()
         {
             Vector2 frameInput = _playerCharacter.IsCursorLocked() ? _playerCharacter.GetInputLook() : default;
             frameInput *= _sensitivity;
 
-            _yaw += frameInput.x;
-            _pitch -= frameInput.y;
+            var transformLocalRotation = transform.localRotation;
+            Vector3 rot = transformLocalRotation.eulerAngles + new Vector3(-frameInput.y, frameInput.x, 0f);
 
-            _yaw = Mathf.Clamp(_yaw, _xClamp.x, _xClamp.y);
-            _pitch = Mathf.Clamp(_pitch, _yClamp.x, _yClamp.y);
 
-            transform.eulerAngles = new Vector3(_pitch, _yaw, 0.0f);
+            if (_allRoundView)
+                rot.y = ClampAngle(rot.y, _xClamp.x, _xClamp.y);
+
+            rot.x = ClampAngle(rot.x, _yClamp.x, _yClamp.y);
+            transformLocalRotation.eulerAngles = rot;
+            transform.localRotation = transformLocalRotation;
         }
 
-        private void TurnUp(Vector2 frameInput)
+        private Quaternion SmoothedRotation(Quaternion rotation, Vector3 positionToLook)
         {
-            Quaternion rotationPitch = Quaternion.Euler(-frameInput.y, 0.0f, 0.0f);
-            Quaternion localRotation = transform.localRotation;
-            localRotation *= rotationPitch;
+            if (rotation == TargetRotation(positionToLook)) 
+                StopRoutine();
 
-            localRotation = Clamp(localRotation);
-            transform.localRotation = localRotation;
+            return Quaternion.Lerp(rotation, TargetRotation(positionToLook), SpeedFactor());
         }
 
-        #endregion
+        private Quaternion TargetRotation(Vector3 positionToLook) =>
+            Quaternion.LookRotation(positionToLook);
 
-        #region FUNCTIONS
-
-        private Quaternion Clamp(Quaternion rotation)
-        {
-            rotation.x /= rotation.w;
-            rotation.y /= rotation.w;
-            rotation.z /= rotation.w;
-            rotation.w = 1.0f;
-
-            float pitch = 2.0f * Mathf.Rad2Deg * Mathf.Atan(rotation.x);
-            pitch = Mathf.Clamp(pitch, _yClamp.x, _yClamp.y);
-            rotation.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * pitch);
-
-            return rotation;
-        }
-
-        #endregion
+        private float SpeedFactor() =>
+            _speedRotateToFinish * Time.deltaTime;
     }
 }

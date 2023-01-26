@@ -7,6 +7,7 @@ namespace Source.Scripts.Infrastructure.Services.PersistentProgress
 {
     public interface IStorage : IService
     {
+        string GetDataName();
         void SetFloat(string key, float value);
         float GetFloat(string key);
         bool HasKeyFloat(string key);

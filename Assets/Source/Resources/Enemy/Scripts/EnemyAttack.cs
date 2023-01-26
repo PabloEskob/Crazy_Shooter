@@ -1,36 +1,23 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(EnemyAnimator))]
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] private EnemyAnimator _enemyAnimator;
-
+    private Enemy _enemy;
     private IGameFactory _gameFactory;
     private Player _player;
     private float _attackEnd;
     private bool _isAttacking;
     private bool _attackIsActive;
-    private PlayerHealth _playerHealth;
-    private PlayerDeath _playerDeath;
     private bool _stopAttack;
+    private Coroutine _coroutine;
 
     public float AttackCooldown { get; set; }
     public int Damage { get; set; }
 
-    private void Update()
-    {
-        if (_stopAttack) return;
-        UpdateCooldown();
-
-        if (CanAttack())
-            StartAttack();
-    }
-
-    private void Start()
-    {
-        _playerHealth = _player.GetComponent<PlayerHealth>();
-        _playerDeath = _player.GetComponent<PlayerDeath>();
-    }
+    private void Awake() => 
+        _enemy = GetComponent<Enemy>();
 
     public void Init(IGameFactory gameFactory)
     {
@@ -38,11 +25,24 @@ public class EnemyAttack : MonoBehaviour
         _player = _gameFactory.Player;
     }
 
-    public void EnableAttack() =>
-        _attackIsActive = true;
+    public void EnableAttack()
+    {
+        if (!_enemy.EnemyDeath.IsDie)
+        {
+            _enemy.EnemyStateMachine.Enter<AttackEnemyState>();
+            _attackIsActive = true;
+        }
+      
+    }
 
     public void DisableAttack() =>
         _attackIsActive = false;
+
+    public void StopAttack() =>
+        StopCoroutine(_coroutine);
+
+    public void StartAttackRoutine() =>
+        _coroutine = StartCoroutine(Attack());
 
     private void UpdateCooldown()
     {
@@ -50,28 +50,39 @@ public class EnemyAttack : MonoBehaviour
             _attackEnd -= Time.deltaTime;
     }
 
+    private IEnumerator Attack()
+    {
+        while (true)
+        {
+            if (_player.PlayerDeath.IsDead) 
+                _enemy.EnemyStateMachine.Enter<EnemyStateWin>();
+            
+            UpdateCooldown();
+
+            if (CanAttack()) 
+                StartAttack();
+
+            yield return null;
+        }
+    }
+
     private void StartAttack()
     {
-        if (!_playerDeath.IsDead)
-        {
-            transform.LookAt(_player.transform);
-            _enemyAnimator.PlayAttack();
-            _isAttacking = true;
-        }
-        else
-            _stopAttack = true;
+        transform.LookAt(_player.transform);
+        _enemy.EnemyAnimator.PlayAttack();
+        _isAttacking = true;
     }
 
     private void OnAttackEnded()
     {
-        _enemyAnimator.PlayIdle();
+        _enemy.EnemyAnimator.PlayIdle();
         _attackEnd = AttackCooldown;
         _isAttacking = false;
     }
 
     private void OnAttack()
     {
-        _playerHealth.TakeDamage(Damage);
+        _player.PlayerHealth.TakeDamage(Damage);
     }
 
     private bool CooldownIsUp() =>

@@ -2,6 +2,9 @@
 
 using UnityEngine;
 using System.Collections;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
+using Source.Infrastructure;
+using Assets.Source.Scripts.UI;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -42,6 +45,12 @@ namespace InfimaGames.LowPolyShooterPack
             }
         }
 
+        private IStorage _storage;
+        private float _volume;
+
+        private const float DefaultVolume = 1;
+
+
         /// <summary>
         /// Destroys the audio source once it has finished playing.
         /// </summary>
@@ -49,7 +58,7 @@ namespace InfimaGames.LowPolyShooterPack
         {
             //Wait for the audio source to complete playing the clip.
             yield return new WaitWhile(() => source.isPlaying);
-            
+
             //Destroy the audio game object, since we're not using it anymore.
             //This isn't really too great for performance, but it works, for now.
             DestroyImmediate(source.gameObject);
@@ -71,6 +80,14 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void PlayOneShot_Internal(AudioClip clip, AudioSettings settings)
         {
+            _storage = AllServices.Container.Single<IStorage>();
+
+            if (_storage.HasKeyFloat(SettingsNames.SoundSettingsKey))
+                _volume = _storage.GetFloat(SettingsNames.SoundSettingsKey);
+            else
+                _volume = DefaultVolume;
+
+
             //No need to do absolutely anything if the clip is null.
             if (clip == null)
                 return;
@@ -79,17 +96,16 @@ namespace InfimaGames.LowPolyShooterPack
             var newSourceObject = new GameObject($"Audio Source -> {clip.name}");
             //Add an audio source component to that object.
             var newAudioSource = newSourceObject.AddComponent<AudioSource>();
-
             //Set volume.
-            newAudioSource.volume = settings.Volume;
+            newAudioSource.volume = _volume;
             //Set spatial blend.
             newAudioSource.spatialBlend = settings.SpatialBlend;
             
             //Play the clip!
             newAudioSource.PlayOneShot(clip);
-            
+
             //Start a coroutine that will destroy the whole object once it is done!
-            if(settings.AutomaticCleanup && newAudioSource != null)
+            if (settings.AutomaticCleanup && newAudioSource != null)
                 StartCoroutine(nameof(DestroySourceWhenFinished), newAudioSource);
         }
 

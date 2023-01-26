@@ -1,7 +1,6 @@
 ﻿using System;
 using Dreamteck.Splines;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(ConstructSplineComputer))]
 public class PlayerMove : MonoBehaviour
@@ -10,16 +9,16 @@ public class PlayerMove : MonoBehaviour
 
     private ConstructSplineComputer _constructSplineComputer;
     private TriggerGroup _triggerGroup;
-
-    public bool CanMove { get; set; }
-
-    public event Action Stopped;
-    public event Action Disabled;
-
+    private Player _player;
+    
+    public event Action OnStopped;
+    public event Action OnMove;
+    
     private void Awake()
     {
-        _constructSplineComputer = GetComponent<ConstructSplineComputer>();
+        _player = GetComponent<Player>();
         SplineComputer spline = FindObjectOfType<SplineComputer>();
+        _constructSplineComputer = GetComponent<ConstructSplineComputer>();
         _constructSplineComputer.Construct(spline);
         CreateSplineTrigger();
     }
@@ -27,47 +26,35 @@ public class PlayerMove : MonoBehaviour
     private void OnDisable()
     {
         RemoveListenerSplineTrigger();
-        Disabled?.Invoke();
-    }
-
-    public void Construct(SplineComputer splineComputer)
-    {
-        // _constructSplineComputer = GetComponent<ConstructSplineComputer>();
-        // _constructSplineComputer.Construct(splineComputer);
-        
     }
 
     public void PlayMove()
     {
-        if (CanMove)
-            _constructSplineComputer.SetSpeed(_speed);
+        _player.PlayerAnimator.PlayWalking();
+        _constructSplineComputer.SetSpeed(_speed);
+        OnMove?.Invoke();
     }
 
-    public void PlayMove(InputAction.CallbackContext context)
+    public void StopMove()
     {
-        if (CanMove)
-            _constructSplineComputer.SetSpeed(_speed);
+        _player.PlayerAnimator.StopWalking();
+        _constructSplineComputer.SetSpeed(0);
     }
-
 
     private void CreateSplineTrigger()
     {
         foreach (var triggerGroup in _constructSplineComputer.GetTriggerGroup())
         foreach (var splineTrigger in triggerGroup.triggers)
-            splineTrigger.AddListener(StopMove);
+            splineTrigger.AddListener(Stop);
     }
 
     private void RemoveListenerSplineTrigger()
     {
         foreach (var triggerGroup in _constructSplineComputer.GetTriggerGroup())
         foreach (var splineTrigger in triggerGroup.triggers)
-            splineTrigger.RemoveListener(StopMove);
+            splineTrigger.RemoveListener(Stop);
     }
 
-    private void StopMove(SplineUser arg0)
-    {
-        Stopped?.Invoke();
-        CanMove = false;
-        _constructSplineComputer.SetSpeed(0);
-    }
+    private void Stop(SplineUser arg0) => 
+        OnStopped?.Invoke();
 }

@@ -24,7 +24,6 @@ namespace Source.Infrastructure
             _loadingScreen = loadingScreen;
         }
         
-        
         public void Exit() => 
             _loadingScreen.Hide();
 
@@ -36,6 +35,10 @@ namespace Source.Infrastructure
             _stateMachine.Enter<GameLoopState>();
             GameObject mainMap = AllServices.Container.Single<IAssetProvider>().Instantiate(InterfaceDataPath);
             mainMap.GetComponent<MainMap>().Cunstruct(_sceneLoader, _stateMachine, _storage);
+        }
+
+        public void Enter(int level)
+        {
         }
     }
 }

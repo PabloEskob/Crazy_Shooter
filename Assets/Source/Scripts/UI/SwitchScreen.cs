@@ -1,4 +1,5 @@
-﻿using InfimaGames.LowPolyShooterPack;
+﻿using System.Collections.Generic;
+using InfimaGames.LowPolyShooterPack;
 using UnityEngine;
 
 public class SwitchScreen : MonoBehaviour
@@ -11,6 +12,9 @@ public class SwitchScreen : MonoBehaviour
     private Character _player;
     private bool _cursorLocked;
     private Canvas _canvas;
+
+    public VictoryScreen VictoryScreen => _victoryScreen;
+    public DefeatScreen DefeatScreen => _defeatScreen;
 
     private void Awake()
     {

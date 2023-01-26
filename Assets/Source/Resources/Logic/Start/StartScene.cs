@@ -12,23 +12,24 @@ public class StartScene : MonoBehaviour
     private IGameFactory _gameFactory;
     private IAssetProvider _assetProvider;
     private int _number;
+    private FinishLevel _finishLevel;
 
-    private void OnDisable()
-    {
-        _launchRoom.Allowed -= OnAllowed;
-        _launchRoom.EndedRoom -= LaunchVictoryScreen;
-    }
+    private void OnDisable() => 
+        _finishLevel.OnEndedLevel -= LaunchVictoryScreen;
 
-    public void Construct(IGameFactory gameFactory, LaunchRoom launchRoom, GameStatusScreen gameStatusScreen)
+    public void Construct(IGameFactory gameFactory, LaunchRoom launchRoom, GameStatusScreen gameStatusScreen,
+        FinishLevel finishLevel)
     {
         _gameStatusScreen = gameStatusScreen;
         _gameFactory = gameFactory;
         _launchRoom = launchRoom;
-        _launchRoom.Allowed += OnAllowed;
-        _launchRoom.EndedRoom += LaunchVictoryScreen;
+        _finishLevel = finishLevel;
+        _finishLevel.OnEndedLevel += LaunchVictoryScreen;
         InitGameWorld();
-        StartGame();
     }
+
+    private void LaunchVictoryScreen() => 
+        _gameStatusScreen.PlayerVictory();
 
     private void Awake()
     {
@@ -39,15 +40,5 @@ public class StartScene : MonoBehaviour
     private void InitGameWorld() =>
         _launchRoom.Fill(_gameFactory);
 
-    private void StartGame() =>
-        _launchRoom.StartFirstRoom();
-
-    private void OnAllowed()
-    {
-        // if (_movement == Movement.Move)
-        //     _actorUI.ButtonForward.SwitchOn();
-    }
-
-    private void LaunchVictoryScreen() =>
-        _gameStatusScreen.PlayerVictory();
+    
 }

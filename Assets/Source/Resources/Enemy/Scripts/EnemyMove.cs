@@ -1,39 +1,64 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMove : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent _navMeshAgent;
-
+    private NavMeshAgent _navMeshAgent;
     private Enemy _enemy;
-    private float _speed;
+    private bool _canMove;
+    private Player _player;
+    private bool _idleState;
+    private Coroutine _coroutine;
 
-    public Player Player { get; set; }
+    public bool CanMove => _canMove;
 
-    private void Awake() =>
-        _enemy = GetComponent<Enemy>();
+    public float Speed { get; set; }
 
-    private void Update()
+    private void Awake()
     {
-        if (!_enemy.EnemyDeath.IsDied)
-            _navMeshAgent.destination = Player.transform.position;
-        else
-        {
-            _navMeshAgent.speed = 0;
-            _navMeshAgent.enabled = false;
-        }
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _enemy = GetComponent<Enemy>();
     }
 
+    private void Start() => 
+        transform.LookAt(_player.transform);
+
+    public void SetCanMove(bool move) =>
+        _canMove = move;
+
     public void Init(Player player) =>
-        Player = player;
+        _player = player;
 
     public void StopMove()
     {
-        _speed = _navMeshAgent.speed;
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+        
         _navMeshAgent.speed = 0;
     }
 
-    public void ContinueMove() =>
-        _navMeshAgent.speed = _speed;
+    public void ContinueMove()
+    {
+        _canMove = true;
+        _navMeshAgent.speed = Speed;
+    }
+
+    public void StartMove()
+    {
+        _enemy.WaypointIndicator.enabled = true;
+        _navMeshAgent.speed = Speed;
+        _enemy.EnemyAnimator.Move(_navMeshAgent.speed);
+        _coroutine = StartCoroutine(Move());
+    }
+
+    private IEnumerator Move()
+    {
+        while (true)
+        {
+            _navMeshAgent.destination = _player.transform.position;
+            yield return null;
+        }
+    }
 }

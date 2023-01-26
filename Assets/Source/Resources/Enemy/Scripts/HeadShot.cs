@@ -11,10 +11,8 @@ public class HeadShot : MonoBehaviour, IShot
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.GetComponent<Projectile>())
-        {
-            Hitted?.Invoke(1, collision);
-        }
+        if (collision.collider.TryGetComponent(out Projectile projectile))
+            Hitted?.Invoke((int)projectile.Damage, collision);
     }
 
     public void KillEnemy()

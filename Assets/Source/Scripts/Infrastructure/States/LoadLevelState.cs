@@ -14,8 +14,10 @@ namespace Source.Infrastructure
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
 
+       // private string LevelName = "Level 1";
+
         private const string PlayerInitialPointTag = "PlayerInitialPointTag";
-        private const string EnemySpawnerTag = "EnemySpawner";
+
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IStorage storage,
             LoadingScreen loadingScreen, IGameFactory gameFactory, IStaticDataService staticData)
@@ -28,11 +30,11 @@ namespace Source.Infrastructure
             _staticData = staticData;
         }
 
-        public void Enter()
-        {
-            _loadingScreen.Show();
-            _sceneLoader.Load("NewScene", OnLoaded);
-        }
+        public void Enter(int level) =>
+            _sceneLoader.Load(GetNextLevelNameByNumber(level), OnLoaded);
+
+        public void Enter() =>
+            _sceneLoader.Load(GetNextLevelName(), OnLoaded);
 
         public void Exit() => _loadingScreen.Hide();
 
@@ -47,6 +49,13 @@ namespace Source.Infrastructure
             Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
             _gameFactory.CreateHUD(player);
             _gameFactory.CreateStartScene();
+            _gameFactory.CreateLevelStateMachine(player);
         }
+
+        private string GetNextLevelName() =>
+            _staticData.ForLevel(_storage.GetLevel()).SceneName;
+
+        public string GetNextLevelNameByNumber(int levelNumber) =>
+            _staticData.ForLevel(levelNumber).SceneName;
     }
 }

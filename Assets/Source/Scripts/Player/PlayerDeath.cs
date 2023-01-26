@@ -4,23 +4,26 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerHealth))]
 public class PlayerDeath : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth _playerHealth;
-    [SerializeField] private PlayerAnimator _animator;
     [SerializeField] private ParticleSystem _particleSystem;
+
+    private Player _player;
 
     public bool IsDead { get; set; }
 
     public event Action OnDied;
 
+    private void Awake() => 
+        _player = GetComponent<Player>();
+
     private void OnDisable() =>
-        _playerHealth.HealthChanged -= OnHealthChanged;
+        _player.PlayerHealth.HealthChanged -= OnHealthChanged;
 
     private void Start() =>
-        _playerHealth.HealthChanged += OnHealthChanged;
+        _player.PlayerHealth.HealthChanged += OnHealthChanged;
 
     private void OnHealthChanged()
     {
-        if (!IsDead && _playerHealth.Current <= 0)
+        if (!IsDead && _player.PlayerHealth.Current <= 0)
             Die();
     }
 
@@ -29,6 +32,6 @@ public class PlayerDeath : MonoBehaviour
         IsDead = true;
         // _particleSystem.Play();
         OnDied?.Invoke();
-        _animator.PlayDeath();
+        _player.PlayerAnimator.PlayDeath();
     }
 }

@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 
 public interface IGameFactory : IService
 {
-    
     Player CreatePlayer(GameObject initialPoint);
     public void CreateHUD(Player player);
     public void CreateStartScene();
-    Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent);
+    public void CreateLevelStateMachine(Player player);
+    Enemy CreateEnemy(MonsterTypeId monsterTypeId, Vector3 parent,bool move,EnemySpawner enemySpawner);
     Player Player { get; }
     
     List<ISavedProgressReader> ProgressReaders { get; }

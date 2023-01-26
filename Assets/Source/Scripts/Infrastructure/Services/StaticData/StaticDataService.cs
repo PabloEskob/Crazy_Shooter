@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class StaticDataService : IStaticDataService
 {
+    private const string GameDataPath = "GameData/GameConfig";
+
     private Dictionary<MonsterTypeId, EnemyStaticData> _enemies;
-    private List<LevelConfig> _levelConfigs;
+    private List<LevelNames> _levelConfigs;
+
+    private GameConfig _gameConfig;
 
     public StaticDataService()
     {
@@ -25,8 +29,13 @@ public class StaticDataService : IStaticDataService
             : null;
     }
 
-    public LevelConfig ForLevel(int levelIndex) => 
-        levelIndex >= 0 && levelIndex < _levelConfigs.Count
-        ? _levelConfigs[levelIndex]
+    public LevelNames ForLevel(int levelIndex) => 
+        levelIndex >= 0 && levelIndex < _gameConfig.LevelNames.Length
+        ? _gameConfig.LevelNames[levelIndex]
         : null;
+
+    public void LoadGameConfig() => 
+        _gameConfig = Resources.Load<GameConfig>(GameDataPath);
+
+    public GameConfig GetGameConfig() => _gameConfig;
 }

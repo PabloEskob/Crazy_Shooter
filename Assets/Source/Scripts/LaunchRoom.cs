@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +5,8 @@ public class LaunchRoom : MonoBehaviour
 {
     [SerializeField] private List<Room> _rooms;
 
-    public event Action Allowed;
-    public event Action EndedRoom;
-
-    private void OnDisable()
-    {
-        foreach (var room in _rooms)
-            room.StartedNewRoom -= StartedNewRoom;
-    }
+    private int _numberRoom;
+    public int Number => _rooms.Count;
 
     public void Fill(IGameFactory gameFactory)
     {
@@ -22,26 +15,21 @@ public class LaunchRoom : MonoBehaviour
             var room = _rooms[i];
             room.FillInEnemySpawner(gameFactory);
             room.Number = i;
-            room.StartedNewRoom += StartedNewRoom;
         }
     }
 
-    public void StartFirstRoom() =>
-        StartCoroutine(_rooms[0].LaunchingWaves.StartWave(_rooms[0].StartThisRoom, _rooms[0].DelayWave));
+    public Room GetRoom() =>
+        _rooms.Count > _numberRoom ? _rooms[_numberRoom] : null;
 
-    private void StartedNewRoom(int number)
+    public void StartRoom(int value)
     {
-        Allowed?.Invoke();
+        _numberRoom = value;
+        StartNewRoom();
+    }
 
-        var numberRoom = number + 1;
-
-        if (_rooms.Count > numberRoom)
-        {
-            var startWave = _rooms[numberRoom].LaunchingWaves
-                .StartWave(_rooms[numberRoom].StartThisRoom, _rooms[numberRoom].DelayWave);
-            StartCoroutine(startWave);
-        }
-        else
-            EndedRoom?.Invoke();
+    private void StartNewRoom()
+    {
+        var startWave = _rooms[_numberRoom].LaunchingWaves;
+        startWave.StartWave();
     }
 }

@@ -7,20 +7,23 @@ using UnityEngine;
 
 namespace Source.Infrastructure
 {
-    public class GameStateMachine
+    public class GameStateMachine : IGameStateMachine
     {
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
-        public GameStateMachine(SceneLoader sceneLoader, LoadingScreen loadingScreen, ICoroutineRunner coroutineRunner, AllServices services)
+        public GameStateMachine(SceneLoader sceneLoader, LoadingScreen loadingScreen, ICoroutineRunner coroutineRunner,
+            AllServices services)
         {
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IStorage>(), loadingScreen, services.Single<IGameFactory>(), services.Single<IStaticDataService>()),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IStorage>(),
+                    loadingScreen, services.Single<IGameFactory>(), services.Single<IStaticDataService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IStorage>(), coroutineRunner),
-                [typeof(FinishLevelState)] = new FinishLevelState(),
-                [typeof(LoadMapSceneState)] = new LoadMapSceneState(this, sceneLoader, services.Single<IStorage>(), loadingScreen),
+                [typeof(FinishLevelState)] = new FinishLevelState(this,sceneLoader),
+                [typeof(LoadMapSceneState)] =
+                    new LoadMapSceneState(this, sceneLoader, services.Single<IStorage>(), loadingScreen),
                 [typeof(GameLoopState)] = new GameLoopState(this)
             };
         }
@@ -30,7 +33,7 @@ namespace Source.Infrastructure
             IState state = ChangeState<TState>();
             state.Enter();
         }
-        
+
         public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>
         {
             TState state = ChangeState<TState>();
@@ -40,14 +43,20 @@ namespace Source.Infrastructure
         private TState ChangeState<TState>() where TState : class, IExitableState
         {
             _activeState?.Exit();
-            
+
             TState state = GetState<TState>();
             _activeState = state;
 
             return state;
         }
 
-        private TState GetState<TState>() where TState : class, IExitableState => 
+        public void Enter<TState>(int level) where TState : class, IState
+        {
+            IState state = ChangeState<TState>();
+            state.Enter(level);
+        }
+
+        private TState GetState<TState>() where TState : class, IExitableState =>
             _states[typeof(TState)] as TState;
     }
 }

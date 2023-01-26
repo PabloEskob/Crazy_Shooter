@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using InfimaGames.LowPolyShooterPack;
+using Source.Infrastructure;
+using Source.Scripts.Data;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +18,7 @@ namespace Source.Scripts.Ui
         [SerializeField] private UpgradePanel _upgradePanel;
         [SerializeField] private Inventory _inventory;
         
+        private IStorage _storage;
         private Weapon _currentWeapon;
         
         private const int _defaultWeaponIndex = 0;
@@ -24,21 +28,30 @@ namespace Source.Scripts.Ui
 
         private void Awake()
         {
+            _upgradePanel.Upgraded -= OnUpgraded;
             _inventory.Initialized += OnInitialized;
             _inventory.Init();
         }
 
         private void OnEnable()
         {
+            _upgradePanel.Upgraded += OnUpgraded;
             _exitButton.onClick.AddListener(Hide);
             _weaponPlatesView.WeaponSelected += OnWeaponSelected;
         }
+
 
         private void OnDisable()
         {
             _inventory.Initialized -= OnInitialized;
             _exitButton.onClick.RemoveListener(Hide);
             _weaponPlatesView.WeaponSelected -= OnWeaponSelected;
+        }
+        private void OnUpgraded()
+        {
+            _storage = AllServices.Container.Single<IStorage>();
+            _storage.SetString(_currentWeapon.GetName(), _currentWeapon.GetData().ToJson());
+            _storage.Save();
         }
 
         private void Hide() =>
@@ -60,12 +73,13 @@ namespace Source.Scripts.Ui
             _currentWeapon = _weaponHolder.DefaultWeapon;
             _weaponHolder.UpdateView(_currentWeapon);
             _upgradePanel.SetWeapon(_currentWeapon);
-            gameObject.SetActive(false);
+            Hide();
         }
 
         public void Show() =>
             gameObject.SetActive(true);
 
+        
 
     }
 }

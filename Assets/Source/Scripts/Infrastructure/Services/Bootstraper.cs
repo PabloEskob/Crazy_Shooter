@@ -17,9 +17,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Initialize()
-        {
-            //if(!YandexGamesSdk.IsInitialized)
-            
+        {            
             //Initialize default service locator.
             ServiceLocator.Initialize();
             

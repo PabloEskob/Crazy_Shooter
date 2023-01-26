@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Agava.YandexGames;
+using GameAnalyticsSDK;
 using Source.Scripts;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ namespace Source.Infrastructure
         private IEnumerator Start()
         {
             yield return YandexGamesSdk.Initialize();
-            
+            GameAnalytics.Initialize();
             _game = new Game(this,Instantiate(_loadingScreenPrefab));
             _game.StateMachine.Enter<BootstrapState>();
             
@@ -24,6 +25,7 @@ namespace Source.Infrastructure
 #else
         private void Start()
         {
+            GameAnalytics.Initialize();
             _game = new Game(this, Instantiate(_loadingScreenPrefab));
             _game.StateMachine.Enter<BootstrapState>();
 

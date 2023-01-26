@@ -111,7 +111,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3798639132676810182}
   - component: {fileID: 3798639132684552738}
-  - component: {fileID: 1409543502508093904}
   - component: {fileID: 2688874148112128721}
   - component: {fileID: 8840308336870320174}
   - component: {fileID: 814070724999754887}
@@ -159,22 +158,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1409543502508093904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3798639132677175782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94cfb4d271bd4a43bb8c08281b63897c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _capacity: 5
-  _isAutoExpand: 1
-  _projectilePrefab: {fileID: 8787292203492939028, guid: 34fee30dc7338ff4ea8438c93eb43cbe, type: 3}
-  _container: {fileID: 942554908724638245}
 --- !u!114 &2688874148112128721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +171,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 0}
-  _bulletPool: {fileID: 1409543502508093904}
+  _bulletPool: {fileID: 0}
+  _damage: 1
+  _fireRate: 1
+  _reloadSpeed: 1
+  _magazineSize: 1
+  _maxUpgradeLevel: 4
+  Price: 150
   weaponName: Rocket Launcher 01
   multiplierMovementSpeed: 1
   _weaponType: 

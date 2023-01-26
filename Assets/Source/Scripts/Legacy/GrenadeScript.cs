@@ -2,11 +2,17 @@
 
 using UnityEngine;
 using System.Collections;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
+using Source.Infrastructure;
+using Assets.Source.Scripts.UI;
 
 namespace InfimaGames.LowPolyShooterPack.Legacy
 {
 	public class GrenadeScript : MonoBehaviour
 	{
+
+		[Header("Damage")]
+		[SerializeField] private int _damage = 666;
 
 		[Header("Timer")]
 		//Time before the grenade explodes
@@ -33,10 +39,13 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 		[Tooltip("Maximum throw force")]
 		public float maximumForce = 2500.0f;
 
-		private float throwForce;
-
 		[Header("Audio")]
 		public AudioSource impactSound;
+
+		private float throwForce;
+		private IStorage _storage;
+
+		public int Damage => _damage;
 
 		private void Awake()
 		{
@@ -51,12 +60,21 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 				Random.Range(0, 0), //Y Axis
 				Random.Range(0, 0) //Z Axis
 				* Time.deltaTime * 5000);
-		}
+
+            _storage = AllServices.Container.Single<IStorage>();
+
+            if (_storage.HasKeyFloat(SettingsNames.SoundSettingsKey))
+            {
+                float currentVolume = _storage.GetFloat(SettingsNames.SoundSettingsKey);
+                impactSound.volume = currentVolume;
+                explosionPrefab.GetComponent<AudioSource>().volume = currentVolume;
+            }
+        }
 
 		private void Start()
 		{
 			//Launch the projectile forward by adding force to it at start
-			GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * throwForce);
+			GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * throwForce, ForceMode.Acceleration);
 
 			//Start the explosion timer
 			StartCoroutine(ExplosionTimer());
@@ -65,6 +83,7 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 		private void OnCollisionEnter(Collision collision)
 		{
 			//Play the impact sound on every collision
+
 			impactSound.Play();
 		}
 
@@ -99,11 +118,12 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 					rb.AddExplosionForce(power * 5, explosionPos, radius, 3.0F);
 
 				//If the explosion hits "Target" tag and isHit is false
-				if (hit.GetComponent<Collider>().tag == "Target"
-				    && hit.gameObject.GetComponent<TargetScript>().isHit == false)
+				if (hit.GetComponent<Collider>().tag == "Target")
+				    //&& hit.gameObject.GetComponent<TargetScript>().isHit == false)
 				{
 					//Toggle "isHit" on target object
-					hit.gameObject.GetComponent<TargetScript>().isHit = true;
+					//hit.gameObject.GetComponent<TargetScript>().isHit = true;
+					hit.gameObject.GetComponentInParent<EnemyHealth>().TakeDamage(666);
 				}
 
 				//If the explosion hits "ExplosiveBarrel" tag
@@ -121,10 +141,22 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 					//Reduce explosion timer on gas tank object to make it explode faster
 					hit.gameObject.GetComponent<GasTankScript>().explosionTimer = 0.05f;
 				}
+
+				//if(hit.GetComponent<Collider>().tag == "Enemy")
+				//	hit.gameObject.GetComponent<>
 			}
 
 			//Destroy the grenade object on explosion
 			Destroy(gameObject);
 		}
-	}
+
+        public void ReduceExplosionTime() => 
+			grenadeTimer = 0;
+
+		public void RestartCoroutine()
+		{
+			StopCoroutine(ExplosionTimer());
+			StartCoroutine(ExplosionTimer());
+		}
+    }
 }

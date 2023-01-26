@@ -20,6 +20,12 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public abstract Sprite GetSprite();
 
+        public abstract int GetMagazineSize();
+
+        public abstract void SetMagazineSize(int amount);
+
+        public abstract void TryToDecreaseTotalAmmunition(int amount);
+
         #endregion
     }
 }

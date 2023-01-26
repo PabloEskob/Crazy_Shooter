@@ -9,11 +9,14 @@ namespace Source.Scripts.Infrastructure.Factory
     public class GameFactory : IGameFactory
     {
         private const string LaunchRoomTag = "LaunchRoom";
+        private const string FinishLevel = "FinishLevel";
 
         private readonly IStaticDataService _staticDataEnemy;
         private readonly IAssetProvider _assetProvider;
-
         private GameStatusScreen _gameStatusScreen;
+        private LevelStateMachine _levelStateMachine;
+        private LaunchRoom _launchRoom;
+        private FinishLevel _finishLevel;
 
         public Player Player { get; private set; }
         public List<ISavedProgressReader> ProgressReaders { get; }
@@ -37,19 +40,23 @@ namespace Source.Scripts.Infrastructure.Factory
 
         public void CreateStartScene()
         {
+            _launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
+            _finishLevel = GameObject.FindGameObjectWithTag(FinishLevel).GetComponent<FinishLevel>();
             StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();
-            LaunchRoom launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
-            startScene.Construct(this, launchRoom, _gameStatusScreen);
+            startScene.Construct(this, _launchRoom, _gameStatusScreen, _finishLevel);
         }
-
-        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Transform parent)
+        
+        public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Vector3 parent, bool move, EnemySpawner enemySpawner)
         {
             var enemyStaticData = _staticDataEnemy.ForEnemy(monsterTypeId);
-            var enemy = Object.Instantiate(enemyStaticData.Prefab, parent.position, Quaternion.identity);
-            CreateStatsEnemy(enemy, enemyStaticData);
-            CreateStatsNavMesh(enemy, enemyStaticData);
+            var enemy = Object.Instantiate(enemyStaticData.Prefab, parent, Quaternion.identity);
+            CreateStatsEnemy(enemy, move, enemySpawner);
+            CreateStatsNavMesh(enemy, enemySpawner);
             return enemy;
         }
+
+        public void CreateLevelStateMachine(Player player) => 
+            _levelStateMachine = new LevelStateMachine(player,_launchRoom,_finishLevel);
 
         private Player InstantiateRegistered(string prefabPath, Vector3 position)
         {
@@ -67,18 +74,19 @@ namespace Source.Scripts.Infrastructure.Factory
             return progress;
         }
 
-        private static void CreateStatsEnemy(Enemy enemy, EnemyStaticData enemyStaticData)
+        private static void CreateStatsEnemy(Enemy enemy, bool move, EnemySpawner enemySpawner)
         {
-            enemy.EnemyHealth.Max = enemyStaticData.Hp;
-            enemy.EnemyAttack.Damage = enemyStaticData.Damage;
-            enemy.EnemyAttack.AttackCooldown = enemyStaticData.AttackCooldown;
+            enemy.EnemyHealth.Max = enemySpawner.Hp;
+            enemy.EnemyAttack.Damage = enemySpawner.Damage;
+            enemy.EnemyAttack.AttackCooldown = enemySpawner.AttackCooldown;
+            enemy.EnemyMove.SetCanMove(move);
         }
 
-        private void CreateStatsNavMesh(Enemy enemy, EnemyStaticData enemyStaticData)
+        private void CreateStatsNavMesh(Enemy enemy, EnemySpawner enemySpawner)
         {
             var stats = enemy.GetComponent<NavMeshAgent>();
-            stats.speed = enemyStaticData.Speed;
-            stats.stoppingDistance = enemyStaticData.EffectiveDistance;
+            enemy.EnemyMove.Speed = enemySpawner.Speed;
+            stats.stoppingDistance = enemySpawner.EffectiveDistance;
         }
 
         private void RegisterProgressWatchers(GameObject instantiatePlayer)
