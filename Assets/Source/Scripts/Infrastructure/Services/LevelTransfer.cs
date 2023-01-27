@@ -1,4 +1,5 @@
-﻿using Source.Infrastructure;
+﻿using Assets.Source.Scripts.Analytics;
+using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ namespace Source.Scripts.Infrastructure.Services
         private IGameStateMachine _stateMachine;
         private IStorage _storage;
         private IStaticDataService _staticData;
+        private IAnalyticManager _analytic;
 
         private void OnDisable()
         {
@@ -23,6 +25,7 @@ namespace Source.Scripts.Infrastructure.Services
             _stateMachine = AllServices.Container.Single<IGameStateMachine>();
             _storage = AllServices.Container.Single<IStorage>();
             _staticData = AllServices.Container.Single<IStaticDataService>();
+            _analytic = AllServices.Container.Single<IAnalyticManager>();
         }
 
         private void Start()
@@ -45,9 +48,13 @@ namespace Source.Scripts.Infrastructure.Services
             {
                 _storage.SetLevel(lastCompletedLevelNumber + 1);
                 _storage.Save();
+                _analytic.SendEventOnLevelComplete(lastCompletedLevelNumber);
             }
 
-            _stateMachine.Enter<LoadMapSceneState>();
+            if(_isSuccess == false)
+                _analytic.SendEventOnFail(lastCompletedLevelNumber);
+
+                _stateMachine.Enter<LoadMapSceneState>();
         }
     }
 }

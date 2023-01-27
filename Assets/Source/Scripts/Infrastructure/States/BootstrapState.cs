@@ -63,13 +63,11 @@ namespace Source.Infrastructure
         {
             IAnalyticManager analytic = new AnalyticManager(new List<IAnalytic>
             {
-#if GAME_ANALYTICS
                 new GameAnalyticsAnalytic()
-#endif
             });
-#if YANDEX_METRICA && !UNITY_EDITOR
-            analytic.AddAnalytic(new YandexMetricaAnalytic());
-#endif
+//#if YANDEX_METRICA && !UNITY_EDITOR
+//            analytic.AddAnalytic(new YandexMetricaAnalytic());
+//#endif
             return analytic;
         }
 

@@ -1,4 +1,5 @@
 ﻿using Agava.YandexMetrica;
+using GameAnalyticsSDK;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,43 +10,51 @@ namespace Assets.Source.Scripts.Analytics
 {
     public class GameAnalyticsAnalytic : IAnalytic
     {
+        public GameAnalyticsAnalytic() => 
+            GameAnalytics.Initialize();
+
         public void OnGameInitialize(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send(AnalyticNames.GameStart, dataObjects);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, AnalyticNames.GameStart + dataObjects[AnalyticNames.Count]);
 
         public void OnLevelStart(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send(AnalyticNames.LevelStart, dataObjects);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, AnalyticNames.Level + dataObjects[AnalyticNames.Level]);
 
         public void OnLevelComplete(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send($"level{dataObjects[AnalyticNames.Level]}Complete");
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, AnalyticNames.Level + dataObjects[AnalyticNames.Level], dataObjects);
 
         public void OnLevelFail(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send($"level{dataObjects[AnalyticNames.Level]}Fail");
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, AnalyticNames.Fail + dataObjects[AnalyticNames.Level], dataObjects);
 
         public void OnLevelRestart(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send(AnalyticNames.RegistrationDay, dataObjects);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, AnalyticNames.Restart + AnalyticNames.Level + dataObjects[AnalyticNames.Level]);
 
         public void OnSoftSpent(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send(AnalyticNames.SoftSpent, dataObjects);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.SoftSpent, dataObjects);
 
         public void OnRegistrationDayIs(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send(AnalyticNames.RegistrationDay, dataObjects);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.RegistrationDay,
+                dataObjects);
 
         public void OnSessionCountIs(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send(AnalyticNames.SessionCount, dataObjects);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.SessionCount,
+                dataObjects);
 
         public void OnDaysInGameIs(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send(AnalyticNames.DaysInGame, dataObjects);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.DaysInGame,
+                dataObjects);
 
         public void OnCurrentSoftHave(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send(AnalyticNames.CurrentSoft, dataObjects);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.CurrentSoft,
+                dataObjects);
 
         public void OnContentIsOver(Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send(AnalyticNames.ContentIsOver, dataObjects);
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Undefined, AnalyticNames.ContentIsOver,
+                dataObjects);
 
         public void OnEvent(string eventName, Dictionary<string, object> dataObjects) => 
-            YandexMetrica.Send(eventName, dataObjects);
+            GameAnalytics.NewDesignEvent(eventName, dataObjects);
 
         public void OnEvent(string eventName) => 
-            YandexMetrica.Send(eventName);
+            GameAnalytics.NewDesignEvent(eventName);
     }
 }
