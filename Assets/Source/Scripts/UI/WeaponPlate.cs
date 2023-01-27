@@ -11,16 +11,11 @@ namespace Source.Scripts.Ui
     {
         [SerializeField] private Button _weaponButton;
         [SerializeField] private Weapon _weapon;
-        [SerializeField] private TMP_Text _weaponNameText;
-        [SerializeField] private TMP_Text _weaponTypeText;
+        [SerializeField] private Image _weaponImage;
 
         [Header("Button Color Settings")]
         [SerializeField] private Color32 _activeButtonColor = new Color(100, 58, 100);
         [SerializeField] private Color32 _inactiveButtonColor = new Color(36, 16, 100);
-
-        [Header("Text Color Settings")]
-        [SerializeField] private Color32 _activeTextColor = Color.white;
-        [SerializeField] private Color32 _inactiveTextColor = new Color(22, 35, 100);
 
         private bool _isSelected;
 
@@ -48,11 +43,8 @@ namespace Source.Scripts.Ui
             return colorBlock;
         }
 
-        private void ChangeButtonView()
-        {
+        private void ChangeButtonView() => 
             _weaponButton.colors = GetColorBlock(_isSelected ? _activeButtonColor : _inactiveButtonColor);
-            _weaponNameText.color = _isSelected ? _activeTextColor : _inactiveTextColor;
-        }
 
         public void SwitchButtonState(bool value)
         {
@@ -64,8 +56,7 @@ namespace Source.Scripts.Ui
         public void SetWeapon(Weapon weapon)
         {
             _weapon = weapon;
-            _weaponNameText.text = _weapon.GetName();
-            _weaponTypeText.text = _weapon.GetWeaponType().ToString();
+            _weaponImage.sprite = weapon.GetIcon();
         }
 
         public void ShowWeapon() =>

@@ -6,6 +6,7 @@ using InfimaGames.LowPolyShooterPack.Legacy;
 using Source.Scripts.Data;
 using Source.Scripts.StaticData;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -29,6 +30,12 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField] private int _maxUpgradeLevel = 4;
         [SerializeField] private bool _isInfinityAmmo;
         [SerializeField] private int Price = 100;
+        [SerializeField] private Sprite _icon;
+        
+        [SerializeField] private WeaponTypes _weaponType;
+        [SerializeField] private bool _isBought;
+        [SerializeField] private bool _isEquipped;
+        [SerializeField] private bool _isCollected;
 
         private int _frameUpgradeLevel;
         private int _muzzleUpgradeLevel;
@@ -58,10 +65,6 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         [SerializeField] private WeaponAttachmentManagerBehaviour attachmentManager;
 
-
-        [SerializeField] private WeaponTypes _weaponType;
-        [SerializeField] private bool _isBought;
-        [SerializeField] private bool _isEquipped;
 
         [Header("Firing")]
 
@@ -315,11 +318,15 @@ namespace InfimaGames.LowPolyShooterPack
         public float ReloadSpeed => _reloadSpeed;
         public float MagazineSize => _magazineSize;
 
+        public override bool GetCollectedState() => _isCollected;
+
         public override string GetName() => weaponName;
 
         public override WeaponTypes GetWeaponType() => _weaponType;
 
         public WeaponData GetData() => _data;
+
+        public Sprite GetIcon() => _icon;
 
         public void SetData(String name) =>
             _data = name.ToDeserialized<WeaponData>();

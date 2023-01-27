@@ -340,12 +340,14 @@ MonoBehaviour:
   _maxUpgradeLevel: 4
   _isInfinityAmmo: 0
   Price: 150
-  weaponName: Assault Rifle 01
-  multiplierMovementSpeed: 1
-  attachmentManager: {fileID: 8866888881564896686}
+  _icon: {fileID: 21300000, guid: 9122a7342e510534cbe63ec092f3fcc6, type: 3}
   _weaponType: 1
   _isBought: 1
   _isEquipped: 0
+  _isCollected: 1
+  weaponName: Assault Rifle 01
+  multiplierMovementSpeed: 1
+  attachmentManager: {fileID: 8866888881564896686}
   automatic: 1
   boltAction: 0
   shotCount: 1

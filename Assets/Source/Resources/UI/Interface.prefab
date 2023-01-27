@@ -962,7 +962,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lv.
+  m_Text: "\u0423\u0440."
 --- !u!114 &8412005271402060399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1057,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "A\u011F\u0131zl\u0131k"
+  m_Text: "\u0414\u0443\u043B\u043E"
 --- !u!114 &1344600916643805964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1228,7 +1228,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mermiler
+  m_Text: "\u041F\u0443\u043B\u0438"
 --- !u!114 &3726286622596173207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6975,7 +6975,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Sat\u0131n almak"
+  m_Text: "\u041A\u0443\u043F\u0438\u0442\u044C"
 --- !u!114 &4170000882448761221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7146,7 +7146,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "G\xFCncelleme"
+  m_Text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
 --- !u!114 &3186995635322175351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7565,7 +7565,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hedef
+  m_Text: "\u041F\u0440\u0438\u0446\u0435\u043B"
 --- !u!114 &2338249793181927970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7660,7 +7660,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Dergi ebad\u0131"
+  m_Text: "\u0420\u0430\u0437\u043C\u0435\u0440 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0430"
 --- !u!114 &1763576285232147803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7804,8 +7804,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.30483332, y: 0.19637622}
   m_AnchorMax: {x: 0.799146, y: 0.8654321}
-  m_AnchoredPosition: {x: 676.59875, y: -445.8211}
-  m_SizeDelta: {x: 801.8766, y: 671.1467}
+  m_AnchoredPosition: {x: 711.5, y: -351.5}
+  m_SizeDelta: {x: 800.99994, y: 671}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &1190761680
 BoxCollider:
@@ -8021,7 +8021,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u015Farj\xF6r"
+  m_Text: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
 --- !u!114 &8261532829992369428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10890,7 +10890,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Tekrar y\xFCkle"
+  m_Text: "\u041F\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0430"
 --- !u!114 &4426389660732176834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11357,7 +11357,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "G\xDC\xC7"
+  m_Text: "\u041C\u041E\u0429\u042C"
 --- !u!114 &546384988431383094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12286,7 +12286,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Silah \xE7er\xE7evesi"
+  m_Text: "\u0420\u0430\u043C\u0430 \u043E\u0440\u0443\u0436\u0438\u044F"
 --- !u!114 &874141088472720662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13029,7 +13029,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Ate\u015F oran\u0131"
+  m_Text: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u0440\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C"
 --- !u!114 &8114229039349763438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14278,7 +14278,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hasar
+  m_Text: "\u0423\u0440\u043E\u043D"
 --- !u!114 &2848633271581989451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14491,7 +14491,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "D\xFCkkan"
+  m_Text: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
 --- !u!114 &4287394136077835922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19041,6 +19041,10 @@ PrefabInstance:
     - target: {fileID: 6135983101820708878, guid: c507596180246f34dad72552e74a8f1e, type: 3}
       propertyPath: m_Name
       value: Localization
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847976973069132221, guid: c507596180246f34dad72552e74a8f1e, type: 3}
+      propertyPath: currentLanguage
+      value: Russian
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c507596180246f34dad72552e74a8f1e, type: 3}

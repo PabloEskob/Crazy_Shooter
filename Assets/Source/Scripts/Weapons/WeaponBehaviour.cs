@@ -33,6 +33,12 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region GETTERS
 
+        public abstract bool GetCollectedState();
+
+        public abstract string GetName();
+
+        public abstract WeaponTypes GetWeaponType();
+
         public abstract float GetReloadSpeed();
         /// <summary>
         /// Returns the sprite to use when displaying the weapon's body.
@@ -208,10 +214,6 @@ namespace InfimaGames.LowPolyShooterPack
         /// Ejects a casing from the weapon. This is commonly called from animation events, but can be called from anywhere.
         /// </summary>
         public abstract void EjectCasing();
-
-        public abstract string GetName();
-
-        public abstract WeaponTypes GetWeaponType();
 
         #endregion
 
