@@ -1,5 +1,6 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using Assets.Source.Scripts.Weapons;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -210,7 +211,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         public abstract string GetName();
 
-        public abstract string GetWeaponType();
+        public abstract WeaponTypes GetWeaponType();
 
         #endregion
 

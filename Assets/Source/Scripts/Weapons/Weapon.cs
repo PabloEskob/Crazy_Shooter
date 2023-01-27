@@ -1,6 +1,7 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
 using System;
+using Assets.Source.Scripts.Weapons;
 using InfimaGames.LowPolyShooterPack.Legacy;
 using Source.Scripts.Data;
 using Source.Scripts.StaticData;
@@ -20,14 +21,14 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField] private UpgradeConfig _upgradeConfig;
         [SerializeField] private BulletPool _bulletPool;
 
-        [Header("")]
+        [Header("Weapon stats")]
         [SerializeField] private float _damage;
         [SerializeField] private float _fireRate;
         [SerializeField] private float _reloadSpeed;
         [SerializeField] private float _magazineSize;
         [SerializeField] private int _maxUpgradeLevel = 4;
-        [SerializeField] private int Price = 100;
         [SerializeField] private bool _isInfinityAmmo;
+        [SerializeField] private int Price = 100;
 
         private int _frameUpgradeLevel;
         private int _muzzleUpgradeLevel;
@@ -58,7 +59,7 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField] private WeaponAttachmentManagerBehaviour attachmentManager;
 
 
-        [SerializeField] private string _weaponType;
+        [SerializeField] private WeaponTypes _weaponType;
         [SerializeField] private bool _isBought;
         [SerializeField] private bool _isEquipped;
 
@@ -316,7 +317,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         public override string GetName() => weaponName;
 
-        public override string GetWeaponType() => _weaponType;
+        public override WeaponTypes GetWeaponType() => _weaponType;
 
         public WeaponData GetData() => _data;
 
@@ -636,7 +637,6 @@ namespace InfimaGames.LowPolyShooterPack
         public void UpdateStatsToData()
         {
             _data.Damage = _damage;
-            //_fireRate = roundsPerMinutes / FireRateDelta;
             _data.FireRate = _fireRate;
             _data.Reload = _reloadSpeed;
             _data.MagazineSize = _magazineSize;
