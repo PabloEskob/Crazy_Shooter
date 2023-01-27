@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Collections;
 using InfimaGames.LowPolyShooterPack.Interface;
 using UnityEngine.InputSystem;
+using Assets.Source.Scripts.Character;
 
 namespace InfimaGames.LowPolyShooterPack
 {
@@ -17,6 +18,8 @@ namespace InfimaGames.LowPolyShooterPack
     {
         #region FIELDS SERIALIZED
 
+        [SerializeField] private GrenadesData _grenadesData;
+
         [Header("Inventory")]
         [Tooltip("Determines the index of the weapon to equip when the game starts.")]
         [SerializeField]
@@ -28,8 +31,7 @@ namespace InfimaGames.LowPolyShooterPack
         [Header("Grenade")] [Tooltip("If true, the character's grenades will never run out.")] [SerializeField]
         private bool grenadesUnlimited;
 
-        [Tooltip("Total amount of grenades at start.")] [SerializeField]
-        private int grenadeTotal = 10;
+        
 
         [Tooltip("Grenade spawn offset from the character's camera.")] [SerializeField]
         private float grenadeSpawnOffset = 1.0f;
@@ -85,6 +87,11 @@ namespace InfimaGames.LowPolyShooterPack
         #endregion
 
         #region FIELDS
+
+        /// <summary>
+        /// Total amount of grenades.
+        /// </summary>
+        private int grenadeTotal;
 
         /// <summary>
         /// True if the character is aiming.
@@ -364,12 +371,16 @@ namespace InfimaGames.LowPolyShooterPack
             RefreshWeaponSetup();
         }
 
+        private void OnEnable() => _grenadesData.GrenadeCountSetted += OnGrenadeCountSetted;
+
+        private void OnDisable() => _grenadesData.GrenadeCountSetted -= OnGrenadeCountSetted;
+
         protected override void Start()
         {
             _lock = false;
             _canFire = true;
             //Max out the grenades.
-            grenadeCount = grenadeTotal;
+            //grenadeCount = grenadeTotal;
 
             //Hide knife. We do this so we don't see a giant knife stabbing through the character's hands all the time!
             if (knife != null)
@@ -920,6 +931,12 @@ namespace InfimaGames.LowPolyShooterPack
             //Update Animator.
             const string boolName = "Holstered";
             characterAnimator.SetBool(boolName, holstered);
+        }
+
+        private void SetGrenadesQuantity(int count)
+        {
+            grenadeTotal = _grenadesData.GrenadeMaxCount;
+            grenadeCount = count;
         }
 
         #region ACTION CHECKS
@@ -1538,7 +1555,10 @@ namespace InfimaGames.LowPolyShooterPack
 
             //Remove Grenade.
             if (!grenadesUnlimited)
+            {
                 grenadeCount--;
+                _grenadesData.RemoveGrenade();
+            }
 
             //Get Camera Transform.
             Transform cTransform = cameraWorld.transform;
@@ -1605,6 +1625,8 @@ namespace InfimaGames.LowPolyShooterPack
         }
 
         #endregion
+
+        private void OnGrenadeCountSetted(int count) => SetGrenadesQuantity(count);
 
         #endregion
     }
