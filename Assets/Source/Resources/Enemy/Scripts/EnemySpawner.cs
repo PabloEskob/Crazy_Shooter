@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
         foreach (var enemy in _enemies)
             enemy.EnemyDeath.OnHappened += TryTurnOnAnotherSpawner;
     }
-
+    
     public void SetNumber(int number) =>
         _number = number;
 

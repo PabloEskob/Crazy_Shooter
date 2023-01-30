@@ -51,7 +51,7 @@ public class Room : MonoBehaviour
         {
             var enemySpawner = _enemySpawners[i];
             enemySpawner.Construct(gameFactory);
-            enemySpawner.SetNumber(i);
+           // enemySpawner.SetNumber(i);
         }
     }
 }
