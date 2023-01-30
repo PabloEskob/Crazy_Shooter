@@ -520,7 +520,6 @@ namespace InfimaGames.LowPolyShooterPack
         {
             int magazineSize = magazineBehaviour.GetMagazineSize();
             int ammunitionLeft = magazineBehaviour.GetAmmunitionTotal();
-            Debug.Log(ammunitionCurrent);
             return ammunitionLeft > magazineSize ? magazineSize : ammunitionLeftInMagazine + ammunitionLeft;
         }
 

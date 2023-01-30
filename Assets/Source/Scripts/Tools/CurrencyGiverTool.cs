@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CurrencyGiver : MonoBehaviour
+public class CurrencyGiverTool : MonoBehaviour
 {
     [SerializeField] private SoftCurrencyHolder _currencyHolder;
     [SerializeField] private int _valueToAdd = 5000;

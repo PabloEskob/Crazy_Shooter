@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Source.Scripts.Analytics;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,6 +13,7 @@ namespace Source.Scripts.Infrastructure.Factory
         private const string FinishLevel = "FinishLevel";
 
         private readonly IStaticDataService _staticDataEnemy;
+        private readonly IAnalyticManager _analyticManager;
         private readonly IAssetProvider _assetProvider;
         private GameStatusScreen _gameStatusScreen;
         private LevelStateMachine _levelStateMachine;
@@ -22,9 +24,10 @@ namespace Source.Scripts.Infrastructure.Factory
         public List<ISavedProgressReader> ProgressReaders { get; }
         public List<ISavedProgress> ProgressWriters { get; }
 
-        public GameFactory(IAssetProvider assetProvider, IStaticDataService staticDataEnemy)
+        public GameFactory(IAssetProvider assetProvider, IStaticDataService staticDataEnemy, IAnalyticManager analyticManager)
         {
             _staticDataEnemy = staticDataEnemy;
+            _analyticManager = analyticManager;
             _assetProvider = assetProvider;
         }
 
@@ -55,8 +58,8 @@ namespace Source.Scripts.Infrastructure.Factory
             return enemy;
         }
 
-        public void CreateLevelStateMachine(Player player) => 
-            _levelStateMachine = new LevelStateMachine(player,_launchRoom,_finishLevel);
+        public void CreateLevelStateMachine(Player player, IAnalyticManager analyticManager) => 
+            _levelStateMachine = new LevelStateMachine(player,_launchRoom,_finishLevel, analyticManager);
 
         private Player InstantiateRegistered(string prefabPath, Vector3 position)
         {

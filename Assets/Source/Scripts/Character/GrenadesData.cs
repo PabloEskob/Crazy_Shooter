@@ -22,14 +22,6 @@ namespace Assets.Source.Scripts.Character
             Load();
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                TryAddGrenade(1);
-            }
-        }
-
         private void Save()
         {
             _storage.SetInt(GrenadeDataKey, _grenadeCount);

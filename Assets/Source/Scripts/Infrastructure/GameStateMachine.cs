@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets.Source.Scripts.Analytics;
 using Source.Infrastructure.States;
 using Source.Scripts;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
@@ -19,7 +20,7 @@ namespace Source.Infrastructure
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, services.Single<IStorage>(),
-                    loadingScreen, services.Single<IGameFactory>(), services.Single<IStaticDataService>()),
+                    loadingScreen, services.Single<IGameFactory>(), services.Single<IStaticDataService>(), services.Single<IAnalyticManager>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, services.Single<IStorage>(), coroutineRunner),
                 [typeof(FinishLevelState)] = new FinishLevelState(this,sceneLoader),
                 [typeof(LoadMapSceneState)] =

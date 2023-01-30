@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Source.Scripts.Analytics;
+using System;
 using System.Collections.Generic;
 
 public class LevelStateMachine
@@ -6,10 +7,10 @@ public class LevelStateMachine
     private Dictionary<Type, ILevelState> _states;
     private ILevelState _currentLevelState;
 
-    public LevelStateMachine(Player player, LaunchRoom launchRoom, FinishLevel finishLevel)
+    public LevelStateMachine(Player player, LaunchRoom launchRoom, FinishLevel finishLevel, IAnalyticManager analyticManager)
     {
-        InitStates(player, launchRoom, finishLevel);
-        Enter<SpawnEnemyState>();
+        InitStates(player, launchRoom, finishLevel, analyticManager);
+        Enter<StartLevelState>();
     }
 
     public void Enter<TState>() where TState : class, ILevelState
@@ -18,10 +19,11 @@ public class LevelStateMachine
         state.Enter();
     }
 
-    private void InitStates(Player player, LaunchRoom launchRoom, FinishLevel finishLevel)
+    private void InitStates(Player player, LaunchRoom launchRoom, FinishLevel finishLevel, IAnalyticManager analyticManager)
     {
         _states = new Dictionary<Type, ILevelState>
         {
+            [typeof(StartLevelState)] = new StartLevelState(this, analyticManager),
             [typeof(SpawnEnemyState)] = new SpawnEnemyState(this, launchRoom),
             [typeof(AttackState)] = new AttackState(this, launchRoom, player),
             [typeof(MoveState)] = new MoveState(this, player),
