@@ -10,15 +10,26 @@ namespace Source.Scripts.StaticData
     {
         public LevelNames[] LevelNames;
 
-        public string GetLevelNameByNumber(int name)
+        public string GetLevelNameByNumber(int number)
         {
             foreach (var level in LevelNames)
             {
-                if (level.LevelNumber == name)
+                if (level.LevelNumber == number)
                     return level.SceneName;
             }
 
             return null;
+        }
+
+        public int GetLevelNumberByName(string name)
+        {
+            foreach (var level in LevelNames)
+            {
+                if(level.SceneName == name)
+                    return level.LevelNumber;
+            }
+
+            return 0;
         }
     }
 

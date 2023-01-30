@@ -23,26 +23,26 @@ public class WeaponPlatesView : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (WeaponPlate weaponPlate in _plates) 
+        foreach (WeaponPlate weaponPlate in _plates)
             weaponPlate.WeaponSelected += OnWeaponSelected;
     }
 
     private void OnDisable()
     {
-        foreach (WeaponPlate weaponPlate in _plates) 
+        foreach (WeaponPlate weaponPlate in _plates)
             weaponPlate.WeaponSelected -= OnWeaponSelected;
     }
 
     private void OnWeaponSelected(WeaponPlate plate, Weapon weapon)
     {
-        foreach (var weaponPlate in _plates) 
+        foreach (var weaponPlate in _plates)
             weaponPlate.SwitchButtonState(false);
 
         plate.SwitchButtonState(true);
         WeaponSelected?.Invoke(weapon);
     }
 
-    public void SetDefaultIndex(int index) => 
+    public void SetDefaultIndex(int index) =>
         _defaultWeaponIndex = index;
 
     public void SetInventory(Inventory inventory) =>
@@ -52,9 +52,12 @@ public class WeaponPlatesView : MonoBehaviour
     {
         foreach (var weapon in _inventory.Weapons)
         {
-            var plate = Instantiate(_plateTemplate, _container);
-            plate.SetWeapon(weapon);
-            _plates.Add(plate);
+            if (weapon.GetCollectedState())
+            {
+                var plate = Instantiate(_plateTemplate, _container);
+                plate.SetWeapon(weapon);
+                _plates.Add(plate);
+            }
         }
 
         _plates[_defaultWeaponIndex].SwitchButtonState(true);

@@ -333,12 +333,14 @@ MonoBehaviour:
   _maxUpgradeLevel: 4
   _isInfinityAmmo: 0
   Price: 150
-  weaponName: SMG 01
-  multiplierMovementSpeed: 1
-  attachmentManager: {fileID: 7061427760487870545}
+  _icon: {fileID: 21300000, guid: cbac0adaf80bc07428444e03eb99eb51, type: 3}
   _weaponType: 2
   _isBought: 1
   _isEquipped: 0
+  _isCollected: 1
+  weaponName: SMG 01
+  multiplierMovementSpeed: 1
+  attachmentManager: {fileID: 7061427760487870545}
   automatic: 1
   boltAction: 0
   shotCount: 1

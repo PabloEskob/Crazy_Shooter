@@ -13,6 +13,9 @@ namespace Source.Scripts.Ui
         [SerializeField] private List<UpgradeType> _upgradeTypes;
         [SerializeField] private UpgradePanel _upgradePanel;
 
+        [Header("Bar Settings")]
+
+
         private Weapon _weapon;
 
         [Header("Current values")]
@@ -29,7 +32,9 @@ namespace Source.Scripts.Ui
 
         [Header("Upgrade Progress Bars")]
         [Space(3)]
-        [SerializeField] private float _barLenghtMaxValue;
+        [SerializeField] private float _barMaxValue = 100;
+        [SerializeField] private float _maxLength = 200;
+        [SerializeField] private float _scalingFactor = 1;
         
         [Header("Damage")]
         [SerializeField] Image _currentDamageValue;
@@ -193,24 +198,49 @@ namespace Source.Scripts.Ui
             _weapon.WeaponInitialized += OnWeaponInitialized;
         }
 
+        private void SetCurrentValueBar(Image currentValuesBar, float currentValue)
+        {
+            currentValuesBar.rectTransform.sizeDelta =
+                new Vector2(GetNormalizedValues(currentValue) * _scalingFactor, _currentDamageValue.rectTransform.sizeDelta.y);
+        }
+
+        private void SetUpgradeValueBar(Image upgradeValueBar, float upgradeValue)
+        {
+            upgradeValueBar.rectTransform.sizeDelta =
+                new Vector2(GetNormalizedValues(upgradeValue) * _scalingFactor, _currentDamageValue.rectTransform.sizeDelta.y);
+        }
+
+        private float GetNormalizedValues(float value) => value / _barMaxValue * _maxLength;
+
+        private void CheckValues(float currentValue, float upgradeValue)
+        {
+            if (currentValue > _barMaxValue)
+                currentValue = _barMaxValue;
+
+            if (upgradeValue > _barMaxValue - currentValue)
+                upgradeValue = _barMaxValue - currentValue;
+
+            if (currentValue + upgradeValue > _barMaxValue)
+                upgradeValue = _barMaxValue - currentValue;
+        }
+
         private void UpdateBars()
         {
-            _currentDamageValue.rectTransform.sizeDelta = 
-                new Vector2(_weapon.Damage, _currentDamageValue.rectTransform.sizeDelta.y);
-            _upgradedDamageValue.rectTransform.sizeDelta = 
-                new Vector2(_weapon.Damage + _damage, _upgradedDamageValue.rectTransform.sizeDelta.y);
-            _currentFireRateValue.rectTransform.sizeDelta = 
-                new Vector2(_weapon.FireRate, _currentFireRateValue.rectTransform.sizeDelta.y);
-            _upgradedFireRateValue.rectTransform.sizeDelta = 
-                new Vector2(_weapon.FireRate + _fireRate, _upgradedFireRateValue.rectTransform.sizeDelta.y);
-            _currentReloadValue.rectTransform.sizeDelta = 
-                new Vector2(_weapon.ReloadSpeed, _currentReloadValue.rectTransform.sizeDelta.y);
-            _upgradedReloadValue.rectTransform.sizeDelta = 
-                new Vector2(_weapon.ReloadSpeed + _reload, _upgradedReloadValue.rectTransform.sizeDelta.y);
-            _currentMagazineSizeValue.rectTransform.sizeDelta = 
-                new Vector2(_weapon.MagazineSize, _currentMagazineSizeValue.rectTransform.sizeDelta.y);
-            _upgradedMagazineSizeValue.rectTransform.sizeDelta = 
-                new Vector2(_weapon.MagazineSize + _magazineSize, _upgradedMagazineSizeValue.rectTransform.sizeDelta.y);
+            CheckValues(_weapon.Damage, _damage);
+            SetCurrentValueBar(_currentDamageValue, _weapon.Damage);
+            SetUpgradeValueBar(_upgradedDamageValue, _damage);
+
+            CheckValues(_weapon.FireRate, _fireRate);
+            SetCurrentValueBar(_currentFireRateValue, _weapon.FireRate);
+            SetUpgradeValueBar(_upgradedFireRateValue, _fireRate);
+
+            CheckValues(_weapon.ReloadSpeed, _reload);
+            SetCurrentValueBar(_currentReloadValue, _weapon.ReloadSpeed);
+            SetUpgradeValueBar(_upgradedReloadValue, _reload);
+
+            CheckValues(_weapon.MagazineSize, _magazineSize);
+            SetCurrentValueBar(_currentMagazineSizeValue, _weapon.MagazineSize);
+            SetUpgradeValueBar(_upgradedMagazineSizeValue, _magazineSize);
         }
 
     }

@@ -567,6 +567,7 @@ MonoBehaviour:
   _maxUpgradeLevel: 4
   _isInfinityAmmo: 0
   Price: 150
+  _icon: {fileID: 21300000, guid: e53abf3f4f72bd84cb422b5264e509b4, type: 3}
   weaponName: SMG 03
   multiplierMovementSpeed: 1
   attachmentManager: {fileID: 7061427760487870545}

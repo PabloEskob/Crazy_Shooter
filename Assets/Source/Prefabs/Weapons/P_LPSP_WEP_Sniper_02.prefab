@@ -477,12 +477,14 @@ MonoBehaviour:
   _maxUpgradeLevel: 4
   _isInfinityAmmo: 1
   Price: 150
-  weaponName: Sniper 02
-  multiplierMovementSpeed: 0.8
-  attachmentManager: {fileID: 9116845346348752071}
+  _icon: {fileID: 21300000, guid: a1a6e1744b8e1ad4794bbd2a4e622014, type: 3}
   _weaponType: 4
   _isBought: 0
   _isEquipped: 0
+  _isCollected: 1
+  weaponName: Sniper 02
+  multiplierMovementSpeed: 0.8
+  attachmentManager: {fileID: 9116845346348752071}
   automatic: 0
   boltAction: 0
   shotCount: 1

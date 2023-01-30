@@ -601,12 +601,14 @@ MonoBehaviour:
   _maxUpgradeLevel: 4
   _isInfinityAmmo: 1
   Price: 150
+  _icon: {fileID: 21300000, guid: 284367c449397e04ca08826c26d68bb8, type: 3}
+  _weaponType: 3
+  _isBought: 0
+  _isEquipped: 0
+  _isCollected: 1
   weaponName: Shotgun 01
   multiplierMovementSpeed: 1
   attachmentManager: {fileID: 8578661464601570599}
-  _weaponType: 3
-  _isBought: 1
-  _isEquipped: 0
   automatic: 0
   boltAction: 1
   shotCount: 6

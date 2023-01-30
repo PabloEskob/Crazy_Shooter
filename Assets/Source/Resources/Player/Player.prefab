@@ -538,6 +538,7 @@ GameObject:
   - component: {fileID: 1322509416427480302}
   - component: {fileID: -526046293033402693}
   - component: {fileID: -7832786067592942493}
+  - component: {fileID: 5307446303966829648}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -721,6 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedea47162792a74cb9ec77109d20e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _grenadesData: {fileID: 5307446303966829648}
   weaponIndexEquippedAtStart: 0
   inventory: {fileID: 4738150048773457641}
   grenadesUnlimited: 0
@@ -1519,6 +1521,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 113b6471814b43768bc2669fd393f89e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5307446303966829648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609891775957787187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4784a5030a436374da9f2c66a4d7e684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1619462904432454414
