@@ -48,11 +48,9 @@ namespace Source.Scripts.Ui
                 button.Clicked += StartLevel;
         }
 
-        private void OpenSettingsMenu() =>
-            _settingsMenu.Show();
+        private void OpenSettingsMenu() => _settingsMenu.Show();
 
-        private void OpenUpgradeMenu() =>
-            _upgradeMenu.Show();
+        private void OpenUpgradeMenu() => _upgradeMenu.Show();
 
         private void StartLevel(int level) =>
             _stateMachine.Enter<LoadLevelState>(level);

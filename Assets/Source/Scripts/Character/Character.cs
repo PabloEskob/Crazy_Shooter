@@ -371,9 +371,9 @@ namespace InfimaGames.LowPolyShooterPack
             RefreshWeaponSetup();
         }
 
-        private void OnEnable() => _grenadesData.GrenadeCountSetted += OnGrenadeCountSetted;
+        private void OnEnable() => _grenadesData.GrenadeCountChanged += OnGrenadeCountSetted;
 
-        private void OnDisable() => _grenadesData.GrenadeCountSetted -= OnGrenadeCountSetted;
+        private void OnDisable() => _grenadesData.GrenadeCountChanged -= OnGrenadeCountSetted;
 
         protected override void Start()
         {

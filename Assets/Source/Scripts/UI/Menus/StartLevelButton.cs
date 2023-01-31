@@ -29,8 +29,8 @@ public class StartLevelButton : MonoBehaviour
     private void OnDisable() =>
         _startButton.onClick.AddListener(OnButtonClick);
 
-    private void Start() =>
-        SetText();
+    //private void Start() =>
+    //    SetText();
 
     private void OnButtonClick()
     {
@@ -39,6 +39,6 @@ public class StartLevelButton : MonoBehaviour
         Clicked(_levelNumber);
     }
 
-    private void SetText() =>
-        _buttonText.text += _levelNumber;
+    //private void SetText() =>
+    //    _buttonText.text += _levelNumber;
 }

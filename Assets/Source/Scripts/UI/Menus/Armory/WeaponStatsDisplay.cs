@@ -30,7 +30,7 @@ namespace Source.Scripts.Ui
         [SerializeField] private float _barMaxValue = 100;
         [SerializeField] private float _maxLength = 200;
         [SerializeField] private float _scalingFactor = 1;
-        
+
         [Header("Damage")]
         [SerializeField] Image _currentDamageValue;
         [SerializeField] Image _upgradedDamageValue;
@@ -90,14 +90,23 @@ namespace Source.Scripts.Ui
 
         private void OnUpgraded()
         {
-            DisplayCurrentStats();
-            DisplayUpgradeValues(_currentUpgrade);
-            UpdateBars();
+            if (_currentUpgrade != null)
+            {
+                DisplayCurrentStats();
+                DisplayUpgradeValues(_currentUpgrade);
+                UpdateBars();
+                Debug.Log(_currentUpgrade.name);
+            }
+            else
+            {
+                Debug.Log($"currentUpgrade == null");
+            }
         }
 
         private void OnUpgradeChoosed(UpgradeType upgrade)
         {
-            DisplayUpgradeValues(upgrade);
+            SetUpgrade(upgrade);
+            DisplayUpgradeValues(_currentUpgrade);
             UpdateBars();
         }
 
@@ -129,11 +138,11 @@ namespace Source.Scripts.Ui
 
         private string GetUpgradeValueText(float value) => value != 0 ? $" +{value}" : "";
 
+        public void SetUpgrade(UpgradeType upgrade) => _currentUpgrade = upgrade;
+
         private void DisplayUpgradeValues(UpgradeType upgrade)
         {
-            _currentUpgrade = upgrade;
-
-            switch (upgrade)
+            switch (_currentUpgrade)
             {
                 case FrameUpgrade:
                     var frameUpgrade = _weapon.GetFrameUpgrade();

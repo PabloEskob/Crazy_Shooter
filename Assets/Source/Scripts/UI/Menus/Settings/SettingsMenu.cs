@@ -45,7 +45,6 @@ namespace Source.Scripts.Ui
         private void OnEnable()
         {
             _exitButton.onClick.AddListener(Hide);
-            _nextLanguageButton.onClick.AddListener(SwitchLanguage);
             _soundVolumeSlider.onValueChanged.AddListener(OnSoundSliderValueChanged);
             _musicVolumeSlider.onValueChanged.AddListener(OnMusicSliderValueChanged);
             _cameraSensitivitySlider.onValueChanged.AddListener(OnSensitivitySliderValueChanged);
@@ -55,7 +54,6 @@ namespace Source.Scripts.Ui
         {
             _storage.Save();
             _exitButton.onClick.RemoveListener(Hide);
-            _nextLanguageButton.onClick.RemoveListener(SwitchLanguage);
             _soundVolumeSlider.onValueChanged.RemoveListener(OnSoundSliderValueChanged);
             _musicVolumeSlider.onValueChanged.RemoveListener(OnMusicSliderValueChanged);
             _cameraSensitivitySlider.onValueChanged.RemoveListener(OnSensitivitySliderValueChanged);
@@ -69,11 +67,6 @@ namespace Source.Scripts.Ui
 
         private void OnSensitivitySliderValueChanged(float value) =>
             _storage.SetFloat(SettingsNames.SensitivityKey, value);
-
-        private void SwitchLanguage()
-        {
-            
-        }
 
         private void SetSliderValue(Slider slider, float value) =>
             slider.value = value;
