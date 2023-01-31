@@ -50,8 +50,10 @@ namespace InfimaGames.LowPolyShooterPack
         public void StopRoutine() =>
             StopCoroutine(_coroutine);
 
-        public void StartRotateToFinish(TurningPoint turningPoint) => 
+        public void StartRotateToFinish(TurningPoint turningPoint)
+        {
             _coroutine = StartCoroutine(StartRotateToTarget(turningPoint));
+        }
 
         private IEnumerator StartRotateToTarget(TurningPoint turningPoint)
         {

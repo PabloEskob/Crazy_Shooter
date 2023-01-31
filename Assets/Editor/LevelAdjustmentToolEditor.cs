@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(LevelAdjustmentTool))]
@@ -14,16 +13,16 @@ public class LevelAdjustmentToolEditor : Editor
     private bool _buttonDeleteSpawner;
     private int _numberZone;
 
-    private void OnEnable() => 
+    private void OnEnable() =>
         _levelAdjustmentTool = (LevelAdjustmentTool)target;
 
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        
 
-         ChangeTypeLevelCategory();
-        
+
+        ChangeTypeLevelCategory();
+
         switch (_levelAdjustmentTool._typeLevelCategory)
         {
             case LevelAdjustmentTool.LevelCategory.Company:
@@ -78,6 +77,24 @@ public class LevelAdjustmentToolEditor : Editor
             EditorGUILayout.BeginVertical("box");
             EditorGUILayout.TextField("Name", $"{zone.Name} {zone.Number}");
             EditorGUILayout.IntField("Count Spawners", zone.CountEnemySpawners);
+            EditorGUILayout.Space(10);
+            
+            if (zone.CountEnemySpawners > 0)
+            {
+                EditorGUILayout.Space(10);
+                
+                for (int i = 0; i < zone._enemySpawners.Count; i++)
+                {
+                    EditorGUILayout.ObjectField($"Spawner-{zone._enemySpawners[i].Number}", zone._enemySpawners[i],
+                        typeof(GameObject),
+                        false);
+                    EditorGUILayout.ObjectField($"TurningPoint-{zone._enemySpawners[i].Number}", zone._turningPoints[i],
+                        typeof(GameObject),
+                        false);
+                    EditorGUILayout.Space(10);
+                }
+            }
+            
             _numberZone = zone.Number;
             CreateButtonsSpawners();
             CreateSpawner();
@@ -108,7 +125,7 @@ public class LevelAdjustmentToolEditor : Editor
     {
         if (_buttonDeleteSpawner)
         {
-            _levelAdjustmentTool.DeleteAllEnemySpawner(_numberZone);
+            _levelAdjustmentTool.DeleteEnemySpawner(_numberZone);
         }
     }
 }

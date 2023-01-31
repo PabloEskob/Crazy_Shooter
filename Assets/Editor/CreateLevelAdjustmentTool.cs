@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class CreateLevelAdjustmentTool : MonoBehaviour
 {
     private LevelAdjustmentTool _levelAdjustmentTool;
@@ -10,6 +10,8 @@ public class CreateLevelAdjustmentTool : MonoBehaviour
     public static void Create()
     {
         var gameObject = Resources.Load(AssetPath.PathLevelAdjustment);
-        Instantiate(gameObject, Vector3.zero, Quaternion.identity).name = "LevelAdjustmentTool";
+        var levelTool = (GameObject)Instantiate(gameObject, Vector3.zero, Quaternion.identity);
+        levelTool.tag = "LevelTool";
+        levelTool.name = "LevelAdjustmentTool";
     }
 }

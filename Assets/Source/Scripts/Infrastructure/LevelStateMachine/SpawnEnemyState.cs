@@ -1,14 +1,13 @@
 ﻿public class SpawnEnemyState : ILevelState
 {
-    private readonly LaunchRoom _launchRoom;
     private readonly LevelStateMachine _levelStateMachine;
-    private Room _room;
     private int _value;
+    private readonly LevelAdjustmentTool _levelAdjustmentTool;
 
-    public SpawnEnemyState(LevelStateMachine levelStateMachine, LaunchRoom launchRoom)
+    public SpawnEnemyState(LevelStateMachine levelStateMachine,LevelAdjustmentTool levelAdjustmentTool)
     {
         _levelStateMachine = levelStateMachine;
-        _launchRoom = launchRoom;
+        _levelAdjustmentTool = levelAdjustmentTool;
     }
 
     public void Enter()
@@ -23,9 +22,9 @@
 
     private void SetRoom()
     {
-        if (_launchRoom.Number > _value)
+        if (_levelAdjustmentTool.Number > _value)
         {
-            _launchRoom.StartRoom(_value);
+            _levelAdjustmentTool.StartRoom(_value);
             _levelStateMachine.Enter<TurnStateToTarget>();
         }
         else

@@ -1,20 +1,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class LevelAdjustmentTool : MonoBehaviour
 {
     public List<Zone> _zones;
     public LevelCategory _typeLevelCategory = LevelCategory.Company;
-    public int _countZone;
 
-    public enum LevelCategory
+    private int _countZone;
+    private Zone _zone;
+    private int _numberRoom;
+    private GameObject _container;
+    public int Number => _zones.Count;
+
+    private void Start()
     {
-        Company,
-        Survival
+        foreach (var zone in _zones)
+            zone.Start();
     }
 
-    private Zone _zone;
+    public void Fill(IGameFactory gameFactory)
+    {
+        for (var i = 0; i < _zones.Count; i++)
+        {
+            var zone = _zones[i];
+            zone.FillInEnemySpawner(gameFactory);
+            zone.Number = i;
+        }
+    }
+
+    public Zone GetRoom() =>
+        _zones.Count > _numberRoom ? _zones[_numberRoom] : null;
+
+    public void StartRoom(int value)
+    {
+        _numberRoom = value;
+        StartNewRoom();
+    }
 
     public void AddZone()
     {
@@ -22,81 +44,48 @@ public class LevelAdjustmentTool : MonoBehaviour
         _countZone++;
     }
 
+    public void RemoveAll()
+    {
+        foreach (var zone in _zones)
+        {
+            zone.DeleteAllSpawners();
+        }
+
+        _zones.Clear();
+        _countZone = 0;
+    }
+
     public void DeleteZone()
     {
         if (_zones.Count > 0)
         {
+            _zones[^1].DeleteAllSpawners();
             _zones.RemoveAt(_zones.Count - 1);
             _countZone--;
         }
     }
 
-    public void RemoveAll()
-    {
-        _zones.Clear();
-        _countZone = 0;
-    }
-    
     public void CreateEnemySpawner(int numberZone)
     {
         _zone = _zones.Find(z => z.Number == numberZone);
-        _zone.CreateEnemySpawner();
+        _zone.CreateEnemySpawner(transform);
     }
 
-    public void DeleteAllEnemySpawner(int numberZone)
+    public void DeleteEnemySpawner(int numberZone)
     {
         _zone = _zones.Find(z => z.Number == numberZone);
-        _zone.ClearEnemySpawnerListList();
-    }
-}
-
-[System.Serializable]
-public class Zone
-{
-    public int Number { get; set; }
-
-    public string Name
-    {
-        get => "Zone";
-        set { }
+        _zone.DeleteLastEnemySpawner();
     }
 
-    public int CountEnemySpawners
+    private void StartNewRoom()
     {
-        get => _enemySpawners.Count;
-        set { }
+        var startWave = _zones[_numberRoom].LaunchingWaves;
+        startWave.StartWave();
     }
 
-    private List<EnemySpawner> _enemySpawners;
-    private int _numberEnemySpawner;
-
-    public Zone(int number)
+    public enum LevelCategory
     {
-        Number = number;
-
-        _numberEnemySpawner = 0;
-        _enemySpawners = new List<EnemySpawner>();
-    }
-
-    public void CreateEnemySpawner()
-    {
-        var prefabEnemySpawner = Resources.Load(AssetPath.PathSpawner);
-        var gameObject = (GameObject)Object.Instantiate(prefabEnemySpawner);
-        var enemySpawner = gameObject.GetComponent<EnemySpawner>();
-        enemySpawner.SetNumber(_numberEnemySpawner);
-        enemySpawner.name = $"EnemySpawner{Number}-{_numberEnemySpawner}";
-        _enemySpawners.Add(enemySpawner.GetComponent<EnemySpawner>());
-        _numberEnemySpawner++;
-    }
-
-    public void ClearEnemySpawnerListList()
-    {
-        foreach (var enemySpawner in _enemySpawners)
-        {
-           Object.DestroyImmediate(enemySpawner.gameObject); 
-        }
-        
-        _enemySpawners.Clear();
-        _numberEnemySpawner = 0;
+        Company,
+        Survival
     }
 }
