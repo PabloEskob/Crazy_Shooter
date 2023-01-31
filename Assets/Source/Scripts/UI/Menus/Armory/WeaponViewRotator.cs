@@ -15,7 +15,10 @@ public class WeaponViewRotator : MonoBehaviour
     [SerializeField] private bool _canRotate = false;
     [SerializeField] private float _freezeTime;
     [SerializeField] private Quaternion _defaultRotation = new Quaternion(0, -90, 0, 0);
-    
+    [SerializeField] private Transform _container;
+
+    public Vector3 _centerOfRotation;
+
     private List<WeaponPlate> _weaponPlates;
     private Weapon _currentWeapon;
     private readonly Timer _timer = new Timer();
@@ -29,7 +32,8 @@ public class WeaponViewRotator : MonoBehaviour
     {
         _weaponPlates = _platesView.Plates.ToList();
         _currentWeapon = _weaponPlates[0].Weapon;
-        _currentWeapon.transform.rotation = _defaultRotation;
+        //PutWeapon(_currentWeapon);
+        _container.rotation = _defaultRotation;
 
         foreach (WeaponPlate weaponPlate in _weaponPlates)
             weaponPlate.WeaponSelected += OnWeaponSelected;
@@ -57,6 +61,7 @@ public class WeaponViewRotator : MonoBehaviour
         SetCurrentWeapon(weapon);
         RestRotation(weapon);
         _timer.Start(_freezeTime);
+        //PutWeapon(weapon);
     }
 
     private void Start() => 
@@ -67,7 +72,7 @@ public class WeaponViewRotator : MonoBehaviour
         _timer.Tick(Time.deltaTime);
 
         if (_canRotate && _weaponPlates.Count > 0)
-            _currentWeapon.transform.Rotate(Vector3.up, _autoRotationSpeed);
+            _container.Rotate(Vector3.up, _autoRotationSpeed);
 
         if (Input.GetMouseButtonUp(0))
             _timer.Start(_freezeTime);
@@ -81,12 +86,12 @@ public class WeaponViewRotator : MonoBehaviour
         _timer.Stop();
 
         if (Input.GetAxis(MouseXAxis) != 0)
-            _currentWeapon.transform.Rotate(Vector3.up, XAxis);
+            _container.Rotate(Vector3.up, XAxis);
     }
 
     private void RestRotation(Weapon weapon)
     {
-        weapon.transform.rotation = _defaultRotation;
+        _container.localRotation = _defaultRotation;
     }
 
     private void OnTimerCompleted() => 
@@ -97,4 +102,7 @@ public class WeaponViewRotator : MonoBehaviour
 
     public void SetCurrentWeapon(Weapon weapon) => 
         _currentWeapon = weapon;
+
+    public void PutWeapon(Weapon weapon) => 
+        weapon.transform.SetParent(_container);
 }

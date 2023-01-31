@@ -13,11 +13,6 @@ namespace Source.Scripts.Ui
         [SerializeField] private List<UpgradeType> _upgradeTypes;
         [SerializeField] private UpgradePanel _upgradePanel;
 
-        [Header("Bar Settings")]
-
-
-        private Weapon _weapon;
-
         [Header("Current values")]
         [SerializeField] private TMP_Text _damageValue;
         [SerializeField] private TMP_Text _fireRateValue;
@@ -52,6 +47,7 @@ namespace Source.Scripts.Ui
         [SerializeField] Image _currentMagazineSizeValue;
         [SerializeField] Image _upgradedMagazineSizeValue;
 
+        private Weapon _weapon;
         private UpgradeType _currentUpgrade;
         private float _damage;
         private float _fireRate;
@@ -111,8 +107,6 @@ namespace Source.Scripts.Ui
             DisplayCurrentStats();
             DisplayUpgradeValues();
             UpdateBars();
-
-            Debug.Log("On Weapon Selected");
         }
 
         private void DisplayCurrentStats()
@@ -126,12 +120,14 @@ namespace Source.Scripts.Ui
         private void DisplayUpgradeValues()
         {
             var frameUpgrade = _weapon.GetFrameUpgrade();
-            _upgradeDamageValue.text = $" +{frameUpgrade.Damage}";
-            _upgradeFireRateValue.text = $" +{frameUpgrade.FireRate}";
-            _upgradeReloadValue.text = $" +{frameUpgrade.Reload}";
-            _upgradeMagazineSizeValue.text = $" +{frameUpgrade.MagazineSize}";
+            _upgradeDamageValue.text = GetUpgradeValueText(frameUpgrade.Damage);
+            _upgradeFireRateValue.text = GetUpgradeValueText(frameUpgrade.FireRate);
+            _upgradeReloadValue.text = GetUpgradeValueText(frameUpgrade.Reload);
+            _upgradeMagazineSizeValue.text = GetUpgradeValueText(frameUpgrade.MagazineSize);
             SetValues(frameUpgrade.Damage, frameUpgrade.FireRate, frameUpgrade.Reload, frameUpgrade.MagazineSize);
         }
+
+        private string GetUpgradeValueText(float value) => value != 0 ? $" +{value}" : "";
 
         private void DisplayUpgradeValues(UpgradeType upgrade)
         {
@@ -141,42 +137,42 @@ namespace Source.Scripts.Ui
             {
                 case FrameUpgrade:
                     var frameUpgrade = _weapon.GetFrameUpgrade();
-                    _upgradeDamageValue.text = $" +{frameUpgrade.Damage}";
-                    _upgradeFireRateValue.text = $" +{frameUpgrade.FireRate}";
-                    _upgradeReloadValue.text = $" +{frameUpgrade.Reload}";
-                    _upgradeMagazineSizeValue.text = $" +{frameUpgrade.MagazineSize}";
+                    _upgradeDamageValue.text = GetUpgradeValueText(frameUpgrade.Damage);
+                    _upgradeFireRateValue.text = GetUpgradeValueText(frameUpgrade.FireRate);
+                    _upgradeReloadValue.text = GetUpgradeValueText(frameUpgrade.Reload);
+                    _upgradeMagazineSizeValue.text = GetUpgradeValueText(frameUpgrade.MagazineSize);
                     SetValues(frameUpgrade.Damage, frameUpgrade.FireRate, frameUpgrade.Reload, frameUpgrade.MagazineSize);
                     break;
                 case MuzzleUpgrade:
                     var muzzleUpgrade = _weapon.GetMuzzleUpgrade();
-                    _upgradeDamageValue.text = $" +{muzzleUpgrade.Damage}";
-                    _upgradeFireRateValue.text = $" +{muzzleUpgrade.FireRate}";
-                    _upgradeReloadValue.text = $" +{muzzleUpgrade.Reload}";
-                    _upgradeMagazineSizeValue.text = $" +{muzzleUpgrade.MagazineSize}";
+                    _upgradeDamageValue.text = GetUpgradeValueText(muzzleUpgrade.Damage);
+                    _upgradeFireRateValue.text = GetUpgradeValueText(muzzleUpgrade.FireRate);
+                    _upgradeReloadValue.text = GetUpgradeValueText(muzzleUpgrade.Reload);
+                    _upgradeMagazineSizeValue.text = GetUpgradeValueText(muzzleUpgrade.MagazineSize);
                     SetValues(muzzleUpgrade.Damage, muzzleUpgrade.FireRate, muzzleUpgrade.Reload, muzzleUpgrade.MagazineSize);
                     break;
                 case ScopeUpgrade:
                     var scopeUpgrade = _weapon.GetScopeUpgrade();
-                    _upgradeDamageValue.text = $" +{scopeUpgrade.Damage}";
-                    _upgradeFireRateValue.text = $" +{scopeUpgrade.FireRate}";
-                    _upgradeReloadValue.text = $" +{scopeUpgrade.Reload}";
-                    _upgradeMagazineSizeValue.text = $" +{scopeUpgrade.MagazineSize}";
+                    _upgradeDamageValue.text = GetUpgradeValueText(scopeUpgrade.Damage);
+                    _upgradeFireRateValue.text = GetUpgradeValueText(scopeUpgrade.FireRate);
+                    _upgradeReloadValue.text = GetUpgradeValueText(scopeUpgrade.Reload);
+                    _upgradeMagazineSizeValue.text = GetUpgradeValueText(scopeUpgrade.MagazineSize);
                     SetValues(scopeUpgrade.Damage, scopeUpgrade.FireRate, scopeUpgrade.Reload, scopeUpgrade.MagazineSize);
                     break;
                 case BulletsUpgrade:
                     var bulletUpgrade = _weapon.GetBulletsUpgrade();
-                    _upgradeDamageValue.text = $" +{bulletUpgrade.Damage}";
-                    _upgradeFireRateValue.text = $" +{bulletUpgrade.FireRate}";
-                    _upgradeReloadValue.text = $" +{bulletUpgrade.Reload}";
-                    _upgradeMagazineSizeValue.text = $" +{bulletUpgrade.MagazineSize}";
+                    _upgradeDamageValue.text = GetUpgradeValueText(bulletUpgrade.Damage);
+                    _upgradeFireRateValue.text = GetUpgradeValueText(bulletUpgrade.FireRate);
+                    _upgradeReloadValue.text = GetUpgradeValueText(bulletUpgrade.Reload);
+                    _upgradeMagazineSizeValue.text = GetUpgradeValueText(bulletUpgrade.MagazineSize);
                     SetValues(bulletUpgrade.Damage, bulletUpgrade.FireRate, bulletUpgrade.Reload, bulletUpgrade.MagazineSize);
                     break;
                 case MagazineUpgrade:
                     var magazineUpgrade = _weapon.GetMagazineUpgrade();
-                    _upgradeDamageValue.text = $" +{magazineUpgrade.Damage}";
-                    _upgradeFireRateValue.text = $" +{magazineUpgrade.FireRate}";
-                    _upgradeReloadValue.text = $" +{magazineUpgrade.Reload}";
-                    _upgradeMagazineSizeValue.text = $" +{magazineUpgrade.MagazineSize}";
+                    _upgradeDamageValue.text = GetUpgradeValueText(magazineUpgrade.Damage);
+                    _upgradeFireRateValue.text = GetUpgradeValueText(magazineUpgrade.FireRate);
+                    _upgradeReloadValue.text = GetUpgradeValueText(magazineUpgrade.Reload);
+                    _upgradeMagazineSizeValue.text = GetUpgradeValueText(magazineUpgrade.MagazineSize);
                     SetValues(magazineUpgrade.Damage, magazineUpgrade.FireRate, magazineUpgrade.Reload, magazineUpgrade.MagazineSize);
                     break;
             }

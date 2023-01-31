@@ -40,7 +40,7 @@ public class DailyReward : MonoBehaviour
         if (_lastRewardDay == DateTime.Today)
             return;
 
-        if (_lastLogin == DateTime.Today)
+        if (_lastLogin == DateTime.Today - TimeSpan.FromDays(1))
         {
             _currentIndex = (_currentIndex + 1) % _rewards.Length;
             GiveReward(_rewards[_currentIndex]);
@@ -57,9 +57,9 @@ public class DailyReward : MonoBehaviour
 
     private void SetData()
     {
+        _lastLogin = DateTime.Today;
         _storage.SetInt(RewardIndexKey, _currentIndex);
-        _storage.SetLastLoginDate();
-        _storage.SetString(LastLoginDayKey, DateTime.Today.ToString());
+        _storage.SetString(LastLoginDayKey, _lastLogin.ToString());
         _storage.SetString(LastRewardDayKey, _lastRewardDay.ToString());
     }
 

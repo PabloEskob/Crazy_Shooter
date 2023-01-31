@@ -17,6 +17,7 @@ public class BuyButton : MonoBehaviour
     [SerializeField] private Text _priceText;
     [SerializeField] private Text _buttonText;
     [SerializeField] private SoftCurrencyHolder _softCurrencyHolder;
+    [SerializeField] private Image _currencyIcon;
 
     private Weapon _weapon;
     private UpgradeType _currentUpgrade;
@@ -42,7 +43,7 @@ public class BuyButton : MonoBehaviour
         foreach (var upgrade in _upgradeTypes)
             upgrade.UpgradeChoosed += OnUpgradeChoosed;
 
-        ChengeButtonInteractable(_weapon.GetFrameUpgrade().Level);
+        ChengeButtonView(_weapon.GetFrameUpgrade().Level);
         OnUpgradeChoosed(_defaultUpgrade);
     }
 
@@ -58,7 +59,7 @@ public class BuyButton : MonoBehaviour
 
     private void OnWeaponBought()
     {
-        SetPriceText();
+        ChangePrice();
 
         _storage = AllServices.Container.Single<IStorage>();
 
@@ -78,12 +79,12 @@ public class BuyButton : MonoBehaviour
         _weapon = weapon;
         _weapon.Bought += OnWeaponBought;
 
-        SetPriceText();
+        ChangePrice();
         DisplayPriceText();
-        ChengeButtonInteractable(_weapon.GetFrameUpgrade().Level);
+        ChengeButtonView(_weapon.GetFrameUpgrade().Level);
     }
 
-    private void SetPriceText()
+    private void ChangePrice()
     {
         if (_weapon.IsBought())
             SetPrice(_weapon.GetFrameUpgrade().Price);
@@ -99,27 +100,33 @@ public class BuyButton : MonoBehaviour
         {
             case FrameUpgrade:
                 SetPrice(_weapon.GetFrameUpgrade().Price);
-                ChengeButtonInteractable(_weapon.GetFrameUpgrade().Level);
+                DisplayPriceText();
+                ChengeButtonView(_weapon.GetFrameUpgrade().Level);
                 break;
             case MuzzleUpgrade:
                 SetPrice(_weapon.GetMuzzleUpgrade().Price);
-                ChengeButtonInteractable(_weapon.GetMuzzleUpgrade().Level);
+                DisplayPriceText();
+                ChengeButtonView(_weapon.GetMuzzleUpgrade().Level);
                 break;
             case ScopeUpgrade:
                 SetPrice(_weapon.GetScopeUpgrade().Price);
-                ChengeButtonInteractable(_weapon.GetScopeUpgrade().Level);
+                DisplayPriceText();
+                ChengeButtonView(_weapon.GetScopeUpgrade().Level);
                 break;
             case BulletsUpgrade:
                 SetPrice(_weapon.GetBulletsUpgrade().Price);
-                ChengeButtonInteractable(_weapon.GetBulletsUpgrade().Level);
+                DisplayPriceText();
+                ChengeButtonView(_weapon.GetBulletsUpgrade().Level);
                 break;
             case MagazineUpgrade:
                 SetPrice(_weapon.GetMagazineUpgrade().Price);
-                ChengeButtonInteractable(_weapon.GetMagazineUpgrade().Level);
+                DisplayPriceText();
+                ChengeButtonView(_weapon.GetMagazineUpgrade().Level);
                 break;
         }
 
-        DisplayPriceText();
+        //DisplayPriceText();
+
     }
 
     private void DisplayPriceText() =>
@@ -131,7 +138,22 @@ public class BuyButton : MonoBehaviour
     public void ChangeButtonText(string text) =>
         _buttonText.text = text;
 
-    public void ChengeButtonInteractable(int level) =>
-        _button.interactable = level != _weapon.MaxUpgradeLevel;
 
+    public void ChengeButtonView(int level)
+    {
+        //_button.interactable = level != _weapon.MaxUpgradeLevel;
+        if (level != _weapon.MaxUpgradeLevel)
+        {
+            _button.interactable = true;
+            _priceText.gameObject.SetActive(true);
+            _currencyIcon.gameObject.SetActive(true);
+        }
+        else
+        {
+            _button.interactable = false;
+            _priceText.gameObject.SetActive(false);
+            _currencyIcon.gameObject.SetActive(false);
+            ChangeButtonText("MAX");
+        }
+    }
 }
