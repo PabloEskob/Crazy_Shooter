@@ -607,7 +607,7 @@ MonoBehaviour:
   weaponName: Handgun 01
   multiplierMovementSpeed: 1.15
   attachmentManager: {fileID: 2551230045697249922}
-  automatic: 0
+  automatic: 1
   boltAction: 0
   shotCount: 1
   spread: 0.25

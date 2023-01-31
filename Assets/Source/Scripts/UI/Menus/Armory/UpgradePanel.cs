@@ -28,6 +28,7 @@ public class UpgradePanel : MonoBehaviour
 
     private void OnEnable()
     {
+
         _statsDisplay.ValuesSet += OnValuesSet;
         _buyButton.Button.onClick.AddListener(OnBuyButtonClick);
 
@@ -96,6 +97,8 @@ public class UpgradePanel : MonoBehaviour
 
         foreach (UpgradeType typeButton in _upgradeTypeButtons)
             typeButton.SetText();
+
+        //_buyButton.ChengeButtonView(weapon);
     }
 
     private void DisplayText(Weapon weapon)

@@ -21,7 +21,9 @@ namespace Source.Scripts.Ui
         private GameStateMachine _stateMachine;
         private IStorage _storage;
 
-        public void Cunstruct(SceneLoader sceneLoader, GameStateMachine stateMachine, IStorage storage)
+        public IStorage Storage => _storage;
+
+        public void Construct(SceneLoader sceneLoader, GameStateMachine stateMachine, IStorage storage)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -32,7 +34,7 @@ namespace Source.Scripts.Ui
         {
             _upgradeMenuButton.onClick.AddListener(OpenUpgradeMenu);
             _settingsMenuButton.onClick.AddListener(OpenSettingsMenu);
-            
+
             foreach (var button in _startLevelButtons)
                 button.Clicked += StartLevel;
         }
@@ -46,7 +48,7 @@ namespace Source.Scripts.Ui
                 button.Clicked += StartLevel;
         }
 
-        private void OpenSettingsMenu() => 
+        private void OpenSettingsMenu() =>
             _settingsMenu.Show();
 
         private void OpenUpgradeMenu() =>
