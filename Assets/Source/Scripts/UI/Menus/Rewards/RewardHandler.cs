@@ -1,10 +1,5 @@
 ﻿using Agava.YandexGames;
 using Assets.Source.Scripts.Character;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +7,8 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
 {
     public class RewardHandler : MonoBehaviour
     {
-        [SerializeField] private Button _sofrRewardButton;
-        [SerializeField] private Button _grenadeRewardButton;
+        [SerializeField] private AdvertisementButton _softRewardButton;
+        [SerializeField] private AdvertisementButton _grenadeRewardButton;
         [SerializeField] private int _softRewardAmount;
         [SerializeField] private PauseGameHandler _pauseGameHandler;
         [SerializeField] private CurrencyHolder _currencyHolder;
@@ -22,15 +17,15 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
 
         private void OnEnable()
         {
-            _sofrRewardButton.onClick.AddListener(OnSoftButtonClick);
-            _grenadeRewardButton.onClick.AddListener(OnGrenadeButtonClick);
+            _softRewardButton.ButtonClicked += OnSoftButtonClick;
+            _grenadeRewardButton.ButtonClicked += OnGrenadeButtonClick;
             _roulette.Stopped += OnRouletteStopped;
         }
 
         private void OnDisable()
         {
-            _sofrRewardButton.onClick.RemoveListener(OnSoftButtonClick);
-            _grenadeRewardButton.onClick.RemoveListener(OnGrenadeButtonClick);
+            _softRewardButton.ButtonClicked -= OnSoftButtonClick;
+            _grenadeRewardButton.ButtonClicked -= OnGrenadeButtonClick;
             _roulette.Stopped -= OnRouletteStopped;
         }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets.Source.Scripts.UI.Menus.Armory;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class UpgradePanel : MonoBehaviour
 {
     [SerializeField] private List<UpgradeType> _upgradeTypeButtons;
     [SerializeField] private BuyButton _buyButton;
+    [SerializeField] private UpgradeButtonAd _upgradeButtonAd;
     [SerializeField] private WeaponStatsDisplay _statsDisplay;
     [SerializeField] private SoftCurrencyHolder _softCurrencyHolder;
     [SerializeField] private Text _buyText;
@@ -31,8 +33,10 @@ public class UpgradePanel : MonoBehaviour
 
         _statsDisplay.ValuesSet += OnValuesSet;
         _buyButton.Button.onClick.AddListener(OnBuyButtonClick);
-
+        _upgradeButtonAd.AdShown += OnAdShown;
         _defaultUpgradeType = _upgradeTypeButtons[0];
+        _statsDisplay.SetUpgrade(_defaultUpgradeType);
+        _buyButton.SetUpgrade(_defaultUpgradeType);
         OnUpgradeChoosed(_defaultUpgradeType);
 
         foreach (UpgradeType button in _upgradeTypeButtons)
@@ -45,6 +49,7 @@ public class UpgradePanel : MonoBehaviour
     {
         _statsDisplay.ValuesSet -= OnValuesSet;
         _buyButton.Button.onClick.RemoveListener(OnBuyButtonClick);
+        _upgradeButtonAd.AdShown -= OnAdShown;
 
         foreach (UpgradeType button in _upgradeTypeButtons)
             button.UpgradeChoosed -= OnUpgradeChoosed;
@@ -127,6 +132,13 @@ public class UpgradePanel : MonoBehaviour
                 OnWeaponSet(_currentWeapon);
             }
         }
+    }
+
+    private void OnAdShown()
+    {
+        _currentWeapon.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
+        _currentWeapon.UpdateStatsToData();
+        Upgraded?.Invoke();
     }
 
     public void UpdateTexts()

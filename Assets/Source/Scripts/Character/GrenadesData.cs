@@ -12,9 +12,10 @@ namespace Assets.Source.Scripts.Character
 
         private const string GrenadeDataKey = "grenadeCount";
 
+        public int GrenadeCount => _grenadeCount;
         public int GrenadeMaxCount { get; } = 10;
 
-        public event Action<int> GrenadeCountSetted;
+        public event Action<int> GrenadeCountChanged;
 
         private void Start()
         {
@@ -38,12 +39,13 @@ namespace Assets.Source.Scripts.Character
 
         public void TryAddGrenade(int count)
         {
-            if (count < GrenadeMaxCount)
+            if (count <= GrenadeMaxCount)
                 _grenadeCount += count;
 
             if (_grenadeCount > GrenadeMaxCount)
                 _grenadeCount = GrenadeMaxCount;
 
+            GrenadeCountChanged?.Invoke(_grenadeCount);
             Save();
         }
 
@@ -56,8 +58,7 @@ namespace Assets.Source.Scripts.Character
         public void SetGrenadesCount(int count)
         {
             _grenadeCount = count;
-            GrenadeCountSetted?.Invoke(_grenadeCount);
+            GrenadeCountChanged?.Invoke(_grenadeCount);
         }
     }
-
 }

@@ -43,7 +43,7 @@ public class BuyButton : MonoBehaviour
         foreach (var upgrade in _upgradeTypes)
             upgrade.UpgradeChoosed += OnUpgradeChoosed;
 
-        ChengeButtonView(_weapon.GetFrameUpgrade().Level);
+        ChangeButtonView(_weapon.GetFrameUpgrade().Level);
         OnUpgradeChoosed(_defaultUpgrade);
     }
 
@@ -81,7 +81,7 @@ public class BuyButton : MonoBehaviour
 
         ChangePrice();
         DisplayPriceText();
-        ChengeButtonView(_weapon.GetFrameUpgrade().Level);
+        ChangeButtonView(_weapon.GetFrameUpgrade().Level);
     }
 
     private void ChangePrice()
@@ -94,40 +94,42 @@ public class BuyButton : MonoBehaviour
 
     private void OnUpgradeChoosed(UpgradeType upgrade)
     {
-        _currentUpgrade = upgrade;
+        SetUpgrade(upgrade);
 
-        switch (upgrade)
+        switch (_currentUpgrade)
         {
             case FrameUpgrade:
                 SetPrice(_weapon.GetFrameUpgrade().Price);
                 DisplayPriceText();
-                ChengeButtonView(_weapon.GetFrameUpgrade().Level);
+                ChangeButtonView(_weapon.GetFrameUpgrade().Level);
                 break;
             case MuzzleUpgrade:
                 SetPrice(_weapon.GetMuzzleUpgrade().Price);
                 DisplayPriceText();
-                ChengeButtonView(_weapon.GetMuzzleUpgrade().Level);
+                ChangeButtonView(_weapon.GetMuzzleUpgrade().Level);
                 break;
             case ScopeUpgrade:
                 SetPrice(_weapon.GetScopeUpgrade().Price);
                 DisplayPriceText();
-                ChengeButtonView(_weapon.GetScopeUpgrade().Level);
+                ChangeButtonView(_weapon.GetScopeUpgrade().Level);
                 break;
             case BulletsUpgrade:
                 SetPrice(_weapon.GetBulletsUpgrade().Price);
                 DisplayPriceText();
-                ChengeButtonView(_weapon.GetBulletsUpgrade().Level);
+                ChangeButtonView(_weapon.GetBulletsUpgrade().Level);
                 break;
             case MagazineUpgrade:
                 SetPrice(_weapon.GetMagazineUpgrade().Price);
                 DisplayPriceText();
-                ChengeButtonView(_weapon.GetMagazineUpgrade().Level);
+                ChangeButtonView(_weapon.GetMagazineUpgrade().Level);
                 break;
         }
 
         //DisplayPriceText();
 
     }
+
+    public void SetUpgrade(UpgradeType upgrade) => _currentUpgrade = upgrade;
 
     private void DisplayPriceText() =>
         _priceText.text = CurrentPrice == 0 ? FreeText : CurrentPrice.ToString();
@@ -139,9 +141,8 @@ public class BuyButton : MonoBehaviour
         _buttonText.text = text;
 
 
-    public void ChengeButtonView(int level)
+    public void ChangeButtonView(int level)
     {
-        //_button.interactable = level != _weapon.MaxUpgradeLevel;
         if (level != _weapon.MaxUpgradeLevel)
         {
             _button.interactable = true;

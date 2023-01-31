@@ -11,7 +11,6 @@ namespace Source.Scripts.Ui
         protected override void OnWeaponSet(Weapon weapon)
         {
             Weapon = weapon;
-            Debug.Log(UpgradeName.text);
             SetText();
         }
 

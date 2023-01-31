@@ -13,6 +13,8 @@ namespace Assets.Source.Scripts.Localization
         [SerializeField] private Button _previousLanguageButton;
         [SerializeField] private LeanLanguage[] _languages;
 
+        public event Action LanguageChanged;
+
         private void OnEnable()
         {
             _nextLanguageButton.onClick.AddListener(OnNextButtonClick);
@@ -38,6 +40,7 @@ namespace Assets.Source.Scripts.Localization
                         index = 0;
 
                     SetLanguage(_languages[index].name);
+                    LanguageChanged?.Invoke();
                     return;
                 }
             }
@@ -55,6 +58,7 @@ namespace Assets.Source.Scripts.Localization
                         index = _languages.Length - 1;
 
                     SetLanguage(_languages[index].name);
+                    LanguageChanged?.Invoke();
                     return;
                 }
             }
