@@ -6,17 +6,15 @@ using Object = UnityEngine.Object;
 [Serializable]
 public class Zone
 {
+    public int Number;
+    public int NumberEnemySpawner;
     public List<EnemySpawner> _enemySpawners;
     public List<TurningPoint> _turningPoints;
-
     private LaunchingWaves _launchingWaves;
-
-    public LaunchingWaves LaunchingWaves => _launchingWaves;
-    public int Number { get; set; }
-    public int NumberEnemySpawner { get; set; }
-
     private int _count;
     private EnemySpawner _enemySpawner;
+
+    public LaunchingWaves LaunchingWaves => _launchingWaves;
 
     public string Name
     {
@@ -29,6 +27,7 @@ public class Zone
         get => _enemySpawners.Count;
         set { }
     }
+
 
     public event Action OnRoomCleared;
     public event Action OnNextWave;
@@ -49,7 +48,7 @@ public class Zone
             Object.DestroyImmediate(DeleteEnemySpawners(^1).gameObject);
             _turningPoints.RemoveAt(_turningPoints.Count - 1);
             _enemySpawners.RemoveAt(_enemySpawners.Count - 1);
-            NumberEnemySpawner--;
+           NumberEnemySpawner--;
         }
     }
 

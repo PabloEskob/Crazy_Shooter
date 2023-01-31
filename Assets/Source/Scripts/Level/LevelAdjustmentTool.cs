@@ -21,12 +21,8 @@ public class LevelAdjustmentTool : MonoBehaviour
 
     public void Fill(IGameFactory gameFactory)
     {
-        for (var i = 0; i < _zones.Count; i++)
-        {
-            var zone = _zones[i];
+        foreach (var zone in _zones) 
             zone.FillInEnemySpawner(gameFactory);
-            zone.Number = i;
-        }
     }
 
     public Zone GetRoom() =>

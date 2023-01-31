@@ -25,13 +25,13 @@ public class AttackState : ILevelState
 
     public void Exit()
     {
+        _player.PlayerRotate.CameraLook.StopRoutine();
         _zone.OnRoomCleared -= RoomClear;
         _zone.OnNextWave -= ClearWave;
     }
 
     private void RoomClear()
     {
-        _player.PlayerRotate.CameraLook.StopRoutine();
         _levelStateMachine.Enter<MoveState>();
     }
 

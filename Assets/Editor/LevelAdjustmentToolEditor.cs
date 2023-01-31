@@ -1,4 +1,5 @@
 ﻿using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [CustomEditor(typeof(LevelAdjustmentTool))]
@@ -33,7 +34,16 @@ public class LevelAdjustmentToolEditor : Editor
                 break;
         }
 
+        if (GUI.changed)
+            SetObjectDirty(_levelAdjustmentTool.gameObject);
+
         serializedObject.ApplyModifiedProperties();
+    }
+
+    private void SetObjectDirty(GameObject gameObject)
+    {
+        EditorUtility.SetDirty(gameObject);
+        EditorSceneManager.MarkSceneDirty(gameObject.scene);
     }
 
     private void ChangeTypeLevelCategory()
@@ -76,13 +86,14 @@ public class LevelAdjustmentToolEditor : Editor
         {
             EditorGUILayout.BeginVertical("box");
             EditorGUILayout.TextField("Name", $"{zone.Name} {zone.Number}");
+          
             EditorGUILayout.IntField("Count Spawners", zone.CountEnemySpawners);
             EditorGUILayout.Space(10);
-            
+
             if (zone.CountEnemySpawners > 0)
             {
                 EditorGUILayout.Space(10);
-                
+
                 for (int i = 0; i < zone._enemySpawners.Count; i++)
                 {
                     EditorGUILayout.ObjectField($"Spawner-{zone._enemySpawners[i].Number}", zone._enemySpawners[i],
@@ -94,7 +105,7 @@ public class LevelAdjustmentToolEditor : Editor
                     EditorGUILayout.Space(10);
                 }
             }
-            
+
             _numberZone = zone.Number;
             CreateButtonsSpawners();
             CreateSpawner();
