@@ -12,10 +12,15 @@ namespace Source.Scripts.Ui
         [SerializeField] private Button _weaponButton;
         [SerializeField] private Weapon _weapon;
         [SerializeField] private Image _weaponImage;
+        [SerializeField] private Image _backgroundImage;
 
         [Header("Button Color Settings")]
         [SerializeField] private Color32 _activeButtonColor = new Color(100, 58, 100);
         [SerializeField] private Color32 _inactiveButtonColor = new Color(36, 16, 100);
+
+        [Header("Background Color Settings")]
+        [SerializeField] private Color32 _activeBackgroundColor = new Color(70, 190, 70, 255);
+        [SerializeField] private Color32 _inactiveBackgroundColor = new Color(255, 255, 255, 150);
 
         private bool _isSelected;
 
@@ -43,8 +48,11 @@ namespace Source.Scripts.Ui
             return colorBlock;
         }
 
-        private void ChangeButtonView() => 
+        private void ChangeButtonView()
+        {
             _weaponButton.colors = GetColorBlock(_isSelected ? _activeButtonColor : _inactiveButtonColor);
+            _backgroundImage.color = _isSelected ? _activeBackgroundColor : _inactiveBackgroundColor;
+        }
 
         public void SwitchButtonState(bool value)
         {

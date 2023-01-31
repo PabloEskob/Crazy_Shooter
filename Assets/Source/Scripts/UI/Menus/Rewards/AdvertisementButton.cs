@@ -1,15 +1,13 @@
 ﻿using Assets.Source.Scripts.Localization;
-using Lean.Localization;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Source.Scripts.UI.Menus.Rewards
 {
-    public abstract class AdvertisementButton : MonoBehaviour
+    public abstract class AdvertisementButton : Button
     {
-        [SerializeField] protected Button Button;
-        [SerializeField] private Text _buttonText;
+        [SerializeField] private Text _text;
         [SerializeField] private Text _defaultText;
         [SerializeField] private float _time;
         [SerializeField] private LanguageSwitcher _languageSwitcher;
@@ -18,37 +16,49 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
 
         public event Action ButtonClicked;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            if (Application.isEditor) return;
+
             _timer = new Timer();
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
+            if (Application.isEditor) return;
+
             _timer.Started += OnTimerStart;
             _timer.Completed += OnTimerCompleted;
             _timer.Updated += OnTimerUpdated;
-            Button.onClick.AddListener(OnAdButtonClick);
+            onClick.AddListener(OnAdButtonClick);
             _languageSwitcher.LanguageChanged += OnLaguageChanged;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
+            if (Application.isEditor) return;
+
             _timer.Started -= OnTimerStart;
             _timer.Completed -= OnTimerCompleted;
             _timer.Updated -= OnTimerUpdated;
-            Button.onClick.RemoveListener(OnAdButtonClick);
+            onClick.RemoveListener(OnAdButtonClick);
             _languageSwitcher.LanguageChanged -= OnLaguageChanged;
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+            if (Application.isEditor) return;
+
             SetText(_defaultText.text);
         }
 
-        private void Update() => _timer.Tick(Time.deltaTime);
+        private void Update() => _timer?.Tick(Time.deltaTime);
 
-        private void OnTimerStart() => Button.interactable = false;
+        private void OnTimerStart() => interactable = false;
 
         private void OnTimerUpdated() => DisplayTime();
 
@@ -57,7 +67,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         private void OnTimerCompleted()
         {
             SetText(_defaultText.text);
-            Button.interactable = true;
+            interactable = true;
             _timer.Stop();
         }
 
@@ -67,7 +77,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
             _timer.Start(_time);
         }
 
-        private void SetText(string text) => _buttonText.text = text;
+        private void SetText(string text) => _text.text = text;
 
         private void DisplayTime()
         {
