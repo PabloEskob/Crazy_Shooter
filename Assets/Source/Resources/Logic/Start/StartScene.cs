@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class StartScene : MonoBehaviour
 {
-    [SerializeField] private Movement _movement;
-
     private GameStatusScreen _gameStatusScreen;
-    private LaunchRoom _launchRoom;
     private StaticDataService _staticDataEnemy;
     private IGameFactory _gameFactory;
     private IAssetProvider _assetProvider;
     private int _number;
     private FinishLevel _finishLevel;
+    private LevelAdjustmentTool _levelAdjustmentTool;
 
-    private void OnDisable() => 
+    private void OnDisable()
+    {
         _finishLevel.OnEndedLevel -= LaunchVictoryScreen;
+        
+        foreach (var zone in _levelAdjustmentTool._zones)
+        {
+            zone.OnDisable();
+        }
+    }
 
-    public void Construct(IGameFactory gameFactory, LaunchRoom launchRoom, GameStatusScreen gameStatusScreen,
-        FinishLevel finishLevel)
+    public void Construct(IGameFactory gameFactory, GameStatusScreen gameStatusScreen,
+        FinishLevel finishLevel,LevelAdjustmentTool levelAdjustmentTool)
     {
         _gameStatusScreen = gameStatusScreen;
         _gameFactory = gameFactory;
-        _launchRoom = launchRoom;
+        _levelAdjustmentTool = levelAdjustmentTool;
         _finishLevel = finishLevel;
         _finishLevel.OnEndedLevel += LaunchVictoryScreen;
         InitGameWorld();
@@ -36,9 +41,9 @@ public class StartScene : MonoBehaviour
         _assetProvider = AllServices.Container.Single<IAssetProvider>();
         _staticDataEnemy = new StaticDataService();
     }
-
+    
     private void InitGameWorld() =>
-        _launchRoom.Fill(_gameFactory);
+        _levelAdjustmentTool.Fill(_gameFactory);
 
     
 }

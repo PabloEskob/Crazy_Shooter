@@ -1,20 +1,20 @@
-﻿
-public class TurnStateToTarget : ILevelState
+﻿public class TurnStateToTarget : ILevelState
 {
     private readonly LevelStateMachine _levelStateMachine;
     private readonly Player _player;
-    private readonly LaunchRoom _launchRoom;
+    private readonly LevelAdjustmentTool _levelAdjustmentTool;
 
-    public TurnStateToTarget(LevelStateMachine levelStateMachine, Player player, LaunchRoom launchRoom)
+    public TurnStateToTarget(LevelStateMachine levelStateMachine, Player player,
+        LevelAdjustmentTool levelAdjustmentTool)
     {
-        _launchRoom = launchRoom;
         _levelStateMachine = levelStateMachine;
         _player = player;
+        _levelAdjustmentTool = levelAdjustmentTool;
     }
 
     public void Enter()
     {
-        var turningPoint = _launchRoom.GetRoom().GetTurningPoint();
+        var turningPoint = _levelAdjustmentTool.GetRoom().GetTurningPoint();
         _player.PlayerRotate.StartRotate(turningPoint);
         _player.PlayerRotate.OnTurnedAround += Turned;
     }

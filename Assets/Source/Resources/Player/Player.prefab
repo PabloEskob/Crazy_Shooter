@@ -726,7 +726,6 @@ MonoBehaviour:
   weaponIndexEquippedAtStart: 0
   inventory: {fileID: 4738150048773457641}
   grenadesUnlimited: 0
-  grenadeTotal: 10
   grenadeSpawnOffset: 1
   grenadePrefab: {fileID: 1948591290861370, guid: 7b04fe350ed10a741a1e245447860d9e, type: 3}
   knife: {fileID: 6279137244702584772}
@@ -2821,7 +2820,7 @@ MonoBehaviour:
   _yClamp: {x: -40, y: 60}
   _xClamp: {x: -60, y: 60}
   _allRoundView: 1
-  _speedRotateToFinish: 2
+  _speedRotateToFinish: 5
 --- !u!1 &5689293956906447026
 GameObject:
   m_ObjectHideFlags: 0

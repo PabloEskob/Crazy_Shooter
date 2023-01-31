@@ -19,6 +19,6 @@ public class FinishState : ILevelState
 
     public void Exit()
     {
-        
+       
     }
 }
