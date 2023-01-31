@@ -96,10 +96,10 @@ public class LevelAdjustmentToolEditor : Editor
 
                 for (int i = 0; i < zone._enemySpawners.Count; i++)
                 {
-                    EditorGUILayout.ObjectField($"Spawner-{zone._enemySpawners[i].Number}", zone._enemySpawners[i],
+                    EditorGUILayout.ObjectField($"Spawner", zone._enemySpawners[i],
                         typeof(GameObject),
                         false);
-                    EditorGUILayout.ObjectField($"TurningPoint-{zone._enemySpawners[i].Number}", zone._turningPoints[i],
+                    EditorGUILayout.ObjectField($"TurningPoint", zone._turningPoints[i],
                         typeof(GameObject),
                         false);
                     EditorGUILayout.Space(10);
