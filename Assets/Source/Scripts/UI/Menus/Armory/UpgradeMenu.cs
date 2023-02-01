@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using InfimaGames.LowPolyShooterPack;
-using Source.Infrastructure;
 using Source.Scripts.Data;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -17,6 +14,7 @@ namespace Source.Scripts.Ui
         [SerializeField] private WeaponPlatesView _weaponPlatesView;
         [SerializeField] private UpgradePanel _upgradePanel;
         [SerializeField] private Inventory _inventory;
+        [SerializeField] private MainMap _mainMap;
         
         private IStorage _storage;
         private Weapon _currentWeapon;
@@ -32,6 +30,7 @@ namespace Source.Scripts.Ui
             _upgradePanel.Upgraded -= OnUpgraded;
             _inventory.Initialized += OnInitialized;
             _inventory.Init();
+            
         }
 
         private void OnEnable()
@@ -42,16 +41,17 @@ namespace Source.Scripts.Ui
             Invoke(nameof(UpdateUpgradePanelTexts), InvokeDelay);
         }
 
-
         private void OnDisable()
         {
             _inventory.Initialized -= OnInitialized;
             _exitButton.onClick.RemoveListener(Hide);
             _weaponPlatesView.WeaponSelected -= OnWeaponSelected;
         }
+
+        private void Start() => _storage = _mainMap.Storage;
+
         private void OnUpgraded()
         {
-            _storage = AllServices.Container.Single<IStorage>();
             _storage.SetString(_currentWeapon.GetName(), _currentWeapon.GetData().ToJson());
             _storage.Save();
         }

@@ -548,17 +548,22 @@ namespace InfimaGames.LowPolyShooterPack
             {
                 case GunFrameUpgrade:
                     _frameUpgradeLevel++;
+                    Debug.Log("Frame upgraded");
                     break;
-                case Source.Scripts.StaticData.MuzzleUpgrade:
+                case MuzzleUpgrade:
                     _muzzleUpgradeLevel++;
+                    Debug.Log("Muzzle upgraded");
                     break;
                 case BulletUpgrade:
                     _bulletsUpgradeLevel++;
+                    Debug.Log("Bullet upgraded");
                     break;
-                case Source.Scripts.StaticData.ScopeUpgrade:
+                case ScopeUpgrade:
+                    Debug.Log("Scope upgraded");
                     _scopeUpgradeLevel++;
                     break;
-                case Source.Scripts.StaticData.MagazineUpgrade:
+                case MagazineUpgrade:
+                    Debug.Log("Magazine upgraded");
                     _magazineSizeUpgradeLevel++;
                     break;
             }

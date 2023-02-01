@@ -23,18 +23,21 @@ public class UpgradePanel : MonoBehaviour
     private float _additionalReloadSpeed;
     private float _additionalMagazinSize;
 
+    public string BuyText => _buyText.text;
+    public string UpgradeText => _upgradeText.text;
     public Weapon CurrentWeapon => _currentWeapon;
+    public int CurrentUpgradeLevel { get; private set; }
 
     public event Action<Weapon> WeaponSet;
     public event Action Upgraded;
 
     private void OnEnable()
     {
-
+        _defaultUpgradeType = _upgradeTypeButtons[0];
         _statsDisplay.ValuesSet += OnValuesSet;
         _buyButton.Button.onClick.AddListener(OnBuyButtonClick);
-        _upgradeButtonAd.AdShown += OnAdShown;
-        _defaultUpgradeType = _upgradeTypeButtons[0];
+        _buyButton.UpgradeLevelSetted += OnUpgradeLevelSetted;
+        _upgradeButtonAd.Button.onClick.AddListener(OnAdButtonClick);
         _statsDisplay.SetUpgrade(_defaultUpgradeType);
         _buyButton.SetUpgrade(_defaultUpgradeType);
         OnUpgradeChoosed(_defaultUpgradeType);
@@ -45,11 +48,13 @@ public class UpgradePanel : MonoBehaviour
         WeaponSet += OnWeaponSet;
     }
 
+
     private void OnDisable()
     {
         _statsDisplay.ValuesSet -= OnValuesSet;
         _buyButton.Button.onClick.RemoveListener(OnBuyButtonClick);
-        _upgradeButtonAd.AdShown -= OnAdShown;
+        _buyButton.UpgradeLevelSetted -= OnUpgradeLevelSetted;
+        _upgradeButtonAd.Button.onClick.RemoveListener(OnAdButtonClick);
 
         foreach (UpgradeType button in _upgradeTypeButtons)
             button.UpgradeChoosed -= OnUpgradeChoosed;
@@ -83,7 +88,6 @@ public class UpgradePanel : MonoBehaviour
     public void SetWeapon(Weapon weapon)
     {
         _currentWeapon = weapon;
-        DisplayText(_currentWeapon);
         WeaponSet?.Invoke(_currentWeapon);
 
         foreach (UpgradeType typeButton in _upgradeTypeButtons)
@@ -95,23 +99,13 @@ public class UpgradePanel : MonoBehaviour
 
     private void OnWeaponSet(Weapon weapon)
     {
+        OnUpgradeChoosed(_defaultUpgradeType);
+
         foreach (var button in _upgradeTypeButtons)
             button.SwitchButtonInteractivity(weapon.IsBought());
 
-        DisplayText(weapon);
-
         foreach (UpgradeType typeButton in _upgradeTypeButtons)
             typeButton.SetText();
-
-        //_buyButton.ChengeButtonView(weapon);
-    }
-
-    private void DisplayText(Weapon weapon)
-    {
-        if (!weapon.IsBought())
-            _buyButton.ChangeButtonText(_buyText.text);
-        else
-            _buyButton.ChangeButtonText(_upgradeText.text);
     }
 
     private void OnBuyButtonClick()
@@ -120,6 +114,7 @@ public class UpgradePanel : MonoBehaviour
         {
             if (_currentWeapon.IsBought())
             {
+                Upgraded?.Invoke();
                 _softCurrencyHolder.Spend(_buyButton.CurrentPrice);
                 _currentWeapon.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
                 _currentWeapon.UpdateStatsToData();
@@ -130,22 +125,54 @@ public class UpgradePanel : MonoBehaviour
                 _softCurrencyHolder.Spend(_buyButton.CurrentPrice);
                 _currentWeapon.SetIsBought();
                 OnWeaponSet(_currentWeapon);
+                _buyButton.SetUpgrade(_defaultUpgradeType);
             }
         }
     }
 
-    private void OnAdShown()
+    private void OnUpgradeLevelSetted(int level)
     {
-        _currentWeapon.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
-        _currentWeapon.UpdateStatsToData();
-        Upgraded?.Invoke();
+        SetUpgradeLevel(level);
+    }
+
+    private void SetUpgradeLevel(int level) => CurrentUpgradeLevel = level;
+
+    private void OnAdClosed()
+    {
+        if (_currentWeapon.IsBought())
+        {
+            Upgraded?.Invoke();
+            _currentWeapon.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
+            _currentWeapon.UpdateStatsToData();
+            Upgraded?.Invoke();
+        }
+    }
+
+    private void OnAdButtonClick()
+    {
+        if (CurrentWeapon.MaxUpgradeLevel != CurrentUpgradeLevel)
+            ShowAd();
+    }
+
+    private void ShowAd()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            VideoAd.Show(OnAdStart, null, OnAdClosed);
+#endif
+
+#if UNITY_EDITOR
+        OnAdClosed();
+#endif
+    }
+
+    private void OnAdStart()
+    {
+
     }
 
     public void UpdateTexts()
     {
         foreach (UpgradeType button in _upgradeTypeButtons)
             button.SetText();
-
-        DisplayText(_currentWeapon);
     }
 }

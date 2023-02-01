@@ -5,7 +5,6 @@ using Source.Infrastructure;
 using Source.Scripts.Data;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using Source.Scripts.Ui;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,15 +19,18 @@ public class BuyButton : MonoBehaviour
     [SerializeField] private Image _currencyIcon;
 
     private Weapon _weapon;
-    private UpgradeType _currentUpgrade;
+    public UpgradeType CurrentUpgrade { get; private set; }
     private UpgradeType _defaultUpgrade;
     private IStorage _storage;
 
     private const string FreeText = "Free";
+    private const string MaxUpgradeText = "MAX";
 
     public int CurrentPrice { get; private set; }
     public Text PriceText => _priceText;
     public Button Button => _button;
+
+    public event Action<int> UpgradeLevelSetted;
 
     private void Awake() =>
         _defaultUpgrade = _upgradeTypes[0];
@@ -59,7 +61,9 @@ public class BuyButton : MonoBehaviour
 
     private void OnWeaponBought()
     {
-        ChangePrice();
+        OnUpgradeChoosed(_defaultUpgrade);
+        ChangePriceView();
+        ChangeButtonText(_weapon, 1);
 
         _storage = AllServices.Container.Single<IStorage>();
 
@@ -71,20 +75,20 @@ public class BuyButton : MonoBehaviour
     }
 
     private void OnUpgraded() =>
-        OnUpgradeChoosed(_currentUpgrade);
+        OnUpgradeChoosed(CurrentUpgrade);
 
     private void OnWeaponSet(Weapon weapon)
     {
         _weapon.Bought -= OnWeaponBought;
         _weapon = weapon;
         _weapon.Bought += OnWeaponBought;
-
-        ChangePrice();
+        OnUpgradeChoosed(_defaultUpgrade);
+        ChangePriceView();
         DisplayPriceText();
         ChangeButtonView(_weapon.GetFrameUpgrade().Level);
     }
 
-    private void ChangePrice()
+    private void ChangePriceView()
     {
         if (_weapon.IsBought())
             SetPrice(_weapon.GetFrameUpgrade().Price);
@@ -96,40 +100,39 @@ public class BuyButton : MonoBehaviour
     {
         SetUpgrade(upgrade);
 
-        switch (_currentUpgrade)
+        switch (CurrentUpgrade)
         {
             case FrameUpgrade:
                 SetPrice(_weapon.GetFrameUpgrade().Price);
-                DisplayPriceText();
                 ChangeButtonView(_weapon.GetFrameUpgrade().Level);
+                UpgradeLevelSetted?.Invoke(_weapon.GetFrameUpgrade().Level);
                 break;
             case MuzzleUpgrade:
                 SetPrice(_weapon.GetMuzzleUpgrade().Price);
-                DisplayPriceText();
                 ChangeButtonView(_weapon.GetMuzzleUpgrade().Level);
+                UpgradeLevelSetted?.Invoke(_weapon.GetMuzzleUpgrade().Level);
                 break;
             case ScopeUpgrade:
                 SetPrice(_weapon.GetScopeUpgrade().Price);
-                DisplayPriceText();
                 ChangeButtonView(_weapon.GetScopeUpgrade().Level);
+                UpgradeLevelSetted?.Invoke(_weapon.GetScopeUpgrade().Level);
                 break;
             case BulletsUpgrade:
                 SetPrice(_weapon.GetBulletsUpgrade().Price);
-                DisplayPriceText();
                 ChangeButtonView(_weapon.GetBulletsUpgrade().Level);
+                UpgradeLevelSetted?.Invoke(_weapon.GetBulletsUpgrade().Level);
                 break;
             case MagazineUpgrade:
                 SetPrice(_weapon.GetMagazineUpgrade().Price);
-                DisplayPriceText();
                 ChangeButtonView(_weapon.GetMagazineUpgrade().Level);
+                UpgradeLevelSetted?.Invoke(_weapon.GetMagazineUpgrade().Level);
                 break;
         }
 
-        //DisplayPriceText();
-
+        DisplayPriceText();
     }
 
-    public void SetUpgrade(UpgradeType upgrade) => _currentUpgrade = upgrade;
+    public void SetUpgrade(UpgradeType upgrade) => CurrentUpgrade = upgrade;
 
     private void DisplayPriceText() =>
         _priceText.text = CurrentPrice == 0 ? FreeText : CurrentPrice.ToString();
@@ -137,8 +140,13 @@ public class BuyButton : MonoBehaviour
     private void SetPrice(int price) =>
         CurrentPrice = price;
 
-    public void ChangeButtonText(string text) =>
-        _buttonText.text = text;
+    public void ChangeButtonText(Weapon weapon, int level)
+    {
+        _buttonText.text = weapon.IsBought() ? _upgradePanel.UpgradeText : _upgradePanel.BuyText;
+
+        if (level == weapon.MaxUpgradeLevel)
+            _buttonText.text = MaxUpgradeText;
+    }
 
 
     public void ChangeButtonView(int level)
@@ -148,13 +156,14 @@ public class BuyButton : MonoBehaviour
             _button.interactable = true;
             _priceText.gameObject.SetActive(true);
             _currencyIcon.gameObject.SetActive(true);
+            ChangeButtonText(_weapon, level);
         }
         else
         {
             _button.interactable = false;
             _priceText.gameObject.SetActive(false);
             _currencyIcon.gameObject.SetActive(false);
-            ChangeButtonText("MAX");
+            ChangeButtonText(_weapon, level);
         }
     }
 }
