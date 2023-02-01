@@ -8,13 +8,14 @@ public class Zone
 {
     public int Number;
     public int NumberEnemySpawner;
-    
+
     public List<EnemySpawner> _enemySpawners;
     public List<TurningPoint> _turningPoints;
-    
+
     private LaunchingWaves _launchingWaves;
     private int _count;
     private EnemySpawner _enemySpawner;
+    private EnemySpawner _nextEnemySpawner;
 
     public LaunchingWaves LaunchingWaves => _launchingWaves;
 
@@ -29,7 +30,7 @@ public class Zone
         get => _enemySpawners.Count;
         set { }
     }
-    
+
     public event Action OnRoomCleared;
     public event Action OnNextWave;
 
@@ -49,7 +50,7 @@ public class Zone
             Object.DestroyImmediate(DeleteEnemySpawners(^1).gameObject);
             _turningPoints.RemoveAt(_turningPoints.Count - 1);
             _enemySpawners.RemoveAt(_enemySpawners.Count - 1);
-           NumberEnemySpawner--;
+            NumberEnemySpawner--;
         }
     }
 
@@ -72,7 +73,7 @@ public class Zone
     public void OnDisable()
     {
         foreach (var enemySpawner in _enemySpawners)
-            enemySpawner.OnTurnedSpawner -= _launchingWaves.TurnOnSpawn;
+            enemySpawner.OnClearedSpawner -= _launchingWaves.TurnOnSpawn;
 
         _launchingWaves.OnNextWave -= NextWave;
         _launchingWaves.OnEnded -= LaunchingWavesOnEnded;
@@ -82,8 +83,12 @@ public class Zone
     {
         _launchingWaves = new LaunchingWaves(_enemySpawners);
 
-        foreach (var enemySpawner in _enemySpawners)
-            enemySpawner.OnTurnedSpawner += _launchingWaves.TurnOnSpawn;
+        for (var index = 0; index < _enemySpawners.Count; index++)
+        {
+            var enemySpawner = _enemySpawners[index];
+            enemySpawner.OnClearedSpawner += _launchingWaves.TurnOnSpawn;
+            _enemySpawners[index].Number = index;
+        }
 
         _launchingWaves.OnNextWave += NextWave;
         _launchingWaves.OnEnded += LaunchingWavesOnEnded;
@@ -95,7 +100,13 @@ public class Zone
 
         if (_turningPoints[number] == null)
             return null;
-        _count++;
+        if (number==0)
+        {
+            _count++;
+            return _turningPoints[number];
+        }
+
+        number = _nextEnemySpawner.Number;
         return _turningPoints[number];
     }
 
@@ -120,8 +131,11 @@ public class Zone
     private void LaunchingWavesOnEnded() =>
         OnRoomCleared?.Invoke();
 
-    private void NextWave() =>
+    private void NextWave(EnemySpawner enemySpawner)
+    {
+        _nextEnemySpawner = enemySpawner;
         OnNextWave?.Invoke();
+    }
 
     private void CreateTurningPoint()
     {

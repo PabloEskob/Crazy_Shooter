@@ -17,21 +17,20 @@ public class EnemySpawner : MonoBehaviour
     [Range(1, 20)] [SerializeField] private float _attackCooldown = 3;
     [Range(1, 20)] [SerializeField] private float _effectiveDistance = 2.5f;
 
-    private int _number;
     private IGameFactory _gameFactory;
     private List<Enemy> _enemies;
     private bool _clear;
     private Coroutine _coroutine;
 
     public bool Clear => _clear;
-    public int Number => _number;
+    public int Number { get; set; }
     public int Hp => _hp;
     public int Damage => _damage;
     public float EffectiveDistance => _effectiveDistance;
     public float Speed => _speed;
     public float AttackCooldown => _attackCooldown;
 
-    public event Action OnTurnedSpawner;
+    public event Action OnClearedSpawner;
     public event Action OnEnemyDied;
 
     private void OnDisable()
@@ -39,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         foreach (var enemy in _enemies)
             enemy.EnemyDeath.OnHappened -= TryTurnOnAnotherSpawner;
     }
-
+    
     public void Construct(IGameFactory gameFactory)
     {
         _gameFactory = gameFactory;
@@ -52,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void SetNumber(int number) =>
-        _number = number;
+        Number = number;
 
     public void TurnOnEnemy() =>
         _coroutine = StartCoroutine(DelayStartTheMoveOfEnemies());
@@ -85,9 +84,11 @@ public class EnemySpawner : MonoBehaviour
         _count--;
         OnEnemyDied?.Invoke();
 
-        if (_count != 0) return;
-        _clear = true;
-        OnTurnedSpawner?.Invoke();
+        if (_count == 0)
+        {
+            _clear = true;
+            OnClearedSpawner?.Invoke();
+        }
     }
 
     private IEnumerator DelayStartTheMoveOfEnemies()
@@ -97,10 +98,10 @@ public class EnemySpawner : MonoBehaviour
 
         foreach (var enemy in _enemies)
             enemy.EnemyStateMachine.Enter<MoveEnemyState>();
-        
+
         StopRoutineDelay();
     }
 
-    private void StopRoutineDelay() => 
+    private void StopRoutineDelay() =>
         StopCoroutine(_coroutine);
 }
