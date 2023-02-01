@@ -8,8 +8,10 @@ public class Zone
 {
     public int Number;
     public int NumberEnemySpawner;
+    
     public List<EnemySpawner> _enemySpawners;
     public List<TurningPoint> _turningPoints;
+    
     private LaunchingWaves _launchingWaves;
     private int _count;
     private EnemySpawner _enemySpawner;
@@ -27,8 +29,7 @@ public class Zone
         get => _enemySpawners.Count;
         set { }
     }
-
-
+    
     public event Action OnRoomCleared;
     public event Action OnNextWave;
 
@@ -73,8 +74,8 @@ public class Zone
         foreach (var enemySpawner in _enemySpawners)
             enemySpawner.OnTurnedSpawner -= _launchingWaves.TurnOnSpawn;
 
-        _launchingWaves.NextWave -= NextWave;
-        _launchingWaves.Ended -= LaunchingWavesOnEnded;
+        _launchingWaves.OnNextWave -= NextWave;
+        _launchingWaves.OnEnded -= LaunchingWavesOnEnded;
     }
 
     public void Start()
@@ -84,8 +85,8 @@ public class Zone
         foreach (var enemySpawner in _enemySpawners)
             enemySpawner.OnTurnedSpawner += _launchingWaves.TurnOnSpawn;
 
-        _launchingWaves.NextWave += NextWave;
-        _launchingWaves.Ended += LaunchingWavesOnEnded;
+        _launchingWaves.OnNextWave += NextWave;
+        _launchingWaves.OnEnded += LaunchingWavesOnEnded;
     }
 
     public TurningPoint GetTurningPoint()
@@ -104,6 +105,18 @@ public class Zone
             enemySpawner.Construct(gameFactory);
     }
 
+    public void CreateEnemySpawner(Transform parent)
+    {
+        var instantiate = Instantiate(AssetPath.PathSpawner, parent);
+        _enemySpawner = instantiate.GetComponent<EnemySpawner>();
+        _enemySpawner.SetNumber(NumberEnemySpawner);
+        _enemySpawner.name = $"EnemySpawner {Number}-{NumberEnemySpawner}";
+        _enemySpawners.Add(_enemySpawner);
+        CreateTurningPoint();
+
+        NumberEnemySpawner++;
+    }
+
     private void LaunchingWavesOnEnded() =>
         OnRoomCleared?.Invoke();
 
@@ -116,18 +129,6 @@ public class Zone
         var turningPoint = instantiate.GetComponent<TurningPoint>();
         turningPoint.name = $"Turning Point {Number}-{NumberEnemySpawner}";
         _turningPoints.Add(turningPoint);
-    }
-
-    public void CreateEnemySpawner(Transform parent)
-    {
-        var instantiate = Instantiate(AssetPath.PathSpawner, parent);
-        _enemySpawner = instantiate.GetComponent<EnemySpawner>();
-        _enemySpawner.SetNumber(NumberEnemySpawner);
-        _enemySpawner.name = $"EnemySpawner {Number}-{NumberEnemySpawner}";
-        _enemySpawners.Add(_enemySpawner);
-        CreateTurningPoint();
-
-        NumberEnemySpawner++;
     }
 
     private EnemySpawner DeleteEnemySpawners(Index i)
