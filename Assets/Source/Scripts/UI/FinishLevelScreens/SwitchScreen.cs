@@ -6,9 +6,9 @@ public class SwitchScreen : MonoBehaviour
 {
     [SerializeField] private AnimationClip _animationClipVictory;
     [SerializeField] private AnimationClip _animationClipDefeat;
+    [SerializeField] private VictoryScreen _victoryScreen;
+    [SerializeField] private DefeatScreen _defeatScreen;
 
-    private VictoryScreen _victoryScreen;
-    private DefeatScreen _defeatScreen;
     private Character _player;
     private bool _cursorLocked;
     private Canvas _canvas;
@@ -18,8 +18,6 @@ public class SwitchScreen : MonoBehaviour
 
     private void Awake()
     {
-        _victoryScreen = GetComponentInChildren<VictoryScreen>();
-        _defeatScreen = GetComponentInChildren<DefeatScreen>();
         _canvas = GetComponentInParent<Canvas>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Character>();
     }

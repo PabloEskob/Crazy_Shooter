@@ -15,9 +15,13 @@ MonoBehaviour:
   LevelNames:
   - SceneName: InitScene
     LevelNumber: 0
+    SoftReward: 0
   - SceneName: Level 1
     LevelNumber: 1
+    SoftReward: 100
   - SceneName: Level 2
     LevelNumber: 2
+    SoftReward: 200
   - SceneName: Level 3
     LevelNumber: 3
+    SoftReward: 300
