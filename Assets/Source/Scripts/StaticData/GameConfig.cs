@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InfimaGames.LowPolyShooterPack;
+using System;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -48,5 +49,6 @@ namespace Source.Scripts.StaticData
         public string SceneName;
         public int LevelNumber;
         public int SoftReward;
+        public Weapon ExrtaReward;
     }
 }
