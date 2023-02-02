@@ -19,7 +19,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         protected override void Awake()
         {
             base.Awake();
-            if (Application.isEditor) return;
+            if (Application.isPlaying == false) return;
 
             _timer = new Timer();
         }
@@ -27,7 +27,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         protected override void OnEnable()
         {
             base.OnEnable();
-            if (Application.isEditor) return;
+            if (Application.isPlaying == false) return;
 
             _timer.Started += OnTimerStart;
             _timer.Completed += OnTimerCompleted;
@@ -39,7 +39,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         protected override void OnDisable()
         {
             base.OnDisable();
-            if (Application.isEditor) return;
+            if (Application.isPlaying == false) return;
 
             _timer.Started -= OnTimerStart;
             _timer.Completed -= OnTimerCompleted;
@@ -51,7 +51,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         protected override void Start()
         {
             base.Start();
-            if (Application.isEditor) return;
+            if (Application.isPlaying == false) return;
 
             SetText(_defaultText.text);
         }

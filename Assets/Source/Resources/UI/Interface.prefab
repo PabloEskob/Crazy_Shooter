@@ -81,18 +81,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6de5b204e172bd4faf8fc6daf81c713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeTypeButtons:
-  - {fileID: 6948416991510669724}
-  - {fileID: 8668289268156660197}
-  - {fileID: 4759608783472888629}
-  - {fileID: 1472589693550766413}
-  - {fileID: 592405311163544602}
+  _upgradeHandler: {fileID: 1512997428814531536}
   _buyButton: {fileID: 6349388993886727487}
   _upgradeButtonAd: {fileID: 5187896878281812501}
   _statsDisplay: {fileID: 5415976977219797099}
   _softCurrencyHolder: {fileID: 5107620091385795870}
-  _buyText: {fileID: 3402797222115159399}
-  _upgradeText: {fileID: 2821880151199328571}
+  _advertisingHandler: {fileID: 0}
 --- !u!222 &2244168723129904039
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -243,9 +237,9 @@ RectTransform:
   m_Father: {fileID: 1056667478361073462}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175.695, y: -371.75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 341.39, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &84848243563899233
@@ -7576,7 +7570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a13ae5c16614eac98e227f2b2c94b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradePanel: {fileID: 5899456178735791713}
+  UpgradeHandler: {fileID: 1512997428814531536}
   UpgradeName: {fileID: 3328236877588555081}
   UpgradeButton: {fileID: 5108240561188404213}
   ButtonText: {fileID: 788462954840725544}
@@ -7787,9 +7781,9 @@ RectTransform:
   m_Father: {fileID: 1056667478361073462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175.695, y: -35}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 341.39, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1171561857562685002
@@ -8217,18 +8211,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023989fa067c489098d91909a47c9883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeHandler: {fileID: 1512997428814531536}
   _button: {fileID: 8266206256095326958}
-  _upgradeTypes:
-  - {fileID: 6948416991510669724}
-  - {fileID: 4759608783472888629}
-  - {fileID: 8668289268156660197}
-  - {fileID: 1472589693550766413}
-  - {fileID: 592405311163544602}
-  _upgradePanel: {fileID: 5899456178735791713}
   _priceText: {fileID: 8196477223284361072}
   _buttonText: {fileID: 8103453073302028965}
-  _softCurrencyHolder: {fileID: 5107620091385795870}
   _currencyIcon: {fileID: 7192039662946249543}
+  _buyText: {fileID: 3402797222115159399}
+  _upgradeText: {fileID: 2821880151199328571}
 --- !u!1 &1671035926214425911
 GameObject:
   m_ObjectHideFlags: 0
@@ -8551,7 +8540,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: bcedc2b0202e8944bb8e7c08a5584181, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 1
@@ -9158,14 +9147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78354fa2872a8d4c961c420a329b5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeHandler: {fileID: 1512997428814531536}
   _platesView: {fileID: 1600279827777126142}
-  _upgradeTypes:
-  - {fileID: 6948416991510669724}
-  - {fileID: 8668289268156660197}
-  - {fileID: 4759608783472888629}
-  - {fileID: 1472589693550766413}
-  - {fileID: 592405311163544602}
-  _upgradePanel: {fileID: 5899456178735791713}
   _damageValue: {fileID: 6160791408419916452}
   _fireRateValue: {fileID: 622393873544665904}
   _reloadValue: {fileID: 4165923957514043155}
@@ -9493,6 +9476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea55f5bf671d6bf43a274fe96091da00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 8971176354957881406}
+  _upgradeHandler: {fileID: 1512997428814531536}
 --- !u!1 &2756435461714554450
 GameObject:
   m_ObjectHideFlags: 0
@@ -13171,7 +13156,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: bcedc2b0202e8944bb8e7c08a5584181, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 1
@@ -13216,9 +13201,9 @@ RectTransform:
   m_Father: {fileID: 1056667478361073462}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175.695, y: -147.25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 341.39, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5095753235134751371
@@ -13291,7 +13276,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: bcedc2b0202e8944bb8e7c08a5584181, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 47
     m_Alignment: 1
@@ -13808,7 +13793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a326a68688452a8525e782ab2264a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradePanel: {fileID: 5899456178735791713}
+  UpgradeHandler: {fileID: 1512997428814531536}
   UpgradeName: {fileID: 5563361255519977936}
   UpgradeButton: {fileID: 6772773670219592097}
   ButtonText: {fileID: 1784241880134620155}
@@ -14062,7 +14047,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -325, y: 5}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &592828447878278700
 MonoBehaviour:
@@ -15041,7 +15026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2389a41b4fc4a7e82177958e41e53de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradePanel: {fileID: 5899456178735791713}
+  UpgradeHandler: {fileID: 1512997428814531536}
   UpgradeName: {fileID: 3945438742031653317}
   UpgradeButton: {fileID: 2246014211813425573}
   ButtonText: {fileID: 426728875554190325}
@@ -15182,7 +15167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e10bb4c5ab34e7699eaa5fe6f5ca807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradePanel: {fileID: 5899456178735791713}
+  UpgradeHandler: {fileID: 1512997428814531536}
   UpgradeName: {fileID: 5161762463516243581}
   UpgradeButton: {fileID: 5234405526729349380}
   ButtonText: {fileID: 9028807226256036265}
@@ -15679,7 +15664,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: bcedc2b0202e8944bb8e7c08a5584181, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 1
@@ -16076,13 +16061,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7964515138776565778}
   - component: {fileID: 7964515138776565779}
+  - component: {fileID: 1512997428814531536}
   m_Layer: 5
   m_Name: UpgradeMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7964515138776565778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16119,11 +16105,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1482f2016844d79a3a4d46dd117709d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeHandler: {fileID: 1512997428814531536}
   _exitButton: {fileID: 9103005112395150517}
   _weaponHolder: {fileID: 4810007562793907863}
   _weaponPlatesView: {fileID: 1600279827777126142}
   _upgradePanel: {fileID: 5899456178735791713}
   _inventory: {fileID: 7319391057402359111}
+  _mainMap: {fileID: 322711483216373177}
+--- !u!114 &1512997428814531536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964515138776565777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8c8d2d48af6174e9ced40df5033d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgradeTypes:
+  - {fileID: 6948416991510669724}
+  - {fileID: 8668289268156660197}
+  - {fileID: 4759608783472888629}
+  - {fileID: 1472589693550766413}
+  - {fileID: 592405311163544602}
 --- !u!1 &7964515138968131325
 GameObject:
   m_ObjectHideFlags: 0
@@ -16865,7 +16871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f91046ffc964dfcb66a071b87ebcb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradePanel: {fileID: 5899456178735791713}
+  UpgradeHandler: {fileID: 1512997428814531536}
   UpgradeName: {fileID: 5832664229596649617}
   UpgradeButton: {fileID: 477822011124636318}
   ButtonText: {fileID: 1785885044391885895}
@@ -16905,9 +16911,9 @@ RectTransform:
   m_Father: {fileID: 1056667478361073462}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175.695, y: -259.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 341.39, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &9103116589089433506
@@ -16980,7 +16986,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: bcedc2b0202e8944bb8e7c08a5584181, type: 3}
     m_FontSize: 24
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 1

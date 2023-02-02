@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using Assets.Source.Scripts.UI.Menus.Armory;
 using InfimaGames.LowPolyShooterPack;
-using Source.Infrastructure;
 using Source.Scripts.Data;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -12,11 +10,13 @@ namespace Source.Scripts.Ui
 {
     public class UpgradeMenu : MonoBehaviour
     {
+        [SerializeField] private UpgradeHandler _upgradeHandler;
         [SerializeField] private Button _exitButton;
         [SerializeField] private WeaponHolder _weaponHolder;
         [SerializeField] private WeaponPlatesView _weaponPlatesView;
-        [SerializeField] private UpgradePanel _upgradePanel;
+        [SerializeField] private UpgradeViewPanel _upgradePanel;
         [SerializeField] private Inventory _inventory;
+        [SerializeField] private MainMap _mainMap;
         
         private IStorage _storage;
         private Weapon _currentWeapon;
@@ -24,12 +24,12 @@ namespace Source.Scripts.Ui
         private const int _defaultWeaponIndex = 0;
         private const float InvokeDelay = 0.1f;
 
+        public UpgradeHandler UpgradeHandler => _upgradeHandler;
         public Weapon CurrentWeapon => _currentWeapon;
         public Inventory Inventory => _inventory;
 
         private void Awake()
         {
-            _upgradePanel.Upgraded -= OnUpgraded;
             _inventory.Initialized += OnInitialized;
             _inventory.Init();
         }
@@ -39,19 +39,20 @@ namespace Source.Scripts.Ui
             _upgradePanel.Upgraded += OnUpgraded;
             _exitButton.onClick.AddListener(Hide);
             _weaponPlatesView.WeaponSelected += OnWeaponSelected;
-            Invoke(nameof(UpdateUpgradePanelTexts), InvokeDelay);
         }
-
 
         private void OnDisable()
         {
+            _upgradePanel.Upgraded -= OnUpgraded;
             _inventory.Initialized -= OnInitialized;
             _exitButton.onClick.RemoveListener(Hide);
             _weaponPlatesView.WeaponSelected -= OnWeaponSelected;
         }
+
+        private void Start() => _storage = _mainMap.Storage;
+
         private void OnUpgraded()
         {
-            _storage = AllServices.Container.Single<IStorage>();
             _storage.SetString(_currentWeapon.GetName(), _currentWeapon.GetData().ToJson());
             _storage.Save();
         }
@@ -60,7 +61,8 @@ namespace Source.Scripts.Ui
         {
             _currentWeapon = weapon;
             _weaponHolder.UpdateView(_currentWeapon);
-            _upgradePanel.SetWeapon(_currentWeapon);
+            _upgradeHandler.UpdateWeaponInfo(_currentWeapon);
+            //_upgradeHandler.SetCurrentData();
         }
 
         private void OnInitialized()
@@ -71,13 +73,11 @@ namespace Source.Scripts.Ui
             _weaponHolder.SetWeaponIndex(_defaultWeaponIndex);
             _currentWeapon = _weaponHolder.DefaultWeapon;
             _weaponHolder.UpdateView(_currentWeapon);
-            _upgradePanel.SetWeapon(_currentWeapon);
+            _upgradeHandler.UpdateWeaponInfo(_currentWeapon);
             Hide();
         }
 
         private void Hide() => gameObject.SetActive(false);
-
-        private void UpdateUpgradePanelTexts() => _upgradePanel.UpdateTexts();
 
         public void Show() => gameObject.SetActive(true);
     }

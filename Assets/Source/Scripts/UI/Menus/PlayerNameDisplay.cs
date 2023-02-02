@@ -22,9 +22,11 @@ public class PlayerNameDisplay : MonoBehaviour
         {
             GetPlayerInfo();
             SetPlayerName(_playerName);
+            Debug.Log($"PlayerName - {_playerName}");
         }
         else
         {
+            Debug.Log($"Player is not authorized");
             SetPlayerName(_defaultName.text);
         }
 #endif
@@ -59,6 +61,6 @@ public class PlayerNameDisplay : MonoBehaviour
         });
     }
 
-    private void SetPlayerName(string name) => 
+    private void SetPlayerName(string name) =>
         _displayedName.text = name;
 }
