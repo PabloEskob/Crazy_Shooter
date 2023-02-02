@@ -1,6 +1,7 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
 using System;
+using System.Runtime.CompilerServices;
 using Assets.Source.Scripts.Weapons;
 using InfimaGames.LowPolyShooterPack.Legacy;
 using Source.Scripts.Data;
@@ -307,6 +308,9 @@ namespace InfimaGames.LowPolyShooterPack
             _fireRate = roundsPerMinutes / FireRateDelta;
             _data.FireRate = _fireRate;
             WeaponInitialized?.Invoke();
+
+            Debug.Log($"_fireRate - {_fireRate}");
+            Debug.Log($"roundsPerMinutes - {roundsPerMinutes}");
         }
 
         #endregion

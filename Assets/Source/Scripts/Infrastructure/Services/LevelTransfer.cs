@@ -9,17 +9,21 @@ namespace Source.Scripts.Infrastructure.Services
 {
     public class LevelTransfer : MonoBehaviour
     {
-        private SwitchScreen _switchScreen;
+
+        [SerializeField] private SwitchScreen _switchScreen;
+
         private IGameStateMachine _stateMachine;
         private IStorage _storage;
         private IStaticDataService _staticData;
         private IAnalyticManager _analytic;
+        private GameConfig _gameConfig;
+        private int _lastCompletedLevelNumber;
+        private string _currentLevelName;
+        private int _currentLevelNumber;
+        private string _lastCompletedLevelName;
 
-        private void OnDisable()
-        {
-            _switchScreen.DefeatScreen.ButtonToMap.Click -= OnGoToMapButtonClick;
-            _switchScreen.VictoryScreen.ButtonToMap.Click -= OnGoToMapButtonClick;
-        }
+        public int CurrentLevelNumber => _currentLevelNumber;
+        public GameConfig GameConfig => _gameConfig;
 
         private void Awake()
         {
@@ -27,35 +31,44 @@ namespace Source.Scripts.Infrastructure.Services
             _storage = AllServices.Container.Single<IStorage>();
             _staticData = AllServices.Container.Single<IStaticDataService>();
             _analytic = AllServices.Container.Single<IAnalyticManager>();
+            _gameConfig = _staticData.GetGameConfig();
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            _switchScreen = GetComponent<SwitchScreen>();
             _switchScreen.DefeatScreen.ButtonToMap.Click += OnGoToMapButtonClick;
             _switchScreen.VictoryScreen.ButtonToMap.Click += OnGoToMapButtonClick;
         }
 
+        private void OnDisable()
+        {
+            _switchScreen.DefeatScreen.ButtonToMap.Click -= OnGoToMapButtonClick;
+            _switchScreen.VictoryScreen.ButtonToMap.Click -= OnGoToMapButtonClick;
+        }
+
+        private void Start()
+        {
+            _lastCompletedLevelNumber = _storage.GetLevel();
+            _currentLevelName = SceneManager.GetActiveScene().name;
+            _currentLevelNumber = _gameConfig.GetLevelNumberByName(_currentLevelName);
+            _lastCompletedLevelName = _gameConfig.GetLevelNameByNumber(_lastCompletedLevelNumber);
+        }
+
         private void OnGoToMapButtonClick(bool _isSuccess)
         {
-            GameConfig gameConfig = _staticData.GetGameConfig();
-            int lastCompletedLevelNumber = _storage.GetLevel();
-            string currentLevelName = SceneManager.GetActiveScene().name;
-            int currentLevelNumber = gameConfig.GetLevelNumberByName(currentLevelName);
-            string lastCompletedLevelName = gameConfig.GetLevelNameByNumber(lastCompletedLevelNumber);
 
-            if (gameConfig.LevelNames.Length - 1 != lastCompletedLevelNumber
+            if (_gameConfig.LevelNames.Length - 1 != _lastCompletedLevelNumber
                 && _isSuccess == true
-                && currentLevelName == lastCompletedLevelName)
+                && _currentLevelName == _lastCompletedLevelName)
             {
-                _storage.SetLevel(lastCompletedLevelNumber + 1);
+                _storage.SetLevel(_lastCompletedLevelNumber + 1);
                 _storage.Save();
             }
 
             if (_isSuccess == false)
-                _analytic.SendEventOnFail(currentLevelNumber);
+                _analytic.SendEventOnFail(_currentLevelNumber);
             else
-                _analytic.SendEventOnLevelComplete(currentLevelNumber);
+                _analytic.SendEventOnLevelComplete(_currentLevelNumber);
 
             _stateMachine.Enter<LoadMapSceneState>();
         }

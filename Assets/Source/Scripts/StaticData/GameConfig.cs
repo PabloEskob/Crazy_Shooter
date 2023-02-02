@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEditor;
+﻿using InfimaGames.LowPolyShooterPack;
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Source.Scripts.StaticData
 {
@@ -17,7 +16,6 @@ namespace Source.Scripts.StaticData
                 if (level.LevelNumber == number)
                     return level.SceneName;
             }
-
             return null;
         }
 
@@ -28,15 +26,26 @@ namespace Source.Scripts.StaticData
                 if(level.SceneName == name)
                     return level.LevelNumber;
             }
+            return 0;
+        }
 
+        public int GetLevelReward(int levelNumber)
+        {
+            foreach (var level in LevelNames)
+            {
+                if (level.LevelNumber == levelNumber)
+                    return level.SoftReward;
+            }
             return 0;
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class LevelNames
     {
         public string SceneName;
         public int LevelNumber;
+        public int SoftReward;
+        public Weapon ExrtaReward;
     }
 }

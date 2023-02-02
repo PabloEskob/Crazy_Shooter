@@ -80,9 +80,6 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
             SetUpgradeType(type);
             SetCurrentData();
             UpgradeSelected?.Invoke(GetUpgradeType());
-
-            Debug.Log($"Type {GetUpgradeType()}");
-            Debug.Log($"Data {GetWeaponUpgradeData()}");
         }
 
         public void SetCurrentData()
