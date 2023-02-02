@@ -1,4 +1,5 @@
 using System;
+using Assets.Source.Scripts.UI.Menus.Armory;
 using InfimaGames.LowPolyShooterPack;
 using TMPro;
 using UnityEngine;
@@ -8,29 +9,28 @@ namespace Source.Scripts.Ui
 {
     public abstract class UpgradeType : MonoBehaviour
     {
-        [SerializeField] protected UpgradePanel UpgradePanel;
+        [SerializeField] protected UpgradeHandler UpgradeHandler;
         [SerializeField] protected Text UpgradeName;
         [SerializeField] protected Button UpgradeButton;
         [SerializeField] protected Text ButtonText;
         [SerializeField] protected Text LevelText;
 
-        protected Weapon Weapon;
+        protected Weapon Weapon => UpgradeHandler.GetWeapon();
         protected bool IsUpgradeChoosed;
 
         public event Action<UpgradeType> UpgradeChoosed;
 
         private void OnEnable()
         {
-            Weapon = UpgradePanel.CurrentWeapon;
-            UpgradePanel.WeaponSet += OnWeaponSet;
+            UpgradeHandler.WeaponSetted += OnWeaponSet;
+            //UpgradeHandler.Upgraded += OnUpgraded;
             UpgradeButton.onClick.AddListener(OnButtonClick);
-            UpgradePanel.Upgraded += OnUpgraded;
         }
 
         private void OnDisable()
         {
-            UpgradePanel.Upgraded -= OnUpgraded;
-            UpgradePanel.WeaponSet -= OnWeaponSet;
+            UpgradeHandler.WeaponSetted -= OnWeaponSet;
+            //UpgradeHandler.Upgraded -= OnUpgraded;
             UpgradeButton.onClick.RemoveListener(OnButtonClick);
         }
 
@@ -50,7 +50,5 @@ namespace Source.Scripts.Ui
 
         public void SwitchButtonInteractivity(bool value) => 
             UpgradeButton.interactable = value;
-
-        public void SetWeapon(Weapon weapon) => Weapon = weapon;
     }
 }

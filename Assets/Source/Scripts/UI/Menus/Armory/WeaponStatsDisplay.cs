@@ -1,6 +1,6 @@
+using Assets.Source.Scripts.UI.Menus.Armory;
 using InfimaGames.LowPolyShooterPack;
 using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,9 +9,8 @@ namespace Source.Scripts.Ui
 {
     public class WeaponStatsDisplay : MonoBehaviour
     {
+        [SerializeField] private UpgradeHandler _upgradeHandler;
         [SerializeField] private WeaponPlatesView _platesView;
-        [SerializeField] private List<UpgradeType> _upgradeTypes;
-        [SerializeField] private UpgradePanel _upgradePanel;
 
         [Header("Current values")]
         [SerializeField] private TMP_Text _damageValue;
@@ -47,8 +46,7 @@ namespace Source.Scripts.Ui
         [SerializeField] Image _currentMagazineSizeValue;
         [SerializeField] Image _upgradedMagazineSizeValue;
 
-        private Weapon _weapon;
-        private UpgradeType _currentUpgrade;
+        private Weapon _weapon => _upgradeHandler.GetWeapon();
         private float _damage;
         private float _fireRate;
         private float _reload;
@@ -58,61 +56,41 @@ namespace Source.Scripts.Ui
 
         private void OnEnable()
         {
-            SetWeapon(_platesView.CurrentWeapon);
-            _upgradePanel.Upgraded += OnUpgraded;
-            _platesView.WeaponSelected += OnWeaponSelected;
-
-            foreach (var upgrade in _upgradeTypes)
-                upgrade.UpgradeChoosed += OnUpgradeChoosed;
-
-            DisplayCurrentStats();
-            DisplayUpgradeValues();
-            UpdateBars();
+            _upgradeHandler.UpgradeSelected += OnUpgradeSelected;
+            _upgradeHandler.WeaponSetted += OnWeaponSetted;
+            _upgradeHandler.Upgraded += OnUpgraded;
         }
 
         private void OnDisable()
         {
-            _upgradePanel.Upgraded -= OnUpgraded;
-            _platesView.WeaponSelected -= OnWeaponSelected;
-
-            foreach (var upgrade in _upgradeTypes)
-                upgrade.UpgradeChoosed -= OnUpgradeChoosed;
+            _upgradeHandler.UpgradeSelected -= OnUpgradeSelected;
+            _upgradeHandler.WeaponSetted -= OnWeaponSetted;
+            _upgradeHandler.Upgraded -= OnUpgraded;
         }
 
-        private void OnWeaponInitialized()
+        private void Start()
         {
             DisplayCurrentStats();
             DisplayUpgradeValues();
             UpdateBars();
+        }
 
-            _weapon.WeaponInitialized -= OnWeaponInitialized;
+        private void OnWeaponSetted(Weapon weapon)
+        {
+            _upgradeHandler.SetCurrentData();
+            DisplayCurrentStats();
+            DisplayUpgradeValues();
+            UpdateBars();
+        }
+
+        private void OnUpgradeSelected(UpgradeType upgrade)
+        {
+            DisplayUpgradeValues();
+            UpdateBars();
         }
 
         private void OnUpgraded()
         {
-            if (_currentUpgrade != null)
-            {
-                DisplayCurrentStats();
-                DisplayUpgradeValues(_currentUpgrade);
-                UpdateBars();
-                Debug.Log(_currentUpgrade.name);
-            }
-            else
-            {
-                Debug.Log($"currentUpgrade == null");
-            }
-        }
-
-        private void OnUpgradeChoosed(UpgradeType upgrade)
-        {
-            SetUpgrade(upgrade);
-            DisplayUpgradeValues(_currentUpgrade);
-            UpdateBars();
-        }
-
-        private void OnWeaponSelected(Weapon weapon)
-        {
-            SetWeapon(weapon);
             DisplayCurrentStats();
             DisplayUpgradeValues();
             UpdateBars();
@@ -120,72 +98,24 @@ namespace Source.Scripts.Ui
 
         private void DisplayCurrentStats()
         {
-            _damageValue.text = _weapon.Damage.ToString();
-            _fireRateValue.text = _weapon.FireRate.ToString();
-            _reloadValue.text = _weapon.ReloadSpeed.ToString();
-            _magazineSizeValue.text = _weapon.MagazineSize.ToString();
+            var weapon = _upgradeHandler.GetWeapon();
+            _damageValue.text = weapon.Damage.ToString();
+            _fireRateValue.text = weapon.FireRate.ToString();
+            _reloadValue.text = weapon.ReloadSpeed.ToString();
+            _magazineSizeValue.text = weapon.MagazineSize.ToString();
         }
 
         private void DisplayUpgradeValues()
         {
-            var frameUpgrade = _weapon.GetFrameUpgrade();
-            _upgradeDamageValue.text = GetUpgradeValueText(frameUpgrade.Damage);
-            _upgradeFireRateValue.text = GetUpgradeValueText(frameUpgrade.FireRate);
-            _upgradeReloadValue.text = GetUpgradeValueText(frameUpgrade.Reload);
-            _upgradeMagazineSizeValue.text = GetUpgradeValueText(frameUpgrade.MagazineSize);
-            SetValues(frameUpgrade.Damage, frameUpgrade.FireRate, frameUpgrade.Reload, frameUpgrade.MagazineSize);
+            var upgradeData = _upgradeHandler.GetWeaponUpgradeData();
+            _upgradeDamageValue.text = GetUpgradeValueText(upgradeData.Damage);
+            _upgradeFireRateValue.text = GetUpgradeValueText(upgradeData.FireRate);
+            _upgradeReloadValue.text = GetUpgradeValueText(upgradeData.Reload);
+            _upgradeMagazineSizeValue.text = GetUpgradeValueText(upgradeData.MagazineSize);
+            SetValues(upgradeData.Damage, upgradeData.FireRate, upgradeData.Reload, upgradeData.MagazineSize);
         }
 
         private string GetUpgradeValueText(float value) => value != 0 ? $" +{value}" : "";
-
-        public void SetUpgrade(UpgradeType upgrade) => _currentUpgrade = upgrade;
-
-        private void DisplayUpgradeValues(UpgradeType upgrade)
-        {
-            switch (_currentUpgrade)
-            {
-                case FrameUpgrade:
-                    var frameUpgrade = _weapon.GetFrameUpgrade();
-                    _upgradeDamageValue.text = GetUpgradeValueText(frameUpgrade.Damage);
-                    _upgradeFireRateValue.text = GetUpgradeValueText(frameUpgrade.FireRate);
-                    _upgradeReloadValue.text = GetUpgradeValueText(frameUpgrade.Reload);
-                    _upgradeMagazineSizeValue.text = GetUpgradeValueText(frameUpgrade.MagazineSize);
-                    SetValues(frameUpgrade.Damage, frameUpgrade.FireRate, frameUpgrade.Reload, frameUpgrade.MagazineSize);
-                    break;
-                case MuzzleUpgrade:
-                    var muzzleUpgrade = _weapon.GetMuzzleUpgrade();
-                    _upgradeDamageValue.text = GetUpgradeValueText(muzzleUpgrade.Damage);
-                    _upgradeFireRateValue.text = GetUpgradeValueText(muzzleUpgrade.FireRate);
-                    _upgradeReloadValue.text = GetUpgradeValueText(muzzleUpgrade.Reload);
-                    _upgradeMagazineSizeValue.text = GetUpgradeValueText(muzzleUpgrade.MagazineSize);
-                    SetValues(muzzleUpgrade.Damage, muzzleUpgrade.FireRate, muzzleUpgrade.Reload, muzzleUpgrade.MagazineSize);
-                    break;
-                case ScopeUpgrade:
-                    var scopeUpgrade = _weapon.GetScopeUpgrade();
-                    _upgradeDamageValue.text = GetUpgradeValueText(scopeUpgrade.Damage);
-                    _upgradeFireRateValue.text = GetUpgradeValueText(scopeUpgrade.FireRate);
-                    _upgradeReloadValue.text = GetUpgradeValueText(scopeUpgrade.Reload);
-                    _upgradeMagazineSizeValue.text = GetUpgradeValueText(scopeUpgrade.MagazineSize);
-                    SetValues(scopeUpgrade.Damage, scopeUpgrade.FireRate, scopeUpgrade.Reload, scopeUpgrade.MagazineSize);
-                    break;
-                case BulletsUpgrade:
-                    var bulletUpgrade = _weapon.GetBulletsUpgrade();
-                    _upgradeDamageValue.text = GetUpgradeValueText(bulletUpgrade.Damage);
-                    _upgradeFireRateValue.text = GetUpgradeValueText(bulletUpgrade.FireRate);
-                    _upgradeReloadValue.text = GetUpgradeValueText(bulletUpgrade.Reload);
-                    _upgradeMagazineSizeValue.text = GetUpgradeValueText(bulletUpgrade.MagazineSize);
-                    SetValues(bulletUpgrade.Damage, bulletUpgrade.FireRate, bulletUpgrade.Reload, bulletUpgrade.MagazineSize);
-                    break;
-                case MagazineUpgrade:
-                    var magazineUpgrade = _weapon.GetMagazineUpgrade();
-                    _upgradeDamageValue.text = GetUpgradeValueText(magazineUpgrade.Damage);
-                    _upgradeFireRateValue.text = GetUpgradeValueText(magazineUpgrade.FireRate);
-                    _upgradeReloadValue.text = GetUpgradeValueText(magazineUpgrade.Reload);
-                    _upgradeMagazineSizeValue.text = GetUpgradeValueText(magazineUpgrade.MagazineSize);
-                    SetValues(magazineUpgrade.Damage, magazineUpgrade.FireRate, magazineUpgrade.Reload, magazineUpgrade.MagazineSize);
-                    break;
-            }
-        }
 
         private void SetValues(float damage, float fireRate, float reload, float magazineSize)
         {
@@ -197,11 +127,6 @@ namespace Source.Scripts.Ui
             ValuesSet?.Invoke(_damage, _fireRate, _reload, _magazineSize);
         }
 
-        public void SetWeapon(Weapon weapon)
-        {
-            _weapon = weapon;
-            _weapon.WeaponInitialized += OnWeaponInitialized;
-        }
 
         private void SetCurrentValueBar(Image currentValuesBar, float currentValue)
         {

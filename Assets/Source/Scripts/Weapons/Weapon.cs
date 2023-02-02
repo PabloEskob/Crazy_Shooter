@@ -256,7 +256,7 @@ namespace InfimaGames.LowPolyShooterPack
         #endregion
         private WeaponData _data = new WeaponData();
 
-        public WeaponUpgrade WeaponUpgrade { get; private set; }
+        public WeaponUpgradeData WeaponUpgrade { get; private set; }
         public UpgradeConfig UpgradeConfig => _upgradeConfig;
 
         public event Action WeaponInitialized;
@@ -546,23 +546,23 @@ namespace InfimaGames.LowPolyShooterPack
 
             switch (WeaponUpgrade)
             {
-                case GunFrameUpgrade:
+                case GunFrameUpgradeData:
                     _frameUpgradeLevel++;
                     Debug.Log("Frame upgraded");
                     break;
-                case MuzzleUpgrade:
+                case MuzzleUpgradeData:
                     _muzzleUpgradeLevel++;
                     Debug.Log("Muzzle upgraded");
                     break;
-                case BulletUpgrade:
+                case BulletUpgradeData:
                     _bulletsUpgradeLevel++;
                     Debug.Log("Bullet upgraded");
                     break;
-                case ScopeUpgrade:
+                case ScopeUpgradeData:
                     Debug.Log("Scope upgraded");
                     _scopeUpgradeLevel++;
                     break;
-                case MagazineUpgrade:
+                case MagazineUpgradeData:
                     Debug.Log("Magazine upgraded");
                     _magazineSizeUpgradeLevel++;
                     break;
@@ -570,7 +570,7 @@ namespace InfimaGames.LowPolyShooterPack
         }
 
 
-        public WeaponUpgrade GetFrameUpgrade()
+        public WeaponUpgradeData GetFrameUpgrade()
         {
             for (int i = 0; i < UpgradeConfig.GunFrameUpgrades.Count; i++)
             {
@@ -585,7 +585,7 @@ namespace InfimaGames.LowPolyShooterPack
             return null;
         }
 
-        public WeaponUpgrade GetMuzzleUpgrade()
+        public WeaponUpgradeData GetMuzzleUpgrade()
         {
             for (int i = 0; i < UpgradeConfig.MuzzleUpgrades.Count; i++)
             {
@@ -600,7 +600,7 @@ namespace InfimaGames.LowPolyShooterPack
             return null;
         }
 
-        public WeaponUpgrade GetScopeUpgrade()
+        public WeaponUpgradeData GetScopeUpgrade()
         {
             for (int i = 0; i < UpgradeConfig.ScopeUpgrades.Count; i++)
             {
@@ -615,7 +615,7 @@ namespace InfimaGames.LowPolyShooterPack
             return null;
         }
 
-        public WeaponUpgrade GetBulletsUpgrade()
+        public WeaponUpgradeData GetBulletsUpgrade()
         {
             for (int i = 0; i < UpgradeConfig.BulletUpgrades.Count; i++)
             {
@@ -630,7 +630,7 @@ namespace InfimaGames.LowPolyShooterPack
             return null;
         }
 
-        public WeaponUpgrade GetMagazineUpgrade()
+        public WeaponUpgradeData GetMagazineUpgrade()
         {
             for (int i = 0; i < UpgradeConfig.MagazineUpgrades.Count; i++)
             {

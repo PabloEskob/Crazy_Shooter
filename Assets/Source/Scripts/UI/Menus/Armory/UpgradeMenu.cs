@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Assets.Source.Scripts.UI.Menus.Armory;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Data;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
@@ -9,10 +10,11 @@ namespace Source.Scripts.Ui
 {
     public class UpgradeMenu : MonoBehaviour
     {
+        [SerializeField] private UpgradeHandler _upgradeHandler;
         [SerializeField] private Button _exitButton;
         [SerializeField] private WeaponHolder _weaponHolder;
         [SerializeField] private WeaponPlatesView _weaponPlatesView;
-        [SerializeField] private UpgradePanel _upgradePanel;
+        [SerializeField] private UpgradeViewPanel _upgradePanel;
         [SerializeField] private Inventory _inventory;
         [SerializeField] private MainMap _mainMap;
         
@@ -22,15 +24,14 @@ namespace Source.Scripts.Ui
         private const int _defaultWeaponIndex = 0;
         private const float InvokeDelay = 0.1f;
 
+        public UpgradeHandler UpgradeHandler => _upgradeHandler;
         public Weapon CurrentWeapon => _currentWeapon;
         public Inventory Inventory => _inventory;
 
         private void Awake()
         {
-            _upgradePanel.Upgraded -= OnUpgraded;
             _inventory.Initialized += OnInitialized;
             _inventory.Init();
-            
         }
 
         private void OnEnable()
@@ -43,6 +44,7 @@ namespace Source.Scripts.Ui
 
         private void OnDisable()
         {
+            _upgradePanel.Upgraded -= OnUpgraded;
             _inventory.Initialized -= OnInitialized;
             _exitButton.onClick.RemoveListener(Hide);
             _weaponPlatesView.WeaponSelected -= OnWeaponSelected;
@@ -60,7 +62,8 @@ namespace Source.Scripts.Ui
         {
             _currentWeapon = weapon;
             _weaponHolder.UpdateView(_currentWeapon);
-            _upgradePanel.SetWeapon(_currentWeapon);
+            _upgradeHandler.SetWeapon(_currentWeapon);
+            _upgradeHandler.SetCurrentData();
         }
 
         private void OnInitialized()
@@ -71,7 +74,7 @@ namespace Source.Scripts.Ui
             _weaponHolder.SetWeaponIndex(_defaultWeaponIndex);
             _currentWeapon = _weaponHolder.DefaultWeapon;
             _weaponHolder.UpdateView(_currentWeapon);
-            _upgradePanel.SetWeapon(_currentWeapon);
+            _upgradeHandler.SetWeapon(_currentWeapon);
             Hide();
         }
 
