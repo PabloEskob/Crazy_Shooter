@@ -2241,6 +2241,7 @@ GameObject:
   - component: {fileID: 6961099557538604100}
   - component: {fileID: 4704487057425888813}
   - component: {fileID: 3493351925594405642}
+  - component: {fileID: 3912206056540576654}
   m_Layer: 6
   m_Name: CameraMain
   m_TagString: MainCamera
@@ -2348,6 +2349,18 @@ Skybox:
   m_GameObject: {fileID: 3512077651476426788}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: 2c308a3b06c530748acc49e5e317ee58, type: 2}
+--- !u!114 &3912206056540576654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3512077651476426788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e5864f8b1d6a64da762d3afa5a8f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3560021558569651894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,6 +2907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247431498206319065}
   - component: {fileID: 7532942005265338201}
+  - component: {fileID: 4376989828664446614}
   m_Layer: 6
   m_Name: Camera Depth
   m_TagString: Untagged
@@ -2959,6 +2973,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &4376989828664446614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5776943593957580412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e5864f8b1d6a64da762d3afa5a8f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5935537129541914966
 GameObject:
   m_ObjectHideFlags: 0
