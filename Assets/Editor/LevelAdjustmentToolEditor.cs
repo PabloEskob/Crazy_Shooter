@@ -64,20 +64,14 @@ public class LevelAdjustmentToolEditor : Editor
 
     private void ViewButtonsZone()
     {
-        if (_buttonZone)
-        {
+        if (_buttonZone) 
             _levelAdjustmentTool.AddZone();
-        }
 
-        if (_buttonRemoveZone)
-        {
+        if (_buttonRemoveZone) 
             _levelAdjustmentTool.DeleteZone();
-        }
 
-        if (_buttonRemoveAllZone)
-        {
+        if (_buttonRemoveAllZone) 
             _levelAdjustmentTool.RemoveAll();
-        }
     }
 
     private void ViewZone()
@@ -96,10 +90,10 @@ public class LevelAdjustmentToolEditor : Editor
 
                 for (int i = 0; i < zone._enemySpawners.Count; i++)
                 {
-                    EditorGUILayout.ObjectField($"Spawner", zone._enemySpawners[i],
+                    EditorGUILayout.ObjectField("Spawner", zone._enemySpawners[i],
                         typeof(GameObject),
                         false);
-                    EditorGUILayout.ObjectField($"TurningPoint", zone._turningPoints[i],
+                    EditorGUILayout.ObjectField("TurningPoint", zone._turningPoints[i],
                         typeof(GameObject),
                         false);
                     EditorGUILayout.Space(10);
@@ -126,17 +120,13 @@ public class LevelAdjustmentToolEditor : Editor
 
     private void CreateSpawner()
     {
-        if (_buttonCreateSpawner)
-        {
+        if (_buttonCreateSpawner) 
             _levelAdjustmentTool.CreateEnemySpawner(_numberZone);
-        }
     }
 
     private void DeleteSpawner()
     {
-        if (_buttonDeleteSpawner)
-        {
+        if (_buttonDeleteSpawner) 
             _levelAdjustmentTool.DeleteEnemySpawner(_numberZone);
-        }
     }
 }

@@ -18,13 +18,13 @@ public class ZombieKillCounter : MonoBehaviour
     private void OnEnable()
     {
         foreach (EnemySpawner spawner in _enemySpawners)
-            spawner.EnemyDied += OnEnemyDied;
+            spawner.OnEnemyDied += OnEnemyDied;
     }
 
     private void OnDisable()
     {
         foreach (EnemySpawner spawner in _enemySpawners)
-            spawner.EnemyDied += OnEnemyDied;
+            spawner.OnEnemyDied += OnEnemyDied;
     }
 
     private void OnEnemyDied() => Add();

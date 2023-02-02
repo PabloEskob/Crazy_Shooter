@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,9 +9,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private MonsterTypeId _monsterTypeId;
     [SerializeField] private int _count;
     [SerializeField] private bool _move = true;
+    [SerializeField] private float _spawnDelay;
 
     [Range(1, 20)] [SerializeField] private int _hp = 5;
-    [Range(1, 5)] [SerializeField] private int _damage = 3;
+    [Range(1, 10)] [SerializeField] private int _damage = 3;
     [Range(1, 20)] [SerializeField] private float _speed = 2;
     [Range(1, 20)] [SerializeField] private float _attackCooldown = 3;
     [Range(1, 20)] [SerializeField] private float _effectiveDistance = 2.5f;
@@ -19,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
     private IGameFactory _gameFactory;
     private List<Enemy> _enemies;
     private bool _clear;
+    private Coroutine _coroutine;
 
     public bool Clear => _clear;
     public int Number => _number;
@@ -29,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
     public float AttackCooldown => _attackCooldown;
 
     public event Action OnTurnedSpawner;
-    public event Action EnemyDied;
+    public event Action OnEnemyDied;
 
     private void OnDisable()
     {
@@ -47,17 +50,12 @@ public class EnemySpawner : MonoBehaviour
         foreach (var enemy in _enemies)
             enemy.EnemyDeath.OnHappened += TryTurnOnAnotherSpawner;
     }
-    
+
     public void SetNumber(int number) =>
         _number = number;
 
-    public void TurnOnEnemy()
-    {
-        foreach (var enemy in _enemies)
-        {
-            enemy.EnemyStateMachine.Enter<MoveEnemyState>();
-        }
-    }
+    public void TurnOnEnemy() =>
+        _coroutine = StartCoroutine(DelayStartTheMoveOfEnemies());
 
     private Enemy Spawn()
     {
@@ -85,10 +83,24 @@ public class EnemySpawner : MonoBehaviour
     private void TryTurnOnAnotherSpawner()
     {
         _count--;
-        EnemyDied?.Invoke();
+        OnEnemyDied?.Invoke();
 
         if (_count != 0) return;
         _clear = true;
         OnTurnedSpawner?.Invoke();
     }
+
+    private IEnumerator DelayStartTheMoveOfEnemies()
+    {
+        var delay = new WaitForSeconds(_spawnDelay);
+        yield return delay;
+
+        foreach (var enemy in _enemies)
+            enemy.EnemyStateMachine.Enter<MoveEnemyState>();
+        
+        StopRoutineDelay();
+    }
+
+    private void StopRoutineDelay() => 
+        StopCoroutine(_coroutine);
 }

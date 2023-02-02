@@ -11,7 +11,7 @@ public class LevelAdjustmentTool : MonoBehaviour
     private Zone _zone;
     private int _numberRoom;
     private GameObject _container;
-    public int Number => _zones.Count;
+    public int CountZones => _zones.Count;
 
     private void Start()
     {
@@ -31,7 +31,8 @@ public class LevelAdjustmentTool : MonoBehaviour
     public void StartRoom(int value)
     {
         _numberRoom = value;
-        StartNewRoom();
+        var startWave = _zones[_numberRoom].LaunchingWaves;
+        startWave.StartWave();
     }
 
     public void AddZone()
@@ -53,11 +54,13 @@ public class LevelAdjustmentTool : MonoBehaviour
 
     public void DeleteZone()
     {
-        if (_zones.Count > 0)
+        switch (_zones.Count)
         {
-            _zones[^1].DeleteAllSpawners();
-            _zones.RemoveAt(_zones.Count - 1);
-            _countZone--;
+            case > 0:
+                _zones[^1].DeleteAllSpawners();
+                _zones.RemoveAt(_zones.Count - 1);
+                _countZone--;
+                break;
         }
     }
 
@@ -72,13 +75,7 @@ public class LevelAdjustmentTool : MonoBehaviour
         _zone = _zones.Find(z => z.Number == numberZone);
         _zone.DeleteLastEnemySpawner();
     }
-
-    private void StartNewRoom()
-    {
-        var startWave = _zones[_numberRoom].LaunchingWaves;
-        startWave.StartWave();
-    }
-
+    
     public enum LevelCategory
     {
         Company,

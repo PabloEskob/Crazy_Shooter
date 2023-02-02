@@ -22,7 +22,7 @@
 
     private void SetRoom()
     {
-        if (_levelAdjustmentTool.Number > _value)
+        if (_levelAdjustmentTool.CountZones > _value)
         {
             _levelAdjustmentTool.StartRoom(_value);
             _levelStateMachine.Enter<TurnStateToTarget>();
