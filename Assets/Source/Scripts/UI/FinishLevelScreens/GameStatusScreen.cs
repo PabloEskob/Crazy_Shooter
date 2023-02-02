@@ -2,26 +2,34 @@ using UnityEngine;
 
 public class GameStatusScreen : MonoBehaviour
 {
-    private void OnDisable() =>
-        _playerDeath.OnDied -= PlayerOnDied;
-
-    private PlayerDeath _playerDeath;
+    private const string ActorUiTag = "ActorUi";
+    
     private SwitchScreen _switchScreen;
+    private ActorUI _actorUI;
 
     public Player Player { get; set; }
 
-    private void Awake() =>
-        _switchScreen = GetComponentInChildren<SwitchScreen>();
+    private void OnDisable() =>
+        Player.PlayerDeath.OnDied -= PlayerOnDied;
 
-    private void Start()
+    private void Awake()
     {
-        _playerDeath = Player.GetComponent<PlayerDeath>();
-        _playerDeath.OnDied += PlayerOnDied;
+        _switchScreen = GetComponentInChildren<SwitchScreen>();
+        _actorUI = GameObject.FindGameObjectWithTag(ActorUiTag).GetComponent<ActorUI>();
     }
 
-    public void PlayerVictory() =>
-        _switchScreen.ShowVictoryScreen();
+    private void Start() =>
+        Player.PlayerDeath.OnDied += PlayerOnDied;
 
-    private void PlayerOnDied() =>
+    public void PlayerVictory()
+    {
+        _switchScreen.ShowVictoryScreen();
+        _actorUI.Disable();
+    }
+
+    private void PlayerOnDied()
+    {
+        _actorUI.Disable();
         _switchScreen.ShowDefeatScreen();
+    }
 }
