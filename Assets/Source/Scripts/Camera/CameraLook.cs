@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Assets.Source.Scripts.UI;
 using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
@@ -28,7 +27,7 @@ namespace InfimaGames.LowPolyShooterPack
         private IStorage _storage;
         private Vector3 _positionToLook;
         private bool _canRotate;
-        
+
 
         private void Awake() =>
             _playerCharacter = ServiceLocator.Current.Get<IGameModeService>().GetPlayerCharacter();
@@ -50,17 +49,15 @@ namespace InfimaGames.LowPolyShooterPack
         public void StopRoutine() =>
             StopCoroutine(_coroutine);
 
-        public void StartRotateToFinish(TurningPoint turningPoint)
-        {
+        public void StartRotateToFinish(TurningPoint turningPoint) =>
             _coroutine = StartCoroutine(StartRotateToTarget(turningPoint));
-        }
 
         private IEnumerator StartRotateToTarget(TurningPoint turningPoint)
         {
             while (true)
             {
                 UpdatePositionToLookAt(turningPoint);
-                yield return null;
+                yield return new WaitForEndOfFrame();
             }
         }
 
@@ -96,7 +93,7 @@ namespace InfimaGames.LowPolyShooterPack
                 else
                     DisableCamera();
 
-                yield return null;
+                yield return new WaitForEndOfFrame();
             }
         }
 
@@ -122,7 +119,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         private Quaternion SmoothedRotation(Quaternion rotation, Vector3 positionToLook)
         {
-            if (rotation == TargetRotation(positionToLook)) 
+            if (rotation == TargetRotation(positionToLook))
                 StopRoutine();
 
             return Quaternion.Lerp(rotation, TargetRotation(positionToLook), SpeedFactor());

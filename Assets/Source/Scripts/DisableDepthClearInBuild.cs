@@ -11,10 +11,19 @@ public class DisableDepthClearInBuild : MonoBehaviour, IProcessSceneWithReport
     public void OnProcessScene(Scene scene, BuildReport report)
     {
         if (!Application.isPlaying)
-            foreach (GameObject rootGameObject in scene.GetRootGameObjects())
-            foreach (Camera camera in rootGameObject.GetComponentsInChildren<Camera>())
-                if (camera.clearFlags == CameraClearFlags.Depth)
-                    camera.clearFlags = CameraClearFlags.Nothing;
+        {
+            Debug.Log("ssssss");
+            {
+                foreach (GameObject rootGameObject in scene.GetRootGameObjects())
+                foreach (Camera camera in rootGameObject.GetComponentsInChildren<Camera>())
+                    if (camera.clearFlags == CameraClearFlags.Depth)
+                    {
+                        camera.clearFlags = CameraClearFlags.Nothing;
+                        Debug.Log($"!!!!!!!{camera}");
+                    }
+            }
+           
+        }
     }
 }
 #endif
