@@ -361,7 +361,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0417\u0430\u0432\u043D\u043E\u0432\u043E"
+  m_Text: Restart
 --- !u!114 &1609025963040006003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1992,7 +1992,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439"
+  m_Text: Next
 --- !u!114 &8271781924185799813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,7 +2087,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041D\u0430\u0437\u0430\u0434"
+  m_Text: Back
 --- !u!114 &2741596496929554263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2402,7 +2402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1231043982926608449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2515,7 +2515,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2405340083532432739, guid: 1a131772215f6ba4cb0b5e21936cf34c, type: 3}
       propertyPath: currentLanguage
-      value: Russian
+      value: English
       objectReference: {fileID: 0}
     - target: {fileID: 3120711789255331024, guid: 1a131772215f6ba4cb0b5e21936cf34c, type: 3}
       propertyPath: m_Name

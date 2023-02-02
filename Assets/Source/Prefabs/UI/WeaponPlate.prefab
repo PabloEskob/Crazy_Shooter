@@ -59,13 +59,13 @@ MonoBehaviour:
   _lockIcon: {fileID: 877724754308834146}
   _activeButtonColor:
     serializedVersion: 2
-    rgba: 4294375160
+    rgba: 4294967295
   _inactiveButtonColor:
     serializedVersion: 2
-    rgba: 3360178234
+    rgba: 3364127876
   _activeBackgroundColor:
     serializedVersion: 2
-    rgba: 4289986467
+    rgba: 4294951852
   _inactiveBackgroundColor:
     serializedVersion: 2
     rgba: 2533359615
@@ -167,8 +167,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.10588236, g: 0.13333334, b: 0.16470589, a: 1}
-    m_HighlightedColor: {r: 0.105882354, g: 0.13333334, b: 0.16470589, a: 1}
+    m_NormalColor: {r: 0.5176471, g: 0.5176471, b: 0.5176471, a: 1}
+    m_HighlightedColor: {r: 0.5176471, g: 0.5176471, b: 0.5176471, a: 1}
     m_PressedColor: {r: 0.5803922, g: 0, b: 0.003921569, a: 1}
     m_SelectedColor: {r: 0.5803922, g: 0, b: 0.003921569, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -301,8 +301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 85.308, y: -34.013}
-  m_SizeDelta: {x: 57.6032, y: 57.6032}
+  m_AnchoredPosition: {x: 84.6, y: -32.5}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &967438906127915424
 CanvasRenderer:
@@ -325,14 +325,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.7581154, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 661e9f00e8987b84f989611cd35dabfa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 448345669b553794c92fec3efb381665, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

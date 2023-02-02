@@ -13,16 +13,16 @@ namespace Source.Scripts.Ui
         [SerializeField] private WeaponPlatesView _platesView;
 
         [Header("Current values")]
-        [SerializeField] private TMP_Text _damageValue;
-        [SerializeField] private TMP_Text _fireRateValue;
-        [SerializeField] private TMP_Text _reloadValue;
-        [SerializeField] private TMP_Text _magazineSizeValue;
+        [SerializeField] private Text _damageValue;
+        [SerializeField] private Text _fireRateValue;
+        [SerializeField] private Text _reloadValue;
+        [SerializeField] private Text _magazineSizeValue;
 
         [Header("Upgrade values")]
-        [SerializeField] private TMP_Text _upgradeDamageValue;
-        [SerializeField] private TMP_Text _upgradeFireRateValue;
-        [SerializeField] private TMP_Text _upgradeReloadValue;
-        [SerializeField] private TMP_Text _upgradeMagazineSizeValue;
+        [SerializeField] private Text _upgradeDamageValue;
+        [SerializeField] private Text _upgradeFireRateValue;
+        [SerializeField] private Text _upgradeReloadValue;
+        [SerializeField] private Text _upgradeMagazineSizeValue;
 
         [Header("Upgrade Progress Bars")]
         [Space(3)]
