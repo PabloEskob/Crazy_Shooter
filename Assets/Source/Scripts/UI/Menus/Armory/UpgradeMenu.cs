@@ -39,7 +39,6 @@ namespace Source.Scripts.Ui
             _upgradePanel.Upgraded += OnUpgraded;
             _exitButton.onClick.AddListener(Hide);
             _weaponPlatesView.WeaponSelected += OnWeaponSelected;
-            Invoke(nameof(UpdateUpgradePanelTexts), InvokeDelay);
         }
 
         private void OnDisable()
@@ -62,8 +61,8 @@ namespace Source.Scripts.Ui
         {
             _currentWeapon = weapon;
             _weaponHolder.UpdateView(_currentWeapon);
-            _upgradeHandler.SetWeapon(_currentWeapon);
-            _upgradeHandler.SetCurrentData();
+            _upgradeHandler.UpdateWeaponInfo(_currentWeapon);
+            //_upgradeHandler.SetCurrentData();
         }
 
         private void OnInitialized()
@@ -74,13 +73,11 @@ namespace Source.Scripts.Ui
             _weaponHolder.SetWeaponIndex(_defaultWeaponIndex);
             _currentWeapon = _weaponHolder.DefaultWeapon;
             _weaponHolder.UpdateView(_currentWeapon);
-            _upgradeHandler.SetWeapon(_currentWeapon);
+            _upgradeHandler.UpdateWeaponInfo(_currentWeapon);
             Hide();
         }
 
         private void Hide() => gameObject.SetActive(false);
-
-        private void UpdateUpgradePanelTexts() => _upgradePanel.UpdateTexts();
 
         public void Show() => gameObject.SetActive(true);
     }

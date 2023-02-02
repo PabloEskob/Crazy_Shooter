@@ -86,8 +86,7 @@ MonoBehaviour:
   _upgradeButtonAd: {fileID: 5187896878281812501}
   _statsDisplay: {fileID: 5415976977219797099}
   _softCurrencyHolder: {fileID: 5107620091385795870}
-  _buyText: {fileID: 3402797222115159399}
-  _upgradeText: {fileID: 2821880151199328571}
+  _advertisingHandler: {fileID: 0}
 --- !u!222 &2244168723129904039
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8217,6 +8216,8 @@ MonoBehaviour:
   _priceText: {fileID: 8196477223284361072}
   _buttonText: {fileID: 8103453073302028965}
   _currencyIcon: {fileID: 7192039662946249543}
+  _buyText: {fileID: 3402797222115159399}
+  _upgradeText: {fileID: 2821880151199328571}
 --- !u!1 &1671035926214425911
 GameObject:
   m_ObjectHideFlags: 0
@@ -9476,6 +9477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 8971176354957881406}
+  _upgradeHandler: {fileID: 1512997428814531536}
 --- !u!1 &2756435461714554450
 GameObject:
   m_ObjectHideFlags: 0

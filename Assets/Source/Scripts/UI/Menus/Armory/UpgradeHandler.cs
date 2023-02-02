@@ -55,9 +55,11 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
         public WeaponUpgradeData GetWeaponUpgradeData() =>
             _currentWeaponUpgradeData;
 
-        public void SetWeapon(Weapon weapon)
+        public void UpdateWeaponInfo(Weapon weapon)
         {
             _weapon = weapon;
+            OnUpgradeChoosed(_upgradeTypes[0]);
+            SetCurrentData();
             WeaponSetted?.Invoke(_weapon);
         }
 
@@ -114,7 +116,7 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
             Upgraded?.Invoke();
         }
 
-        private void Buy()
+        public void Buy()
         {
             _weapon.SetIsBought();
             Bought?.Invoke();

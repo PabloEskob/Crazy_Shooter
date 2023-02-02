@@ -1,4 +1,5 @@
 using System;
+using Assets.Source.Scripts.Advertisement;
 using Assets.Source.Scripts.UI.Menus.Armory;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
@@ -12,8 +13,8 @@ public class UpgradeViewPanel : MonoBehaviour
     [SerializeField] private UpgradeButtonAd _upgradeButtonAd;
     [SerializeField] private WeaponStatsDisplay _statsDisplay;
     [SerializeField] private SoftCurrencyHolder _softCurrencyHolder;
-    [SerializeField] private Text _buyText;
-    [SerializeField] private Text _upgradeText;
+    [SerializeField] private AdvertisementHandler _advertisingHandler;
+
 
     private float _additionalDamage;
     private float _additionalFireRate;
@@ -21,8 +22,6 @@ public class UpgradeViewPanel : MonoBehaviour
     private float _additionalMagazinSize;
 
     public Weapon CurrentWeapon => _upgradeHandler.GetWeapon();
-    public string BuyText => _buyText.text;
-    public string UpgradeText => _upgradeText.text;
     public int CurrentUpgradeLevel { get; private set; }
 
     public event Action<Weapon> WeaponSet;
@@ -63,7 +62,7 @@ public class UpgradeViewPanel : MonoBehaviour
             {
                 _softCurrencyHolder.Spend(_buyButton.CurrentPrice);
                 _upgradeHandler.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
-                //Upgraded?.Invoke();
+                Upgraded?.Invoke();
             }
             else
             {
@@ -75,8 +74,8 @@ public class UpgradeViewPanel : MonoBehaviour
 
     private void OnAdClosed()
     {
-        CurrentWeapon.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
-        CurrentWeapon.UpdateStatsToData();
+        _upgradeHandler.Upgrade(_additionalDamage, _additionalFireRate, _additionalReloadSpeed, _additionalMagazinSize);
+        Upgraded?.Invoke();
     }
 
     private void OnAdButtonClick()
@@ -99,9 +98,5 @@ public class UpgradeViewPanel : MonoBehaviour
     private void OnAdStart()
     {
 
-    }
-
-    public void UpdateTexts()
-    {
     }
 }

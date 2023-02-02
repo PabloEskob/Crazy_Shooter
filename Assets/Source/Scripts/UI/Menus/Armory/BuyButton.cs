@@ -12,10 +12,11 @@ public class BuyButton : MonoBehaviour
     [SerializeField] private Text _priceText;
     [SerializeField] private Text _buttonText;
     [SerializeField] private Image _currencyIcon;
+    [SerializeField] private Text _buyText;
+    [SerializeField] private Text _upgradeText;
 
     private Weapon Weapon => _upgradeHandler.GetWeapon();
     public UpgradeType CurrentUpgrade { get; private set; }
-    private UpgradeType _defaultUpgrade;
 
     private const string MaxUpgradeText = "MAX";
 
@@ -73,6 +74,8 @@ public class BuyButton : MonoBehaviour
         ChangePriceView();
         DisplayPriceText();
         ChangeButtonView(_upgradeHandler.GetWeaponUpgradeData().Level);
+        Debug.Log($"Weapon {_upgradeHandler.GetWeapon()}");
+        Debug.Log($"Level {_upgradeHandler.GetWeaponUpgradeData()} {_upgradeHandler.GetWeaponUpgradeData().Level}");
     }
 
     private void ChangePriceView()
@@ -92,13 +95,13 @@ public class BuyButton : MonoBehaviour
 
     public void ChangeButtonText(Weapon weapon, int level)
     {
+        if (weapon.IsBought())
+            _buttonText.text = _upgradeText.text;
+        else
+            _buttonText.text = _buyText.text;
+
         if (level == weapon.MaxUpgradeLevel)
             _buttonText.text = MaxUpgradeText;
-
-        if (weapon.IsBought())
-            _buttonText.text = "Уличшить";
-        else
-            _buttonText.text = "Купить";
     }
 
 
