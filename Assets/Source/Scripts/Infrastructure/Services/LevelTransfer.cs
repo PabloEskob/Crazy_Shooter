@@ -32,7 +32,6 @@ namespace Source.Scripts.Infrastructure.Services
             _staticData = AllServices.Container.Single<IStaticDataService>();
             _analytic = AllServices.Container.Single<IAnalyticManager>();
             _gameConfig = _staticData.GetGameConfig();
-            //_switchScreen = GetComponent<SwitchScreen>();
         }
 
         private void OnEnable()

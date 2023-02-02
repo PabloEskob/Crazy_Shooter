@@ -1,4 +1,5 @@
 using System;
+using Agava.YandexGames;
 using Assets.Source.Scripts.Advertisement;
 using Assets.Source.Scripts.UI.Menus.Armory;
 using InfimaGames.LowPolyShooterPack;

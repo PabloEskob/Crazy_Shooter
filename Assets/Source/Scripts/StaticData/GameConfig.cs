@@ -1,9 +1,6 @@
 ﻿using InfimaGames.LowPolyShooterPack;
 using System;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Source.Scripts.StaticData
 {
@@ -43,7 +40,7 @@ namespace Source.Scripts.StaticData
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class LevelNames
     {
         public string SceneName;
