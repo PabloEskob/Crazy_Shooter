@@ -79,12 +79,13 @@ MonoBehaviour:
   _isInfinityAmmo: 0
   Price: 150
   _icon: {fileID: 0}
-  weaponName: Handgun 03
-  multiplierMovementSpeed: 1.15
-  attachmentManager: {fileID: 6110289550021268199}
   _weaponType: 0
   _isBought: 0
   _isEquipped: 0
+  _isCollected: 1
+  weaponName: Handgun 03
+  multiplierMovementSpeed: 1.15
+  attachmentManager: {fileID: 6110289550021268199}
   automatic: 0
   boltAction: 0
   shotCount: 1

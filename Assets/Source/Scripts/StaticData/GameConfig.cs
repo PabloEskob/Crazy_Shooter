@@ -12,31 +12,55 @@ namespace Source.Scripts.StaticData
         public string GetLevelNameByNumber(int number)
         {
             foreach (var level in LevelNames)
-            {
                 if (level.LevelNumber == number)
                     return level.SceneName;
-            }
+
             return null;
         }
 
         public int GetLevelNumberByName(string name)
         {
             foreach (var level in LevelNames)
-            {
-                if(level.SceneName == name)
+                if (level.SceneName == name)
                     return level.LevelNumber;
-            }
+
             return 0;
         }
 
         public int GetLevelReward(int levelNumber)
         {
             foreach (var level in LevelNames)
-            {
                 if (level.LevelNumber == levelNumber)
                     return level.SoftReward;
-            }
+
             return 0;
+        }
+
+        public Weapon GetExtraReward(int levelNumber)
+        {
+            foreach (var level in LevelNames)
+                if (level.LevelNumber == levelNumber)
+                    return level.ExtraReward;
+
+            return null;
+        }
+
+        public bool HasSoftReward(int levelNumber)
+        {
+            foreach (var level in LevelNames)
+                if (level.LevelNumber == levelNumber && level.SoftReward != 0)
+                    return true;
+
+            return false;
+        }
+
+        public bool HasExtraReward(int levelNumber)
+        {
+            foreach (var level in LevelNames)
+                if (level.LevelNumber == levelNumber && level.ExtraReward != null)
+                    return true;
+
+            return false;
         }
     }
 
@@ -46,6 +70,6 @@ namespace Source.Scripts.StaticData
         public string SceneName;
         public int LevelNumber;
         public int SoftReward;
-        public Weapon ExrtaReward;
+        public Weapon ExtraReward;
     }
 }

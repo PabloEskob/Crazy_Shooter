@@ -13,6 +13,7 @@ namespace Source.Scripts.Ui
         [SerializeField] private Weapon _weapon;
         [SerializeField] private Image _weaponImage;
         [SerializeField] private Image _backgroundImage;
+        [SerializeField] private Image _lockIcon;
 
         [Header("Button Color Settings")]
         [SerializeField] private Color32 _activeButtonColor = new Color(100, 58, 100);
@@ -52,6 +53,11 @@ namespace Source.Scripts.Ui
         {
             _weaponButton.colors = GetColorBlock(_isSelected ? _activeButtonColor : _inactiveButtonColor);
             _backgroundImage.color = _isSelected ? _activeBackgroundColor : _inactiveBackgroundColor;
+
+            if (_weapon.IsBought() == false)
+                _lockIcon.gameObject.SetActive(true);
+            else
+                _lockIcon.gameObject.SetActive(false);
         }
 
         public void SwitchButtonState(bool value)

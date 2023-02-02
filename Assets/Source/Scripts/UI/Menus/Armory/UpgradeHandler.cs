@@ -1,4 +1,5 @@
 ﻿using InfimaGames.LowPolyShooterPack;
+using Source.Scripts.Data;
 using Source.Scripts.StaticData;
 using Source.Scripts.Ui;
 using System;
@@ -116,6 +117,7 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
         public void Buy()
         {
             _weapon.SetIsBought();
+            _weapon.SetBoolToData();
             Bought?.Invoke();
         }
     }

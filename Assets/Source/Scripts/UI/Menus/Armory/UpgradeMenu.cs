@@ -36,22 +36,30 @@ namespace Source.Scripts.Ui
 
         private void OnEnable()
         {
-            _upgradePanel.Upgraded += OnUpgraded;
-            _exitButton.onClick.AddListener(Hide);
+            _upgradeHandler.Upgraded += OnUpgraded;
+            _upgradeHandler.Bought += OnBought;
+            _exitButton.onClick.AddListener(OnCloseButtionClick);
             _weaponPlatesView.WeaponSelected += OnWeaponSelected;
         }
 
         private void OnDisable()
         {
-            _upgradePanel.Upgraded -= OnUpgraded;
+            _upgradeHandler.Upgraded -= OnUpgraded;
+            _upgradeHandler.Bought -= OnBought;
             _inventory.Initialized -= OnInitialized;
-            _exitButton.onClick.RemoveListener(Hide);
+            _exitButton.onClick.RemoveListener(OnCloseButtionClick);
             _weaponPlatesView.WeaponSelected -= OnWeaponSelected;
         }
 
         private void Start() => _storage = _mainMap.Storage;
 
         private void OnUpgraded()
+        {
+            _storage.SetString(_currentWeapon.GetName(), _currentWeapon.GetData().ToJson());
+            _storage.Save();
+        }
+
+        private void OnBought()
         {
             _storage.SetString(_currentWeapon.GetName(), _currentWeapon.GetData().ToJson());
             _storage.Save();
@@ -74,6 +82,12 @@ namespace Source.Scripts.Ui
             _currentWeapon = _weaponHolder.DefaultWeapon;
             _weaponHolder.UpdateView(_currentWeapon);
             _upgradeHandler.UpdateWeaponInfo(_currentWeapon);
+            Hide();
+        }
+
+        private void OnCloseButtionClick()
+        {
+            _storage.Save();
             Hide();
         }
 

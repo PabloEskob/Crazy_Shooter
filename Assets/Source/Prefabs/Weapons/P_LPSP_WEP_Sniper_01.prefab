@@ -553,7 +553,7 @@ MonoBehaviour:
   _weaponType: 4
   _isBought: 0
   _isEquipped: 0
-  _isCollected: 0
+  _isCollected: 1
   weaponName: Sniper 01
   multiplierMovementSpeed: 1
   attachmentManager: {fileID: 8578661464601570599}

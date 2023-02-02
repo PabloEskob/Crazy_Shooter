@@ -57,6 +57,8 @@ namespace InfimaGames.LowPolyShooterPack
                     else
                     {
                         weapon.UpdateStatsToData();
+                        weapon.SetBoolToData();
+                        _storage.SetString(weapon.GetName(), weapon.GetData().ToJson());
                     }
                 }
 

@@ -177,12 +177,16 @@ MonoBehaviour:
   _reloadSpeed: 1
   _magazineSize: 1
   _maxUpgradeLevel: 4
+  _isInfinityAmmo: 0
   Price: 150
-  weaponName: Rocket Launcher 01
-  multiplierMovementSpeed: 1
-  _weaponType: 
+  _icon: {fileID: 0}
+  _weaponType: 0
   _isBought: 0
   _isEquipped: 0
+  _isCollected: 1
+  weaponName: Rocket Launcher 01
+  multiplierMovementSpeed: 1
+  attachmentManager: {fileID: 0}
   automatic: 0
   boltAction: 0
   shotCount: 1
@@ -753,6 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammunitionTotal: 1
   sprite: {fileID: 21300000, guid: 49d212e2a1006424ba1faa898ec0b80a, type: 3}
+  _magazineSize: 0
 --- !u!1001 &2297358801745368283
 PrefabInstance:
   m_ObjectHideFlags: 0

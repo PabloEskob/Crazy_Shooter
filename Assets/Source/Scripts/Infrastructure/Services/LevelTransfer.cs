@@ -2,6 +2,7 @@
 using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using Source.Scripts.StaticData;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,8 +23,11 @@ namespace Source.Scripts.Infrastructure.Services
         private int _currentLevelNumber;
         private string _lastCompletedLevelName;
 
+        public IStorage Storage => _storage;
         public int CurrentLevelNumber => _currentLevelNumber;
         public GameConfig GameConfig => _gameConfig;
+
+        public event Action LevelCompleted;
 
         private void Awake()
         {
@@ -66,9 +70,14 @@ namespace Source.Scripts.Infrastructure.Services
             }
 
             if (_isSuccess == false)
+            {
                 _analytic.SendEventOnFail(_currentLevelNumber);
+            }
             else
+            {
+                LevelCompleted?.Invoke();
                 _analytic.SendEventOnLevelComplete(_currentLevelNumber);
+            }
 
             _stateMachine.Enter<LoadMapSceneState>();
         }

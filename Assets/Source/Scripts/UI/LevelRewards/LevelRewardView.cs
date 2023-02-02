@@ -8,9 +8,6 @@ namespace Assets.Source.Scripts.UI.LevelRewards
         [SerializeField] private Image _icon;
         [SerializeField] private Text _rewardAmountText;
 
-        public void Render(string amount)
-        {
-            _rewardAmountText.text = amount;
-        }
+        public void Render(string amount) => _rewardAmountText.text = amount;
     }
 }

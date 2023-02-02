@@ -9,6 +9,7 @@ namespace Source.Scripts.Data
         public string WeaponName;
         public bool IsBought;
         public bool IsEquipped;
+        public bool IsCollected;
         public string SaveTime = DateTime.MinValue.ToString();
         public int Level;
         public float Damage;

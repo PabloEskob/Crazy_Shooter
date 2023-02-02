@@ -880,6 +880,7 @@ GameObject:
   - component: {fileID: 3194172111928168565}
   - component: {fileID: 3195646283957952789}
   - component: {fileID: 3375901042485514005}
+  - component: {fileID: 2970349493789762513}
   m_Layer: 5
   m_Name: ReceiveReward
   m_TagString: Untagged
@@ -947,6 +948,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2970349493789762513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3407492405152032353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c7a4aaa723aec47bc9c766c9af50da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelTransfer: {fileID: 4133270839397890970}
+  _softCurrencyHolder: {fileID: 8894337576013255679}
 --- !u!1 &3410298585512511805
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,8 +971,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3005682071984170181}
-  - component: {fileID: 8794381724117276159}
-  - component: {fileID: 2981415205861589492}
+  - component: {fileID: 2377757588725971224}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -980,26 +994,12 @@ RectTransform:
   m_Father: {fileID: 3651812382647361293}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -250, y: 90.76221}
+  m_SizeDelta: {x: 500, y: 181.52}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &8794381724117276159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3410298585512511805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
---- !u!114 &2981415205861589492
+--- !u!114 &2377757588725971224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1012,12 +1012,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 60
+    m_Left: 0
     m_Right: 0
-    m_Top: 40
+    m_Top: 5
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 50
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1301,6 +1301,7 @@ GameObject:
   - component: {fileID: 5098231954004395518}
   - component: {fileID: 5098231954004395519}
   - component: {fileID: 5098231954004395516}
+  - component: {fileID: 8894337576013255679}
   m_Layer: 5
   m_Name: GameStatusScreen
   m_TagString: GameStatusScreen
@@ -1402,6 +1403,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1120a88bb0af74746bd34646f49c9213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8894337576013255679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5098231954004395517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d8a244ac489cb41b29afd2bf8f9ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5807285039692321980
@@ -2205,8 +2218,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 240}
+  m_AnchoredPosition: {x: 0, y: 29.237793}
+  m_SizeDelta: {x: 500, y: 181.5244}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3001920851740364920
 CanvasRenderer:
@@ -2288,8 +2301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3203ebd1ab1bd1478c49e891c1ee55f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelTransfer: {fileID: 4133270839397890970}
   _victoryScreen: {fileID: 7832155404188834554}
   _rewardTemplate: {fileID: 5818053535579638858, guid: a9023a3aadf8af244814edee4800db49, type: 3}
+  _extraRewardTemplate: {fileID: -2062650272041786959, guid: fb251d46fad5546438b758412a3c7ab5, type: 3}
   _container: {fileID: 3005682071984170181}
 --- !u!1 &8883115166172413006
 GameObject:
@@ -2387,7 +2402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1231043982926608449
 RectTransform:
   m_ObjectHideFlags: 0

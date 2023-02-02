@@ -32,7 +32,7 @@ namespace InfimaGames.LowPolyShooterPack
         [SerializeField] private bool _isInfinityAmmo;
         [SerializeField] private int Price = 100;
         [SerializeField] private Sprite _icon;
-        
+
         [SerializeField] private WeaponTypes _weaponType;
         [SerializeField] private bool _isBought;
         [SerializeField] private bool _isEquipped;
@@ -46,6 +46,8 @@ namespace InfimaGames.LowPolyShooterPack
 
         public int MaxUpgradeLevel => _maxUpgradeLevel;
         public int WeaponPrice => Price;
+
+        public Sprite Icon => _icon;
 
         private const int FireRateDelta = 100;
 
@@ -339,6 +341,14 @@ namespace InfimaGames.LowPolyShooterPack
         {
             _isBought = _data.IsBought;
             _isEquipped = _data.IsEquipped;
+            _isCollected = _data.IsCollected;
+        }
+
+        public void SetBoolToData()
+        {
+            _data.IsBought = _isBought;
+            _data.IsEquipped = _isEquipped;
+            _data.IsCollected = _isCollected;
         }
 
         public override Offsets GetWeaponOffsets() => weaponOffsets;
@@ -420,6 +430,12 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region METHODS
 
+        public override void SetIsCollected()
+        {
+            _isCollected = true;
+            _data.IsCollected = _isCollected;
+        }
+
         public override void SetIsBought()
         {
             _isBought = true;
@@ -468,7 +484,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Reduce ammunition! We just shot, so we need to get rid of one!
             ammunitionCurrent = Mathf.Clamp(ammunitionCurrent - 1, 0, magazineBehaviour.GetMagazineSize());
 
-            
+
 
 
             //Set the slide back if we just ran out of ammunition.
@@ -508,7 +524,7 @@ namespace InfimaGames.LowPolyShooterPack
             }
         }
 
-           private int ammunitionLeftInMagazine;
+        private int ammunitionLeftInMagazine;
         public override void FillAmmunition(int amount)
         {
             ammunitionLeftInMagazine = ammunitionCurrent;

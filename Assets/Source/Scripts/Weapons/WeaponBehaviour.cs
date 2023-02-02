@@ -191,6 +191,7 @@ namespace InfimaGames.LowPolyShooterPack
         public abstract void SetIsBought();
         public abstract void SetEquipped();
         public abstract void SetUnequipped();
+        public abstract void SetIsCollected();
         /// <summary>
         /// Fires the weapon.
         /// </summary>

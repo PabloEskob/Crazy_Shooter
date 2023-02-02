@@ -403,12 +403,14 @@ MonoBehaviour:
   _maxUpgradeLevel: 4
   _isInfinityAmmo: 1
   Price: 150
-  weaponName: Sniper 03
-  multiplierMovementSpeed: 0.8
-  attachmentManager: {fileID: 9116845346348752071}
+  _icon: {fileID: 0}
   _weaponType: 4
   _isBought: 0
   _isEquipped: 0
+  _isCollected: 1
+  weaponName: Sniper 03
+  multiplierMovementSpeed: 0.8
+  attachmentManager: {fileID: 9116845346348752071}
   automatic: 0
   boltAction: 0
   shotCount: 1
