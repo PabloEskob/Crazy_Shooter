@@ -16,7 +16,7 @@ public class EnemyAttack : MonoBehaviour
     public float AttackCooldown { get; set; }
     public int Damage { get; set; }
 
-    private void Awake() => 
+    private void Awake() =>
         _enemy = GetComponent<Enemy>();
 
     public void Init(IGameFactory gameFactory)
@@ -27,12 +27,11 @@ public class EnemyAttack : MonoBehaviour
 
     public void EnableAttack()
     {
-        if (!_enemy.EnemyDeath.IsDie)
+        if (!_enemy.EnemyDeath.IsDie && !_player.PlayerDeath.IsDead)
         {
             _enemy.EnemyStateMachine.Enter<AttackEnemyState>();
             _attackIsActive = true;
         }
-      
     }
 
     public void DisableAttack() =>
@@ -54,12 +53,12 @@ public class EnemyAttack : MonoBehaviour
     {
         while (true)
         {
-            if (_player.PlayerDeath.IsDead) 
+            if (_player.PlayerDeath.IsDead)
                 _enemy.EnemyStateMachine.Enter<EnemyStateWin>();
-            
+
             UpdateCooldown();
 
-            if (CanAttack()) 
+            if (CanAttack())
                 StartAttack();
 
             yield return null;

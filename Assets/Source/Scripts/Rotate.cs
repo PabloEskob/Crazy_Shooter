@@ -16,7 +16,7 @@ public class Rotate : MonoBehaviour
 
     public event Action OnTurned;
 
-    private void Update()
+    private void LateUpdate()
     {
         if (_canRotate)
         {

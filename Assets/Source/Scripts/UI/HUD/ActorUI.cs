@@ -7,34 +7,36 @@ public class ActorUI : MonoBehaviour
     [SerializeField] private ProgressBarPro _hpBar;
     [SerializeField] private CanvasGroup _imageRedScreen;
 
-    private PlayerHealth _playerHealth;
+    private Player _player;
     private GameStatusScreen _gameStatusScreen;
     
     private void Start()
     {
         QualitySettings.SetQualityLevel(0);
         Debug.Log(QualitySettings.GetQualityLevel());
-        _playerHealth = GameObject.FindGameObjectWithTag(PlayerTag).GetComponent<PlayerHealth>();
-        Construct(_playerHealth);
+        _player = GameObject.FindGameObjectWithTag(PlayerTag).GetComponent<Player>();
+        Construct();
     }
 
-    private void Construct(PlayerHealth playerHealth)
+    public void Disable() => 
+        gameObject.SetActive(false);
+
+    private void Construct()
     {
-        _playerHealth = playerHealth;
-        _hpBar.SetMaxHpImage(_playerHealth.Max);
+        _hpBar.SetMaxHpImage(_player.PlayerHealth.Max);
         _hpBar.SetValueImage(_imageRedScreen);
-        _playerHealth.HealthChanged += UpdateHpBar;
-        _playerHealth.Disabled += OnHealthDisabled;
+        _player.PlayerHealth.HealthChanged += UpdateHpBar;
+        _player.PlayerHealth.Disabled += OnHealthDisabled;
     }
-    
+
     private void OnHealthDisabled()
     {
-        _playerHealth.HealthChanged -= UpdateHpBar;
-        _playerHealth.Disabled -= OnHealthDisabled;
+        _player.PlayerHealth.HealthChanged -= UpdateHpBar;
+        _player.PlayerHealth.Disabled -= OnHealthDisabled;
     }
 
     
     private void UpdateHpBar() =>
-        _hpBar.SetValue(_playerHealth.Current, _playerHealth.Max);
+        _hpBar.SetValue(_player.PlayerHealth.Current, _player.PlayerHealth.Max);
     
 }
