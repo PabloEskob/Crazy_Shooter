@@ -42,4 +42,6 @@ public class WeaponHolder : MonoBehaviour
 
     public void SetWeapons(List<Weapon> weapons) => 
         _weapons = weapons;
+
+
 }

@@ -1,6 +1,7 @@
 using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,12 +29,16 @@ namespace Source.Scripts.Ui
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _storage = storage;
+
+            
         }
 
         private void OnEnable()
         {
             _upgradeMenuButton.onClick.AddListener(OpenUpgradeMenu);
+            _upgradeMenu.Activated += OnUpgradeMenuActivated;
             _settingsMenuButton.onClick.AddListener(OpenSettingsMenu);
+            _settingsMenu.Activated += OnSettingsMenuActivated;
 
             foreach (var button in _startLevelButtons)
                 button.Clicked += StartLevel;
@@ -42,17 +47,36 @@ namespace Source.Scripts.Ui
         private void OnDisable()
         {
             _upgradeMenuButton.onClick.RemoveListener(OpenUpgradeMenu);
-            _settingsMenuButton.onClick.RemoveListener(OpenSettingsMenu);
+            _upgradeMenu.Activated -= OnUpgradeMenuActivated;
+           _settingsMenuButton.onClick.RemoveListener(OpenSettingsMenu);
+            _settingsMenu.Activated -= OnSettingsMenuActivated;
 
             foreach (var button in _startLevelButtons)
                 button.Clicked += StartLevel;
         }
 
-        private void OpenSettingsMenu() => _settingsMenu.Show();
+        private void OpenSettingsMenu() => 
+            StartCoroutine(ActivateMenu(_settingsMenu.gameObject));
 
-        private void OpenUpgradeMenu() => _upgradeMenu.Show();
+        private void OpenUpgradeMenu() => 
+            StartCoroutine(ActivateMenu(_upgradeMenu.gameObject));
 
         private void StartLevel(int level) =>
             _stateMachine.Enter<LoadLevelState>(level);
+
+        private IEnumerator ActivateMenu(GameObject gameObject)
+        {
+            while(gameObject.activeInHierarchy == false) 
+            {
+                gameObject.SetActive(true);
+                yield return null;
+            }
+        }
+
+        private void OnSettingsMenuActivated() => 
+            StopCoroutine(ActivateMenu(_settingsMenu.gameObject));
+
+        private void OnUpgradeMenuActivated() => 
+            StopCoroutine(ActivateMenu(_upgradeMenu.gameObject));
     }
 }

@@ -3,6 +3,7 @@ using Source.Infrastructure;
 using Source.Scripts.Data;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,11 +28,13 @@ namespace Source.Scripts.Ui
         private const string EnglishLanguage = "English";
         private const string TürkLanguage = "Türk";
 
-        private string[] _languageTexts = new string[3] {RussianLanguage, EnglishLanguage, TürkLanguage };
+        private string[] _languageTexts = new string[3] { RussianLanguage, EnglishLanguage, TürkLanguage };
 
         IStorage _storage;
 
         private const int DefaultSliderValue = 1;
+
+        public event Action Activated;
 
         private void Awake()
         {
@@ -48,6 +51,7 @@ namespace Source.Scripts.Ui
             _soundVolumeSlider.onValueChanged.AddListener(OnSoundSliderValueChanged);
             _musicVolumeSlider.onValueChanged.AddListener(OnMusicSliderValueChanged);
             _cameraSensitivitySlider.onValueChanged.AddListener(OnSensitivitySliderValueChanged);
+            Activated?.Invoke();
         }
 
         private void OnDisable()
@@ -92,7 +96,8 @@ namespace Source.Scripts.Ui
                 SetSliderValue(_musicVolumeSlider, DefaultSliderValue);
         }
 
-        public void Show() =>
-            gameObject.SetActive(true);
+        public void Show() => gameObject.SetActive(true);
+
+        
     }
 }

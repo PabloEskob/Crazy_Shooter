@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Assets.Source.Scripts.UI.Menus.Armory;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Data;
@@ -28,6 +29,8 @@ namespace Source.Scripts.Ui
         public Weapon CurrentWeapon => _currentWeapon;
         public Inventory Inventory => _inventory;
 
+        public event Action Activated;
+
         private void Awake()
         {
             _inventory.Initialized += OnInitialized;
@@ -40,6 +43,7 @@ namespace Source.Scripts.Ui
             _upgradeHandler.Bought += OnBought;
             _exitButton.onClick.AddListener(OnCloseButtionClick);
             _weaponPlatesView.WeaponSelected += OnWeaponSelected;
+            Activated?.Invoke();
         }
 
         private void OnDisable()

@@ -22,7 +22,6 @@ public class WeaponViewRotator : MonoBehaviour
     private List<WeaponPlate> _weaponPlates;
     private Weapon _currentWeapon;
     private readonly Timer _timer = new Timer();
-    private bool isCurrentWeaponNotNull;
     
     private const string MouseXAxis = "Mouse X";
 
@@ -32,7 +31,6 @@ public class WeaponViewRotator : MonoBehaviour
     {
         _weaponPlates = _platesView.Plates.ToList();
         _currentWeapon = _weaponPlates[0].Weapon;
-        //PutWeapon(_currentWeapon);
         _container.rotation = _defaultRotation;
 
         foreach (WeaponPlate weaponPlate in _weaponPlates)
@@ -49,11 +47,6 @@ public class WeaponViewRotator : MonoBehaviour
         _timer.Completed -= OnTimerCompleted;
     }
 
-    private void OnInitialized(List<WeaponPlate> weaponPlates)
-    {
-        Debug.Log(weaponPlates.Count);
-    }
-
     private void OnWeaponSelected(WeaponPlate plate, Weapon weapon)
     {
         SwitchRotationState(false);
@@ -61,7 +54,6 @@ public class WeaponViewRotator : MonoBehaviour
         SetCurrentWeapon(weapon);
         RestRotation(weapon);
         _timer.Start(_freezeTime);
-        //PutWeapon(weapon);
     }
 
     private void Start() => 
