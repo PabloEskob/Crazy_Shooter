@@ -1,19 +1,30 @@
-﻿using InfimaGames.LowPolyShooterPack;
-using Source.Scripts.Ui;
+﻿using Assets.Source.Scripts.Weapons;
+using InfimaGames.LowPolyShooterPack;
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Assets.Source.Scripts.UI.Menus.Armory
 {
     public class SkinPlate : MonoBehaviour
     {
-        [SerializeField] private UpgradeMenu _upgradeMenu;
-        [SerializeField] private Texture2D _skinTexture;
+        [SerializeField] private Image _buttonImage;
+        [SerializeField] private Image _frameImage;
 
         private Button _button;
-        private Weapon _currentWeapon => _upgradeMenu.CurrentWeapon;
+        private Weapon _currentWeapon;
+        private WeaponSkinsHandler _weaponSkinsHandler;
+        private int _indexID;
+        private string NameKey => _buttonImage.sprite.name;
+
+        public event Action<SkinPlate, int> Choosed;
+
+        public void Init(Weapon weapon, int index, Sprite sprite)
+        {
+            _currentWeapon = weapon;
+            _indexID = index;
+            _buttonImage.sprite = sprite;
+        }
 
         private void Awake()
         {
@@ -33,7 +44,12 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
 
         private void OnButtonclick()
         {
+            Choosed?.Invoke(this, _indexID);
+        }
 
+        public void SwitchFrameView(bool value)
+        {
+            _frameImage.enabled = value;
         }
 
     }

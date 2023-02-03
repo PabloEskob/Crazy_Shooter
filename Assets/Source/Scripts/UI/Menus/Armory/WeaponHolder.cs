@@ -7,9 +7,8 @@ using UnityEngine;
 public class WeaponHolder : MonoBehaviour
 {
     [SerializeField] private Transform _container;
+
     private List<Weapon> _weapons;
-    //private Vector3 _weaponScale = new Vector3(1000f, 1000f, 1000f);
-    //private Vector3 _weaponPosition = new Vector3(0, 0, -1000f);
     private int _defaultWeaponIndex;
     
     public Weapon DefaultWeapon => _weapons[_defaultWeaponIndex];
@@ -24,11 +23,7 @@ public class WeaponHolder : MonoBehaviour
     {
         foreach (Weapon weapon in _weapons)
             if (weapon == selectedWeapon)
-            {
                 weapon.gameObject.SetActive(true);
-                //weapon.transform.localScale = _weaponScale;
-                //weapon.transform.position = _container.position;
-            }
     }
 
     public void UpdateView(Weapon selectedWeapon)
@@ -42,6 +37,4 @@ public class WeaponHolder : MonoBehaviour
 
     public void SetWeapons(List<Weapon> weapons) => 
         _weapons = weapons;
-
-
 }

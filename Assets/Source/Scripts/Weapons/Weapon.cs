@@ -21,6 +21,7 @@ namespace InfimaGames.LowPolyShooterPack
         #region FIELDS SERIALIZED
 
         [SerializeField] private UpgradeConfig _upgradeConfig;
+        [SerializeField] private WeaponSkinsHandler _skinsHandler;
         [SerializeField] private BulletPool _bulletPool;
 
         [Header("Weapon stats")]
@@ -46,7 +47,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         public int MaxUpgradeLevel => _maxUpgradeLevel;
         public int WeaponPrice => Price;
-
+        public WeaponSkinsHandler SkinsHandler => _skinsHandler;
         public Sprite Icon => _icon;
 
         private const int FireRateDelta = 100;
