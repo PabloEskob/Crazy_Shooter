@@ -526,6 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 11400000, guid: 9f01878d59c89d545ac0c2f50be1c006, type: 2}
+  _skinsHandler: {fileID: 0}
   _bulletPool: {fileID: 0}
   _damage: 1
   _fireRate: 1
@@ -538,7 +539,7 @@ MonoBehaviour:
   _weaponType: 2
   _isBought: 0
   _isEquipped: 0
-  _isCollected: 1
+  _isCollected: 0
   weaponName: SMG 02
   multiplierMovementSpeed: 1
   attachmentManager: {fileID: 7061427760487870545}

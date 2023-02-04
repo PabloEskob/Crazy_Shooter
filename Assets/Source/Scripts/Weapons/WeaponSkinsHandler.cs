@@ -9,19 +9,23 @@ namespace Assets.Source.Scripts.Weapons
         [SerializeField] private List<Texture2D> _textureList;
         [SerializeField] private Texture2D _defaultTexture;
 
-        private Texture2D _currentTexture;
+        public Texture2D CurrentTexture { get; private set; }
 
         public Texture2D DefaultTexture => _defaultTexture;
         public IReadOnlyList<Texture2D> TextureList => _textureList;
 
-        public void SetTexture(Texture2D texture)
+        public void SetTexture(Texture2D texture) => _mainMaterial.mainTexture = texture;
+
+        public void ApplyTexture() => CurrentTexture = (Texture2D)_mainMaterial.mainTexture;
+
+        public void ResetTexture()
         {
-            _mainMaterial.mainTexture = texture;
+            if (CurrentTexture != null)
+                SetTexture(CurrentTexture);
+            else
+                SetTexture(DefaultTexture);
         }
 
-        private Texture2D GetTextureByIndex(int index) 
-        {
-            return _textureList[index];
-        }
+        private Texture2D GetTextureByIndex(int index) => _textureList[index];
     }
 }
