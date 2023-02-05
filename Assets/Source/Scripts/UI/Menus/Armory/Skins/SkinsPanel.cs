@@ -51,6 +51,7 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
             {
                 _sprite = CreateSprite(SkinsHandler.DefaultTexture);
                 SkinPlate defaultSkinPlate = CreatePlate(DefaultSkinIndex, _sprite);
+                defaultSkinPlate.SetIsBought(true);
                 _skinPlates.Add(defaultSkinPlate);
 
                 for (int i = 0; i < SkinsHandler.TextureList.Count; i++)
@@ -69,9 +70,9 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
         private SkinPlate CreatePlate(int i, Sprite sprite)
         {
             SkinPlate skinPlate = Instantiate(_template, _container);
-            skinPlate.SwitchFrameView(false);
-            skinPlate.Init(Weapon, i, sprite);
             skinPlate.Choosed += OnChoosed;
+            skinPlate.SwitchFrameView(false);
+            skinPlate.Init(Weapon, i, sprite, _upgradeMenu.Storage);
             return skinPlate;
         }
 
@@ -98,34 +99,64 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
 
             _currentPlate.SwitchFrameView(true);
 
+            if (_currentPlate.IsBought)
+            {
+                ResetPlatesEquipState();
+                SetPlateEquipped();
+                SkinsHandler.ApplyTexture();
+            }
+
             SwitchButtonsView();
 
             if (index == DefaultSkinIndex)
                 SkinsHandler.SetTexture(SkinsHandler.DefaultTexture);
             else
                 SkinsHandler.SetTexture(SkinsHandler.TextureList[index]);
+        }
 
+        private void SetPlateEquipped()
+        {
+            _currentPlate.ChageEquippedState(true);
+            _currentPlate.ChangeEquippedCheckMarkView();
+        }
+
+        private void ResetPlatesEquipState()
+        {
+            foreach (SkinPlate plate in _skinPlates)
+            {
+                plate.ChageEquippedState(false);
+                plate.ChangeEquippedCheckMarkView();
+            }
         }
 
         private void OnBuySkinButtonClick()
         {
             if (_currencyHolder.CheckSolvency(_currentPlate.Price))
             {
-                SkinsHandler.ApplyTexture();
                 _currencyHolder.Spend(_currentPlate.Price);
-                _currentPlate.SetIsBought(true);
-                _currentPlate.ChangeCheckMarkView(true);
                 _buySkinButton.SwitchButtonInteractable(false);
+                ChangePlateBoughtState();
+                ResetPlatesEquipState();
+                SetPlateEquipped();
+
+                SkinsHandler.ApplyTexture();
             }
         }
 
         private void OnAdSkinUIButtonClick()
         {
             Debug.Log("Advertisement");
-            SkinsHandler.ApplyTexture();
-            _currentPlate.SetIsBought(true);
-            _currentPlate.ChangeCheckMarkView(true);
+            ChangePlateBoughtState();
+            ResetPlatesEquipState();
+
             _adSkinButton.ChangeScale(!_currentPlate.IsBought);
+            SkinsHandler.ApplyTexture();
+        }
+
+        private void ChangePlateBoughtState()
+        {
+            _currentPlate.SetIsBought(true);
+            _currentPlate.ChangePurchadedCheckMarkView(true);
         }
 
         private void SwitchButtonsView()

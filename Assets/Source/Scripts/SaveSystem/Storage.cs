@@ -24,8 +24,7 @@ namespace Source.Scripts.SaveSystem
             _data = Load();
         }
 
-        public string GetDataName() =>
-            _dataName;
+        public string GetDataName() =>_dataName;
 
         public void SetFloat(string key, float value)
         {
@@ -33,7 +32,9 @@ namespace Source.Scripts.SaveSystem
                 _data.Floats[key] = value;
             else
                 _data.Floats.Add(key, value);
+
             Changed?.Invoke();
+
             if (_mode == SaveMode.Immediately) Save();
         }
 
@@ -44,10 +45,7 @@ namespace Source.Scripts.SaveSystem
                 : throw new ArgumentException($"Floats doesn't contain Key: {key}");
         }
 
-        public bool HasKeyFloat(string key)
-        {
-            return _data.Floats.ContainsKey(key);
-        }
+        public bool HasKeyFloat(string key) => _data.Floats.ContainsKey(key);
 
         public void SetInt(string key, int value)
         {
@@ -55,7 +53,9 @@ namespace Source.Scripts.SaveSystem
                 _data.Ints[key] = value;
             else
                 _data.Ints.Add(key, value);
+
             Changed?.Invoke();
+
             if (_mode == SaveMode.Immediately) Save();
         }
 
@@ -66,10 +66,7 @@ namespace Source.Scripts.SaveSystem
                 : throw new ArgumentException($"Ints doesn't contain Key: {key}");
         }
 
-        public bool HasKeyInt(string key)
-        {
-            return _data.Ints.ContainsKey(key);
-        }
+        public bool HasKeyInt(string key) => _data.Ints.ContainsKey(key);
 
         public void SetString(string key, string value)
         {
@@ -77,7 +74,9 @@ namespace Source.Scripts.SaveSystem
                 _data.Strings[key] = value;
             else
                 _data.Strings.Add(key, value);
+
             Changed?.Invoke();
+
             if (_mode == SaveMode.Immediately) Save();
         }
 
@@ -88,10 +87,7 @@ namespace Source.Scripts.SaveSystem
                 : $"Strings doesn't contain Key: {key}";
         }
 
-        public bool HasKeyString(string key)
-        {
-            return _data.Strings.ContainsKey(key);
-        }
+        public bool HasKeyString(string key) => _data.Strings.ContainsKey(key);
 
         public void SetVector3(string key, Vector3 value)
         {
@@ -99,7 +95,9 @@ namespace Source.Scripts.SaveSystem
                 _data.Vectors[key] = value.AsVectorData();
             else
                 _data.Vectors.Add(key, value.AsVectorData());
+
             Changed?.Invoke();
+            
             if (_mode == SaveMode.Immediately) Save();
         }
 
@@ -110,10 +108,7 @@ namespace Source.Scripts.SaveSystem
                 : throw new ArgumentException($"Vectors doesn't contain Key: {key}");
         }
 
-        public bool HasKeyVector3(string key)
-        {
-            return _data.Vectors.ContainsKey(key);
-        }
+        public bool HasKeyVector3(string key) => _data.Vectors.ContainsKey(key);
 
         public void SetQuaternion(string key, Quaternion value)
         {
@@ -121,7 +116,9 @@ namespace Source.Scripts.SaveSystem
                 _data.Quaternions[key] = value.AsQuaternionData();
             else
                 _data.Quaternions.Add(key, value.AsQuaternionData());
+            
             Changed?.Invoke();
+            
             if (_mode == SaveMode.Immediately) Save();
         }
 
@@ -132,82 +129,60 @@ namespace Source.Scripts.SaveSystem
                 : throw new ArgumentException($"Quaternions doesn't contain Key: {key}");
         }
 
-        public bool HasKeyQuaternion(string key)
-        {
-            return _data.Quaternions.ContainsKey(key);
-        }
+        public bool HasKeyQuaternion(string key) => _data.Quaternions.ContainsKey(key);
 
         public void AddDisplayedLevelNumber()
         {
             _data.DisplayedLevelNumber++;
+
             if (_mode == SaveMode.Immediately) Save();
         }
 
-        public int GetDisplayedLevelNumber()
-        {
-            return _data.DisplayedLevelNumber;
-        }
+        public int GetDisplayedLevelNumber() => _data.DisplayedLevelNumber;
 
         public void AddSession()
         {
             _data.SessionCount++;
+
             if (_mode == SaveMode.Immediately) Save();
         }
 
-        public int GetSessionCount()
-        {
-            return _data.SessionCount;
-        }
+        public int GetSessionCount() => _data.SessionCount;
 
-        public DateTime GetRegistrationDate()
-        {
-            return DateTime.Parse(_data.RegistrationDate);
-        }
+        public DateTime GetRegistrationDate() => DateTime.Parse(_data.RegistrationDate);
 
         public void SetLastLoginDate()
         {
             _data.LastLoginDate = DateTime.Now.ToString();
+
             if (_mode == SaveMode.Immediately) Save();
         }
 
-        public DateTime GetLastLoginDate()
-        {
-            return DateTime.Parse(_data.LastLoginDate);
-        }
+        public DateTime GetLastLoginDate() => DateTime.Parse(_data.LastLoginDate);
 
-        public int GetNumberDaysAfterRegistration()
-        {
-            return GetLastLoginDate().Day - GetRegistrationDate().Day;
-        }
+        public int GetNumberDaysAfterRegistration() => GetLastLoginDate().Day - GetRegistrationDate().Day;
 
         public void SetSoft(int value)
         {
             _data.Soft = value;
             Changed?.Invoke();
+
             if (_mode == SaveMode.Immediately) Save();
         }
 
-        public int GetSoft()
-        {
-            return _data.Soft;
-        }
+        public int GetSoft() => _data.Soft;
 
-        public DateTime GetSaveTime()
-        {
-            return DateTime.Parse(_data.SaveTime);
-        }
+        public DateTime GetSaveTime() => DateTime.Parse(_data.SaveTime);
 
         public void SetLevel(int index)
         {
             _data.LevelNumber = index;
+
             if (_mode == SaveMode.Immediately) Save();
         }
 
-        public int GetLevel()
-        {
-            return _data.LevelNumber;
-        }
-        
+        public int GetLevel() => _data.LevelNumber;
+
         public void Save()
         {
             _data.SaveTime = DateTime.Now.ToString();
@@ -308,9 +283,6 @@ namespace Source.Scripts.SaveSystem
 #endif
         }
 #endif
-        private Data Load()
-        {
-            return PlayerPrefs.GetString(_dataName)?.ToDeserialized<Data>() ?? new Data();
-        }
+        private Data Load() => PlayerPrefs.GetString(_dataName)?.ToDeserialized<Data>() ?? new Data();
     }
 }

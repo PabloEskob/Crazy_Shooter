@@ -19,14 +19,13 @@ namespace Source.Scripts.Ui
         [SerializeField] private Inventory _inventory;
         [SerializeField] private MainMap _mainMap;
         
-        private IStorage _storage;
-        private Weapon _currentWeapon;
         
         private const int _defaultWeaponIndex = 0;
         private const float InvokeDelay = 0.1f;
 
+        public Weapon CurrentWeapon { get; private set; }
+        public IStorage Storage { get; private set; }
         public UpgradeHandler UpgradeHandler => _upgradeHandler;
-        public Weapon CurrentWeapon => _currentWeapon;
         public Inventory Inventory => _inventory;
 
         public event Action Activated;
@@ -55,26 +54,19 @@ namespace Source.Scripts.Ui
             _weaponPlatesView.WeaponSelected -= OnWeaponSelected;
         }
 
-        private void Start() => _storage = _mainMap.Storage;
+        private void Start() => Storage = _mainMap.Storage;
 
-        private void OnUpgraded()
+        private void Save()
         {
-            _storage.SetString(_currentWeapon.GetName(), _currentWeapon.GetData().ToJson());
-            _storage.Save();
-        }
-
-        private void OnBought()
-        {
-            _storage.SetString(_currentWeapon.GetName(), _currentWeapon.GetData().ToJson());
-            _storage.Save();
+            Storage.SetString(CurrentWeapon.GetName(), CurrentWeapon.GetData().ToJson());
+            Storage.Save();
         }
 
         private void OnWeaponSelected(Weapon weapon)
         {
-            _currentWeapon = weapon;
-            _weaponHolder.UpdateView(_currentWeapon);
-            _upgradeHandler.UpdateWeaponInfo(_currentWeapon);
-            //_upgradeHandler.SetCurrentData();
+            CurrentWeapon = weapon;
+            _weaponHolder.UpdateView(CurrentWeapon);
+            _upgradeHandler.UpdateWeaponInfo(CurrentWeapon);
         }
 
         private void OnInitialized()
@@ -83,17 +75,21 @@ namespace Source.Scripts.Ui
             _weaponPlatesView.InitPlates();
             _weaponHolder.SetWeapons(_inventory.Weapons.ToList());
             _weaponHolder.SetWeaponIndex(_defaultWeaponIndex);
-            _currentWeapon = _weaponHolder.DefaultWeapon;
-            _weaponHolder.UpdateView(_currentWeapon);
-            _upgradeHandler.UpdateWeaponInfo(_currentWeapon);
+            CurrentWeapon = _weaponHolder.DefaultWeapon;
+            _weaponHolder.UpdateView(CurrentWeapon);
+            _upgradeHandler.UpdateWeaponInfo(CurrentWeapon);
             Hide();
         }
 
         private void OnCloseButtionClick()
         {
-            _storage.Save();
+            Storage.Save();
             Hide();
         }
+
+        private void OnUpgraded() => Save();
+
+        private void OnBought() => Save();
 
         private void Hide() => gameObject.SetActive(false);
 
