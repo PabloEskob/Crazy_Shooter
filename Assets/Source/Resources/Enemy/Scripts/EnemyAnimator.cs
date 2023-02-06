@@ -1,17 +1,15 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemyAnimator : MonoBehaviour
 {
-    [SerializeField] private AnimationClip _animationClip;
-    
     private static readonly int Die = Animator.StringToHash("Die");
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int IsMoving = Animator.StringToHash("Move");
     private static readonly int Hit = Animator.StringToHash("Hit");
     private static readonly int Idle = Animator.StringToHash("Idle");
     private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int IsBite = Animator.StringToHash("Bite");
 
     private Animator _animator;
     private string _clipName;
@@ -20,7 +18,7 @@ public class EnemyAnimator : MonoBehaviour
     private int _layerBase;
     private int _layerHit;
 
-    private void Awake() =>
+    private void Awake() => 
         _animator = GetComponent<Animator>();
 
     private void Start()
@@ -35,10 +33,8 @@ public class EnemyAnimator : MonoBehaviour
     public void PlayIdle() => 
         _animator.SetTrigger(Idle);
 
-    public void PlayDeath()
-    {
-        _animator.CrossFade("Die", 0, _layerHit);
-    }
+    public void PlayDeath() => 
+        _animator.CrossFade(Die, 0, _layerHit);
 
     public void PlayAttack() =>
         _animator.SetTrigger(Attack);
@@ -56,6 +52,8 @@ public class EnemyAnimator : MonoBehaviour
     {
         var value = Random.Range(0, 3);
         _animator.SetFloat(Change,value);
-
     }
+
+    public void Eat() => 
+        _animator.SetBool(IsBite, true);
 }

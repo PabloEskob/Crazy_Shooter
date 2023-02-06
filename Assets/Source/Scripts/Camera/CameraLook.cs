@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
 {
-    public class CameraLook : MonoBehaviour
+    public class CameraLook : MonoBehaviour 
     {
         [Header("Settings")] [Tooltip("Sensitivity when looking around.")] [SerializeField]
         private Vector2 _sensitivity = new(1, 1);
@@ -130,5 +130,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         private float SpeedFactor() =>
             _speedRotateToFinish * Time.deltaTime;
+
+       
     }
 }

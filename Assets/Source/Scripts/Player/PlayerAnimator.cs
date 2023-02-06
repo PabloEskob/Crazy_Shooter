@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -8,14 +9,14 @@ public class PlayerAnimator : MonoBehaviour
 
     private Animator _animator;
     private InfimaGames.LowPolyShooterPack.Movement _movement;
-   
+    private int _baseLayer;
 
     private void Awake()
     {
         _movement = GetComponent<InfimaGames.LowPolyShooterPack.Movement>();
         _animator = GetComponentInChildren<Animator>();
     }
-
+    
     public void PlayWalking()
     {
         _movement.CanMove();
@@ -30,13 +31,23 @@ public class PlayerAnimator : MonoBehaviour
 
     public void PlayDeath()
     {
-        Debug.Log("Смерть игрока!");
+        var rotateToDeath = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, 90);
+        transform.DORotate(rotateToDeath, 1.3f);
     }
 
 
     public void PlayHit()
     {
-        Debug.Log("Удар по игроку!");
-    }
+        Sequence sequence = DOTween.Sequence();
         
+        if (gameObject.transform.eulerAngles.x == 0)
+        {
+            var rotateToHit = new Vector3(30, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z);
+            var initialRotate = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y,
+                gameObject.transform.eulerAngles.z);
+            sequence.Append(transform.DORotate(rotateToHit, 0.2f));
+            sequence.Append(transform.DORotate(initialRotate, 0.2f));
+        }
+        
+    }
 }

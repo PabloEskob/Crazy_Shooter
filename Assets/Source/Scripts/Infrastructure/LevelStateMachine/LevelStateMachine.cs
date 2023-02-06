@@ -31,6 +31,7 @@ public class LevelStateMachine
             [typeof(MoveState)] = new MoveState(this, player),
             [typeof(TurnStateToTarget)] = new TurnStateToTarget(this, player, levelAdjustmentTool),
             [typeof(FinishState)] = new FinishState(this, player, finishLevel),
+            [typeof(DeathState)] = new DeathState(player),
         };
     }
 

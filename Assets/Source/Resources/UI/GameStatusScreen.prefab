@@ -361,7 +361,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart
+  m_Text: "\u0417\u0430\u043D\u043E\u0432\u043E"
 --- !u!114 &1609025963040006003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: RestartButton
-  FallbackText: "\u0417\u0430\u0432\u043D\u043E\u0432\u043E"
+  FallbackText: "\u0417\u0430\u043D\u043E\u0432\u043E"
 --- !u!1 &1824731464882382000
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: Russian
-    Text: "\u0417\u0430\u0432\u043D\u043E\u0432\u043E"
+    Text: "\u0417\u0430\u043D\u043E\u0432\u043E"
     Object: {fileID: 0}
   - Language: English
     Text: Restart
@@ -1992,7 +1992,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Next
+  m_Text: "\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439"
 --- !u!114 &8271781924185799813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,7 +2087,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back
+  m_Text: "\u041D\u0430\u0437\u0430\u0434"
 --- !u!114 &2741596496929554263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2515,7 +2515,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2405340083532432739, guid: 1a131772215f6ba4cb0b5e21936cf34c, type: 3}
       propertyPath: currentLanguage
-      value: English
+      value: Russian
       objectReference: {fileID: 0}
     - target: {fileID: 3120711789255331024, guid: 1a131772215f6ba4cb0b5e21936cf34c, type: 3}
       propertyPath: m_Name

@@ -10,6 +10,7 @@ namespace Source.Infrastructure
     {
         [SerializeField] private LoadingScreen _loadingScreenPrefab;
         
+
         private Game _game;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -21,7 +22,7 @@ namespace Source.Infrastructure
             _game.StateMachine.Enter<BootstrapState>();
             
             DontDestroyOnLoad(this);
-        }       
+        }
 #else
         private void Start()
         {
