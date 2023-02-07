@@ -15,6 +15,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         private Timer _timer;
 
         public event Action ButtonClicked;
+        protected string DefaultText => _defaultText.text;
 
         protected override void Awake()
         {
@@ -34,6 +35,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
             _timer.Updated += OnTimerUpdated;
             onClick.AddListener(OnAdButtonClick);
             _languageSwitcher.LanguageChanged += OnLaguageChanged;
+            SetText(_defaultText.text);
         }
 
         protected override void OnDisable()
@@ -53,7 +55,6 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
             base.Start();
             if (Application.isPlaying == false) return;
 
-            SetText(_defaultText.text);
         }
 
         private void Update() => _timer?.Tick(Time.deltaTime);
@@ -86,5 +87,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
 
             SetText(string.Format("{0:00}:{1:00}", minutes, seconds));
         }
+
+        public virtual void ChangeScale(bool value) { }
     }
 }

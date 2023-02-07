@@ -17,16 +17,25 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
         private UpgradeType _currentUpgradeType;
         private WeaponUpgradeData _currentWeaponUpgradeData;
 
+        private const float Delay = 0.01f;
+
         public event Action<UpgradeType> UpgradeSetted;
         public event Action<Weapon> WeaponSetted;
         public event Action<UpgradeType> UpgradeSelected;
         public event Action Upgraded;
         public event Action Bought;
 
+        private void Awake()
+        {
+            _defaultUpgradeType = _upgradeTypes[0];
+        }
+
         private void OnEnable()
         {
             foreach (UpgradeType type in _upgradeTypes)
                 type.UpgradeChoosed += OnUpgradeChoosed;
+
+            Invoke(nameof(UpdateUpgradeButtons), Delay);
         }
 
         private void OnDisable()
@@ -35,9 +44,13 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
                 type.UpgradeChoosed -= OnUpgradeChoosed;
         }
 
+        private void UpdateUpgradeButtons()
+        {
+            OnUpgradeChoosed(_defaultUpgradeType);
+        }
+
         private void Start()
         {
-            _defaultUpgradeType = _upgradeTypes[0];
             OnUpgradeChoosed(_defaultUpgradeType);
         }
 
@@ -76,7 +89,6 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
 
             type.SwitchButtonState(true);
             type.SetText();
-
 
             SetUpgradeType(type);
             SetCurrentData();

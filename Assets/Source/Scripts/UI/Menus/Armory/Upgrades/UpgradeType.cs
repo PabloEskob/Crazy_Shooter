@@ -23,14 +23,12 @@ namespace Source.Scripts.Ui
         private void OnEnable()
         {
             UpgradeHandler.WeaponSetted += OnWeaponSet;
-            //UpgradeHandler.Upgraded += OnUpgraded;
             UpgradeButton.onClick.AddListener(OnButtonClick);
         }
 
         private void OnDisable()
         {
             UpgradeHandler.WeaponSetted -= OnWeaponSet;
-            //UpgradeHandler.Upgraded -= OnUpgraded;
             UpgradeButton.onClick.RemoveListener(OnButtonClick);
         }
 
@@ -39,7 +37,6 @@ namespace Source.Scripts.Ui
 
         protected abstract void OnButtonClick();
         protected abstract void OnWeaponSet(Weapon weapon);
-
         public abstract void SetText();
 
         public void SendEvent() => 

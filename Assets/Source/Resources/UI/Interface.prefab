@@ -6992,7 +6992,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041F\u0443\u043B\u0438"
+  m_Text: Bullets
 --- !u!114 &5878963506270841230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7087,7 +7087,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041A\u0443\u043F\u0438\u0442\u044C"
+  m_Text: Buy
 --- !u!114 &4170000882448761221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7102,6 +7102,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   translationName: BuyPhrase
   FallbackText: "\u041A\u0443\u043F\u0438\u0442\u044C"
+--- !u!1 &1005481560791531008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6025794669950005555}
+  - component: {fileID: 7069111576765230781}
+  m_Layer: 0
+  m_Name: ReceivedText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6025794669950005555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005481560791531008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8681722290449228296}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7069111576765230781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005481560791531008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: Received
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u043E"
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Kabul edilmi\u015F"
+    Object: {fileID: 0}
 --- !u!1 &1005556897478584883
 GameObject:
   m_ObjectHideFlags: 0
@@ -7182,7 +7237,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0415\u0416\u0415\u0414\u041D\u0415\u0412\u041D\u0410\u042F\n \u041D\u0410\u0413\u0420\u0410\u0414\u0410"
+  m_Text: "DAILY\n REWARD"
 --- !u!114 &5905718831508217889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7815,7 +7870,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+  m_Text: Upgrade
 --- !u!114 &3186995635322175351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7946,6 +8001,94 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1177865406110301198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4946297191349958447}
+  m_Layer: 0
+  m_Name: SkinsPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4946297191349958447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177865406110301198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5733119386905433422}
+  - {fileID: 8681722290449228296}
+  m_Father: {fileID: 3520021667310909944}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1259118419933588077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390056248517067356}
+  - component: {fileID: 3689377255186715542}
+  m_Layer: 0
+  m_Name: AdGetSkinButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1390056248517067356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259118419933588077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8681722290449228296}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3689377255186715542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259118419933588077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Get
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: Elde etmek
+    Object: {fileID: 0}
 --- !u!1 &1270645261566655972
 GameObject:
   m_ObjectHideFlags: 0
@@ -8106,7 +8249,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041A\u0443\u043F\u0438\u0442\u044C"
+  m_Text: "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C"
 --- !u!114 &6554918912889664029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8578,7 +8721,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0420\u0430\u0437\u043C\u0435\u0440 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0430"
+  m_Text: Magazine size
 --- !u!114 &1763576285232147803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8749,7 +8892,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "A\u011F\u0131zl\u0131k"
+  m_Text: Muzzle
 --- !u!1 &2197189118412047020
 GameObject:
   m_ObjectHideFlags: 0
@@ -9346,7 +9489,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0420\u0430\u043C\u0430 \u043E\u0440\u0443\u0436\u0438\u044F"
+  m_Text: Gun Frame
 --- !u!114 &3836477919872362569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9620,7 +9763,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041F\u0440\u0438\u0446\u0435\u043B"
+  m_Text: Scope
 --- !u!114 &6382995395110480969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9888,7 +10031,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea55f5bf671d6bf43a274fe96091da00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _button: {fileID: 8971176354957881406}
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 9064446323063323467}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  _text: {fileID: 617594452312956482}
+  _defaultText: {fileID: 2108795308549617859}
+  _time: 90
+  _languageSwitcher: {fileID: 2810537314671806709}
   _upgradeHandler: {fileID: 1512997428814531536}
 --- !u!1 &2756435461714554450
 GameObject:
@@ -9966,6 +10144,40 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2887673474120331816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8681722290449228296}
+  m_Layer: 0
+  m_Name: Buttons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8681722290449228296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2887673474120331816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 97069945905603919}
+  - {fileID: 1390056248517067356}
+  - {fileID: 6025794669950005555}
+  m_Father: {fileID: 4946297191349958447}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2908271897465094037
 GameObject:
   m_ObjectHideFlags: 0
@@ -10046,7 +10258,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+  m_Text: Skins
 --- !u!114 &1192480178910120307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10059,8 +10271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: UpgradePhrase
-  FallbackText: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+  translationName: SkinsViewPhrase
+  FallbackText: "\u0421\u043A\u0438\u043D\u044B"
 --- !u!1 &2944956843512086902
 GameObject:
   m_ObjectHideFlags: 0
@@ -10141,7 +10353,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041A\u0443\u043F\u0438\u0442\u044C"
+  m_Text: Buy
 --- !u!114 &8239664441847374337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10236,7 +10448,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+  m_Text: Upgrades
 --- !u!114 &8675595352066219525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10249,8 +10461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: UpgradePhrase
-  FallbackText: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+  translationName: UpgradesViewPhrase
+  FallbackText: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u044F"
 --- !u!1 &3252544422985516321
 GameObject:
   m_ObjectHideFlags: 0
@@ -10744,7 +10956,6 @@ GameObject:
   - component: {fileID: 4715971522431707072}
   - component: {fileID: 6940185071208220076}
   - component: {fileID: 7389807466124672458}
-  - component: {fileID: 3691911892145407264}
   - component: {fileID: 6752081286686687718}
   m_Layer: 5
   m_Name: AdSkinButton
@@ -10815,50 +11026,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3691911892145407264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3574320059910129118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: e8675bfbb0ee45a4081fe5fd1319536e, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 352f4a2adc761e745998db35f72ae03d, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: e8675bfbb0ee45a4081fe5fd1319536e, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 493e2779f57a3294aaf8e9327d998ddd, type: 3}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Highlighted
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 7389807466124672458}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &6752081286686687718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10871,7 +11038,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e488d19b8fca1904398581d2b565e01c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _button: {fileID: 3691911892145407264}
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  _text: {fileID: 24900584018215038}
+  _defaultText: {fileID: 3522079430254129291}
+  _time: 600
+  _languageSwitcher: {fileID: 2810537314671806709}
 --- !u!1 &3608227864707816928
 GameObject:
   m_ObjectHideFlags: 0
@@ -18269,7 +18471,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041F\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u043A\u0430"
+  m_Text: Reload
 --- !u!114 &4426389660732176834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18593,6 +18795,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5160218110463893315}
+  - {fileID: 4533534419376927707}
   m_Father: {fileID: 5645550232089271635}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18601,6 +18804,61 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &4363831744401845800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4281355305846137645}
+  - component: {fileID: 6194640864318487027}
+  m_Layer: 0
+  m_Name: UpgradesViewPhrase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4281355305846137645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363831744401845800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5733119386905433422}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6194640864318487027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363831744401845800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u044F"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Upgrades
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Y\xFCkseltmeler"
+    Object: {fileID: 0}
 --- !u!1 &4435103211268861471
 GameObject:
   m_ObjectHideFlags: 0
@@ -18681,7 +18939,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0414\u0443\u043B\u043E"
+  m_Text: Muzzle
 --- !u!114 &174688929605368040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18852,7 +19110,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041C\u041E\u0429\u042C"
+  m_Text: POWER
 --- !u!114 &546384988431383094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19027,7 +19285,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+  m_Text: "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C"
 --- !u!114 &9119586480091687411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19040,8 +19298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: UpgradeButton
-  FallbackText: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+  translationName: AdGetSkinButton
+  FallbackText: "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C"
 --- !u!1 &4683433379292891257
 GameObject:
   m_ObjectHideFlags: 0
@@ -19213,7 +19471,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
+  m_Text: Magazine
 --- !u!114 &8607668925124638648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19308,7 +19566,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u0440."
+  m_Text: Lv.
 --- !u!114 &140439916129327289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19520,7 +19778,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mermiler
+  m_Text: Bullets
 --- !u!1 &5076489658787896963
 GameObject:
   m_ObjectHideFlags: 0
@@ -19688,7 +19946,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -39.9093}
-  m_SizeDelta: {x: 0, y: -80.2922}
+  m_SizeDelta: {x: 90, y: -80.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1535351831867266819
 CanvasRenderer:
@@ -19812,6 +20070,61 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 9999
+--- !u!1 &5171278238368128750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 97069945905603919}
+  - component: {fileID: 1989123121510274343}
+  m_Layer: 0
+  m_Name: BuySkinButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &97069945905603919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5171278238368128750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8681722290449228296}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1989123121510274343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5171278238368128750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u041A\u0443\u043F\u0438\u0442\u044C"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Buy
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Sat\u0131n almak"
+    Object: {fileID: 0}
 --- !u!1 &5187618497350330933
 GameObject:
   m_ObjectHideFlags: 0
@@ -20665,7 +20978,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0421\u043A\u0438\u043D\u044B"
+  m_Text: Skins
 --- !u!114 &3651304821452752250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20678,7 +20991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: UpgradeButton
+  translationName: SkinsViewPhrase
   FallbackText: "\u0421\u043A\u0438\u043D\u044B"
 --- !u!1 &5726971307396487867
 GameObject:
@@ -20782,7 +21095,7 @@ GameObject:
   - component: {fileID: 7112383482965402498}
   - component: {fileID: 3187847555790537829}
   - component: {fileID: 617594452312956482}
-  - component: {fileID: 1851992293047167826}
+  - component: {fileID: 9177901423913589922}
   m_Layer: 5
   m_Name: ButtonText
   m_TagString: Untagged
@@ -20851,8 +21164,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
---- !u!114 &1851992293047167826
+  m_Text: Upgrade
+--- !u!114 &9177901423913589922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20864,7 +21177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: UpgradeButton
+  translationName: UpgradePhrase
   FallbackText: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
 --- !u!1 &5859209953790960839
 GameObject:
@@ -21006,6 +21319,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buyButton: {fileID: 4364486937417216878}
   _priceText: {fileID: 5792861730228328083}
+  _buttonText: {fileID: 9167215103183749975}
+  _buyText: {fileID: 3791221033104607334}
+  _recievedText: {fileID: 9055052314185785183}
 --- !u!1 &5932778100648559724
 GameObject:
   m_ObjectHideFlags: 0
@@ -21637,7 +21953,6 @@ GameObject:
   - component: {fileID: 7348890914940239783}
   - component: {fileID: 2570329365163265353}
   - component: {fileID: 9167215103183749975}
-  - component: {fileID: 157542529335166097}
   m_Layer: 5
   m_Name: ButtonText
   m_TagString: Untagged
@@ -21707,20 +22022,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
---- !u!114 &157542529335166097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7017599813929210904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: UpgradeButton
-  FallbackText: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
 --- !u!1 &7192826198302950240
 GameObject:
   m_ObjectHideFlags: 0
@@ -26395,6 +26696,134 @@ MonoBehaviour:
   UpgradeButton: {fileID: 5234405526729349380}
   ButtonText: {fileID: 9028807226256036265}
   LevelText: {fileID: 7560943723493174532}
+--- !u!1 &7321937327687192301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4533534419376927707}
+  - component: {fileID: 7138932796745072551}
+  - component: {fileID: 9055052314185785183}
+  - component: {fileID: 6257206355709100157}
+  m_Layer: 5
+  m_Name: SkinRecievedText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4533534419376927707
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7321937327687192301}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2585930439449144002}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7138932796745072551
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7321937327687192301}
+  m_CullTransparentMesh: 1
+--- !u!114 &9055052314185785183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7321937327687192301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: bcedc2b0202e8944bb8e7c08a5584181, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u043E"
+--- !u!114 &6257206355709100157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7321937327687192301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: ReceivedText
+  FallbackText: "\u041F\u043E\u043B\u0443\u0447\u0435\u043D\u043E"
+--- !u!1 &7390813122914152037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5733119386905433422}
+  m_Layer: 0
+  m_Name: SwitchMenuButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5733119386905433422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390813122914152037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9171577573964319555}
+  - {fileID: 4281355305846137645}
+  m_Father: {fileID: 4946297191349958447}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7570376877048898039
 GameObject:
   m_ObjectHideFlags: 0
@@ -26475,7 +26904,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+  m_Text: Upgrade
 --- !u!114 &1022492798059546402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26897,7 +27326,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u0440\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C"
+  m_Text: Fire rate
 --- !u!114 &8114229039349763438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26991,7 +27420,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u015Farj\xF6r"
+  m_Text: Magazine
 --- !u!1 &7888878032458878224
 GameObject:
   m_ObjectHideFlags: 0
@@ -27072,7 +27501,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+  m_Text: Upgrade
 --- !u!114 &3398382259812884845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27085,7 +27514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee4021ce59f313499a5cab041f02aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translationName: UpgradeButton
+  translationName: UpgradePhrase
   FallbackText: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
 --- !u!1 &7950186040623238896
 GameObject:
@@ -27486,8 +27915,11 @@ MonoBehaviour:
   _swichMenuButton: {fileID: 272286644687569545}
   _buyUpgradeButton: {fileID: 8266206256095326958}
   _buySkinButton: {fileID: 4364486937417216878}
-  _adSkinButton: {fileID: 3691911892145407264}
+  _adSkinButton: {fileID: 6752081286686687718}
   _adUpgradeButton: {fileID: 8971176354957881406}
+  _switchMenuButtonText: {fileID: 3423001240951335021}
+  _upgradeText: {fileID: 7934553474188318939}
+  _skinsText: {fileID: 1329664390342386829}
 --- !u!1 &7964515138968131325
 GameObject:
   m_ObjectHideFlags: 0
@@ -28154,7 +28586,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0423\u0440\u043E\u043D"
+  m_Text: Damage
 --- !u!114 &2848633271581989451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28310,6 +28742,61 @@ MonoBehaviour:
   UpgradeButton: {fileID: 477822011124636318}
   ButtonText: {fileID: 1785885044391885895}
   LevelText: {fileID: 7560943723493174532}
+--- !u!1 &8904346582575396754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9171577573964319555}
+  - component: {fileID: 9102793816249888879}
+  m_Layer: 0
+  m_Name: SkinsViewPhrase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9171577573964319555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8904346582575396754}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5733119386905433422}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9102793816249888879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8904346582575396754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0421\u043A\u0438\u043D\u044B"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Skins
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "D\u0131\u015F g\xF6r\xFCn\xFCmler"
+    Object: {fileID: 0}
 --- !u!1 &8924366795244614334
 GameObject:
   m_ObjectHideFlags: 0
@@ -28574,7 +29061,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hedef
+  m_Text: Scope
 --- !u!1 &9191591003871537254
 GameObject:
   m_ObjectHideFlags: 0
@@ -28809,7 +29296,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0410\u0440\u0441\u0435\u043D\u0430\u043B"
+  m_Text: Store
 --- !u!114 &4287394136077835922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32945,9 +33432,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4503892310930578366, guid: c507596180246f34dad72552e74a8f1e, type: 3}
+      propertyPath: m_Text
+      value: GET FREE
+      objectReference: {fileID: 0}
     - target: {fileID: 6135983101820708878, guid: c507596180246f34dad72552e74a8f1e, type: 3}
       propertyPath: m_Name
       value: Localization
+      objectReference: {fileID: 0}
+    - target: {fileID: 6847976973069132221, guid: c507596180246f34dad72552e74a8f1e, type: 3}
+      propertyPath: currentLanguage
+      value: English
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245355286187800029, guid: c507596180246f34dad72552e74a8f1e, type: 3}
+      propertyPath: m_Text
+      value: Unknown player
       objectReference: {fileID: 0}
     - target: {fileID: 8245355286187800029, guid: c507596180246f34dad72552e74a8f1e, type: 3}
       propertyPath: m_FontData.m_Font
@@ -32969,6 +33468,11 @@ MonoBehaviour:
 --- !u!4 &1380800806005784621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2895130722455642335, guid: c507596180246f34dad72552e74a8f1e, type: 3}
+  m_PrefabInstance: {fileID: 4252529488547913970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3520021667310909944 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 855019856397539594, guid: c507596180246f34dad72552e74a8f1e, type: 3}
   m_PrefabInstance: {fileID: 4252529488547913970}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &5289873567370532143 stripped

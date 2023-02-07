@@ -9,6 +9,8 @@ namespace Assets.Source.Scripts.Weapons
     {
         private const string TextureIndexKey = "CurrentTextureKey";
         [SerializeField] private Material _mainMaterial;
+        [SerializeField] private Material _secondaryMaterial;
+        [SerializeField] private Material _magazineMaterial;
         [SerializeField] private List<Texture2D> _textureList;
         [SerializeField] private Texture2D _defaultTexture;
 
@@ -31,7 +33,12 @@ namespace Assets.Source.Scripts.Weapons
             }
         }
 
-        public void SetTexture(Texture2D texture) => _mainMaterial.mainTexture = texture;
+        public void SetTexture(Texture2D texture)
+        {
+            _mainMaterial.mainTexture = texture;
+            _secondaryMaterial.mainTexture = texture;
+            _magazineMaterial.mainTexture = texture;
+        }
 
         public void ApplyTexture()
         {

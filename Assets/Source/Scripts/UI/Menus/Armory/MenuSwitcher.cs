@@ -14,8 +14,15 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
         [SerializeField] private Button _buySkinButton;
         [SerializeField] private Button _adSkinButton;
         [SerializeField] private Button _adUpgradeButton;
+        [SerializeField] private Text _switchMenuButtonText;
+        [SerializeField] private Text _upgradeText;
+        [SerializeField] private Text _skinsText;
 
-        private void OnEnable() => _swichMenuButton.onClick.AddListener(Switch);
+        private void OnEnable()
+        {
+            SetSwitchButtonText(_skinsText.text);
+            _swichMenuButton.onClick.AddListener(Switch);
+        }
 
         private void OnDisable() => _swichMenuButton.onClick.RemoveListener(Switch);
 
@@ -32,6 +39,7 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
                 Disable(_adUpgradeButton.gameObject);
                 Disable(_buyUpgradeButton.gameObject);
                 Enable(_skinsPanel.gameObject);
+                SetSwitchButtonText(_upgradeText.text);
                 _weaponPlaceMover.MoveTo(_weaponPlaceMover.ZoomedPosition, _weaponPlaceMover.MaxScale);
             }
             else
@@ -43,8 +51,11 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
                 Enable(_buyUpgradeButton.gameObject);
                 Enable(_elementPanel.gameObject);
                 Enable(_weaponPlatesView.gameObject);
+                SetSwitchButtonText(_skinsText.text);
                 _weaponPlaceMover.MoveTo(_weaponPlaceMover.DefaultPosition, _weaponPlaceMover.MinScale);
             }
         }
+
+        private void SetSwitchButtonText(string text) => _switchMenuButtonText.text = text;
     }
 }
