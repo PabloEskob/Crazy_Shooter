@@ -9,33 +9,26 @@ public class StartScene : MonoBehaviour
     private IGameFactory _gameFactory;
     private IAssetProvider _assetProvider;
     private int _number;
-    private FinishLevel _finishLevel;
     private LevelAdjustmentTool _levelAdjustmentTool;
 
     private void OnDisable()
     {
-        _finishLevel.OnEndedLevel -= LaunchVictoryScreen;
-        
         foreach (var zone in _levelAdjustmentTool._zones)
         {
             zone.OnDisable();
         }
     }
 
-    public void Construct(IGameFactory gameFactory, GameStatusScreen gameStatusScreen,
-        FinishLevel finishLevel,LevelAdjustmentTool levelAdjustmentTool)
+    public void Construct(IGameFactory gameFactory, GameStatusScreen gameStatusScreen
+       ,LevelAdjustmentTool levelAdjustmentTool)
     {
         _gameStatusScreen = gameStatusScreen;
         _gameFactory = gameFactory;
         _levelAdjustmentTool = levelAdjustmentTool;
-        _finishLevel = finishLevel;
-        _finishLevel.OnEndedLevel += LaunchVictoryScreen;
+
         InitGameWorld();
     }
-
-    private void LaunchVictoryScreen() => 
-        _gameStatusScreen.PlayerVictory();
-
+    
     private void Awake()
     {
         _assetProvider = AllServices.Container.Single<IAssetProvider>();

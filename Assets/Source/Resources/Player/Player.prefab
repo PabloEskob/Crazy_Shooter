@@ -1223,10 +1223,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9d4b1b8b-f899-47e8-84fb-5615cb99dd78
     m_ActionName: MobileActionMap/Inventory Next Wheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bce1abaf-4ea6-47b5-816d-fc7c2dd4ddef
-    m_ActionName: UI/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: DesktopActionMap

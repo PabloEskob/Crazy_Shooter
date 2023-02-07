@@ -40,7 +40,7 @@ public class ZombieKillCounter : MonoBehaviour
         if (ZombieKilledQuantity == _maxZombieQuantity)
         {
             _statusScreen = FindObjectOfType<GameStatusScreen>();
-            _statusScreen.PlayerVictory();
+            _statusScreen.PlayVictory();
         }
 
         QuantityChanged?.Invoke();

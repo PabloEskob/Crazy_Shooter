@@ -14,24 +14,34 @@ public class Rotate : MonoBehaviour
     private bool _lookFinish;
     private Vector3 _positionToLook;
 
+    private bool IsPause => ProjectContext.Instance.PauseService.IsPaused;
+
+
     public event Action OnTurned;
 
     private void LateUpdate()
     {
-        if (_canRotate)
+        switch (IsPause)
         {
-            _elapsedTime += Time.deltaTime;
-            float percentageCompleted = _elapsedTime / _speed;
-            LookAtXZ(transform, _turningPoint, percentageCompleted);
-        }
+            case false:
+            {
+                if (_canRotate)
+                {
+                    _elapsedTime += Time.deltaTime;
+                    float percentageCompleted = _elapsedTime / _speed;
+                    LookAtXZ(transform, _turningPoint, percentageCompleted);
+                }
 
-        if (_canRotate == false && _canReturn)
-        {
-            _elapsedTime += Time.deltaTime;
-            float percentageCompleted = _elapsedTime / _speedReturn;
-            LookAtXZ(transform, _playerPoint.transform.position, percentageCompleted);
+                if (_canRotate == false && _canReturn)
+                {
+                    _elapsedTime += Time.deltaTime;
+                    float percentageCompleted = _elapsedTime / _speedReturn;
+                    LookAtXZ(transform, _playerPoint.transform.position, percentageCompleted);
+                }
+
+                break;
+            }
         }
-        
     }
 
     public void Init(Vector3 turningPoint)
@@ -47,7 +57,7 @@ public class Rotate : MonoBehaviour
         _canReturn = true;
         _elapsedTime = 0;
     }
-    
+
     private void LookAtXZ(Transform transform, Vector3 point, float speed)
     {
         var direction = (point - transform.position).normalized;

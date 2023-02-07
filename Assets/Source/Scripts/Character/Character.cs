@@ -31,7 +31,6 @@ namespace InfimaGames.LowPolyShooterPack
         [Header("Grenade")] [Tooltip("If true, the character's grenades will never run out.")] [SerializeField]
         private bool grenadesUnlimited;
 
-        
 
         [Tooltip("Grenade spawn offset from the character's camera.")] [SerializeField]
         private float grenadeSpawnOffset = 1.0f;
@@ -344,6 +343,8 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private static readonly int HashAlphaActionOffset = Animator.StringToHash("Alpha Action Offset");
 
+        private bool IsPause => ProjectContext.Instance.PauseService.IsPaused;
+
         #endregion
 
         #region UNITY
@@ -461,72 +462,77 @@ namespace InfimaGames.LowPolyShooterPack
 
         protected override void LateUpdate()
         {
-            //Ignore if we don't have a weapon bone assigned.
-            if (boneWeapon == null)
-                return;
-
-            //We need a weapon for this!
-            if (equippedWeapon == null)
-                return;
-
-            //Weapons without a scope should not be a thing! Ironsights are a scope too!
-            if (equippedWeaponScope == null)
-                return;
-
-            //Get the weapon offsets.
-            Offsets weaponOffsets = equippedWeapon.GetWeaponOffsets();
-
-            //Frame Location Local.
-            Vector3 frameLocationLocal = swayLocation;
-            //Offset Location.
-            frameLocationLocal +=
-                Vector3.Lerp(weaponOffsets.StandingLocation, weaponOffsets.AimingLocation, aimingAlpha);
-            //Scope Aiming Location.
-            frameLocationLocal += Vector3.Lerp(default, equippedWeaponScope.GetOffsetAimingLocation(), aimingAlpha);
-            //Action Offset Location. This is a helping value to make actions like throwing a grenade different per-weapon.
-            frameLocationLocal +=
-                Vector3.Lerp(weaponOffsets.ActionLocation * characterAnimator.GetFloat(HashAlphaActionOffset), default,
-                    aimingAlpha);
-
-            //Frame Rotation Local.
-            Vector3 frameRotationLocal = swayRotation;
-            //Offset Rotation.
-            frameRotationLocal +=
-                Vector3.Lerp(weaponOffsets.StandingRotation, weaponOffsets.AimingRotation, aimingAlpha);
-            //Scope Aiming Rotation.
-            frameRotationLocal += Vector3.Lerp(default, equippedWeaponScope.GetOffsetAimingRotation(), aimingAlpha);
-            //Action Offset Rotation. This is a helping value to make actions like throwing a grenade different per-weapon.
-            frameRotationLocal +=
-                Vector3.Lerp(weaponOffsets.ActionRotation * characterAnimator.GetFloat(HashAlphaActionOffset), default,
-                    aimingAlpha);
-
-            #region Automatic Aim Offsets
-
-            // Transform socketScopeCorrected = equippedWeaponScope.transform.GetChild(0).GetChild(0).GetChild(0);
-            // Transform socketScopes = equippedWeaponScope.transform.parent.parent;
-            //
-            // Log.wtf(equippedWeaponScope.transform.parent.parent.parent.localPosition);
-            // Vector3 localPosition = equippedWeaponScope.transform.GetChild(0).GetChild(0).localPosition;
-            // Log.wtf(localPosition);
-            // boneWeapon.localPosition -= Vector3.Lerp(default, localPosition, aimingAlpha);
-
-            #endregion
-
-            //Add to the weapon location.
-            boneWeapon.localPosition += frameLocationLocal;
-            //Add to the weapon rotation.
-            boneWeapon.localEulerAngles += frameRotationLocal;
-
-            //Make sure that we have a kinematics component!
-            if (characterKinematics != null)
+            if (!IsPause)
             {
-                //Get Left Constraint Alpha.
-                float alphaLeft = characterAnimator.GetFloat(HashConstraintAlphaLeft);
-                //Get Right Constraint Alpha.
-                float alphaRight = characterAnimator.GetFloat(HashConstraintAlphaRight);
+                //Ignore if we don't have a weapon bone assigned.
+                if (boneWeapon == null)
+                    return;
 
-                //Compute.
-                characterKinematics.Compute(alphaLeft, alphaRight);
+                //We need a weapon for this!
+                if (equippedWeapon == null)
+                    return;
+
+                //Weapons without a scope should not be a thing! Ironsights are a scope too!
+                if (equippedWeaponScope == null)
+                    return;
+
+                //Get the weapon offsets.
+                Offsets weaponOffsets = equippedWeapon.GetWeaponOffsets();
+
+                //Frame Location Local.
+                Vector3 frameLocationLocal = swayLocation;
+                //Offset Location.
+                frameLocationLocal +=
+                    Vector3.Lerp(weaponOffsets.StandingLocation, weaponOffsets.AimingLocation, aimingAlpha);
+                //Scope Aiming Location.
+                frameLocationLocal += Vector3.Lerp(default, equippedWeaponScope.GetOffsetAimingLocation(), aimingAlpha);
+                //Action Offset Location. This is a helping value to make actions like throwing a grenade different per-weapon.
+                frameLocationLocal +=
+                    Vector3.Lerp(weaponOffsets.ActionLocation * characterAnimator.GetFloat(HashAlphaActionOffset),
+                        default,
+                        aimingAlpha);
+
+                //Frame Rotation Local.
+                Vector3 frameRotationLocal = swayRotation;
+                //Offset Rotation.
+                frameRotationLocal +=
+                    Vector3.Lerp(weaponOffsets.StandingRotation, weaponOffsets.AimingRotation, aimingAlpha);
+                //Scope Aiming Rotation.
+                frameRotationLocal += Vector3.Lerp(default, equippedWeaponScope.GetOffsetAimingRotation(), aimingAlpha);
+                //Action Offset Rotation. This is a helping value to make actions like throwing a grenade different per-weapon.
+                frameRotationLocal +=
+                    Vector3.Lerp(weaponOffsets.ActionRotation * characterAnimator.GetFloat(HashAlphaActionOffset),
+                        default,
+                        aimingAlpha);
+
+                #region Automatic Aim Offsets
+
+                // Transform socketScopeCorrected = equippedWeaponScope.transform.GetChild(0).GetChild(0).GetChild(0);
+                // Transform socketScopes = equippedWeaponScope.transform.parent.parent;
+                //
+                // Log.wtf(equippedWeaponScope.transform.parent.parent.parent.localPosition);
+                // Vector3 localPosition = equippedWeaponScope.transform.GetChild(0).GetChild(0).localPosition;
+                // Log.wtf(localPosition);
+                // boneWeapon.localPosition -= Vector3.Lerp(default, localPosition, aimingAlpha);
+
+                #endregion
+
+                //Add to the weapon location.
+                boneWeapon.localPosition += frameLocationLocal;
+                //Add to the weapon rotation.
+                boneWeapon.localEulerAngles += frameRotationLocal;
+
+                //Make sure that we have a kinematics component!
+                if (characterKinematics != null)
+                {
+                    //Get Left Constraint Alpha.
+                    float alphaLeft = characterAnimator.GetFloat(HashConstraintAlphaLeft);
+                    //Get Right Constraint Alpha.
+                    float alphaRight = characterAnimator.GetFloat(HashConstraintAlphaRight);
+
+                    //Compute.
+                    characterKinematics.Compute(alphaLeft, alphaRight);
+                }
             }
         }
 
@@ -1192,45 +1198,48 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryFire(InputAction.CallbackContext context)
         {
-            //Block while the cursor is unlocked.
-            if (!cursorLocked && _lock == false)
-                return;
-
-            //Switch.
-            switch (context)
+            if (!IsPause)
             {
-                //Started.
-                case { phase: InputActionPhase.Started }:
-                    //Hold.
-                    holdingButtonFire = true;
-                    break;
-                //Performed.
-                case { phase: InputActionPhase.Performed }:
-                    //Ignore if we're not allowed to actually fire.
-                    if (!CanPlayAnimationFire())
-                        break;
+                //Block while the cursor is unlocked.
+                if (!cursorLocked && _lock == false)
+                    return;
 
-                    //Check.
-                    if (equippedWeapon.HasAmmunition())
-                    {
-                        //Check.
-                        if (equippedWeapon.IsAutomatic())
+                //Switch.
+                switch (context)
+                {
+                    //Started.
+                    case { phase: InputActionPhase.Started }:
+                        //Hold.
+                        holdingButtonFire = true;
+                        break;
+                    //Performed.
+                    case { phase: InputActionPhase.Performed }:
+                        //Ignore if we're not allowed to actually fire.
+                        if (!CanPlayAnimationFire())
                             break;
 
-                        //Has fire rate passed.
-                        if (Time.time - lastShotTime > 60.0f / equippedWeapon.GetRateOfFire())
-                            Fire();
-                    }
-                    //Fire Empty.
-                    else
-                        FireEmpty();
+                        //Check.
+                        if (equippedWeapon.HasAmmunition())
+                        {
+                            //Check.
+                            if (equippedWeapon.IsAutomatic())
+                                break;
 
-                    break;
-                //Canceled.
-                case { phase: InputActionPhase.Canceled }:
-                    //Stop Hold.
-                    holdingButtonFire = false;
-                    break;
+                            //Has fire rate passed.
+                            if (Time.time - lastShotTime > 60.0f / equippedWeapon.GetRateOfFire())
+                                Fire();
+                        }
+                        //Fire Empty.
+                        else
+                            FireEmpty();
+
+                        break;
+                    //Canceled.
+                    case { phase: InputActionPhase.Canceled }:
+                        //Stop Hold.
+                        holdingButtonFire = false;
+                        break;
+                }
             }
         }
 
@@ -1239,22 +1248,25 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryPlayReload(InputAction.CallbackContext context)
         {
-            //Block while the cursor is unlocked.
-            if (!cursorLocked && _lock == false)
-                return;
-
-            //Block.
-            if (!CanPlayAnimationReload())
-                return;
-
-            //Switch.
-            switch (context)
+            if (!IsPause)
             {
-                //Performed.
-                case { phase: InputActionPhase.Performed }:
-                    //Play Animation.
-                    PlayReloadAnimation();
-                    break;
+                //Block while the cursor is unlocked.
+                if (!cursorLocked && _lock == false)
+                    return;
+
+                //Block.
+                if (!CanPlayAnimationReload())
+                    return;
+
+                //Switch.
+                switch (context)
+                {
+                    //Performed.
+                    case { phase: InputActionPhase.Performed }:
+                        //Play Animation.
+                        PlayReloadAnimation();
+                        break;
+                }
             }
         }
 
@@ -1263,22 +1275,25 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryInspect(InputAction.CallbackContext context)
         {
-            //Block while the cursor is unlocked.
-            if (!cursorLocked && _lock == false)
-                return;
-
-            //Block.
-            if (!CanPlayAnimationInspect())
-                return;
-
-            //Switch.
-            switch (context)
+            if (!IsPause)
             {
-                //Performed.
-                case { phase: InputActionPhase.Performed }:
-                    //Play Animation.
-                    Inspect();
-                    break;
+                //Block while the cursor is unlocked.
+                if (!cursorLocked && _lock == false)
+                    return;
+
+                //Block.
+                if (!CanPlayAnimationInspect())
+                    return;
+
+                //Switch.
+                switch (context)
+                {
+                    //Performed.
+                    case { phase: InputActionPhase.Performed }:
+                        //Play Animation.
+                        Inspect();
+                        break;
+                }
             }
         }
 
@@ -1287,21 +1302,24 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryAiming(InputAction.CallbackContext context)
         {
-            //Block while the cursor is unlocked.
-            if (!cursorLocked && _lock == false)
-                return;
-
-            //Switch.
-            switch (context.phase)
+            if (!IsPause)
             {
-                case InputActionPhase.Started:
-                    //Started.
-                    holdingButtonAim = !holdingButtonAim;
-                    break;
-                // case InputActionPhase.Canceled:
-                // 	//Canceled.
-                // 	holdingButtonAim = false;
-                // 	break;
+                //Block while the cursor is unlocked.
+                if (!cursorLocked && _lock == false)
+                    return;
+
+                //Switch.
+                switch (context.phase)
+                {
+                    case InputActionPhase.Started:
+                        //Started.
+                        holdingButtonAim = !holdingButtonAim;
+                        break;
+                    // case InputActionPhase.Canceled:
+                    // 	//Canceled.
+                    // 	holdingButtonAim = false;
+                    // 	break;
+                }
             }
         }
 
@@ -1310,58 +1328,7 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryHolster(InputAction.CallbackContext context)
         {
-            //Block while the cursor is unlocked.
-            if (!cursorLocked && _lock == false)
-                return;
-
-            //Switch.
-            switch (context.phase)
-            {
-                //Performed.
-                case InputActionPhase.Performed:
-                    //Check.
-                    if (CanPlayAnimationHolster())
-                    {
-                        //Set.
-                        SetHolstered(!holstered);
-                        //Holstering.
-                        holstering = true;
-                    }
-
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Throw Grenade. 
-        /// </summary>
-        public void OnTryThrowGrenade(InputAction.CallbackContext context)
-        {
-            if (_canFire)
-            {
-                //Block while the cursor is unlocked.
-                if (!cursorLocked)
-                    return;
-
-                //Switch.
-                switch (context.phase)
-                {
-                    //Performed.
-                    case InputActionPhase.Performed:
-                        //Try Play.
-                        if (CanPlayAnimationGrenadeThrow())
-                            PlayGrenadeThrow();
-                        break;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Melee.
-        /// </summary>
-        public void OnTryMelee(InputAction.CallbackContext context)
-        {
-            if (_canFire)
+            if (!IsPause)
             {
                 //Block while the cursor is unlocked.
                 if (!cursorLocked && _lock == false)
@@ -1372,10 +1339,70 @@ namespace InfimaGames.LowPolyShooterPack
                 {
                     //Performed.
                     case InputActionPhase.Performed:
-                        //Try Play.
-                        if (CanPlayAnimationMelee())
-                            PlayMelee();
+                        //Check.
+                        if (CanPlayAnimationHolster())
+                        {
+                            //Set.
+                            SetHolstered(!holstered);
+                            //Holstering.
+                            holstering = true;
+                        }
+
                         break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Throw Grenade. 
+        /// </summary>
+        public void OnTryThrowGrenade(InputAction.CallbackContext context)
+        {
+            if (!IsPause)
+            {
+                if (_canFire)
+                {
+                    //Block while the cursor is unlocked.
+                    if (!cursorLocked)
+                        return;
+
+                    //Switch.
+                    switch (context.phase)
+                    {
+                        //Performed.
+                        case InputActionPhase.Performed:
+                            //Try Play.
+                            if (CanPlayAnimationGrenadeThrow())
+                                PlayGrenadeThrow();
+                            break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Melee.
+        /// </summary>
+        public void OnTryMelee(InputAction.CallbackContext context)
+        {
+            if (!IsPause)
+            {
+                if (_canFire)
+                {
+                    //Block while the cursor is unlocked.
+                    if (!cursorLocked && _lock == false)
+                        return;
+
+                    //Switch.
+                    switch (context.phase)
+                    {
+                        //Performed.
+                        case InputActionPhase.Performed:
+                            //Try Play.
+                            if (CanPlayAnimationMelee())
+                                PlayMelee();
+                            break;
+                    }
                 }
             }
         }
@@ -1385,23 +1412,26 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryRun(InputAction.CallbackContext context)
         {
-            //Block while the cursor is unlocked.
-            if (!cursorLocked && _lock == false)
-                return;
-
-            //Switch.
-            switch (context.phase)
+            if (!IsPause)
             {
-                //Started.
-                case InputActionPhase.Started:
-                    //Start.
-                    holdingButtonRun = true;
-                    break;
-                //Canceled.
-                case InputActionPhase.Canceled:
-                    //Stop.
-                    holdingButtonRun = false;
-                    break;
+                //Block while the cursor is unlocked.
+                if (!cursorLocked && _lock == false)
+                    return;
+
+                //Switch.
+                switch (context.phase)
+                {
+                    //Started.
+                    case InputActionPhase.Started:
+                        //Start.
+                        holdingButtonRun = true;
+                        break;
+                    //Canceled.
+                    case InputActionPhase.Canceled:
+                        //Stop.
+                        holdingButtonRun = false;
+                        break;
+                }
             }
         }
 
@@ -1410,11 +1440,14 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryJump(InputAction.CallbackContext context)
         {
-            //Block while the cursor is unlocked.
-            if (!cursorLocked && _lock == false)
-                return;
+            if (!IsPause)
+            {
+                //Block while the cursor is unlocked.
+                if (!cursorLocked && _lock == false)
+                    return;
 
-            Log.wtf("Jumping!");
+                Log.wtf("Jumping!");
+            }
         }
 
         /// <summary>
@@ -1422,34 +1455,37 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnTryInventoryNext(InputAction.CallbackContext context)
         {
-            //Block while the cursor is unlocked.
-            if (!cursorLocked && _lock == false)
-                return;
-
-            //Null Check.
-            if (inventory == null)
-                return;
-
-            //Switch.
-            switch (context)
+            if (!IsPause)
             {
-                //Performed.
-                case { phase: InputActionPhase.Performed }:
-                    //Get the index increment direction for our inventory using the scroll wheel direction. If we're not
-                    //actually using one, then just increment by one.
-                    float scrollValue = context.valueType.IsEquivalentTo(typeof(Vector2))
-                        ? Mathf.Sign(context.ReadValue<Vector2>().y)
-                        : 1.0f;
+                //Block while the cursor is unlocked.
+                if (!cursorLocked && _lock == false)
+                    return;
 
-                    //Get the next index to switch to.
-                    int indexNext = scrollValue > 0 ? inventory.GetNextIndex() : inventory.GetLastIndex();
-                    //Get the current weapon's index.
-                    int indexCurrent = inventory.GetEquippedIndex();
+                //Null Check.
+                if (inventory == null)
+                    return;
 
-                    //Make sure we're allowed to change, and also that we're not using the same index, otherwise weird things happen!
-                    if (CanChangeWeapon() && (indexCurrent != indexNext))
-                        StartCoroutine(nameof(Equip), indexNext);
-                    break;
+                //Switch.
+                switch (context)
+                {
+                    //Performed.
+                    case { phase: InputActionPhase.Performed }:
+                        //Get the index increment direction for our inventory using the scroll wheel direction. If we're not
+                        //actually using one, then just increment by one.
+                        float scrollValue = context.valueType.IsEquivalentTo(typeof(Vector2))
+                            ? Mathf.Sign(context.ReadValue<Vector2>().y)
+                            : 1.0f;
+
+                        //Get the next index to switch to.
+                        int indexNext = scrollValue > 0 ? inventory.GetNextIndex() : inventory.GetLastIndex();
+                        //Get the current weapon's index.
+                        int indexCurrent = inventory.GetEquippedIndex();
+
+                        //Make sure we're allowed to change, and also that we're not using the same index, otherwise weird things happen!
+                        if (CanChangeWeapon() && (indexCurrent != indexNext))
+                            StartCoroutine(nameof(Equip), indexNext);
+                        break;
+                }
             }
         }
 
@@ -1464,16 +1500,19 @@ namespace InfimaGames.LowPolyShooterPack
 
         public void OnLockCursor(InputAction.CallbackContext context)
         {
-            //Switch.
-            switch (context)
+            if (!IsPause)
             {
-                //Performed.
-                case { phase: InputActionPhase.Performed }:
-                    //Toggle the cursor locked value.
-                    cursorLocked = !cursorLocked;
-                    //Update the cursor's state.
-                    //  UpdateCursorState();
-                    break;
+                //Switch.
+                switch (context)
+                {
+                    //Performed.
+                    case { phase: InputActionPhase.Performed }:
+                        //Toggle the cursor locked value.
+                        cursorLocked = !cursorLocked;
+                        //Update the cursor's state.
+                        //  UpdateCursorState();
+                        break;
+                }
             }
         }
 
@@ -1482,9 +1521,12 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnMove(InputAction.CallbackContext context)
         {
-            if (_lock == false)
-                //Read.
-                axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
+            if (!IsPause)
+            {
+                if (_lock == false)
+                    //Read.
+                    axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
+            }
         }
 
         /// <summary>
@@ -1492,19 +1534,22 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnLook(InputAction.CallbackContext context)
         {
-            if (_lock == false)
+            if (!IsPause)
             {
-                axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
-                //Make sure that we have a weapon.
-                if (equippedWeapon == null)
-                    return;
+                if (_lock == false)
+                {
+                    axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
+                    //Make sure that we have a weapon.
+                    if (equippedWeapon == null)
+                        return;
 
-                //Make sure that we have a scope.
-                if (equippedWeaponScope == null)
-                    return;
+                    //Make sure that we have a scope.
+                    if (equippedWeaponScope == null)
+                        return;
 
-                //If we're aiming, multiply by the mouse sensitivity multiplier of the equipped weapon's scope!
-                axisLook *= aiming ? equippedWeaponScope.GetMultiplierMouseSensitivity() : 1.0f;
+                    //If we're aiming, multiply by the mouse sensitivity multiplier of the equipped weapon's scope!
+                    axisLook *= aiming ? equippedWeaponScope.GetMultiplierMouseSensitivity() : 1.0f;
+                }
             }
         }
 
@@ -1513,16 +1558,19 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         public void OnUpdateTutorial(InputAction.CallbackContext context)
         {
-            //Switch.
-            tutorialTextVisible = context switch
+            if (!IsPause)
             {
-                //Started. Show the tutorial.
-                { phase: InputActionPhase.Started } => true,
-                //Canceled. Hide the tutorial.
-                { phase: InputActionPhase.Canceled } => false,
-                //Default.
-                _ => tutorialTextVisible
-            };
+                //Switch.
+                tutorialTextVisible = context switch
+                {
+                    //Started. Show the tutorial.
+                    { phase: InputActionPhase.Started } => true,
+                    //Canceled. Hide the tutorial.
+                    { phase: InputActionPhase.Canceled } => false,
+                    //Default.
+                    _ => tutorialTextVisible
+                };
+            }
         }
 
         #endregion

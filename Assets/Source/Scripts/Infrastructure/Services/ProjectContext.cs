@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProjectContext : MonoBehaviour
 {
@@ -12,6 +11,6 @@ public class ProjectContext : MonoBehaviour
     private void Start() => 
         Initialize();
 
-    public void Initialize() => 
+    private void Initialize() => 
         PauseService = new PauseService();
 }

@@ -10,7 +10,6 @@ namespace Source.Scripts.Infrastructure.Services
 {
     public class LevelTransfer : MonoBehaviour
     {
-
         [SerializeField] private SwitchScreen _switchScreen;
 
         private IGameStateMachine _stateMachine;
@@ -42,12 +41,14 @@ namespace Source.Scripts.Infrastructure.Services
         {
             _switchScreen.DefeatScreen.ButtonToMap.Click += OnGoToMapButtonClick;
             _switchScreen.VictoryScreen.ButtonToMap.Click += OnGoToMapButtonClick;
+            _switchScreen.DefeatScreen.ButtonToRestart.OnClickRestart += RestartLevel;
         }
 
         private void OnDisable()
         {
             _switchScreen.DefeatScreen.ButtonToMap.Click -= OnGoToMapButtonClick;
             _switchScreen.VictoryScreen.ButtonToMap.Click -= OnGoToMapButtonClick;
+            _switchScreen.DefeatScreen.ButtonToRestart.OnClickRestart -= RestartLevel;
         }
 
         private void Start()
@@ -60,7 +61,6 @@ namespace Source.Scripts.Infrastructure.Services
 
         private void OnGoToMapButtonClick(bool _isSuccess)
         {
-
             if (_gameConfig.LevelNames.Length - 1 != _lastCompletedLevelNumber
                 && _isSuccess == true
                 && _currentLevelName == _lastCompletedLevelName)
@@ -80,6 +80,11 @@ namespace Source.Scripts.Infrastructure.Services
             }
 
             _stateMachine.Enter<LoadMapSceneState>();
+        }
+
+        private void RestartLevel()
+        {
+            // _stateMachine.Enter<LoadLevelState>(_currentLevelNumber);
         }
     }
 }

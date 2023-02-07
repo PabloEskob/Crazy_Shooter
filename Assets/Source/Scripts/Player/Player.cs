@@ -40,6 +40,6 @@ public class Player : MonoBehaviour
         _character = GetComponent<Character>();
     }
 
-    public void SetActive() => 
+    public void SetDisable() => 
         _playerBody.Disable();
 }

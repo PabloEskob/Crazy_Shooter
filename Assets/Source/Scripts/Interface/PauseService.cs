@@ -2,7 +2,7 @@
 
 public class PauseService : IPauseHandler
 {
-    private readonly List<IPauseHandler> _handlers = new List<IPauseHandler>();
+    private readonly List<IPauseHandler> _handlers = new();
 
     public bool IsPaused { get; private set; }
 

@@ -1,4 +1,3 @@
-using Source.Infrastructure;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -6,9 +5,7 @@ public class ButtonPause : MonoBehaviour, IPointerClickHandler, IPauseHandler
 {
     private PanelPause _panelPause;
     private ActorUI _actorUI;
-
-    private BootstrapState _bootstrapState;
-
+    
     private void Awake() =>
         _actorUI = GetComponentInParent<ActorUI>();
 
@@ -18,8 +15,11 @@ public class ButtonPause : MonoBehaviour, IPointerClickHandler, IPauseHandler
         _panelPause = _actorUI.PanelPause;
     }
 
-    public void OnPointerClick(PointerEventData eventData) =>
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("sssss");
         SwitchPanel();
+    }
 
     public void SwitchPanel()
     {
@@ -27,8 +27,6 @@ public class ButtonPause : MonoBehaviour, IPointerClickHandler, IPauseHandler
         _panelPause.gameObject.SetActive(!_panelPause.isActiveAndEnabled);
     }
 
-    public void SetPaused(bool isPaused)
-    {
+    public void SetPaused(bool isPaused) => 
         Time.timeScale = isPaused ? 0f : 1f;
-    }
 }
