@@ -2,6 +2,7 @@ using System;
 using Agava.YandexGames;
 using Assets.Source.Scripts.Advertisement;
 using Assets.Source.Scripts.UI.Menus.Armory;
+using Assets.Source.Scripts.UI.Menus.Rewards;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class UpgradeViewPanel : MonoBehaviour
 {
     [SerializeField] private UpgradeHandler _upgradeHandler;
     [SerializeField] private BuyButton _buyButton;
-    [SerializeField] private UpgradeButtonAd _upgradeButtonAd;
+    [SerializeField] private AdvertisementButton _upgradeButtonAd;
     [SerializeField] private WeaponStatsDisplay _statsDisplay;
     [SerializeField] private SoftCurrencyHolder _softCurrencyHolder;
     [SerializeField] private AdvertisementHandler _advertisingHandler;
@@ -32,7 +33,7 @@ public class UpgradeViewPanel : MonoBehaviour
     {
         _statsDisplay.ValuesSet += OnValuesSet;
         _buyButton.Button.onClick.AddListener(OnBuyButtonClick);
-        _upgradeButtonAd.Button.onClick.AddListener(OnAdButtonClick);
+        _upgradeButtonAd.ButtonClicked += OnAdButtonClick;
     }
 
 
@@ -40,7 +41,7 @@ public class UpgradeViewPanel : MonoBehaviour
     {
         _statsDisplay.ValuesSet -= OnValuesSet;
         _buyButton.Button.onClick.RemoveListener(OnBuyButtonClick);
-        _upgradeButtonAd.Button.onClick.RemoveListener(OnAdButtonClick);
+        _upgradeButtonAd.ButtonClicked -= OnAdButtonClick;
     }
 
     private void OnValuesSet(float damage, float fireRate, float reloadSpeed, float magazineSize) =>

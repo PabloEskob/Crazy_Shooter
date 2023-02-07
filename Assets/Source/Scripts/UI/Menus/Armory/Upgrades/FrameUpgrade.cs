@@ -1,4 +1,5 @@
 using InfimaGames.LowPolyShooterPack;
+using UnityEngine;
 
 namespace Source.Scripts.Ui
 {
@@ -12,9 +13,12 @@ namespace Source.Scripts.Ui
             SetText();
         }
 
-        public override void SetText() => 
-            ButtonText.text = 
+        public override void SetText()
+        {
+            Debug.Log($"{UpgradeName.text}-{LevelText.text} {Weapon.GetFrameUpgrade().Level}");
+            ButtonText.text =
             IsUpgradeChoosed ? $"{UpgradeName.text}-{LevelText.text} {Weapon.GetFrameUpgrade().Level}" :
             $"{LevelText.text} {Weapon.GetFrameUpgrade().Level}";
+        }
     }
 }

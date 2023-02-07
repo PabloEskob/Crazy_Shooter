@@ -1,4 +1,5 @@
 ﻿using Assets.Source.Scripts.UI.Menus.Armory.Skins;
+using Assets.Source.Scripts.UI.Menus.Rewards;
 using Assets.Source.Scripts.Weapons;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
@@ -15,7 +16,7 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
         [SerializeField] private SkinPlate _template;
         [SerializeField] private Transform _container;
         [SerializeField] private BuySkinButton _buySkinButton;
-        [SerializeField] private AdSkinButton _adSkinButton;
+        [SerializeField] private AdvertisementButton _adSkinButton;
         [SerializeField] private SoftCurrencyHolder _currencyHolder;
 
         private const float PivotValue = 0.5f;
@@ -26,21 +27,20 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
         private List<SkinPlate> _skinPlates = new List<SkinPlate>();
 
         private Button BuySkinUIButton => _buySkinButton.BuySkinUIButton;
-        private Button AdSkinUIButton => _adSkinButton.AdSkinUIButton;
         private Weapon Weapon => _upgradeMenu.CurrentWeapon;
         private WeaponSkinsHandler SkinsHandler => Weapon.SkinsHandler;
 
         private void OnEnable()
         {
             BuySkinUIButton.onClick.AddListener(OnBuySkinButtonClick);
-            AdSkinUIButton.onClick.AddListener(OnAdSkinUIButtonClick);
+            _adSkinButton.ButtonClicked += OnAdSkinUIButtonClick;
             Fill();
         }
 
         private void OnDisable()
         {
             BuySkinUIButton.onClick.RemoveListener(OnBuySkinButtonClick);
-            AdSkinUIButton.onClick.RemoveListener(OnAdSkinUIButtonClick);
+            _adSkinButton.ButtonClicked -= OnAdSkinUIButtonClick;
             SkinsHandler.ResetTexture();
             Clear();
         }
@@ -99,6 +99,11 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
 
             _currentPlate.SwitchFrameView(true);
 
+            if (index == DefaultSkinIndex)
+                SkinsHandler.SetTexture(SkinsHandler.DefaultTexture);
+            else
+                SkinsHandler.SetTexture(SkinsHandler.TextureList[index]);
+
             if (_currentPlate.IsBought)
             {
                 ResetPlatesEquipState();
@@ -107,11 +112,6 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
             }
 
             SwitchButtonsView();
-
-            if (index == DefaultSkinIndex)
-                SkinsHandler.SetTexture(SkinsHandler.DefaultTexture);
-            else
-                SkinsHandler.SetTexture(SkinsHandler.TextureList[index]);
         }
 
         private void SetPlateEquipped()
@@ -179,6 +179,7 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
                 _buySkinButton.gameObject.SetActive(false);
             }
 
+            _buySkinButton.DisplayButtonText(_currentPlate);
             _buySkinButton.SwitchButtonInteractable(!_currentPlate.IsBought);
             _adSkinButton.ChangeScale(!_currentPlate.IsBought);
         }

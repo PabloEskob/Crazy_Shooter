@@ -541,7 +541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8445401694593213622
 Transform:
   m_ObjectHideFlags: 0
@@ -724,6 +724,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainMaterial: {fileID: 2100000, guid: 2853c8266ac56de4889e53b2c3f6ecdc, type: 2}
+  _secondaryMaterial: {fileID: 2100000, guid: f0a5a5c8a768535469f01128131241e3, type: 2}
+  _magazineMaterial: {fileID: 2100000, guid: 0123ce25faa61c446ba746426aa03014, type: 2}
   _textureList:
   - {fileID: 2800000, guid: e85fb19e9a2ca854c835259be76f9051, type: 3}
   - {fileID: 2800000, guid: 9732433619be8a04b915aad687382739, type: 3}

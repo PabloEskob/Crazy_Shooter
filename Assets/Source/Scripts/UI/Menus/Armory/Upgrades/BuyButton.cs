@@ -1,4 +1,5 @@
 using System;
+using Assets.Source.Scripts.Localization;
 using Assets.Source.Scripts.UI.Menus.Armory;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
@@ -30,55 +31,37 @@ public class BuyButton : MonoBehaviour
         _upgradeHandler.Upgraded += OnUpgraded;
         _upgradeHandler.WeaponSetted += OnWeaponSet;
         _upgradeHandler.UpgradeSelected += OnUpgradeSelected;
+        ChangeButtonView(_upgradeHandler.GetWeaponUpgradeData().Level);
     }
 
     private void OnDisable()
     {
-        _upgradeHandler.Bought += OnBought;
+        _upgradeHandler.Bought -= OnBought;
         _upgradeHandler.Upgraded -= OnUpgraded;
         _upgradeHandler.WeaponSetted -= OnWeaponSet;
         _upgradeHandler.UpgradeSelected -= OnUpgradeSelected;
     }
 
-    private void Start()
-    {
-        ChangePriceView();
-        DisplayPriceText();
+    private void Start() => 
         ChangeButtonView(_upgradeHandler.GetWeaponUpgradeData().Level);
-    }
 
-    private void OnUpgradeSelected(UpgradeType type)
-    {
-        ChangePriceView();
-        DisplayPriceText();
+    private void OnUpgradeSelected(UpgradeType type) => 
         ChangeButtonView(_upgradeHandler.GetWeaponUpgradeData().Level);
-    }
 
-    private void OnUpgraded()
-    {
-        ChangePriceView();
-        DisplayPriceText();
+    private void OnUpgraded() => 
         ChangeButtonView(_upgradeHandler.GetWeaponUpgradeData().Level);
-        Debug.Log($"Level {_upgradeHandler.GetWeaponUpgradeData().Level}");
-    }
 
     private void OnBought()
     {
-        ChangePriceView();
+        SetPriceView();
         DisplayPriceText();
         ChangeButtonText(Weapon, _upgradeHandler.GetWeaponUpgradeData().Level);
     }
 
-    private void OnWeaponSet(Weapon weapon)
-    {
-        ChangePriceView();
-        DisplayPriceText();
+    private void OnWeaponSet(Weapon weapon) => 
         ChangeButtonView(_upgradeHandler.GetWeaponUpgradeData().Level);
-        Debug.Log($"Weapon {_upgradeHandler.GetWeapon()}");
-        Debug.Log($"Level {_upgradeHandler.GetWeaponUpgradeData()} {_upgradeHandler.GetWeaponUpgradeData().Level}");
-    }
 
-    private void ChangePriceView()
+    private void SetPriceView()
     {
         if (Weapon.IsBought())
             SetPrice(_upgradeHandler.GetWeaponUpgradeData().Price);
@@ -107,6 +90,9 @@ public class BuyButton : MonoBehaviour
 
     public void ChangeButtonView(int level)
     {
+        SetPriceView();
+        DisplayPriceText();
+
         if (level != Weapon.MaxUpgradeLevel)
         {
             _button.interactable = true;
