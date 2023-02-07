@@ -27,6 +27,7 @@ namespace InfimaGames.LowPolyShooterPack
         private IStorage _storage;
         private Vector3 _positionToLook;
         private bool _canRotate;
+        private bool IsPause => ProjectContext.Instance.PauseService.IsPaused;
 
 
         private void Awake() =>
@@ -35,6 +36,7 @@ namespace InfimaGames.LowPolyShooterPack
         private void Start()
         {
             _storage = AllServices.Container.Single<IStorage>();
+
 
             if (_storage.HasKeyFloat(SettingsNames.SensitivityKey))
                 SetSensitivity(_storage.GetFloat(SettingsNames.SensitivityKey));
@@ -56,7 +58,8 @@ namespace InfimaGames.LowPolyShooterPack
         {
             while (true)
             {
-                UpdatePositionToLookAt(turningPoint);
+                if (!IsPause) 
+                    UpdatePositionToLookAt(turningPoint);
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -88,11 +91,14 @@ namespace InfimaGames.LowPolyShooterPack
         {
             while (true)
             {
-                if (_canRotate)
-                    RotationOfWeaponAndCameras();
-                else
-                    DisableCamera();
-
+                if (!IsPause)
+                {
+                    if (_canRotate)
+                        RotationOfWeaponAndCameras();
+                    else
+                        DisableCamera();
+                    
+                }
                 yield return new WaitForEndOfFrame();
             }
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ActorUI : MonoBehaviour
 {
@@ -7,11 +8,18 @@ public class ActorUI : MonoBehaviour
     [SerializeField] private ProgressBarPro _hpBar;
     [SerializeField] private CanvasGroup _imageRedScreen;
 
+    private PanelPause _panelPause;
     private Player _player;
     private GameStatusScreen _gameStatusScreen;
-    
+
+    public PanelPause PanelPause => _panelPause;
+
+    private void Awake() => 
+        _panelPause = GetComponentInChildren<PanelPause>();
+
     private void Start()
     {
+        _panelPause.gameObject.SetActive(false); 
         QualitySettings.SetQualityLevel(0);
         Debug.Log(QualitySettings.GetQualityLevel());
         _player = GameObject.FindGameObjectWithTag(PlayerTag).GetComponent<Player>();

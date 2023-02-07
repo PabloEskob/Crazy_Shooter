@@ -86,6 +86,8 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private Rigidbody rigidBody;
 
+        private bool IsPause => ProjectContext.Instance.PauseService.IsPaused;
+
         /// <summary>
         /// Attached CapsuleCollider.
         /// </summary>
@@ -203,10 +205,10 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region METHODS
 
-        public void CanMove() => 
+        public void CanMove() =>
             _canMove = true;
 
-        public void NoMove() => 
+        public void NoMove() =>
             _canMove = false;
 
         private void MoveCharacter()
@@ -255,11 +257,11 @@ namespace InfimaGames.LowPolyShooterPack
         private void PlayFootstepSounds()
         {
             //Check if we're moving on the ground. We don't need footsteps in the air.
-            if (_canMove)
+            if (_canMove && !IsPause)
             {
                 //Select the correct audio clip to play.
-               // audioSource.clip = playerCharacter.IsRunning() ? audioClipRunning : audioClipWalking;
-               audioSource.clip = audioClipWalking;
+                // audioSource.clip = playerCharacter.IsRunning() ? audioClipRunning : audioClipWalking;
+                audioSource.clip = audioClipWalking;
                 //Play it!
                 if (!audioSource.isPlaying)
                     audioSource.Play();

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class AttackState : ILevelState
+﻿public class AttackState : ILevelState
 {
     private readonly LevelStateMachine _levelStateMachine;
 
@@ -17,6 +15,7 @@ public class AttackState : ILevelState
 
     public void Enter()
     {
+        _player.PlayerDeath.OnDied += Death;
         _player.PlayerRotate.EnableCameraLock();
         _zone = _levelAdjustmentTool.GetRoom();
         _zone.OnRoomCleared += RoomClear;
@@ -25,18 +24,18 @@ public class AttackState : ILevelState
 
     public void Exit()
     {
+        _player.PlayerDeath.OnDied -= Death;
         _player.PlayerRotate.CameraLook.StopRoutine();
         _zone.OnRoomCleared -= RoomClear;
         _zone.OnNextWave -= ClearWave;
     }
 
-    private void RoomClear()
-    {
+    private void RoomClear() => 
         _levelStateMachine.Enter<MoveState>();
-    }
 
-    private void ClearWave()
-    {
+    private void ClearWave() => 
         _levelStateMachine.Enter<TurnStateToTarget>();
-    }
+
+    private void Death() => 
+        _levelStateMachine.Enter<DeathState>();
 }

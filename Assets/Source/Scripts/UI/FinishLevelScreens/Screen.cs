@@ -16,6 +16,7 @@ public class Screen : MonoBehaviour
 
     public void Show(AnimationClip animationClip)
     {
+        Debug.Log("ShowDeft");
         _animationComponent.clip = animationClip;
         _animationComponent.Play();
     }

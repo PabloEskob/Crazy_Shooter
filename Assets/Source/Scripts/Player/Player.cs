@@ -8,6 +8,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerRotate))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private PlayerBody _playerBody;
+    
     private PlayerMove _playerMove;
     private PlayerHealth _playerHealth;
     private PlayerAnimator _playerAnimator;
@@ -37,4 +39,7 @@ public class Player : MonoBehaviour
         _playerRotate = GetComponent<PlayerRotate>();
         _character = GetComponent<Character>();
     }
+
+    public void SetDisable() => 
+        _playerBody.Disable();
 }

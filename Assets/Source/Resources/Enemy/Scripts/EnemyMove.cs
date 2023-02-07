@@ -22,7 +22,7 @@ public class EnemyMove : MonoBehaviour
         _enemy = GetComponent<Enemy>();
     }
 
-    private void Start() => 
+    private void Start() =>
         transform.LookAt(_player.transform);
 
     public void SetCanMove(bool move) =>
@@ -35,7 +35,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
-        
+
         _navMeshAgent.speed = 0;
     }
 
@@ -51,6 +51,25 @@ public class EnemyMove : MonoBehaviour
         _navMeshAgent.speed = Speed;
         _enemy.EnemyAnimator.Move(_navMeshAgent.speed);
         _coroutine = StartCoroutine(Move());
+    }
+
+    public void StartMoveToPlayerDeath()
+    {
+        _navMeshAgent.speed = Speed;
+        _navMeshAgent.stoppingDistance = 2f;
+        _coroutine = StartCoroutine(MoveDeath());
+    }
+
+    private IEnumerator MoveDeath()
+    {
+        while (_navMeshAgent.stoppingDistance <= _navMeshAgent.remainingDistance)
+        {
+            _navMeshAgent.destination = _player.transform.position;
+            yield return null;
+        }
+        
+        _enemy.EnemyAnimator.Eat();
+        StopMove();
     }
 
     private IEnumerator Move()

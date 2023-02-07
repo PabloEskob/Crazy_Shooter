@@ -44,7 +44,7 @@ namespace Assets.Source.Scripts.UI
 
             if(statusScreen != null)
             {
-                statusScreen.PlayerVictory();
+                statusScreen.PlayVictory();
             }
             else
             {

@@ -4,11 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerHealth))]
 public class PlayerDeath : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem _particleSystem;
-
     private Player _player;
 
-    public bool IsDead { get; set; }
+    public bool IsDead { get; private set; }
 
     public event Action OnDied;
 
@@ -30,8 +28,7 @@ public class PlayerDeath : MonoBehaviour
     private void Die()
     {
         IsDead = true;
-        // _particleSystem.Play();
         OnDied?.Invoke();
-        _player.PlayerAnimator.PlayDeath();
+        
     }
 }

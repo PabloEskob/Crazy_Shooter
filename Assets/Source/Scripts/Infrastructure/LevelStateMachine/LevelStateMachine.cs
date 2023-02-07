@@ -8,9 +8,9 @@ public class LevelStateMachine
     private ILevelState _currentLevelState;
 
     public LevelStateMachine(Player player, FinishLevel finishLevel, IAnalyticManager analyticManager,
-        LevelAdjustmentTool levelAdjustmentTool)
+        LevelAdjustmentTool levelAdjustmentTool, GameStatusScreen gameStatusScreen)
     {
-        InitStates(player, finishLevel, analyticManager, levelAdjustmentTool);
+        InitStates(player, finishLevel, analyticManager, levelAdjustmentTool,gameStatusScreen);
         Enter<StartLevelState>();
     }
 
@@ -21,7 +21,7 @@ public class LevelStateMachine
     }
 
     private void InitStates(Player player, FinishLevel finishLevel, IAnalyticManager analyticManager,
-        LevelAdjustmentTool levelAdjustmentTool)
+        LevelAdjustmentTool levelAdjustmentTool,GameStatusScreen gameStatusScreen)
     {
         _states = new Dictionary<Type, ILevelState>
         {
@@ -30,7 +30,8 @@ public class LevelStateMachine
             [typeof(AttackState)] = new AttackState(this, player, levelAdjustmentTool),
             [typeof(MoveState)] = new MoveState(this, player),
             [typeof(TurnStateToTarget)] = new TurnStateToTarget(this, player, levelAdjustmentTool),
-            [typeof(FinishState)] = new FinishState(this, player, finishLevel),
+            [typeof(FinishState)] = new FinishState( player, finishLevel,gameStatusScreen),
+            [typeof(DeathState)] = new DeathState(player,gameStatusScreen),
         };
     }
 

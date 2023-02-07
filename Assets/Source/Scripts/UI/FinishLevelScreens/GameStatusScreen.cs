@@ -6,30 +6,22 @@ public class GameStatusScreen : MonoBehaviour
     
     private SwitchScreen _switchScreen;
     private ActorUI _actorUI;
-
-    public Player Player { get; set; }
-
-    private void OnDisable() =>
-        Player.PlayerDeath.OnDied -= PlayerOnDied;
-
+    
     private void Awake()
     {
         _switchScreen = GetComponentInChildren<SwitchScreen>();
         _actorUI = GameObject.FindGameObjectWithTag(ActorUiTag).GetComponent<ActorUI>();
     }
-
-    private void Start() =>
-        Player.PlayerDeath.OnDied += PlayerOnDied;
-
-    public void PlayerVictory()
+    
+    public void PlayVictory()
     {
         _switchScreen.ShowVictoryScreen();
         _actorUI.Disable();
     }
 
-    private void PlayerOnDied()
+    public void PlayDied()
     {
-        _actorUI.Disable();
         _switchScreen.ShowDefeatScreen();
+        _actorUI.Disable();
     }
 }

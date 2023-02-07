@@ -361,7 +361,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart
+  m_Text: "\u0417\u0430\u043D\u043E\u0432\u043E"
 --- !u!114 &1609025963040006003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: RestartButton
-  FallbackText: "\u0417\u0430\u0432\u043D\u043E\u0432\u043E"
+  FallbackText: "\u0417\u0430\u043D\u043E\u0432\u043E"
 --- !u!1 &1824731464882382000
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: Russian
-    Text: "\u0417\u0430\u0432\u043D\u043E\u0432\u043E"
+    Text: "\u0417\u0430\u043D\u043E\u0432\u043E"
     Object: {fileID: 0}
   - Language: English
     Text: Restart
@@ -1509,6 +1509,7 @@ GameObject:
   - component: {fileID: 1418351481558662523}
   - component: {fileID: 5932283724205236887}
   - component: {fileID: 4370269560717274056}
+  - component: {fileID: 4216057572168457268}
   m_Layer: 0
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1619,6 +1620,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4216057572168457268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108565040264806040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ac8ce7420b30448a718f0d3657bd18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6175736376357404808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,7 +2005,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Next
+  m_Text: "\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439"
 --- !u!114 &8271781924185799813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,7 +2100,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back
+  m_Text: "\u041D\u0430\u0437\u0430\u0434"
 --- !u!114 &2741596496929554263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2441,20 +2454,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8992605587282049591}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4245283, g: 0.378471, b: 0.378471, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d4d44dafdbde1444a7303a54701c68e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2506,6 +2519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _buttonToMap: {fileID: 4549145752653895403}
   _canvasGroup: {fileID: 708255983694469956}
+  _buttonRestart: {fileID: 4216057572168457268}
 --- !u!1001 &1075387328272204263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2515,7 +2529,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2405340083532432739, guid: 1a131772215f6ba4cb0b5e21936cf34c, type: 3}
       propertyPath: currentLanguage
-      value: English
+      value: Russian
       objectReference: {fileID: 0}
     - target: {fileID: 3120711789255331024, guid: 1a131772215f6ba4cb0b5e21936cf34c, type: 3}
       propertyPath: m_Name

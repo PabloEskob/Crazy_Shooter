@@ -39,7 +39,6 @@ namespace Source.Scripts.Infrastructure.Factory
         {
             _gameStatusScreen = _assetProvider.Instantiate(AssetPath.PathGameStatusScreen)
                 .GetComponent<GameStatusScreen>();
-            _gameStatusScreen.Player = player;
         }
 
         public void CreateStartScene()
@@ -48,7 +47,7 @@ namespace Source.Scripts.Infrastructure.Factory
             _finishLevel = GameObject.FindGameObjectWithTag(FinishLevel).GetComponent<FinishLevel>();
             _levelAdjustmentTool = GameObject.FindGameObjectWithTag(LevelTag).GetComponent<LevelAdjustmentTool>();
             StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();
-            startScene.Construct(this, _gameStatusScreen, _finishLevel,_levelAdjustmentTool);
+            startScene.Construct(this, _gameStatusScreen,_levelAdjustmentTool);
         }
 
         public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Vector3 parent, bool move, EnemySpawner enemySpawner)
@@ -61,7 +60,7 @@ namespace Source.Scripts.Infrastructure.Factory
         }
 
         public void CreateLevelStateMachine(Player player, IAnalyticManager analyticManager) =>
-            _levelStateMachine = new LevelStateMachine(player,  _finishLevel, analyticManager,_levelAdjustmentTool);
+            _levelStateMachine = new LevelStateMachine(player,  _finishLevel, analyticManager,_levelAdjustmentTool,_gameStatusScreen);
 
         private Player InstantiateRegistered(string prefabPath, Vector3 position)
         {
