@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 11400000, guid: f672995566a7d904cb7f47d6c0495a8b, type: 2}
+  _skinsHandler: {fileID: 0}
   _bulletPool: {fileID: 0}
   _damage: 1
   _fireRate: 1
@@ -211,11 +212,11 @@ MonoBehaviour:
   _maxUpgradeLevel: 4
   _isInfinityAmmo: 0
   Price: 150
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: dccc05b8d01dde54f88f9910329187c2, type: 3}
   _weaponType: 0
   _isBought: 0
   _isEquipped: 0
-  _isCollected: 1
+  _isCollected: 0
   weaponName: Handgun 02
   multiplierMovementSpeed: 1.15
   attachmentManager: {fileID: 8785017196919414568}

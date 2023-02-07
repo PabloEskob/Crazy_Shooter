@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8467070306208912584}
   - component: {fileID: -2062650272041786959}
   m_Layer: 5
-  m_Name: ExtraRewardView
+  m_Name: LevelExtraRewardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

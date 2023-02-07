@@ -18,8 +18,8 @@ public class WeaponPlatesView : MonoBehaviour
     private int _defaultWeaponIndex;
     private WeaponPlate _currentPlate;
 
+    public bool CanReload { get; private set; }
     public IEnumerable<WeaponPlate> Plates => _plates;
-
     public Weapon CurrentWeapon { get; private set; }
 
     public event Action<Weapon> WeaponSelected;
@@ -59,6 +59,8 @@ public class WeaponPlatesView : MonoBehaviour
 
     public void InitPlates()
     {
+        Debug.Log($"InitPlates - PlatesCount {_plates.Count}");
+
         foreach (var weapon in _inventory.Weapons)
         {
             if (weapon.GetCollectedState())
@@ -67,6 +69,7 @@ public class WeaponPlatesView : MonoBehaviour
                 plate.SetWeapon(weapon);
                 plate.SwitchButtonState(false);
                 _plates.Add(plate);
+                Debug.Log($"AddedToPlates - {plate.Weapon.GetName()}");
             }
         }
 
@@ -76,4 +79,14 @@ public class WeaponPlatesView : MonoBehaviour
     }
 
     private void OnBought() => _currentPlate.SwitchButtonState(true);
+
+    public void Clear()
+    {
+        foreach (WeaponPlate plate in _plates)
+            Destroy(plate.gameObject);
+
+        _plates.Clear();
+    }
+
+    public void AllowReload() => CanReload = true;
 }
