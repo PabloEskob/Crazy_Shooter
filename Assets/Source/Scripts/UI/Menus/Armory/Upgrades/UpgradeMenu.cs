@@ -18,8 +18,8 @@ namespace Source.Scripts.Ui
         [SerializeField] private UpgradeViewPanel _upgradePanel;
         [SerializeField] private Inventory _inventory;
         [SerializeField] private MainMap _mainMap;
-        
-        
+
+
         private const int _defaultWeaponIndex = 0;
         private const float InvokeDelay = 0.1f;
 
@@ -33,15 +33,20 @@ namespace Source.Scripts.Ui
         private void Awake()
         {
             _inventory.Initialized += OnInitialized;
-            _inventory.Init();
         }
 
         private void OnEnable()
         {
+            _inventory.Init();
             _upgradeHandler.Upgraded += OnUpgraded;
             _upgradeHandler.Bought += OnBought;
             _exitButton.onClick.AddListener(OnCloseButtionClick);
             _weaponPlatesView.WeaponSelected += OnWeaponSelected;
+
+            if (_weaponPlatesView.CanReload)
+                _weaponPlatesView.InitPlates();
+
+            _weaponPlatesView.AllowReload();
             Activated?.Invoke();
         }
 
@@ -52,6 +57,7 @@ namespace Source.Scripts.Ui
             _inventory.Initialized -= OnInitialized;
             _exitButton.onClick.RemoveListener(OnCloseButtionClick);
             _weaponPlatesView.WeaponSelected -= OnWeaponSelected;
+            _weaponPlatesView.Clear();
         }
 
         private void Start() => Storage = _mainMap.Storage;

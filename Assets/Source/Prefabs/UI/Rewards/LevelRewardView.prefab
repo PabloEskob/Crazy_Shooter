@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3460492348367445683}
   - component: {fileID: 5818053535579638858}
   m_Layer: 5
-  m_Name: RewardView
+  m_Name: LevelRewardView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

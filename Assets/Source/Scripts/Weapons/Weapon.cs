@@ -311,9 +311,6 @@ namespace InfimaGames.LowPolyShooterPack
             _fireRate = roundsPerMinutes / FireRateDelta;
             _data.FireRate = _fireRate;
             WeaponInitialized?.Invoke();
-
-            Debug.Log($"_fireRate - {_fireRate}");
-            Debug.Log($"roundsPerMinutes - {roundsPerMinutes}");
         }
 
         #endregion

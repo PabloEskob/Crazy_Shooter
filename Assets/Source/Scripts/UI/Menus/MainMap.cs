@@ -29,8 +29,6 @@ namespace Source.Scripts.Ui
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
             _storage = storage;
-
-            
         }
 
         private void OnEnable()

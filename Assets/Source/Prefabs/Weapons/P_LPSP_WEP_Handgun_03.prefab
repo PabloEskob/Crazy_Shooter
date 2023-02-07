@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 11400000, guid: 240ff58f3cfed5b42a0c644fdfe73e06, type: 2}
+  _skinsHandler: {fileID: 0}
   _bulletPool: {fileID: 0}
   _damage: 1
   _fireRate: 1
@@ -82,7 +83,7 @@ MonoBehaviour:
   _weaponType: 0
   _isBought: 0
   _isEquipped: 0
-  _isCollected: 1
+  _isCollected: 0
   weaponName: Handgun 03
   multiplierMovementSpeed: 1.15
   attachmentManager: {fileID: 6110289550021268199}
