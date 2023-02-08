@@ -217,7 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe39923915915a04a81cb1a70267a6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _claws: {fileID: 5204452175021480960, guid: 802abab4949b85c429117d4fd4a9793f, type: 3}
+  _capacity: 10
+  _claws: {fileID: 5292070281754660126, guid: 802abab4949b85c429117d4fd4a9793f, type: 3}
   _backGround: {fileID: 1515939884215932909}
 --- !u!1 &1337339910851411821
 GameObject:
@@ -318,7 +319,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9180321627344359699}
-  - component: {fileID: 125652192006929226}
   - component: {fileID: 1515939884215932909}
   m_Layer: 0
   m_Name: ZoneClawsUp
@@ -344,22 +344,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 400}
+  m_AnchoredPosition: {x: 0, y: 350}
   m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!65 &125652192006929226
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2436547151956450317}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1000, y: 500, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1515939884215932909
 MonoBehaviour:
   m_ObjectHideFlags: 0

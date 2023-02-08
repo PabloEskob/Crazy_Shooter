@@ -1,30 +1,25 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ClawsSpawner : MonoBehaviour
+public class ClawsSpawner : ObjectPool
 {
-    [SerializeField] private Claws _claws;
+    [SerializeField] private GameObject _claws;
     [SerializeField] private ZoneClaws _backGround;
-    
-    private Canvas _canvas;
-    private float _positionX;
-    private float _positionY;
 
-    private void Awake() => 
-        _canvas = GetComponentInParent<Canvas>();
+    private void Start() =>
+        Init(_claws);
 
     public void Attack()
-    { 
-        Instantiate(_claws, SetPosition(), Quaternion.identity,_canvas.transform);
-    }
-    
-    private Vector2 SetPosition()
     {
-        var bounds = _backGround.GetComponent<BoxCollider>().bounds;
-        _positionX = Random.Range(bounds.min.x, bounds.max.x);
-        _positionY= Random.Range(bounds.min.y, bounds.max.y);
-        Vector2 position = new Vector2(_positionX, _positionY);
-        return position;
+        if (TryGetObject(out GameObject claws))
+        {
+            claws.gameObject.SetActive(true);
+            var newClaws = claws.GetComponent<Claws>();
+            newClaws.Enable();
+            newClaws.SetPosition(SetSpawnPosition());
+        }
     }
-    
+
+    private Vector3 SetSpawnPosition() =>
+        _backGround.SetPosition();
 }
