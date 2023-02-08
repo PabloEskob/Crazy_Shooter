@@ -218,8 +218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _capacity: 10
-  _claws: {fileID: 5292070281754660126, guid: 802abab4949b85c429117d4fd4a9793f, type: 3}
-  _backGround: {fileID: 1515939884215932909}
 --- !u!1 &1337339910851411821
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,7 +876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpBar: {fileID: 5968068886296487003}
-  _imageRedScreen: {fileID: 482251432686589038}
+  _imageRedScreen: {fileID: 4919493741145568059}
 --- !u!114 &4652354523560385880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2862,10 +2860,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5393623835024644610}
     m_Modifications:
-    - target: {fileID: 1805944520825069881, guid: 9cd4e78c2840ead4bac12474cfa35b04, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2117869409411216305, guid: 9cd4e78c2840ead4bac12474cfa35b04, type: 3}
       propertyPath: m_Name
       value: HpPanel
@@ -3008,11 +3002,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cd4e78c2840ead4bac12474cfa35b04, type: 3}
---- !u!225 &482251432686589038 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 1805944520825069881, guid: 9cd4e78c2840ead4bac12474cfa35b04, type: 3}
+--- !u!114 &4919493741145568059 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6621629112918165100, guid: 9cd4e78c2840ead4bac12474cfa35b04, type: 3}
   m_PrefabInstance: {fileID: 2279188538113291607}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7bb255aa03c33479fad4c0d655c8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5968068886296487003 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5580974712326000908, guid: 9cd4e78c2840ead4bac12474cfa35b04, type: 3}

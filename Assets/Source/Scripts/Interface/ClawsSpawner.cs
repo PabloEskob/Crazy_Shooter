@@ -1,13 +1,18 @@
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class ClawsSpawner : ObjectPool
 {
-    [SerializeField] private GameObject _claws;
-    [SerializeField] private ZoneClaws _backGround;
+    private ZoneClaws _backGround;
+    private GameObject _claws;
 
-    private void Start() =>
+    private void Awake() => 
+        _backGround = GetComponentInParent<ActorUI>().GetComponentInChildren<ZoneClaws>();
+
+    private void Start()
+    {
+        _claws = (GameObject)Resources.Load(AssetPath.PathClaws);
         Init(_claws);
+    }
 
     public void Attack()
     {
