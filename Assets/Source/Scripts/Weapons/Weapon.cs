@@ -428,6 +428,12 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region METHODS
 
+        public void OnRewarded()
+        {
+            SetIsCollected();
+            SetIsBought();
+        }
+
         public override void SetIsCollected()
         {
             _isCollected = true;
