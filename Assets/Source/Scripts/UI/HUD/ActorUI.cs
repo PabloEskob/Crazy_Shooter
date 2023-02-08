@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ActorUI : MonoBehaviour
 {
@@ -8,14 +7,18 @@ public class ActorUI : MonoBehaviour
     [SerializeField] private ProgressBarPro _hpBar;
     [SerializeField] private CanvasGroup _imageRedScreen;
 
+    private ClawsSpawner _clawsSpawner;
     private PanelPause _panelPause;
     private Player _player;
     private GameStatusScreen _gameStatusScreen;
 
     public PanelPause PanelPause => _panelPause;
 
-    private void Awake() => 
+    private void Awake()
+    {
+        _clawsSpawner = GetComponentInChildren<ClawsSpawner>();
         _panelPause = GetComponentInChildren<PanelPause>();
+    }
 
     private void Start()
     {
@@ -44,7 +47,9 @@ public class ActorUI : MonoBehaviour
     }
 
     
-    private void UpdateHpBar() =>
+    private void UpdateHpBar()
+    {
+        _clawsSpawner.Attack();
         _hpBar.SetValue(_player.PlayerHealth.Current, _player.PlayerHealth.Max);
-    
+    }
 }
