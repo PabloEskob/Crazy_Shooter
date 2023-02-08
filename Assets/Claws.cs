@@ -6,22 +6,27 @@ using DG.Tweening;
 public class Claws : MonoBehaviour
 {
     private Image _image;
+    private RectTransform _rectTransform;
 
     private void Awake()
     {
         _image = GetComponent<Image>();
+        _rectTransform = GetComponent<RectTransform>();
     }
-
-    private void Start()
+    
+    public void Enable()
     {
         _image.fillAmount = 0;
         _image.DOFillAmount(1, 0.3f);
         StartCoroutine(Destroy());
     }
 
+    public void SetPosition(Vector3 vector3) => 
+        _rectTransform.position = vector3;
+
     private IEnumerator Destroy()
     {
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
