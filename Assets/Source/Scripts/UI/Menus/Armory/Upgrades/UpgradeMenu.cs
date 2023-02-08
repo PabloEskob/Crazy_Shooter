@@ -44,7 +44,10 @@ namespace Source.Scripts.Ui
             _weaponPlatesView.WeaponSelected += OnWeaponSelected;
 
             if (_weaponPlatesView.CanReload)
+            {
                 _weaponPlatesView.InitPlates();
+                _weaponHolder.UpdateView(CurrentWeapon);
+            }
 
             _weaponPlatesView.AllowReload();
             Activated?.Invoke();
@@ -84,7 +87,6 @@ namespace Source.Scripts.Ui
             CurrentWeapon = _weaponHolder.DefaultWeapon;
             _weaponHolder.UpdateView(CurrentWeapon);
             _upgradeHandler.UpdateWeaponInfo(CurrentWeapon);
-            Hide();
         }
 
         private void OnCloseButtionClick()
