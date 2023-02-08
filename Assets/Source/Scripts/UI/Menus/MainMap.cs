@@ -1,3 +1,5 @@
+using Assets.Source.Scripts.UI.Menus.Ranking;
+using Assets.Source.Scripts.UI.Menus.Rewards;
 using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using System;
@@ -9,14 +11,19 @@ namespace Source.Scripts.Ui
 {
     public class MainMap : MonoBehaviour
     {
-        [Header("Buttons")]
+        [Header("Menu Buttons")]
+        [SerializeField] private Button _rankingMenuButton;
         [SerializeField] private Button _upgradeMenuButton;
         [SerializeField] private Button _settingsMenuButton;
+        [SerializeField] private Button _dailyRewardMenuButton;
+        [Space(20)]
         [SerializeField] private StartLevelButton[] _startLevelButtons;
 
         [Header("Menus")]
         [SerializeField] private UpgradeMenu _upgradeMenu;
         [SerializeField] private SettingsMenu _settingsMenu;
+        [SerializeField] private RankingMenu _rankingMenu;
+        [SerializeField] private DailyRewardsMenu _dailyRewardMenu;
 
         private SceneLoader _sceneLoader;
         private GameStateMachine _stateMachine;
@@ -37,6 +44,11 @@ namespace Source.Scripts.Ui
             _upgradeMenu.Activated += OnUpgradeMenuActivated;
             _settingsMenuButton.onClick.AddListener(OpenSettingsMenu);
             _settingsMenu.Activated += OnSettingsMenuActivated;
+            _rankingMenuButton.onClick.AddListener(OpenRankingMenu);
+            _rankingMenu.Activated += OnRankingMenuActivated;
+            _dailyRewardMenuButton.onClick.AddListener(OpenDailyRewardMenu);
+            _dailyRewardMenu.Activated += OnRankingMenuActivated;
+            
 
             foreach (var button in _startLevelButtons)
                 button.Clicked += StartLevel;
@@ -48,10 +60,20 @@ namespace Source.Scripts.Ui
             _upgradeMenu.Activated -= OnUpgradeMenuActivated;
            _settingsMenuButton.onClick.RemoveListener(OpenSettingsMenu);
             _settingsMenu.Activated -= OnSettingsMenuActivated;
+            _rankingMenuButton.onClick.AddListener(OpenRankingMenu);
+            _rankingMenu.Activated -= OnRankingMenuActivated;
+            _dailyRewardMenuButton.onClick.AddListener(OpenDailyRewardMenu);
+            _dailyRewardMenu.Activated += OnRankingMenuActivated;
 
             foreach (var button in _startLevelButtons)
                 button.Clicked += StartLevel;
         }
+
+        private void OpenDailyRewardMenu() => 
+            StartCoroutine(ActivateMenu(_dailyRewardMenu.gameObject));
+
+        private void OpenRankingMenu() => 
+            StartCoroutine(ActivateMenu(_rankingMenu.gameObject));
 
         private void OpenSettingsMenu() => 
             StartCoroutine(ActivateMenu(_settingsMenu.gameObject));
@@ -76,5 +98,11 @@ namespace Source.Scripts.Ui
 
         private void OnUpgradeMenuActivated() => 
             StopCoroutine(ActivateMenu(_upgradeMenu.gameObject));
+
+        private void OnRankingMenuActivated() => 
+            StopCoroutine(ActivateMenu(_rankingMenu.gameObject));
+
+        private void OnDalyRewardMenuActivated() => 
+            StopCoroutine(ActivateMenu(_dailyRewardMenu.gameObject));
     }
 }

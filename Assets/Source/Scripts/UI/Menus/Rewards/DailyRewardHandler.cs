@@ -12,18 +12,15 @@ public class DailyRewardHandler : MonoBehaviour
     [SerializeField] private MainMap _mainMap;
     [SerializeField] private SoftCurrencyHolder _softCurrencyHolder;
     [SerializeField] private GrenadesData _grenadesData;
-    [SerializeField] private int[] _rewards;
     [SerializeField] private DailyRewardDisplay[] _rewardsDisplay;
 
-    private const double dayTest = 0;
-
- 
     private DateTime _startDate;
-    private DateTime _currentDate = DateTime.Today + TimeSpan.FromDays(dayTest);
+    private DateTime _currentDate = DateTime.Today + TimeSpan.FromDays(DayTest);
     private DateTime _lastLogin;
     private DateTime _lastRewardDay;
     private IStorage _storage;
 
+    private const double DayTest = 0;
     private const string RewardIndexKey = "RewardIndex";
     private const string StartDayKey = "StartDay";
     private const string LastLoginDayKey = "LastLoginDay";
@@ -35,7 +32,6 @@ public class DailyRewardHandler : MonoBehaviour
     {
         foreach (var reward in _rewardsDisplay)
             reward.GetRewardButton.onClick.AddListener(OnGetRewardButtonClick);
-
     }
 
     private void OnDisable()
@@ -68,7 +64,7 @@ public class DailyRewardHandler : MonoBehaviour
 
         if (_lastLogin == _currentDate - TimeSpan.FromDays(1))
         {
-            CurrentIndex = (CurrentIndex + 1) % _rewards.Length;
+            CurrentIndex = (CurrentIndex + 1) % _rewardsDisplay.Length;
             GiveReward(_rewardsDisplay[CurrentIndex].Reward);
         }
         else
@@ -104,6 +100,7 @@ public class DailyRewardHandler : MonoBehaviour
         {
             Weapon weapon = reward.GetWeapon();
             weapon.SetIsCollected();
+            weapon.SetIsBought();
             _storage.SetString(weapon.GetName(), weapon.GetData().ToJson());
             _storage.Save();
         }

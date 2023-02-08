@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,13 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         [SerializeField] private List<DailyRewardDisplay> _rewardsDisplay;
         [SerializeField] private DailyRewardHandler _dailyRewardHandler;
 
-        private void OnEnable() => _closeButton.onClick.AddListener(OnCloseButtonClick);
+        public event Action Activated;
+
+        private void OnEnable()
+        {
+            _closeButton.onClick.AddListener(OnCloseButtonClick);
+            Activated?.Invoke();
+        }
 
         private void OnDisable() => _closeButton.onClick.RemoveListener(OnCloseButtonClick);
 
@@ -22,14 +29,13 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
             {
                 if (_dailyRewardHandler.GetDay() == display.Day)
                 {
-
                     display.SwitchButtonInteractable(true);
                     display.ActivateTodayRewardView();
 
                     if (_dailyRewardHandler.CheckDate())
                         display.DeactivateTodayRewardView();
                 }
-                
+
                 else
                 {
                     display.SwitchButtonInteractable(false);
