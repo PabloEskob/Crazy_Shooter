@@ -32,18 +32,18 @@ namespace Source.Scripts.Infrastructure.Factory
             _assetProvider = assetProvider;
         }
 
-        public Player CreatePlayer(GameObject initialPoint) =>
+        public Player CreatePlayer(GameObject initialPoint) => 
             InstantiateRegistered(AssetPath.PlayerPath, initialPoint.transform.position);
 
         public void CreateHUD(Player player)
         {
             _gameStatusScreen = _assetProvider.Instantiate(AssetPath.PathGameStatusScreen)
                 .GetComponent<GameStatusScreen>();
+            _gameStatusScreen.InitPlayer(player);
         }
 
         public void CreateStartScene()
         {
-            
             _finishLevel = GameObject.FindGameObjectWithTag(FinishLevel).GetComponent<FinishLevel>();
             _levelAdjustmentTool = GameObject.FindGameObjectWithTag(LevelTag).GetComponent<LevelAdjustmentTool>();
             StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();

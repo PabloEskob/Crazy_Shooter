@@ -31,13 +31,10 @@ public class SwitchScreen : MonoBehaviour
         _victoryScreen.Show(_animationClipVictory);
     }
 
-    public void ShowDefeatScreen()
-    {
-        CursorVisibility();
+    public void ShowDefeatScreen() => 
         _defeatScreen.Show(_animationClipDefeat);
-    }
 
-    private void CursorVisibility()
+    public void CursorVisibility()
     {
         _canvas.sortingOrder = 1;
         _player.LockCursor();

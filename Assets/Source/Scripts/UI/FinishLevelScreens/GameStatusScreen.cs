@@ -1,32 +1,46 @@
-using Source.Scripts.PostProcess;
 using UnityEngine;
 
 public class GameStatusScreen : MonoBehaviour
 {
-    private const string ActorUiTag = "ActorUi";
-
     private SwitchScreen _switchScreen;
     private ActorUI _actorUI;
-    private PostProcess _postProcess;
-
-    private void Awake()
+    private Player _player;
+    
+    private void OnDisable()
     {
-        _switchScreen = GetComponentInChildren<SwitchScreen>();
-        _actorUI = GameObject.FindGameObjectWithTag(ActorUiTag).GetComponent<ActorUI>();
-        if (Camera.main != null)
-            _postProcess = Camera.main.GetComponent<PostProcess>();
+        _actorUI.OnEnableScreen -= ShowScreen;
+        _player.OnSpawnedActorUi -= InitActorUi;
     }
+
+    private void Awake() =>
+        _switchScreen = GetComponentInChildren<SwitchScreen>();
 
     public void PlayVictory()
     {
         _switchScreen.ShowVictoryScreen();
-        _actorUI.Disable();
+        _actorUI.SwitchOff();
     }
 
     public void PlayDied()
     {
-        _postProcess.enabled = true;
+        _player.PostProcess.enabled = true;
+        _switchScreen.CursorVisibility();
+        _actorUI.EyeClosure.PlayScreen();
+    }
+
+    public void InitPlayer(Player player)
+    {
+        _player = player;
+        _player.OnSpawnedActorUi += InitActorUi;
+    }
+
+    private void ShowScreen() => 
         _switchScreen.ShowDefeatScreen();
-        _actorUI.Disable();
+
+    private void InitActorUi(ActorUI actorUI)
+    {
+        _actorUI = actorUI;
+        _player.PostProcess.enabled = false;
+        _actorUI.OnEnableScreen += ShowScreen;
     }
 }
