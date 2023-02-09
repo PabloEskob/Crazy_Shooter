@@ -1225,7 +1225,7 @@ MonoBehaviour:
     m_ActionName: MobileActionMap/Inventory Next Wheel[/Mouse/scroll]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: MobileActionMap
+  m_DefaultActionMap: DesktopActionMap
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &7743725594132741529

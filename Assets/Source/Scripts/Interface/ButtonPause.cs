@@ -15,11 +15,8 @@ public class ButtonPause : MonoBehaviour, IPointerClickHandler, IPauseHandler
         _panelPause = _actorUI.PanelPause;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("sssss");
+    public void OnPointerClick(PointerEventData eventData) => 
         SwitchPanel();
-    }
 
     public void SwitchPanel()
     {
