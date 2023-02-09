@@ -42,7 +42,10 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
                     display.DisableRewardIconBackground();
 
                     if (_dailyRewardHandler.GetDay() > display.Day)
+                    {
                         display.EnableCoverImage();
+                        display.DeactivateTodayRewardView();
+                    }
                 }
             }
 
