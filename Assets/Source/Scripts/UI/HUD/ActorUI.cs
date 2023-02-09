@@ -5,12 +5,11 @@ public class ActorUI : MonoBehaviour
     private const string PlayerTag = "Player";
 
     [SerializeField] private ProgressBarPro _hpBar;
-    [SerializeField] private CanvasGroup _imageRedScreen;
+    [SerializeField] private TakeDamageImage _imageRedScreen;
 
     private ClawsSpawner _clawsSpawner;
     private PanelPause _panelPause;
     private Player _player;
-    private GameStatusScreen _gameStatusScreen;
 
     public PanelPause PanelPause => _panelPause;
 
@@ -35,7 +34,7 @@ public class ActorUI : MonoBehaviour
     private void Construct()
     {
         _hpBar.SetMaxHpImage(_player.PlayerHealth.Max);
-        _hpBar.SetValueImage(_imageRedScreen);
+        _hpBar.SetValueImage(_imageRedScreen.GetComponent<CanvasGroup>());
         _player.PlayerHealth.HealthChanged += UpdateHpBar;
         _player.PlayerHealth.Disabled += OnHealthDisabled;
     }
@@ -50,6 +49,7 @@ public class ActorUI : MonoBehaviour
     private void UpdateHpBar()
     {
         _clawsSpawner.Attack();
+        _imageRedScreen.ChangeAlpha();
         _hpBar.SetValue(_player.PlayerHealth.Current, _player.PlayerHealth.Max);
     }
 }
