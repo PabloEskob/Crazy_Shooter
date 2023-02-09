@@ -5,9 +5,12 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
 {
     public class DailyRewardDisplay : MonoBehaviour
     {
+        [SerializeField] private GetButtonTextDisplay _buttonTextDisplay;
         [SerializeField] private Reward _reward;
         [SerializeField] private Button _getRewardButton;
         [SerializeField] private Text _amountText;
+        [SerializeField] private Text _dayText;
+        [SerializeField] private Text _dayPhrase;
         [SerializeField] private int _day;
 
         [Header("Image Dependencies")]
@@ -31,6 +34,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         {
             _rewardIcon.sprite = _reward.GetSprite();
             _amountText.text = $"x{_reward.Quantity}";
+            _dayText.text = $"{_dayPhrase.text} {_day + 1}";
         }
 
         public void OnRewardGet()
@@ -47,6 +51,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
             SwitchButtonInteractable(false);
             _rewardIconBackground.gameObject.SetActive(false);
             EnableCoverImage();
+            _buttonTextDisplay.ChangeText();
         }
 
         public void ActivateTodayRewardView()
