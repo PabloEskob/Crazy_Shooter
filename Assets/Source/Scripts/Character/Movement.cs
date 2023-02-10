@@ -1,6 +1,9 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
 using System.Linq;
+using Assets.Source.Scripts.UI;
+using Source.Infrastructure;
+using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -124,6 +127,7 @@ namespace InfimaGames.LowPolyShooterPack
         private readonly RaycastHit[] groundHits = new RaycastHit[8];
 
         private bool _canMove;
+        private IStorage _storage;
 
         #endregion
 
@@ -141,6 +145,8 @@ namespace InfimaGames.LowPolyShooterPack
         /// Initializes the FpsController on start.
         protected override void Start()
         {
+            _storage = AllServices.Container.Single<IStorage>();
+            
             //Rigidbody Setup.
             rigidBody = GetComponent<Rigidbody>();
             rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
@@ -154,6 +160,9 @@ namespace InfimaGames.LowPolyShooterPack
 
             //Create our smooth velocity helper. Will be useful to get some smoother motion.
             smoothVelocity = new SmoothVelocity();
+            
+            if (_storage.HasKeyFloat(SettingsNames.SoundSettingsKey))
+                audioSource.volume = _storage.GetFloat(SettingsNames.SoundSettingsKey);
         }
 
         /// Checks if the character is on the ground.
@@ -256,17 +265,13 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void PlayFootstepSounds()
         {
-            //Check if we're moving on the ground. We don't need footsteps in the air.
             if (_canMove && !IsPause)
             {
-                //Select the correct audio clip to play.
-                // audioSource.clip = playerCharacter.IsRunning() ? audioClipRunning : audioClipWalking;
                 audioSource.clip = audioClipWalking;
-                //Play it!
+
                 if (!audioSource.isPlaying)
                     audioSource.Play();
             }
-            //Pause it if we're doing something like flying, or not moving!
             else if (audioSource.isPlaying)
                 audioSource.Pause();
         }

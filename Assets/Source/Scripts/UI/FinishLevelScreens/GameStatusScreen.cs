@@ -1,19 +1,22 @@
 using UnityEngine;
 
-public class GameStatusScreen : MonoBehaviour
+public class GameStatusScreen : MonoBehaviour,IPauseHandler
 {
     private SwitchScreen _switchScreen;
     private ActorUI _actorUI;
     private Player _player;
-    
+
     private void OnDisable()
     {
         _actorUI.OnEnableScreen -= ShowScreen;
         _player.OnSpawnedActorUi -= InitActorUi;
     }
 
-    private void Awake() =>
+    private void Awake() => 
         _switchScreen = GetComponentInChildren<SwitchScreen>();
+
+    private void Start() => 
+        ProjectContext.Instance.PauseService.Register(this);
 
     public void PlayVictory()
     {
@@ -42,5 +45,11 @@ public class GameStatusScreen : MonoBehaviour
         _actorUI = actorUI;
         _player.PostProcess.enabled = false;
         _actorUI.OnEnableScreen += ShowScreen;
+    }
+
+    public void SetPaused(bool isPaused)
+    {
+        AudioListener.pause = isPaused;
+        AudioListener.volume = isPaused ? 0f : 1f;
     }
 }
