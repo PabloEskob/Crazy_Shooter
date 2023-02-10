@@ -8,9 +8,10 @@ namespace Assets.Source.Scripts.Weapons
     public class WeaponSkinsHandler : MonoBehaviour
     {
         private const string TextureIndexKey = "CurrentTextureKey";
-        [SerializeField] private Material _mainMaterial;
-        [SerializeField] private Material _secondaryMaterial;
-        [SerializeField] private Material _magazineMaterial;
+        //[SerializeField] private Material _mainMaterial;
+        //[SerializeField] private Material _secondaryMaterial;
+        //[SerializeField] private Material _magazineMaterial;
+        [SerializeField] private Material[] _weaponMaterials;
         [SerializeField] private List<Texture2D> _textureList;
         [SerializeField] private Texture2D _defaultTexture;
 
@@ -35,14 +36,17 @@ namespace Assets.Source.Scripts.Weapons
 
         public void SetTexture(Texture2D texture)
         {
-            _mainMaterial.mainTexture = texture;
-            _secondaryMaterial.mainTexture = texture;
-            _magazineMaterial.mainTexture = texture;
+
+            foreach (Material material in _weaponMaterials)
+                material.mainTexture= texture;
+            //_mainMaterial.mainTexture = texture;
+            //_secondaryMaterial.mainTexture = texture;
+            //_magazineMaterial.mainTexture = texture;
         }
 
         public void ApplyTexture()
         {
-            CurrentTexture = (Texture2D)_mainMaterial.mainTexture;
+            CurrentTexture = (Texture2D)_weaponMaterials[0].mainTexture;
             CurrentIndex = GetTextureIndexByName(CurrentTexture.name);
             _storage.SetInt(TextureIndexKey, CurrentIndex);
             _storage.Save();

@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 7885934060168530878}
   - component: {fileID: 4743257906437891677}
   - component: {fileID: 5908208318422964952}
+  - component: {fileID: 1329791673579193570}
   m_Layer: 0
   m_Name: P_LPSP_WEP_GL_01
   m_TagString: Untagged
@@ -294,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 0}
+  _skinsHandler: {fileID: 0}
   _bulletPool: {fileID: 0}
   _damage: 1
   _fireRate: 1
@@ -422,6 +424,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4c405f36d24a5db61be27959609b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1329791673579193570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5708224683135725906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainMaterial: {fileID: 0}
+  _secondaryMaterial: {fileID: 0}
+  _magazineMaterial: {fileID: 0}
+  _textureList: []
+  _defaultTexture: {fileID: 0}
 --- !u!1 &5708224683135725908
 GameObject:
   m_ObjectHideFlags: 0

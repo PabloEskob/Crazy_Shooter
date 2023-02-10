@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 6400477402031576510}
   - component: {fileID: 7061427760487870545}
   - component: {fileID: 7148280016723375004}
+  - component: {fileID: -3233755856978626505}
   m_Layer: 6
   m_Name: P_LPSP_WEP_SMG_05
   m_TagString: Untagged
@@ -395,6 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 11400000, guid: 02c68fa3bdac543438ca5f2c92994296, type: 2}
+  _skinsHandler: {fileID: -3233755856978626505}
   _bulletPool: {fileID: 0}
   _damage: 1
   _fireRate: 1
@@ -516,6 +518,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4c405f36d24a5db61be27959609b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3233755856978626505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7874684396750147702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponMaterials:
+  - {fileID: 2100000, guid: 0123ce25faa61c446ba746426aa03014, type: 2}
+  - {fileID: 2100000, guid: dddba23ef539b704183c452ae788e56b, type: 2}
+  _textureList:
+  - {fileID: 2800000, guid: e85fb19e9a2ca854c835259be76f9051, type: 3}
+  - {fileID: 2800000, guid: 9732433619be8a04b915aad687382739, type: 3}
+  - {fileID: 2800000, guid: 5924b9a0eab9df04ab513ff8320fc042, type: 3}
+  - {fileID: 2800000, guid: a53f76ba00ffe9e41addf706b73e77f9, type: 3}
+  - {fileID: 2800000, guid: 31e5ae8d640f02148b835283840e16cc, type: 3}
+  - {fileID: 2800000, guid: cf8dc19a59452e44b9378570b214f5ff, type: 3}
+  - {fileID: 2800000, guid: 54ae3893bc498d140aa876cedcc6a479, type: 3}
+  - {fileID: 2800000, guid: fe707e478c0ccd84da95717e832af89a, type: 3}
+  - {fileID: 2800000, guid: e8a8d41bc6a6d6747b856705e595b0aa, type: 3}
+  - {fileID: 2800000, guid: 3ee476c1313930a43970b69fddd2d1d5, type: 3}
+  - {fileID: 2800000, guid: 021d514e45955b641969eec3d2ef3df8, type: 3}
+  - {fileID: 2800000, guid: 892a473c4d89b204d8cc0cfe301782a5, type: 3}
+  - {fileID: 2800000, guid: 8eeaa4773e37ab54eb478643d430b75b, type: 3}
+  - {fileID: 2800000, guid: 701dc0330c14d574d99c97df41292b15, type: 3}
+  - {fileID: 2800000, guid: 1c7ada9285ddd62429c2b8a072f3f8bd, type: 3}
+  - {fileID: 2800000, guid: 9f3338218f0bd064a87eedf1e7e1d81f, type: 3}
+  - {fileID: 2800000, guid: 3a4866d013bfbc04497b5c719b8730b4, type: 3}
+  - {fileID: 2800000, guid: e6d03fc0355adac41b69d13e8163bddd, type: 3}
+  - {fileID: 2800000, guid: b0c5fdaec504a794eb2b2c80b35e0e84, type: 3}
+  - {fileID: 2800000, guid: 2b7305338e120984f937d240b370b727, type: 3}
+  - {fileID: 2800000, guid: e799c22c80d9b4c4985264330393a56f, type: 3}
+  - {fileID: 2800000, guid: 9d6b096a8dc0f8b4ea7aec9e1359a8c1, type: 3}
+  - {fileID: 2800000, guid: a628455153c2cfd45a536c5f1d506b87, type: 3}
+  - {fileID: 2800000, guid: 261cdf82103d970429e519003477a597, type: 3}
+  - {fileID: 2800000, guid: 7ca5e87af5af7f742b15bd652fd96ce4, type: 3}
+  - {fileID: 2800000, guid: b16512fe259517341b805fc155780105, type: 3}
+  - {fileID: 2800000, guid: edc69590e62973e4aa09fbe494feae82, type: 3}
+  - {fileID: 2800000, guid: ebd77c44ccc354744b534f22900a1c9d, type: 3}
+  - {fileID: 2800000, guid: 6855b4dd4feb42945b3c4f4537d698c6, type: 3}
+  - {fileID: 2800000, guid: c18a5491743691f49b94e361f9a62f48, type: 3}
+  _defaultTexture: {fileID: 2800000, guid: 54ae3893bc498d140aa876cedcc6a479, type: 3}
 --- !u!1 &7902667250187585946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,6 +1299,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e9a1bdd1ebafa4d468af32dc4be51629, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9a1bdd1ebafa4d468af32dc4be51629, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9a1bdd1ebafa4d468af32dc4be51629, type: 3}

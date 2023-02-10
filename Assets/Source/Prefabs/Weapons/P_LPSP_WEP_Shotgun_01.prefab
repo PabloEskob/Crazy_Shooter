@@ -536,6 +536,7 @@ GameObject:
   - component: {fileID: 8137163820050006698}
   - component: {fileID: 8578661464601570599}
   - component: {fileID: 3803130821125631615}
+  - component: {fileID: -3177214446890129620}
   m_Layer: 6
   m_Name: P_LPSP_WEP_Shotgun_01
   m_TagString: Untagged
@@ -593,6 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 11400000, guid: f5a92667a88dfe3478161ae9db5a994f, type: 2}
+  _skinsHandler: {fileID: -3177214446890129620}
   _bulletPool: {fileID: 0}
   _damage: 1
   _fireRate: 1
@@ -714,6 +716,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4c405f36d24a5db61be27959609b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3177214446890129620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836565387965750232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponMaterials: []
+  _textureList: []
+  _defaultTexture: {fileID: 0}
 --- !u!1001 &1421891693884146309
 PrefabInstance:
   m_ObjectHideFlags: 0
