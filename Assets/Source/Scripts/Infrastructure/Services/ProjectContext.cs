@@ -6,15 +6,11 @@ public class ProjectContext : MonoBehaviour
     public PauseService PauseService { get; private set; }
     public static ProjectContext Instance { get; private set; }
 
-    private void OnEnable()
-    {
+    private void OnEnable() => 
         WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
-    }
 
-    private void OnDisable()
-    {
+    private void OnDisable() => 
         WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
-    }
 
     private void Awake() =>
         Instance = this;
@@ -22,13 +18,14 @@ public class ProjectContext : MonoBehaviour
     private void Start() =>
         Initialize();
 
-    private void Initialize() =>
-        PauseService = new PauseService();
-
-    private void OnInBackgroundChange(bool inBackground)
+    public void OnInBackgroundChange(bool inBackground)
     {
+        Time.timeScale = inBackground ? 0.0f : 1.0f;
         PauseService.SetPaused(inBackground);
         AudioListener.pause = inBackground;
         AudioListener.volume = inBackground ? 0f : 1f;
     }
+
+    private void Initialize() =>
+        PauseService = new PauseService();
 }
