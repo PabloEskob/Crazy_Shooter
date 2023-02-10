@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class ActorUI : MonoBehaviour
 {
@@ -10,26 +11,41 @@ public class ActorUI : MonoBehaviour
     private ClawsSpawner _clawsSpawner;
     private PanelPause _panelPause;
     private Player _player;
+    private EyeClosure _eyeClosure;
 
     public PanelPause PanelPause => _panelPause;
+    public EyeClosure EyeClosure => _eyeClosure;
+
+    public event Action OnEnableScreen; 
+
+    private void OnEnable() => 
+        _eyeClosure.OnEndedAnimation += EnableScreen;
+
+    private void OnDisable() => 
+        _eyeClosure.OnEndedAnimation -= EnableScreen;
 
     private void Awake()
     {
         _clawsSpawner = GetComponentInChildren<ClawsSpawner>();
         _panelPause = GetComponentInChildren<PanelPause>();
+        _eyeClosure = GetComponentInChildren<EyeClosure>();
     }
 
     private void Start()
     {
         _panelPause.gameObject.SetActive(false); 
         QualitySettings.SetQualityLevel(0);
-        Debug.Log(QualitySettings.GetQualityLevel());
         _player = GameObject.FindGameObjectWithTag(PlayerTag).GetComponent<Player>();
         Construct();
     }
 
-    public void Disable() => 
+    public void SwitchOff()
+    {
         gameObject.SetActive(false);
+    }
+
+    private void EnableScreen() => 
+        OnEnableScreen?.Invoke();
 
     private void Construct()
     {
@@ -44,7 +60,6 @@ public class ActorUI : MonoBehaviour
         _player.PlayerHealth.HealthChanged -= UpdateHpBar;
         _player.PlayerHealth.Disabled -= OnHealthDisabled;
     }
-
     
     private void UpdateHpBar()
     {

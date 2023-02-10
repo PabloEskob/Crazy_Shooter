@@ -49,7 +49,6 @@ namespace Source.Infrastructure
 
         private void InitGameWorld()
         {
-            
             Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
             _gameFactory.CreateHUD(player);
             _gameFactory.CreateStartScene();
@@ -59,7 +58,7 @@ namespace Source.Infrastructure
         private string GetNextLevelName() =>
             _staticData.ForLevel(_storage.GetLevel()).SceneName;
 
-        public string GetNextLevelNameByNumber(int levelNumber) =>
+        private string GetNextLevelNameByNumber(int levelNumber) =>
             _staticData.ForLevel(levelNumber).SceneName;
     }
 }
