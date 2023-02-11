@@ -16,12 +16,32 @@ MonoBehaviour:
   - SceneName: InitScene
     LevelNumber: 0
     SoftReward: 0
+    ExtraReward: {fileID: 0}
   - SceneName: Level 1
     LevelNumber: 1
     SoftReward: 100
+    ExtraReward: {fileID: 0}
   - SceneName: Level 2
     LevelNumber: 2
     SoftReward: 200
+    ExtraReward: {fileID: 0}
   - SceneName: Level 3
     LevelNumber: 3
     SoftReward: 300
+    ExtraReward: {fileID: 0}
+  - SceneName: Level 4
+    LevelNumber: 4
+    SoftReward: 300
+    ExtraReward: {fileID: 0}
+  - SceneName: Level 5
+    LevelNumber: 5
+    SoftReward: 300
+    ExtraReward: {fileID: 0}
+  - SceneName: Level 6
+    LevelNumber: 6
+    SoftReward: 300
+    ExtraReward: {fileID: 0}
+  - SceneName: Level 7
+    LevelNumber: 7
+    SoftReward: 300
+    ExtraReward: {fileID: 0}

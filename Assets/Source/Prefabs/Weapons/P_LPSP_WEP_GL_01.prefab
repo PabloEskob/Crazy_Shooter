@@ -436,9 +436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainMaterial: {fileID: 0}
-  _secondaryMaterial: {fileID: 0}
-  _magazineMaterial: {fileID: 0}
+  _weapon: {fileID: 7885934060168530878}
+  _weaponMaterials: []
   _textureList: []
   _defaultTexture: {fileID: 0}
 --- !u!1 &5708224683135725908

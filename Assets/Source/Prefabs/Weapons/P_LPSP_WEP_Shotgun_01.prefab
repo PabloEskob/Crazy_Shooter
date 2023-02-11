@@ -309,7 +309,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 85f37da445b3cfd4f8a94cef0bca3ebd, type: 2}
-  - {fileID: 2100000, guid: daf3770baea414742ba7b6bdc426eeec, type: 2}
+  - {fileID: 2100000, guid: 33b10df1cf0a695428111258a0c564b6, type: 2}
   - {fileID: 2100000, guid: 738331d397eda8b41a936b9620ba361b, type: 2}
   - {fileID: 2100000, guid: 738331d397eda8b41a936b9620ba361b, type: 2}
   - {fileID: 2100000, guid: 07a70e0af646ae9498c6ef448486987f, type: 2}
@@ -728,9 +728,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponMaterials: []
-  _textureList: []
-  _defaultTexture: {fileID: 0}
+  _weapon: {fileID: 8137163820050006698}
+  _weaponMaterials:
+  - {fileID: 2100000, guid: 33b10df1cf0a695428111258a0c564b6, type: 2}
+  _textureList:
+  - {fileID: 2800000, guid: e2a08845119fe9b4fad65d70e81f4d3c, type: 3}
+  - {fileID: 2800000, guid: 370541881cfb92f4b981da331149a53c, type: 3}
+  - {fileID: 2800000, guid: 775c58c09435edf42a0f8df7caa83ccb, type: 3}
+  - {fileID: 2800000, guid: 9958ae9d322a4094293b37abb12011ed, type: 3}
+  - {fileID: 2800000, guid: a02102ea6f2d51f42a4b214017bef1da, type: 3}
+  - {fileID: 2800000, guid: 6fdad8ed64615bc4cba8bcec532c632c, type: 3}
+  - {fileID: 2800000, guid: b6ed4cc371c5c0c479a0e3fa13e1c89c, type: 3}
+  - {fileID: 2800000, guid: 2ce2d59553f85a54096f1b3a80a8db71, type: 3}
+  - {fileID: 2800000, guid: fd7789874fc76574abd42505400ebc65, type: 3}
+  - {fileID: 2800000, guid: 583ee1a57da446b47b38b3b966d30366, type: 3}
+  _defaultTexture: {fileID: 2800000, guid: 20ed273a63b288242ab8ef4c6f4942e3, type: 3}
 --- !u!1001 &1421891693884146309
 PrefabInstance:
   m_ObjectHideFlags: 0
