@@ -13,7 +13,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
     {
         [SerializeField] private AdvertisementButton _softRewardButton;
         [SerializeField] private AdvertisementButton _grenadeRewardButton;
-        [SerializeField] private PauseGameHandler _pauseGameHandler;
+       // [SerializeField] private ProjectContext _projectContext;
         [SerializeField] private CurrencyHolder _currencyHolder;
         [SerializeField] private RouletteDisplay _rouletteDisplay;
         [SerializeField] private GrenadesData _grenadesData;
@@ -58,22 +58,22 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
 #endif
         }
 
-        private void OnAdvertisementStart() => _pauseGameHandler.OnInBackgroundChange(true);
+        private void OnAdvertisementStart() => ProjectContext.Instance.OnInBackgroundChange(true);
 
-        private void OnAdvertisementError() => _pauseGameHandler.OnInBackgroundChange(false);
+        private void OnAdvertisementError() => ProjectContext.Instance.OnInBackgroundChange(false);
 
         private void OnGrenadeRewardAdClose()
         {
-            _pauseGameHandler.OnInBackgroundChange(false);
+            ProjectContext.Instance.OnInBackgroundChange(false);
             _rouletteDisplay.gameObject.SetActive(true);
         }
 
         private void OnSoftRewardAdClose()
         {
-            _pauseGameHandler.OnInBackgroundChange(false);
+            ProjectContext.Instance.OnInBackgroundChange(false);
             _currencyHolder.AddSoft(_softRewardAmount);
         }
-
+        
         private void OnRouletteStopped(Reward reward)
         {
             if (reward.Type == RewardType.SoftCurrency)

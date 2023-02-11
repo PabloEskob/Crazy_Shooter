@@ -1,19 +1,27 @@
 using UnityEngine;
 
-public class GameStatusScreen : MonoBehaviour
+public class GameStatusScreen : MonoBehaviour,IPauseHandler
 {
     private SwitchScreen _switchScreen;
     private ActorUI _actorUI;
     private Player _player;
-    
+    private ZombieSounds _zombieSounds;
+    private Coroutine _coroutine;
+
     private void OnDisable()
     {
         _actorUI.OnEnableScreen -= ShowScreen;
         _player.OnSpawnedActorUi -= InitActorUi;
     }
 
-    private void Awake() =>
+    private void Awake()
+    {
         _switchScreen = GetComponentInChildren<SwitchScreen>();
+        _zombieSounds = GetComponentInChildren<ZombieSounds>();
+    }
+
+    private void Start() => 
+        ProjectContext.Instance.PauseService.Register(this);
 
     public void PlayVictory()
     {
@@ -32,6 +40,18 @@ public class GameStatusScreen : MonoBehaviour
     {
         _player = player;
         _player.OnSpawnedActorUi += InitActorUi;
+    }
+
+    public void StartRoutineSoundZombie() => 
+        _coroutine = StartCoroutine(_zombieSounds.PlaySound());
+
+    public void StopRoutineSoundZombie() => 
+        StopCoroutine(_coroutine);
+
+    public void SetPaused(bool isPaused)
+    {
+        AudioListener.pause = isPaused;
+        AudioListener.volume = isPaused ? 0f : 1f;
     }
 
     private void ShowScreen() => 

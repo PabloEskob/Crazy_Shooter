@@ -27,7 +27,7 @@ public class LevelStateMachine
         {
             [typeof(StartLevelState)] = new StartLevelState(this, analyticManager),
             [typeof(SpawnEnemyState)] = new SpawnEnemyState(this, levelAdjustmentTool),
-            [typeof(AttackState)] = new AttackState(this, player, levelAdjustmentTool),
+            [typeof(AttackState)] = new AttackState(this, player, levelAdjustmentTool,gameStatusScreen),
             [typeof(MoveState)] = new MoveState(this, player),
             [typeof(TurnStateToTarget)] = new TurnStateToTarget(this, player, levelAdjustmentTool),
             [typeof(FinishState)] = new FinishState( player, finishLevel,gameStatusScreen),
