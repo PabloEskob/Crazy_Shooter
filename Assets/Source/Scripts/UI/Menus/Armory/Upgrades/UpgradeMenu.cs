@@ -21,7 +21,6 @@ namespace Source.Scripts.Ui
 
 
         private const int _defaultWeaponIndex = 0;
-        private const float InvokeDelay = 0.1f;
 
         public Weapon CurrentWeapon { get; private set; }
         public IStorage Storage { get; private set; }
@@ -30,25 +29,14 @@ namespace Source.Scripts.Ui
 
         public event Action Activated;
 
-        private void Awake()
-        {
-            _inventory.Initialized += OnInitialized;
-        }
-
         private void OnEnable()
         {
+            _inventory.Initialized += OnInitialized;
             _inventory.Init();
             _upgradeHandler.Upgraded += OnUpgraded;
             _upgradeHandler.Bought += OnBought;
             _exitButton.onClick.AddListener(OnCloseButtionClick);
             _weaponPlatesView.WeaponSelected += OnWeaponSelected;
-
-            if (_weaponPlatesView.CanReload)
-            {
-                _weaponPlatesView.InitPlates();
-                _weaponHolder.UpdateView(CurrentWeapon);
-            }
-
             _weaponPlatesView.AllowReload();
             Activated?.Invoke();
         }

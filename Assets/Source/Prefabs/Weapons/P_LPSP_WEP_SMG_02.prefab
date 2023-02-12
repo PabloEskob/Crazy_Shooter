@@ -667,19 +667,13 @@ MonoBehaviour:
   _textureList:
   - {fileID: 2800000, guid: 44745f5d1c0b60e4cb7def0aed7bd3a7, type: 3}
   - {fileID: 2800000, guid: 880199096e4f42d42a02e6bf90a2a40e, type: 3}
-  - {fileID: 2800000, guid: 10cdbb365315f454597fd3cc81c43340, type: 3}
   - {fileID: 2800000, guid: a02102ea6f2d51f42a4b214017bef1da, type: 3}
   - {fileID: 2800000, guid: 6fdad8ed64615bc4cba8bcec532c632c, type: 3}
   - {fileID: 2800000, guid: 7a333a911cb1808458ca0c2fe3255e35, type: 3}
   - {fileID: 2800000, guid: b6ed4cc371c5c0c479a0e3fa13e1c89c, type: 3}
-  - {fileID: 2800000, guid: 2d77988b45ed72047bc500d69849dea5, type: 3}
   - {fileID: 2800000, guid: 9b5fc1d4d34e223459045e50fc731bcd, type: 3}
   - {fileID: 2800000, guid: a0243bed3879a6849b822350c6f8c76a, type: 3}
-  - {fileID: 2800000, guid: d824bf31444f697448e5c698046ae5da, type: 3}
-  - {fileID: 2800000, guid: fd7789874fc76574abd42505400ebc65, type: 3}
-  - {fileID: 2800000, guid: 8f1767e7e7023354f9e4502240225741, type: 3}
   - {fileID: 2800000, guid: d4f35cba1235bf34eb42bd3b87c3e1f3, type: 3}
-  - {fileID: 2800000, guid: 792c01bd47001cb47825da23bb7cc5a1, type: 3}
   - {fileID: 2800000, guid: 583ee1a57da446b47b38b3b966d30366, type: 3}
   _defaultTexture: {fileID: 2800000, guid: 20ed273a63b288242ab8ef4c6f4942e3, type: 3}
 --- !u!1 &8807366658087895063

@@ -6,7 +6,6 @@ using Assets.Source.Scripts.UI.Menus.Rewards;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UpgradeViewPanel : MonoBehaviour
 {
