@@ -15,7 +15,7 @@ public class HeadShot : MonoBehaviour, IShot
             Hitted?.Invoke((int)projectile.Damage, collision);
     }
 
-    public void KillEnemy()
+    public void DestroyHead()
     {
         if (_skinnedMeshRenderer != null)
         {

@@ -5,7 +5,7 @@
     private Zone _zone;
     private readonly Player _player;
     private readonly LevelAdjustmentTool _levelAdjustmentTool;
-    private GameStatusScreen _gameStatusScreen;
+    private readonly GameStatusScreen _gameStatusScreen;
 
     public AttackState(LevelStateMachine levelStateMachine, Player player, LevelAdjustmentTool levelAdjustmentTool,
         GameStatusScreen gameStatusScreen)

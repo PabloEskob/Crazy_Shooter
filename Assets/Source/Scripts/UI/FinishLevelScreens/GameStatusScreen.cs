@@ -1,11 +1,12 @@
+using Source.Scripts.Music;
 using UnityEngine;
 
-public class GameStatusScreen : MonoBehaviour,IPauseHandler
+public class GameStatusScreen : MonoBehaviour
 {
     private SwitchScreen _switchScreen;
     private ActorUI _actorUI;
     private Player _player;
-    private ZombieSounds _zombieSounds;
+    private SoundZombieScreams _zombieSounds;
     private Coroutine _coroutine;
 
     private void OnDisable()
@@ -17,12 +18,9 @@ public class GameStatusScreen : MonoBehaviour,IPauseHandler
     private void Awake()
     {
         _switchScreen = GetComponentInChildren<SwitchScreen>();
-        _zombieSounds = GetComponentInChildren<ZombieSounds>();
+        _zombieSounds = GetComponentInChildren<SoundZombieScreams>();
     }
-
-    private void Start() => 
-        ProjectContext.Instance.PauseService.Register(this);
-
+    
     public void PlayVictory()
     {
         _switchScreen.ShowVictoryScreen();
@@ -47,13 +45,7 @@ public class GameStatusScreen : MonoBehaviour,IPauseHandler
 
     public void StopRoutineSoundZombie() => 
         StopCoroutine(_coroutine);
-
-    public void SetPaused(bool isPaused)
-    {
-        AudioListener.pause = isPaused;
-        AudioListener.volume = isPaused ? 0f : 1f;
-    }
-
+    
     private void ShowScreen() => 
         _switchScreen.ShowDefeatScreen();
 

@@ -2351,7 +2351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8714119347357408985}
   - component: {fileID: 8177955966126779225}
-  - component: {fileID: 6312519716457748425}
+  - component: {fileID: 8049816632407979114}
   m_Layer: 0
   m_Name: SoundZombie
   m_TagString: Untagged
@@ -2470,7 +2470,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6312519716457748425
+--- !u!114 &8049816632407979114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2479,15 +2479,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8402941888858930212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09d96eea3a82ca34599249550b6af7ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 57b5de1eaf5d4cf1b70e1fcfd6fd6bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClips:
   - {fileID: 8300000, guid: fb1ebe7b032f2b043b2d6261f96bbd74, type: 3}
   - {fileID: 8300000, guid: a72064a5a5122624db3f561587e12859, type: 3}
   - {fileID: 8300000, guid: 9c96baa6c22deac4f89398fe64539952, type: 3}
-  _maxDelay: 3
-  _minDelay: 1
+  _minDelay: 2
+  _maxDelay: 4
 --- !u!1 &8570803133932888811
 GameObject:
   m_ObjectHideFlags: 0

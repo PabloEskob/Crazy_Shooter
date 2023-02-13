@@ -12,8 +12,8 @@ public class Zone
     public List<EnemySpawner> _enemySpawners;
     public List<TurningPoint> _turningPoints;
 
-    private LaunchingWaves _launchingWaves;
     private int _count;
+    private LaunchingWaves _launchingWaves;
     private EnemySpawner _enemySpawner;
     private EnemySpawner _nextEnemySpawner;
 
