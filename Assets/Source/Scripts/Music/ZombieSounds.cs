@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 public class ZombieSounds : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> _audioClips;
-    [SerializeField] private int _delay;
+    [SerializeField] private int _maxDelay;
+    [SerializeField] private int _minDelay;
 
     private AudioSource _audioSource;
 
@@ -18,12 +19,12 @@ public class ZombieSounds : MonoBehaviour
 
     public IEnumerator PlaySound()
     {
-        var seconds = new WaitForSeconds(_delay);
+        var seconds = new WaitForSeconds(Random.Range(_minDelay,_maxDelay));
         
         while (true)
         {
-            ChooseSound();
             yield return seconds;
+            ChooseSound();
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using Agava.YandexGames;
+﻿using System;
+using Agava.YandexGames;
 using Assets.Source.Scripts.Character;
 using Assets.Source.Scripts.UI.RouletteWheel;
 using InfimaGames.LowPolyShooterPack;
@@ -20,7 +21,10 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         [SerializeField] private MainMap _mainMap;
         [SerializeField] private int _softRewardAmount;
 
+        private bool _startedPlayingAds;
+
         IStorage Storage => _mainMap.Storage;
+        
 
         private void OnEnable()
         {
@@ -58,19 +62,29 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
 #endif
         }
 
-        private void OnAdvertisementStart() => ProjectContext.Instance.OnInBackgroundChange(true);
+        private void OnAdvertisementStart()
+        {
+            _startedPlayingAds = true;
+            ProjectContext.Instance.SetPauseWhenAds(_startedPlayingAds,true);
+        }
 
-        private void OnAdvertisementError() => ProjectContext.Instance.OnInBackgroundChange(false);
+        private void OnAdvertisementError()
+        {
+            _startedPlayingAds = false;
+            ProjectContext.Instance.SetPauseWhenAds(_startedPlayingAds,false);
+        }
 
         private void OnGrenadeRewardAdClose()
         {
-            ProjectContext.Instance.OnInBackgroundChange(false);
+            _startedPlayingAds = false;
+            ProjectContext.Instance.SetPauseWhenAds(_startedPlayingAds,false);
             _rouletteDisplay.gameObject.SetActive(true);
         }
 
         private void OnSoftRewardAdClose()
         {
-            ProjectContext.Instance.OnInBackgroundChange(false);
+            _startedPlayingAds = false;
+            ProjectContext.Instance.SetPauseWhenAds(_startedPlayingAds,false);
             _currencyHolder.AddSoft(_softRewardAmount);
         }
         

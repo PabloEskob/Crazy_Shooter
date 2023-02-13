@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonPause : MonoBehaviour, IPointerClickHandler, IPauseHandler
+public class ButtonPause : MonoBehaviour, IPointerClickHandler
 {
     private PanelPause _panelPause;
     private ActorUI _actorUI;
@@ -9,11 +9,8 @@ public class ButtonPause : MonoBehaviour, IPointerClickHandler, IPauseHandler
     private void Awake() =>
         _actorUI = GetComponentInParent<ActorUI>();
 
-    private void Start()
-    {
-        ProjectContext.Instance.PauseService.Register(this);
+    private void Start() => 
         _panelPause = _actorUI.PanelPause;
-    }
 
     public void OnPointerClick(PointerEventData eventData) => 
         SwitchPanel();
@@ -23,7 +20,5 @@ public class ButtonPause : MonoBehaviour, IPointerClickHandler, IPauseHandler
         ProjectContext.Instance.PauseService.SetPaused(!_panelPause.isActiveAndEnabled);
         _panelPause.gameObject.SetActive(!_panelPause.isActiveAndEnabled);
     }
-
-    public void SetPaused(bool isPaused) => 
-        Time.timeScale = isPaused ? 0f : 1f;
+    
 }

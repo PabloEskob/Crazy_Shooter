@@ -20,7 +20,7 @@ public class PauseService : IPauseHandler
     {
         IsPaused = isPaused;
 
-        foreach (var handler in _handlers) 
+        foreach (var handler in _handlers)
             handler.SetPaused(isPaused);
     }
 }
