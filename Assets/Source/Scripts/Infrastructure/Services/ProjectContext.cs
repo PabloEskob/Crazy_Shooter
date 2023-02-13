@@ -1,17 +1,17 @@
 ﻿using Agava.WebUtility;
 using UnityEngine;
 
-public class ProjectContext : MonoBehaviour,IPauseHandler
+public class ProjectContext : MonoBehaviour, IPauseHandler
 {
     public PauseService PauseService { get; private set; }
     public static ProjectContext Instance { get; private set; }
 
     private bool _isPlayAds;
 
-    private void OnEnable() => 
+    private void OnEnable() =>
         WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
 
-    private void OnDisable() => 
+    private void OnDisable() =>
         WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
 
     private void Awake() =>
@@ -25,7 +25,7 @@ public class ProjectContext : MonoBehaviour,IPauseHandler
 
     public void SetPaused(bool isPaused)
     {
-        if (_isPlayAds==false)
+        if (_isPlayAds == false)
         {
             Time.timeScale = isPaused ? 0.0f : 1.0f;
             AudioListener.pause = isPaused;
@@ -33,13 +33,19 @@ public class ProjectContext : MonoBehaviour,IPauseHandler
         }
     }
 
-    public void SetPauseWhenAds(bool startedPlayingAds, bool isPaused)
+    public void SetPauseWhenAds(bool isPaused)
     {
-        _isPlayAds = startedPlayingAds;
+        SetPaused(isPaused);
+        _isPlayAds = true;
+    }
+
+    public void ClosePauseAds(bool isPaused)
+    {
+        _isPlayAds = false;
         SetPaused(isPaused);
     }
 
-    private void OnInBackgroundChange(bool inBackground) => 
+    private void OnInBackgroundChange(bool inBackground) =>
         PauseService.SetPaused(inBackground);
 
     private void Initialize() =>

@@ -65,26 +65,26 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         private void OnAdvertisementStart()
         {
             _startedPlayingAds = true;
-            ProjectContext.Instance.SetPauseWhenAds(_startedPlayingAds,true);
+            ProjectContext.Instance.SetPauseWhenAds(true);
         }
 
         private void OnAdvertisementError()
         {
             _startedPlayingAds = false;
-            ProjectContext.Instance.SetPauseWhenAds(_startedPlayingAds,false);
+            ProjectContext.Instance.ClosePauseAds(false);
         }
 
         private void OnGrenadeRewardAdClose()
         {
             _startedPlayingAds = false;
-            ProjectContext.Instance.SetPauseWhenAds(_startedPlayingAds,false);
+            ProjectContext.Instance.ClosePauseAds(false);
             _rouletteDisplay.gameObject.SetActive(true);
         }
 
         private void OnSoftRewardAdClose()
         {
             _startedPlayingAds = false;
-            ProjectContext.Instance.SetPauseWhenAds(_startedPlayingAds,false);
+            ProjectContext.Instance.ClosePauseAds(false);
             _currencyHolder.AddSoft(_softRewardAmount);
         }
         
