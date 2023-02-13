@@ -76,8 +76,6 @@ namespace InfimaGames.LowPolyShooterPack
                     equippedWeaponIndex = i;
             }
 
-            //Equip.
-            //Equip(equippedAtStart);
             Equip(equippedWeaponIndex);
             Initialized?.Invoke();
         }

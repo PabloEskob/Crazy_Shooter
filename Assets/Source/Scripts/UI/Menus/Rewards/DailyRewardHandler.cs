@@ -66,6 +66,7 @@ public class DailyRewardHandler : MonoBehaviour
         {
             CurrentIndex = (CurrentIndex + 1) % _rewardsDisplay.Length;
             GiveReward(_rewardsDisplay[CurrentIndex].Reward);
+
         }
         else
         {

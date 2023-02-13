@@ -34,7 +34,11 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
         {
             BuySkinUIButton.onClick.AddListener(OnBuySkinButtonClick);
             _adSkinButton.ButtonClicked += OnAdSkinUIButtonClick;
-            Fill();
+
+            if (SkinsHandler != null)
+                Fill();
+            else
+                throw new NullReferenceException("SkinHandler is null");
         }
 
         private void OnDisable()
@@ -47,24 +51,18 @@ namespace Assets.Source.Scripts.UI.Menus.Armory
 
         private void Fill()
         {
-            if (SkinsHandler != null)
-            {
-                _sprite = CreateSprite(SkinsHandler.DefaultTexture);
-                SkinPlate defaultSkinPlate = CreatePlate(DefaultSkinIndex, _sprite);
-                defaultSkinPlate.SetIsBought(true);
-                _skinPlates.Add(defaultSkinPlate);
+            _sprite = CreateSprite(SkinsHandler.DefaultTexture);
+            SkinPlate defaultSkinPlate = CreatePlate(DefaultSkinIndex, _sprite);
+            defaultSkinPlate.SetIsBought(true);
+            _skinPlates.Add(defaultSkinPlate);
 
-                for (int i = 0; i < SkinsHandler.TextureList.Count; i++)
-                {
-                    _sprite = CreateSprite(SkinsHandler.TextureList[i]);
-                    SkinPlate skinPlate = CreatePlate(i, _sprite);
-                    _skinPlates.Add(skinPlate);
-                }
-            }
-            else
+            for (int i = 0; i < SkinsHandler.TextureList.Count; i++)
             {
-                throw new NullReferenceException("SkinHandler is null");
+                _sprite = CreateSprite(SkinsHandler.TextureList[i]);
+                SkinPlate skinPlate = CreatePlate(i, _sprite);
+                _skinPlates.Add(skinPlate);
             }
+
         }
 
         private SkinPlate CreatePlate(int i, Sprite sprite)

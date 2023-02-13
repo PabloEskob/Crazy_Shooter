@@ -1,24 +1,26 @@
 using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
+using Source.Scripts.Ui;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StartLevelButtonsView : MonoBehaviour
 {
-    [SerializeField] private StartLevelButton[] _levelButtons;
+    [SerializeField] private MainMap _mainMap;
+    
+    private StartLevelButton[] _levelButtons;
 
     [Header("Color Settings")]
     [SerializeField] Color _passedLevelButtonColor = Color.grey;
     [SerializeField] Color _notAvailiableLevelButtonColor = Color.red;
 
-    private IStorage _storage;
+    private IStorage Storage => _mainMap.Storage;
+
+    private void Awake() => _levelButtons = _mainMap.StartLevelButtons;
 
     private void Start()
     {
-        _storage = AllServices.Container.Single<IStorage>();
-        int currentLevelNumber = _storage.GetLevel();
+        int currentLevelNumber = Storage.GetLevel();
 
         foreach (var levelButton in _levelButtons)
         {

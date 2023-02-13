@@ -17,17 +17,19 @@ namespace Assets.Source.Scripts.UI.RouletteWheel
         [SerializeField] private float _slowDownTime = 2;
         [SerializeField] private float _delta = 0.2f;
         [SerializeField] private WheelSegment[] _segments = new WheelSegment[10];
+        [SerializeField] private float _appearTime = 1;
 
         private int _spinCount;
         private int _randomNumber;
         private int _numberOfSegments = 10;
         private int _targetSegment;
         private float _segmentDegree;
-        private float _appearTime = 1;
 
         private const float FullCircleDegrees = 360f;
         private const int Offset = 2;
         private const float NormalScale = 1.0f;
+        private const float MinScale = 0f;
+        private const float DisapperTime = 0;
         private const string SpinCountKey = "rouletteSpinCount";
 
         private IStorage Storage => _mainMap.Storage;
@@ -59,37 +61,14 @@ namespace Assets.Source.Scripts.UI.RouletteWheel
                     _targetSegment = i;
             }
 
-
-            //_wheelImage.DORotate(new Vector3(0f, 0f, FullCircleDegrees * _spinSpeed), _spinningTime - _delta, RotateMode.FastBeyond360)
-            //         .OnComplete(SlowdownRoulette);
+            float targetRotationZ = _segmentDegree * _targetSegment + _segmentDegree / Offset;
 
             Sequence spinSequence = DOTween.Sequence();
-            spinSequence.Append(_wheelImage.DORotate(new Vector3(0f, 0f, FullCircleDegrees * _spinSpeed), _spinningTime, RotateMode.FastBeyond360));
-            spinSequence.AppendInterval(_delta);
-
-            float targetRotationZ = _segmentDegree * _targetSegment + _segmentDegree / Offset;
-            float difference = Mathf.DeltaAngle(_wheelImage.rotation.eulerAngles.z, targetRotationZ);
-            float time = difference / _slowDownTime;
-
-            spinSequence.Append(_wheelImage.DORotate(new Vector3(0f, 0f, targetRotationZ), _slowDownTime, RotateMode.FastBeyond360).SetEase(Ease.OutQuad));
+            spinSequence.Append(_wheelImage.DORotate(new Vector3(0f, 0f, (FullCircleDegrees * _spinSpeed) + targetRotationZ), _spinningTime, RotateMode.FastBeyond360));
             spinSequence.OnComplete(OnStopRoulette);
         }
 
-        private int GetRundomNumber()
-        {
-            return _numbers[Random.Range(0, _numbers.Length)];
-        }
-
-        //private void SlowdownRoulette()
-        //{
-        //    float targetRotationZ = _segmentDegree * _targetSegment + _segmentDegree / Offset;
-        //    float difference = Mathf.Abs(_wheelImage.rotation.eulerAngles.z - targetRotationZ);
-        //    float time = difference / _slowDownTime;
-
-        //    _wheelImage.DORotate(new Vector3(0f, 0f, targetRotationZ), time, RotateMode.FastBeyond360)
-        //             .SetEase(Ease.OutQuad)
-        //             .OnComplete(OnStopRoulette);
-        //}
+        private int GetRundomNumber() => _numbers[Random.Range(0, _numbers.Length)];
 
         private void ChangeScale(float targetScale, float time) => transform.DOScale(targetScale, time).OnComplete(OnScaleComplete);
 
@@ -101,13 +80,18 @@ namespace Assets.Source.Scripts.UI.RouletteWheel
 
         private void OnStopRoulette()
         {
-            Stopped?.Invoke(_segments[_targetSegment].Reward);
-            Save();
+            float delay = 1;
+            Invoke(nameof(SendStoppedEvent), delay);
+
+            if (_mainMap != null)
+                Save();
         }
 
-        public void Disappear() => ChangeScale(0, 0);
+        public void Disappear() => ChangeScale(MinScale, DisapperTime);
 
         public void Appear() => ChangeScale(NormalScale, _appearTime);
+
+        public void SendStoppedEvent() => Stopped?.Invoke(_segments[_targetSegment].Reward);
 
         private void Save()
         {

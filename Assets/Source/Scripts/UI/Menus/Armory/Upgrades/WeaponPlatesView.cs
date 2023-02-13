@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Assets.Source.Scripts.UI.Menus.Armory;
 using InfimaGames.LowPolyShooterPack;
 using Source.Scripts.Ui;
@@ -30,6 +28,7 @@ public class WeaponPlatesView : MonoBehaviour
             weaponPlate.WeaponSelected += OnWeaponSelected;
 
         _upgradeHandler.Bought += OnBought;
+        _container.localPosition = Vector3.zero;
     }
 
     private void OnDisable()
@@ -59,8 +58,6 @@ public class WeaponPlatesView : MonoBehaviour
 
     public void InitPlates()
     {
-        Debug.Log($"InitPlates - PlatesCount {_plates.Count}");
-
         foreach (var weapon in _inventory.Weapons)
         {
             if (weapon.GetCollectedState())
@@ -69,7 +66,6 @@ public class WeaponPlatesView : MonoBehaviour
                 plate.SetWeapon(weapon);
                 plate.SwitchButtonState(false);
                 _plates.Add(plate);
-                Debug.Log($"AddedToPlates - {plate.Weapon.GetName()}");
             }
         }
 

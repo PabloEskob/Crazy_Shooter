@@ -4,6 +4,7 @@ using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +31,7 @@ namespace Source.Scripts.Ui
         private IStorage _storage;
 
         public IStorage Storage => _storage;
+        public StartLevelButton[] StartLevelButtons => _startLevelButtons;
 
         public void Construct(SceneLoader sceneLoader, GameStateMachine stateMachine, IStorage storage)
         {

@@ -723,42 +723,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weapon: {fileID: 6035197157201893670}
   _weaponMaterials:
   - {fileID: 2100000, guid: f0a5a5c8a768535469f01128131241e3, type: 2}
   - {fileID: 2100000, guid: a3c6bfe7cb516194daa84a90af764f90, type: 2}
   - {fileID: 2100000, guid: 2853c8266ac56de4889e53b2c3f6ecdc, type: 2}
   - {fileID: 2100000, guid: 0123ce25faa61c446ba746426aa03014, type: 2}
   _textureList:
-  - {fileID: 2800000, guid: e85fb19e9a2ca854c835259be76f9051, type: 3}
-  - {fileID: 2800000, guid: 9732433619be8a04b915aad687382739, type: 3}
-  - {fileID: 2800000, guid: 5924b9a0eab9df04ab513ff8320fc042, type: 3}
-  - {fileID: 2800000, guid: a53f76ba00ffe9e41addf706b73e77f9, type: 3}
-  - {fileID: 2800000, guid: 31e5ae8d640f02148b835283840e16cc, type: 3}
-  - {fileID: 2800000, guid: cf8dc19a59452e44b9378570b214f5ff, type: 3}
-  - {fileID: 2800000, guid: 54ae3893bc498d140aa876cedcc6a479, type: 3}
-  - {fileID: 2800000, guid: fe707e478c0ccd84da95717e832af89a, type: 3}
-  - {fileID: 2800000, guid: e8a8d41bc6a6d6747b856705e595b0aa, type: 3}
-  - {fileID: 2800000, guid: 3ee476c1313930a43970b69fddd2d1d5, type: 3}
-  - {fileID: 2800000, guid: 021d514e45955b641969eec3d2ef3df8, type: 3}
-  - {fileID: 2800000, guid: 892a473c4d89b204d8cc0cfe301782a5, type: 3}
-  - {fileID: 2800000, guid: 8eeaa4773e37ab54eb478643d430b75b, type: 3}
-  - {fileID: 2800000, guid: 701dc0330c14d574d99c97df41292b15, type: 3}
   - {fileID: 2800000, guid: 1c7ada9285ddd62429c2b8a072f3f8bd, type: 3}
-  - {fileID: 2800000, guid: 9f3338218f0bd064a87eedf1e7e1d81f, type: 3}
   - {fileID: 2800000, guid: 3a4866d013bfbc04497b5c719b8730b4, type: 3}
-  - {fileID: 2800000, guid: e6d03fc0355adac41b69d13e8163bddd, type: 3}
   - {fileID: 2800000, guid: b0c5fdaec504a794eb2b2c80b35e0e84, type: 3}
-  - {fileID: 2800000, guid: 2b7305338e120984f937d240b370b727, type: 3}
-  - {fileID: 2800000, guid: e799c22c80d9b4c4985264330393a56f, type: 3}
-  - {fileID: 2800000, guid: 9d6b096a8dc0f8b4ea7aec9e1359a8c1, type: 3}
+  - {fileID: 2800000, guid: d6ab9dc424e44024688e8b003a0e6985, type: 3}
   - {fileID: 2800000, guid: a628455153c2cfd45a536c5f1d506b87, type: 3}
-  - {fileID: 2800000, guid: 261cdf82103d970429e519003477a597, type: 3}
-  - {fileID: 2800000, guid: 7ca5e87af5af7f742b15bd652fd96ce4, type: 3}
-  - {fileID: 2800000, guid: b16512fe259517341b805fc155780105, type: 3}
-  - {fileID: 2800000, guid: edc69590e62973e4aa09fbe494feae82, type: 3}
-  - {fileID: 2800000, guid: ebd77c44ccc354744b534f22900a1c9d, type: 3}
+  - {fileID: 2800000, guid: a02102ea6f2d51f42a4b214017bef1da, type: 3}
+  - {fileID: 2800000, guid: b6ed4cc371c5c0c479a0e3fa13e1c89c, type: 3}
   - {fileID: 2800000, guid: 6855b4dd4feb42945b3c4f4537d698c6, type: 3}
-  - {fileID: 2800000, guid: c18a5491743691f49b94e361f9a62f48, type: 3}
   _defaultTexture: {fileID: 2800000, guid: e8a8d41bc6a6d6747b856705e595b0aa, type: 3}
 --- !u!1001 &867562543638608127
 PrefabInstance:

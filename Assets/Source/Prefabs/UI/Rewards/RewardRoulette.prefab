@@ -55,10 +55,10 @@ MonoBehaviour:
   _mainMap: {fileID: 0}
   _wheelImage: {fileID: 3315094575434861302}
   _numbers: 0100000002000000020000000200000003000000030000000300000004000000040000000400000005000000060000000700000008000000090000000a000000
-  _spinSpeed: 10
-  _spinningTime: 5
-  _slowDownTime: 4.5
-  _delta: 0
+  _spinSpeed: 20
+  _spinningTime: 3
+  _slowDownTime: 2
+  _delta: 0.001
   _segments:
   - {fileID: 6136418882236602812}
   - {fileID: 2756886881738906962}
@@ -239,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3315094576396850646
 RectTransform:
   m_ObjectHideFlags: 0

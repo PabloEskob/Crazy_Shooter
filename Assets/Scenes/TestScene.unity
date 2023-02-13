@@ -511,10 +511,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RewardRoulette
       objectReference: {fileID: 0}
-    - target: {fileID: 3315094576396850641, guid: c85c37998bef2be48b4799aaf53a36fd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3315094576396850646, guid: c85c37998bef2be48b4799aaf53a36fd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

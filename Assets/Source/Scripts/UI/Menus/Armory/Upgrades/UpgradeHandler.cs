@@ -1,5 +1,4 @@
 ﻿using InfimaGames.LowPolyShooterPack;
-using Source.Scripts.Data;
 using Source.Scripts.StaticData;
 using Source.Scripts.Ui;
 using System;

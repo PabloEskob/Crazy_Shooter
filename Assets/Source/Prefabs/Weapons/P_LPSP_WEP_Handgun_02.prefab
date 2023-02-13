@@ -335,26 +335,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weapon: {fileID: 669980243938088076}
   _weaponMaterials:
   - {fileID: 2100000, guid: 4fd876e170eb7cd4f88c76936a7b3866, type: 2}
   _textureList:
   - {fileID: 2800000, guid: c01a1c7d4217f6e4f9faf04ff1754d69, type: 3}
-  - {fileID: 2800000, guid: ba3a12d85dabc93419b0fc5b4fb15a80, type: 3}
   - {fileID: 2800000, guid: 79f3734fea775f64cae225165fef0c79, type: 3}
   - {fileID: 2800000, guid: 67a4b3860845eb1499cfb71255068f65, type: 3}
   - {fileID: 2800000, guid: 7b09b47aea8232c4f98964f0434625bf, type: 3}
-  - {fileID: 2800000, guid: a4c9c4748170a924aa2fc2a022b05ac4, type: 3}
   - {fileID: 2800000, guid: d0b0c290cc7a075499805b6885251fee, type: 3}
   - {fileID: 2800000, guid: ed84dbd8c6f682f4f87fb95877503001, type: 3}
   - {fileID: 2800000, guid: 4d2ade88f2444b546b6620de09ddaa07, type: 3}
   - {fileID: 2800000, guid: d6854dfffa17bf84ca8d1ea20779e605, type: 3}
-  - {fileID: 2800000, guid: 0e100e3571a9619488b627756ff9a3b1, type: 3}
-  - {fileID: 2800000, guid: 15c90b55f0daee04badf9d81dafa40e3, type: 3}
-  - {fileID: 2800000, guid: 1df704f61dc9d9a4897c384e2bdfa668, type: 3}
   - {fileID: 2800000, guid: bd7d86ad4e36ea64d9e085f00dce883c, type: 3}
   - {fileID: 2800000, guid: 2d65bd26a6c177e47831520e25e398a3, type: 3}
-  - {fileID: 2800000, guid: 1e5a3a452e7269f4f8fe46247ccb5c6a, type: 3}
-  - {fileID: 2800000, guid: 9765da1b5d82af74abf12586193c51d6, type: 3}
   _defaultTexture: {fileID: 2800000, guid: 1df704f61dc9d9a4897c384e2bdfa668, type: 3}
 --- !u!1 &4741988491007925715
 GameObject:

@@ -7,6 +7,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
     {
         [SerializeField] private GetButtonTextDisplay _buttonTextDisplay;
         [SerializeField] private Reward _reward;
+        [SerializeField] private Reward _rewardReplacement;
         [SerializeField] private Button _getRewardButton;
         [SerializeField] private Text _amountText;
         [SerializeField] private Text _dayText;
@@ -24,7 +25,7 @@ namespace Assets.Source.Scripts.UI.Menus.Rewards
         [SerializeField] private Sprite _unavaliableButtonSprite;
         [SerializeField] private Image _coverImage;
 
-        //[SerializeField] private Image _checkMark;
+        [SerializeField] private bool _isReplaceable;
 
         public int Day => _day;
         public Button GetRewardButton => _getRewardButton;

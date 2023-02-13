@@ -84,7 +84,7 @@ MonoBehaviour:
   _weaponType: 0
   _isBought: 0
   _isEquipped: 0
-  _isCollected: 0
+  _isCollected: 1
   weaponName: Handgun 03
   multiplierMovementSpeed: 1.15
   attachmentManager: {fileID: 6110289550021268199}
@@ -202,75 +202,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weapon: {fileID: 2624052788621826371}
   _weaponMaterials:
   - {fileID: 2100000, guid: f47e38b127e66d7449229b1fa2640281, type: 2}
   - {fileID: 2100000, guid: 600f7c3032895ad489d4119a732fc463, type: 2}
   _textureList:
-  - {fileID: 2800000, guid: 105e13bc2d014614582fe1eca44aa0cc, type: 3}
   - {fileID: 2800000, guid: 31ad0367d37aa3b4cb71428f0fe709da, type: 3}
-  - {fileID: 2800000, guid: 188ba623dadf19549893bd4f418f9000, type: 3}
   - {fileID: 2800000, guid: cabf1128e97e00c45b72c2245a5c81ea, type: 3}
   - {fileID: 2800000, guid: 8fc599a45b1c52f4ca601a4e312cf130, type: 3}
-  - {fileID: 2800000, guid: 6889e49109dba6b449cb904427f70663, type: 3}
   - {fileID: 2800000, guid: 54f7b7b746b53c149a150d5e52145940, type: 3}
-  - {fileID: 2800000, guid: d4b0259961590ce40a0ab0678760431d, type: 3}
-  - {fileID: 2800000, guid: 996b793ef6f4744498fa85d3e1851c60, type: 3}
   - {fileID: 2800000, guid: e39b3fb220df5d041a0609a6bc426c43, type: 3}
-  - {fileID: 2800000, guid: 44eb73fda2935df4784f267d664eece5, type: 3}
-  - {fileID: 2800000, guid: d42c13ac64acfce48801447b37a0550c, type: 3}
-  - {fileID: 2800000, guid: 258fab2925cdc09479e233773faa3aff, type: 3}
-  - {fileID: 2800000, guid: ad0caca1283f44d48b06ca4c8874035d, type: 3}
-  - {fileID: 2800000, guid: a3f2cf15f61e1b6489448dcc7862bc32, type: 3}
-  - {fileID: 2800000, guid: f4146d62db214694bb500f308f19c10f, type: 3}
-  - {fileID: 2800000, guid: 9c0e3b8d31dbb704cb19f17cc7744703, type: 3}
   - {fileID: 2800000, guid: e406f191df8b74942a569eea8327f0c6, type: 3}
-  - {fileID: 2800000, guid: 33986291c20d967428ae7b73a6ea3624, type: 3}
-  - {fileID: 2800000, guid: 104080e0a84ab4949afd8fde44e8591e, type: 3}
-  - {fileID: 2800000, guid: 9c357d2aea9c0aa499bf3d905c7a42a5, type: 3}
   - {fileID: 2800000, guid: 72374325dccb919489456bfe7116f8ca, type: 3}
-  - {fileID: 2800000, guid: 01b2fe715d395af47bfd580628ecba98, type: 3}
-  - {fileID: 2800000, guid: 199f126a7cc345c4f943989bac06b663, type: 3}
-  - {fileID: 2800000, guid: 7ace14119a6bc77499f59b9739d178a8, type: 3}
-  - {fileID: 2800000, guid: 32fc155aa166ec241ae05b01fec9c885, type: 3}
   - {fileID: 2800000, guid: ad94862e1923e354b89df6e20b2ff802, type: 3}
-  - {fileID: 2800000, guid: b2af29fefdf8c974ca946aa92cfec553, type: 3}
-  - {fileID: 2800000, guid: cb8fffefcd8a0d94eb675a759d4f7a8e, type: 3}
-  - {fileID: 2800000, guid: 7044257f594d49047aff5fa0326785b3, type: 3}
-  - {fileID: 2800000, guid: 8b300cb935e25eb4abca29d297cf051b, type: 3}
-  - {fileID: 2800000, guid: 85c3ca9b8f5394b468a151a70a30dd31, type: 3}
   - {fileID: 2800000, guid: 0b1fa28479c5e554ab2c4851838efb47, type: 3}
-  - {fileID: 2800000, guid: a845f9f84e178a341bab12118ce9fab1, type: 3}
-  - {fileID: 2800000, guid: 4cc25367b72b08949b4b5ec3bffb1245, type: 3}
-  - {fileID: 2800000, guid: b9c1a8970e4e2f64182095e2409f7004, type: 3}
-  - {fileID: 2800000, guid: b4a26b9d2aa986e43bb15f1a9adeb160, type: 3}
-  - {fileID: 2800000, guid: e12209d099aa7064bacacbdc852b6bb2, type: 3}
-  - {fileID: 2800000, guid: e1d1cb69c17be3b45aadce2d11613c21, type: 3}
-  - {fileID: 2800000, guid: 4668c9eb4b3f53a4fb713ce9e15ef71e, type: 3}
-  - {fileID: 2800000, guid: 0b8672fefdc77ee49b5ef2346909be38, type: 3}
   - {fileID: 2800000, guid: 0ed263c7086847842b95f8f03a05bbcb, type: 3}
-  - {fileID: 2800000, guid: 10ccf27bb6701ea4c8626caff0dab7cf, type: 3}
-  - {fileID: 2800000, guid: 707ed2a3d8fcedf44bb64c7965d4328f, type: 3}
-  - {fileID: 2800000, guid: 0f8eb064c6a71c240902dcb963aa9ce2, type: 3}
-  - {fileID: 2800000, guid: 357c497df2559d64da025683a17e08a8, type: 3}
-  - {fileID: 2800000, guid: a6c92a23cabb8e540932a98c476340d5, type: 3}
-  - {fileID: 2800000, guid: 52d1bc292194cd3468d572e4588a35ac, type: 3}
-  - {fileID: 2800000, guid: 25e588937b3ddf446b6f1ab354c53303, type: 3}
-  - {fileID: 2800000, guid: 4e25f8a21beae5a4ebdb70f4ee212e13, type: 3}
-  - {fileID: 2800000, guid: 05298d101b32aad4c8f368f40f059098, type: 3}
-  - {fileID: 2800000, guid: 43b88287493511c4889b6e02cc66ce68, type: 3}
-  - {fileID: 2800000, guid: e7703059258561343b7007e2a7398b2b, type: 3}
-  - {fileID: 2800000, guid: 160c8a0f671cf6a459a39c56e87ed26f, type: 3}
-  - {fileID: 2800000, guid: b8a57dd477d678a449e40b801983b772, type: 3}
-  - {fileID: 2800000, guid: aa61f37a12589b24594500cecf8c5917, type: 3}
-  - {fileID: 2800000, guid: 96e0da3227b01d2429830f4b82f723a1, type: 3}
-  - {fileID: 2800000, guid: 5c220990b9cc553468b17cd4cda4750a, type: 3}
-  - {fileID: 2800000, guid: 2303ddc6b64fe394da936b190145caff, type: 3}
-  - {fileID: 2800000, guid: ba80b2268604b9342ad88f41091afa82, type: 3}
-  - {fileID: 2800000, guid: 19b5fad5f0a72394eb5f19bdbe44d412, type: 3}
-  - {fileID: 2800000, guid: 03d20ce14a3fbdc47a4c5da9b45f17a8, type: 3}
-  - {fileID: 2800000, guid: 42b77537a9402e24995715b9550d55f1, type: 3}
-  - {fileID: 2800000, guid: 9f34a3bd289731d47a49047c21930e84, type: 3}
-  - {fileID: 2800000, guid: b2f784312e9670a42b8344a235aa79e9, type: 3}
   _defaultTexture: {fileID: 2800000, guid: 6889e49109dba6b449cb904427f70663, type: 3}
 --- !u!1 &2480727008041417461
 GameObject:
