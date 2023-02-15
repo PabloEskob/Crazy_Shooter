@@ -3,11 +3,14 @@
     private readonly LevelStateMachine _levelStateMachine;
     private int _value;
     private readonly LevelAdjustmentTool _levelAdjustmentTool;
+    private readonly StartAlert _startAlert;
 
-    public SpawnEnemyState(LevelStateMachine levelStateMachine,LevelAdjustmentTool levelAdjustmentTool)
+    public SpawnEnemyState(LevelStateMachine levelStateMachine, LevelAdjustmentTool levelAdjustmentTool,
+        StartAlert startAlert)
     {
         _levelStateMachine = levelStateMachine;
         _levelAdjustmentTool = levelAdjustmentTool;
+        _startAlert = startAlert;
     }
 
     public void Enter()
@@ -29,7 +32,14 @@
         }
         else
         {
-            _levelStateMachine.Enter<FinishState>();
+            if (_startAlert.ChooseDialoguePlaceCurrent != StartAlert.ChooseDialoguePlace.Start)
+            {
+                _startAlert.StartEndDialogue();
+                _levelStateMachine.Enter<NarrativeState>();
+            }
+            else
+                _levelStateMachine.Enter<FinishState>();
+
         }
     }
 }

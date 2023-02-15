@@ -8,9 +8,9 @@ public class LevelStateMachine
     private ILevelState _currentLevelState;
 
     public LevelStateMachine(Player player, FinishLevel finishLevel, IAnalyticManager analyticManager,
-        LevelAdjustmentTool levelAdjustmentTool, GameStatusScreen gameStatusScreen)
+        LevelAdjustmentTool levelAdjustmentTool, GameStatusScreen gameStatusScreen, StartAlert startAlert)
     {
-        InitStates(player, finishLevel, analyticManager, levelAdjustmentTool,gameStatusScreen);
+        InitStates(player, finishLevel, analyticManager, levelAdjustmentTool,gameStatusScreen,startAlert);
         Enter<StartLevelState>();
     }
 
@@ -21,13 +21,13 @@ public class LevelStateMachine
     }
 
     private void InitStates(Player player, FinishLevel finishLevel, IAnalyticManager analyticManager,
-        LevelAdjustmentTool levelAdjustmentTool,GameStatusScreen gameStatusScreen)
+        LevelAdjustmentTool levelAdjustmentTool, GameStatusScreen gameStatusScreen, StartAlert startAlert)
     {
         _states = new Dictionary<Type, ILevelState>
         {
-            [typeof(StartLevelState)] = new StartLevelState(this, analyticManager),
+            [typeof(StartLevelState)] = new StartLevelState(this, analyticManager,startAlert),
             [typeof(NarrativeState)] = new NarrativeState(this,gameStatusScreen),
-            [typeof(SpawnEnemyState)] = new SpawnEnemyState(this, levelAdjustmentTool),
+            [typeof(SpawnEnemyState)] = new SpawnEnemyState(this, levelAdjustmentTool,startAlert),
             [typeof(AttackState)] = new AttackState(this, player, levelAdjustmentTool,gameStatusScreen),
             [typeof(MoveState)] = new MoveState(this, player),
             [typeof(TurnStateToTarget)] = new TurnStateToTarget(this, player, levelAdjustmentTool),

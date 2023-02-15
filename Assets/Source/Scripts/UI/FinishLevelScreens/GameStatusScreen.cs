@@ -1,4 +1,3 @@
-using System;
 using PixelCrushers.DialogueSystem;
 using Source.Scripts.Music;
 using UnityEngine;
@@ -11,20 +10,20 @@ public class GameStatusScreen : MonoBehaviour
     private SoundZombieScreams _zombieSounds;
     private Coroutine _coroutine;
     private LevelStateMachine _levelStateMachine;
-    private string _startMessage = " Месяц после зомби апокалипсиса";
 
-    public bool unregisterOnDisable = false;
-
-    void OnEnable() =>
-        Lua.RegisterFunction("DebugLog", this, SymbolExtensions.GetMethodInfo(() => StartState()));
+    void OnEnable()
+    {
+        Lua.RegisterFunction("StartEnemySpawn", this, SymbolExtensions.GetMethodInfo(() => StartEnemySpawn()));
+        Lua.RegisterFunction("StartFinishState", this, SymbolExtensions.GetMethodInfo(() => StartFinishState()));
+    }
 
     private void OnDisable()
     {
         _actorUI.OnEnableScreen -= ShowScreen;
         _player.OnSpawnedActorUi -= InitActorUi;
-
-        if (unregisterOnDisable)
-            Lua.UnregisterFunction("DebugLog");
+        
+        Lua.UnregisterFunction("StartEnemySpawn");
+        Lua.UnregisterFunction("StartFinishState");
     }
 
     private void Awake()
@@ -32,12 +31,7 @@ public class GameStatusScreen : MonoBehaviour
         _switchScreen = GetComponentInChildren<SwitchScreen>();
         _zombieSounds = GetComponentInChildren<SoundZombieScreams>();
     }
-
-    private void Start()
-    {
-        if (!string.IsNullOrEmpty(_startMessage)) DialogueManager.ShowAlert(_startMessage);
-    }
-
+    
     public void PlayVictory()
     {
         _switchScreen.ShowVictoryScreen();
@@ -50,10 +44,11 @@ public class GameStatusScreen : MonoBehaviour
         _switchScreen.gameObject.SetActive(false);
     }
 
-    public void StartState()
-    {
+    public void StartEnemySpawn() => 
         _levelStateMachine.Enter<SpawnEnemyState>();
-    }
+
+    public void StartFinishState() => 
+        _levelStateMachine.Enter<FinishState>();
 
     public void EndNarrative()
     {
@@ -80,7 +75,7 @@ public class GameStatusScreen : MonoBehaviour
     public void StopRoutineSoundZombie() =>
         StopCoroutine(_coroutine);
 
-    public void SetLevelStateMachine(LevelStateMachine levelStateMachine) =>
+    public void SetLevelStateMachine(LevelStateMachine levelStateMachine) => 
         _levelStateMachine = levelStateMachine;
 
     private void ShowScreen() =>

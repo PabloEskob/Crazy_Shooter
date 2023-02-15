@@ -13,6 +13,7 @@
 
     public void Enter()
     {
+        _finishLevel.OpenChest();
         _player.PlayerRotate.CameraLook.StartRotateToFinish(_finishLevel.TurningPoint);
         _gameStatusScreen.PlayVictory();
     }

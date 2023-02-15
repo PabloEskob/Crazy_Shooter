@@ -424,7 +424,6 @@ namespace InfimaGames.LowPolyShooterPack
             //Holding the firing button.
             if (holdingButtonFire && _lock == false)
             {
-                //Check.
                 if (CanPlayAnimationFire() && equippedWeapon.HasAmmunition() && equippedWeapon.IsAutomatic())
                 {
                     //Has fire rate passed.
@@ -745,23 +744,26 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void Fire()
         {
-            _crosshair.Shot();
-            //Save the shot time, so we can calculate the fire rate correctly.
-            lastShotTime = Time.time;
-            //Fire the weapon! Make sure that we also pass the scope's spread multiplier if we're aiming.
-            equippedWeapon.Fire(aiming ? equippedWeaponScope.GetMultiplierSpread() : 1.0f);
+            if (_canFire)
+            {
+                _crosshair.Shot();
+                //Save the shot time, so we can calculate the fire rate correctly.
+                lastShotTime = Time.time;
+                //Fire the weapon! Make sure that we also pass the scope's spread multiplier if we're aiming.
+                equippedWeapon.Fire(aiming ? equippedWeaponScope.GetMultiplierSpread() : 1.0f);
 
-            //Play firing animation.
-            const string stateName = "Fire";
-            characterAnimator.CrossFade(stateName, 0.05f, layerOverlay, 0);
+                //Play firing animation.
+                const string stateName = "Fire";
+                characterAnimator.CrossFade(stateName, 0.05f, layerOverlay, 0);
 
-            //Play bolt actioning animation if needed, and if we have ammunition. We don't play this for the last shot.
-            if (equippedWeapon.IsBoltAction() && equippedWeapon.HasAmmunition())
-                UpdateBolt(true);
+                //Play bolt actioning animation if needed, and if we have ammunition. We don't play this for the last shot.
+                if (equippedWeapon.IsBoltAction() && equippedWeapon.HasAmmunition())
+                    UpdateBolt(true);
 
-            //Automatically reload the weapon if we need to. This is very helpful for things like grenade launchers or rocket launchers.
-            if (!equippedWeapon.HasAmmunition() && equippedWeapon.GetAutomaticallyReloadOnEmpty())
-                StartCoroutine(nameof(TryReloadAutomatic));
+                //Automatically reload the weapon if we need to. This is very helpful for things like grenade launchers or rocket launchers.
+                if (!equippedWeapon.HasAmmunition() && equippedWeapon.GetAutomaticallyReloadOnEmpty())
+                    StartCoroutine(nameof(TryReloadAutomatic));
+            }
         }
 
         private void PlayReloadAnimation()
@@ -1200,44 +1202,43 @@ namespace InfimaGames.LowPolyShooterPack
                 //Block while the cursor is unlocked.
                 if (cursorLocked)
                     return;
-                
+
                 //Switch.
-                    switch (context)
-                    {
-                        //Started.
-                        case { phase: InputActionPhase.Started }:
-                            //Hold.
-                            holdingButtonFire = true;
+                switch (context)
+                {
+                    //Started.
+                    case { phase: InputActionPhase.Started }:
+                        //Hold.
+                        holdingButtonFire = true;
+                        break;
+                    //Performed.
+                    case { phase: InputActionPhase.Performed }:
+                        //Ignore if we're not allowed to actually fire.
+                        if (!CanPlayAnimationFire())
                             break;
-                        //Performed.
-                        case { phase: InputActionPhase.Performed }:
-                            //Ignore if we're not allowed to actually fire.
-                            if (!CanPlayAnimationFire())
+
+                        //Check.
+                        if (equippedWeapon.HasAmmunition())
+                        {
+                            //Check.
+                            if (equippedWeapon.IsAutomatic())
                                 break;
 
-                            //Check.
-                            if (equippedWeapon.HasAmmunition())
-                            {
-                                //Check.
-                                if (equippedWeapon.IsAutomatic())
-                                    break;
+                            //Has fire rate passed.
+                            if (Time.time - lastShotTime > 60.0f / equippedWeapon.GetRateOfFire())
+                                Fire();
+                        }
+                        //Fire Empty.
+                        else
+                            FireEmpty();
 
-                                //Has fire rate passed.
-                                if (Time.time - lastShotTime > 60.0f / equippedWeapon.GetRateOfFire())
-                                    Fire();
-                            }
-                            //Fire Empty.
-                            else
-                                FireEmpty();
-
-                            break;
-                        //Canceled.
-                        case { phase: InputActionPhase.Canceled }:
-                            //Stop Hold.
-                            holdingButtonFire = false;
-                            break;
-                    }
-                
+                        break;
+                    //Canceled.
+                    case { phase: InputActionPhase.Canceled }:
+                        //Stop Hold.
+                        holdingButtonFire = false;
+                        break;
+                }
             }
         }
 
@@ -1545,7 +1546,7 @@ namespace InfimaGames.LowPolyShooterPack
             {
                 if (cursorLocked)
                     return;
-                
+
                 axisLook = cursorLocked ? default : context.ReadValue<Vector2>();
                 //Make sure that we have a weapon.
                 if (equippedWeapon == null)

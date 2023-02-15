@@ -22,8 +22,11 @@ public class SwitchScreen : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Character>();
     }
 
-    private void Start() =>
+    private void Start()
+    {
         _canvas.sortingOrder = -1;
+        Cursor.visible =false ;
+    }
 
     public void ShowVictoryScreen()
     {

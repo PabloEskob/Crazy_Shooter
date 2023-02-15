@@ -15,6 +15,7 @@ TagManager:
   - TurningPoints
   - FinishLevel
   - LevelTool
+  - StartAlert
   layers:
   - Default
   - TransparentFX

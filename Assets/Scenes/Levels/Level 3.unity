@@ -2121,6 +2121,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 3
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -7438,6 +7439,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 2
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -9370,6 +9372,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 2
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -10257,6 +10260,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 2
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -10939,6 +10943,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 1
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -11873,6 +11878,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 2
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -14765,6 +14771,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 412980, guid: 76537ec32f34e874da2f3e484737399d, type: 3}
   m_PrefabInstance: {fileID: 1137149942}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1137431305
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 819321948896676206, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: conversation
+      value: 3 level(end)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874907, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_Name
+      value: Converstation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874908, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: _message
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874908, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: _chooseDialoguePlace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874909, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: conversation
+      value: 3 level
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964784951520874910, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792617943785253463, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
+      propertyPath: conversation
+      value: Quest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ffff802de9711c54eb941a491e6e6367, type: 3}
 --- !u!1001 &1140374336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17126,6 +17209,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 1
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -17966,6 +18050,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 2
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -18396,6 +18481,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 3
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2

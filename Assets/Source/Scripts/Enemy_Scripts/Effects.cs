@@ -41,13 +41,13 @@ public class Effects : MonoBehaviour
     public void PlayHeadShot()
     {
         _fxHeadShot.Play();
-        _headShot.Play();
+        //_headShot.Play();
         _blood.Play();
     }
 
     public void PlayDeath()
     {
-        _zombieDied.PlaySound();
+       // _zombieDied.PlaySound();
         _deathFx.Play();
     }
 }

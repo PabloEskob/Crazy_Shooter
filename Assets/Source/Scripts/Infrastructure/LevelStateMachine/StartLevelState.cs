@@ -7,13 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class StartLevelState : ILevelState
 {
-    private LevelStateMachine _levelStateMachine;
-    private IAnalyticManager _analyticManager;
-    private GameConfig _gameConfig;
-    private IStaticDataService _staticData;
+    private readonly LevelStateMachine _levelStateMachine;
+    private readonly IAnalyticManager _analyticManager;
+    private readonly GameConfig _gameConfig;
+    private readonly IStaticDataService _staticData;
+    private readonly StartAlert _alert;
 
-    public StartLevelState(LevelStateMachine levelStateMachine, IAnalyticManager analyticManager)
+    public StartLevelState(LevelStateMachine levelStateMachine, IAnalyticManager analyticManager, StartAlert startAlert)
     {
+        _alert = startAlert;
         _levelStateMachine = levelStateMachine;
         _analyticManager = analyticManager;
         _staticData = AllServices.Container.Single<IStaticDataService>();
@@ -23,14 +25,30 @@ public class StartLevelState : ILevelState
     public void Enter()
     {
         _analyticManager.SendEventOnLevelStart(GetCurrentLevelNumber());
-        _levelStateMachine.Enter<NarrativeState>();
+        ChangeState();
     }
 
-    public void Exit() { }
+    public void Exit()
+    {
+    }
 
     private int GetCurrentLevelNumber()
     {
         string currentLevelName = SceneManager.GetActiveScene().name;
         return _gameConfig.GetLevelNumberByName(currentLevelName);
+    }
+
+    private void ChangeState()
+    {
+        switch (_alert.ChooseDialoguePlaceCurrent)
+        {
+            case StartAlert.ChooseDialoguePlace.End:
+                _levelStateMachine.Enter<SpawnEnemyState>();
+                break;
+            case StartAlert.ChooseDialoguePlace.Start:
+            case StartAlert.ChooseDialoguePlace.StartAndEnd:
+                _levelStateMachine.Enter<NarrativeState>();
+                break;
+        }
     }
 }

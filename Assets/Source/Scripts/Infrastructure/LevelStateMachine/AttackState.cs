@@ -3,11 +3,10 @@
 public class AttackState : ILevelState
 {
     private readonly LevelStateMachine _levelStateMachine;
-
-    private Zone _zone;
     private readonly Player _player;
     private readonly LevelAdjustmentTool _levelAdjustmentTool;
     private readonly GameStatusScreen _gameStatusScreen;
+    private Zone _zone;
 
     public AttackState(LevelStateMachine levelStateMachine, Player player, LevelAdjustmentTool levelAdjustmentTool,
         GameStatusScreen gameStatusScreen)

@@ -78,8 +78,8 @@ public class EnemyHealth : MonoBehaviour, IHealth
             _effects.GetContactCollision(collision);
         else
         {
-            _headShot.DestroyHead();
             _effects.PlayHeadShot();
+            _headShot.DestroyHead();
         }
     }
 }

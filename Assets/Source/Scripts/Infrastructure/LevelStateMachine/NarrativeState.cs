@@ -1,4 +1,6 @@
-﻿public class NarrativeState : ILevelState
+﻿using UnityEngine;
+
+public class NarrativeState : ILevelState
 {
     private readonly LevelStateMachine _levelStateMachine;
     private readonly GameStatusScreen _gameStatusScreen;
@@ -11,7 +13,7 @@
 
     public void Enter()
     {
-       _gameStatusScreen.PlayNarrative();
+        _gameStatusScreen.PlayNarrative();
     }
 
     public void Exit()

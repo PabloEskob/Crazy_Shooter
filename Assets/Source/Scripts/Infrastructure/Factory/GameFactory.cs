@@ -11,6 +11,7 @@ namespace Source.Scripts.Infrastructure.Factory
     {
         private const string FinishLevel = "FinishLevel";
         private const string LevelTag = "LevelTool";
+        private const string DialogTag = "StartAlert";
 
         private readonly IStaticDataService _staticDataEnemy;
         private readonly IAnalyticManager _analyticManager;
@@ -19,6 +20,7 @@ namespace Source.Scripts.Infrastructure.Factory
         private LevelStateMachine _levelStateMachine;
         private FinishLevel _finishLevel;
         private LevelAdjustmentTool _levelAdjustmentTool;
+        private StartAlert _startAlert;
 
         public Player Player { get; private set; }
         public List<ISavedProgressReader> ProgressReaders { get; }
@@ -40,6 +42,7 @@ namespace Source.Scripts.Infrastructure.Factory
             _gameStatusScreen = _assetProvider.Instantiate(AssetPath.PathGameStatusScreen)
                 .GetComponent<GameStatusScreen>();
             _gameStatusScreen.InitPlayer(player);
+            _startAlert = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<StartAlert>();
         }
 
         public void CreateStartScene()
@@ -62,7 +65,7 @@ namespace Source.Scripts.Infrastructure.Factory
         public void CreateLevelStateMachine(Player player, IAnalyticManager analyticManager)
         {
             _levelStateMachine = new LevelStateMachine(player, _finishLevel, analyticManager, _levelAdjustmentTool,
-                _gameStatusScreen);
+                _gameStatusScreen,_startAlert);
             _gameStatusScreen.SetLevelStateMachine(_levelStateMachine);
         }
 
