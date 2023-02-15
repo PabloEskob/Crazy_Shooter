@@ -1,3 +1,5 @@
+using System;
+using PixelCrushers.DialogueSystem;
 using Source.Scripts.Music;
 using UnityEngine;
 
@@ -8,11 +10,21 @@ public class GameStatusScreen : MonoBehaviour
     private Player _player;
     private SoundZombieScreams _zombieSounds;
     private Coroutine _coroutine;
+    private LevelStateMachine _levelStateMachine;
+    private string _startMessage = " Месяц после зомби апокалипсиса";
+
+    public bool unregisterOnDisable = false;
+
+    void OnEnable() =>
+        Lua.RegisterFunction("DebugLog", this, SymbolExtensions.GetMethodInfo(() => StartState()));
 
     private void OnDisable()
     {
         _actorUI.OnEnableScreen -= ShowScreen;
         _player.OnSpawnedActorUi -= InitActorUi;
+
+        if (unregisterOnDisable)
+            Lua.UnregisterFunction("DebugLog");
     }
 
     private void Awake()
@@ -20,11 +32,33 @@ public class GameStatusScreen : MonoBehaviour
         _switchScreen = GetComponentInChildren<SwitchScreen>();
         _zombieSounds = GetComponentInChildren<SoundZombieScreams>();
     }
-    
+
+    private void Start()
+    {
+        if (!string.IsNullOrEmpty(_startMessage)) DialogueManager.ShowAlert(_startMessage);
+    }
+
     public void PlayVictory()
     {
         _switchScreen.ShowVictoryScreen();
         _actorUI.SwitchOff();
+    }
+
+    public void PlayNarrative()
+    {
+        _switchScreen.CursorVisibility();
+        _switchScreen.gameObject.SetActive(false);
+    }
+
+    public void StartState()
+    {
+        _levelStateMachine.Enter<SpawnEnemyState>();
+    }
+
+    public void EndNarrative()
+    {
+        _switchScreen.CursorNoVisibility();
+        _switchScreen.gameObject.SetActive(true);
     }
 
     public void PlayDied()
@@ -40,13 +74,16 @@ public class GameStatusScreen : MonoBehaviour
         _player.OnSpawnedActorUi += InitActorUi;
     }
 
-    public void StartRoutineSoundZombie() => 
+    public void StartRoutineSoundZombie() =>
         _coroutine = StartCoroutine(_zombieSounds.PlaySound());
 
-    public void StopRoutineSoundZombie() => 
+    public void StopRoutineSoundZombie() =>
         StopCoroutine(_coroutine);
-    
-    private void ShowScreen() => 
+
+    public void SetLevelStateMachine(LevelStateMachine levelStateMachine) =>
+        _levelStateMachine = levelStateMachine;
+
+    private void ShowScreen() =>
         _switchScreen.ShowDefeatScreen();
 
     private void InitActorUi(ActorUI actorUI)

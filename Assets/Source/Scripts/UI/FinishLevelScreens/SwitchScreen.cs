@@ -41,4 +41,12 @@ public class SwitchScreen : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = _cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
     }
+
+    public void CursorNoVisibility()
+    {
+        _canvas.sortingOrder = -1;
+        _player.NoLockCursor();
+        Cursor.visible = false;
+        Cursor.lockState = !_cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
+    }
 }

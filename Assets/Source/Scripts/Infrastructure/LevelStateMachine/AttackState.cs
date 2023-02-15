@@ -1,4 +1,6 @@
-﻿public class AttackState : ILevelState
+﻿using UnityEngine;
+
+public class AttackState : ILevelState
 {
     private readonly LevelStateMachine _levelStateMachine;
 

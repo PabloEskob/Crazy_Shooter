@@ -108,7 +108,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         private void RotationOfWeaponAndCameras()
         {
-            Vector2 frameInput = _playerCharacter.IsCursorLocked() ? _playerCharacter.GetInputLook() : default;
+            Vector2 frameInput = _playerCharacter.IsCursorLocked() ? default : _playerCharacter.GetInputLook();
             frameInput *= _sensitivity;
 
             var transformLocalRotation = transform.localRotation;

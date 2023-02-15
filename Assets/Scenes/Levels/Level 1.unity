@@ -5620,6 +5620,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 3
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -6482,6 +6483,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 4
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -7996,6 +7998,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 1
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -10329,6 +10332,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 1
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -11517,6 +11521,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 3
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2
@@ -12121,6 +12126,7 @@ MonoBehaviour:
   _monsterTypeId: 0
   _count: 1
   _move: 1
+  _spawnDelay: 0
   _hp: 5
   _damage: 3
   _speed: 2

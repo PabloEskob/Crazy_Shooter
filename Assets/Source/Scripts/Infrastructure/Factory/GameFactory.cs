@@ -59,8 +59,12 @@ namespace Source.Scripts.Infrastructure.Factory
             return enemy;
         }
 
-        public void CreateLevelStateMachine(Player player, IAnalyticManager analyticManager) =>
-            _levelStateMachine = new LevelStateMachine(player,  _finishLevel, analyticManager,_levelAdjustmentTool,_gameStatusScreen);
+        public void CreateLevelStateMachine(Player player, IAnalyticManager analyticManager)
+        {
+            _levelStateMachine = new LevelStateMachine(player, _finishLevel, analyticManager, _levelAdjustmentTool,
+                _gameStatusScreen);
+            _gameStatusScreen.SetLevelStateMachine(_levelStateMachine);
+        }
 
         private Player InstantiateRegistered(string prefabPath, Vector3 position)
         {

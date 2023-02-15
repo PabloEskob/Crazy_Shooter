@@ -20,18 +20,17 @@ public class StartLevelState : ILevelState
         _gameConfig = _staticData.GetGameConfig();
     }
 
+    public void Enter()
+    {
+        _analyticManager.SendEventOnLevelStart(GetCurrentLevelNumber());
+        _levelStateMachine.Enter<NarrativeState>();
+    }
+
+    public void Exit() { }
+
     private int GetCurrentLevelNumber()
     {
         string currentLevelName = SceneManager.GetActiveScene().name;
         return _gameConfig.GetLevelNumberByName(currentLevelName);
     }
-
-    public void Enter()
-    {
-        _analyticManager.SendEventOnLevelStart(GetCurrentLevelNumber());
-        _levelStateMachine.Enter<SpawnEnemyState>();
-    }
-
-    public void Exit() { }
-
 }

@@ -39,10 +39,8 @@ public class ActorUI : MonoBehaviour
         Construct();
     }
 
-    public void SwitchOff()
-    {
+    public void SwitchOff() => 
         gameObject.SetActive(false);
-    }
 
     private void EnableScreen() => 
         OnEnableScreen?.Invoke();

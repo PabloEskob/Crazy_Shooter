@@ -354,7 +354,7 @@ namespace InfimaGames.LowPolyShooterPack
             #region Lock Cursor
 
             //Always make sure that our cursor is locked when the game starts!
-            cursorLocked = true;
+            cursorLocked = false;
             //Update the cursor's state.
             UpdateCursorState();
 
@@ -745,26 +745,23 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         private void Fire()
         {
-            if (_lock == false && _canFire)
-            {
-                _crosshair.Shot();
-                //Save the shot time, so we can calculate the fire rate correctly.
-                lastShotTime = Time.time;
-                //Fire the weapon! Make sure that we also pass the scope's spread multiplier if we're aiming.
-                equippedWeapon.Fire(aiming ? equippedWeaponScope.GetMultiplierSpread() : 1.0f);
+            _crosshair.Shot();
+            //Save the shot time, so we can calculate the fire rate correctly.
+            lastShotTime = Time.time;
+            //Fire the weapon! Make sure that we also pass the scope's spread multiplier if we're aiming.
+            equippedWeapon.Fire(aiming ? equippedWeaponScope.GetMultiplierSpread() : 1.0f);
 
-                //Play firing animation.
-                const string stateName = "Fire";
-                characterAnimator.CrossFade(stateName, 0.05f, layerOverlay, 0);
+            //Play firing animation.
+            const string stateName = "Fire";
+            characterAnimator.CrossFade(stateName, 0.05f, layerOverlay, 0);
 
-                //Play bolt actioning animation if needed, and if we have ammunition. We don't play this for the last shot.
-                if (equippedWeapon.IsBoltAction() && equippedWeapon.HasAmmunition())
-                    UpdateBolt(true);
+            //Play bolt actioning animation if needed, and if we have ammunition. We don't play this for the last shot.
+            if (equippedWeapon.IsBoltAction() && equippedWeapon.HasAmmunition())
+                UpdateBolt(true);
 
-                //Automatically reload the weapon if we need to. This is very helpful for things like grenade launchers or rocket launchers.
-                if (!equippedWeapon.HasAmmunition() && equippedWeapon.GetAutomaticallyReloadOnEmpty())
-                    StartCoroutine(nameof(TryReloadAutomatic));
-            }
+            //Automatically reload the weapon if we need to. This is very helpful for things like grenade launchers or rocket launchers.
+            if (!equippedWeapon.HasAmmunition() && equippedWeapon.GetAutomaticallyReloadOnEmpty())
+                StartCoroutine(nameof(TryReloadAutomatic));
         }
 
         private void PlayReloadAnimation()
@@ -1201,45 +1198,46 @@ namespace InfimaGames.LowPolyShooterPack
             if (!IsPause)
             {
                 //Block while the cursor is unlocked.
-                if (!cursorLocked && _lock == false)
+                if (cursorLocked)
                     return;
-
+                
                 //Switch.
-                switch (context)
-                {
-                    //Started.
-                    case { phase: InputActionPhase.Started }:
-                        //Hold.
-                        holdingButtonFire = true;
-                        break;
-                    //Performed.
-                    case { phase: InputActionPhase.Performed }:
-                        //Ignore if we're not allowed to actually fire.
-                        if (!CanPlayAnimationFire())
+                    switch (context)
+                    {
+                        //Started.
+                        case { phase: InputActionPhase.Started }:
+                            //Hold.
+                            holdingButtonFire = true;
                             break;
-
-                        //Check.
-                        if (equippedWeapon.HasAmmunition())
-                        {
-                            //Check.
-                            if (equippedWeapon.IsAutomatic())
+                        //Performed.
+                        case { phase: InputActionPhase.Performed }:
+                            //Ignore if we're not allowed to actually fire.
+                            if (!CanPlayAnimationFire())
                                 break;
 
-                            //Has fire rate passed.
-                            if (Time.time - lastShotTime > 60.0f / equippedWeapon.GetRateOfFire())
-                                Fire();
-                        }
-                        //Fire Empty.
-                        else
-                            FireEmpty();
+                            //Check.
+                            if (equippedWeapon.HasAmmunition())
+                            {
+                                //Check.
+                                if (equippedWeapon.IsAutomatic())
+                                    break;
 
-                        break;
-                    //Canceled.
-                    case { phase: InputActionPhase.Canceled }:
-                        //Stop Hold.
-                        holdingButtonFire = false;
-                        break;
-                }
+                                //Has fire rate passed.
+                                if (Time.time - lastShotTime > 60.0f / equippedWeapon.GetRateOfFire())
+                                    Fire();
+                            }
+                            //Fire Empty.
+                            else
+                                FireEmpty();
+
+                            break;
+                        //Canceled.
+                        case { phase: InputActionPhase.Canceled }:
+                            //Stop Hold.
+                            holdingButtonFire = false;
+                            break;
+                    }
+                
             }
         }
 
@@ -1251,9 +1249,8 @@ namespace InfimaGames.LowPolyShooterPack
             if (!IsPause)
             {
                 //Block while the cursor is unlocked.
-                if (!cursorLocked && _lock == false)
+                if (cursorLocked)
                     return;
-
                 //Block.
                 if (!CanPlayAnimationReload())
                     return;
@@ -1278,7 +1275,7 @@ namespace InfimaGames.LowPolyShooterPack
             if (!IsPause)
             {
                 //Block while the cursor is unlocked.
-                if (!cursorLocked && _lock == false)
+                if (cursorLocked)
                     return;
 
                 //Block.
@@ -1305,7 +1302,7 @@ namespace InfimaGames.LowPolyShooterPack
             if (!IsPause)
             {
                 //Block while the cursor is unlocked.
-                if (!cursorLocked && _lock == false)
+                if (cursorLocked)
                     return;
 
                 //Switch.
@@ -1331,7 +1328,7 @@ namespace InfimaGames.LowPolyShooterPack
             if (!IsPause)
             {
                 //Block while the cursor is unlocked.
-                if (!cursorLocked && _lock == false)
+                if (cursorLocked)
                     return;
 
                 //Switch.
@@ -1363,7 +1360,7 @@ namespace InfimaGames.LowPolyShooterPack
                 if (_canFire)
                 {
                     //Block while the cursor is unlocked.
-                    if (!cursorLocked)
+                    if (cursorLocked)
                         return;
 
                     //Switch.
@@ -1390,7 +1387,7 @@ namespace InfimaGames.LowPolyShooterPack
                 if (_canFire)
                 {
                     //Block while the cursor is unlocked.
-                    if (!cursorLocked && _lock == false)
+                    if (cursorLocked)
                         return;
 
                     //Switch.
@@ -1415,7 +1412,7 @@ namespace InfimaGames.LowPolyShooterPack
             if (!IsPause)
             {
                 //Block while the cursor is unlocked.
-                if (!cursorLocked && _lock == false)
+                if (cursorLocked)
                     return;
 
                 //Switch.
@@ -1443,7 +1440,7 @@ namespace InfimaGames.LowPolyShooterPack
             if (!IsPause)
             {
                 //Block while the cursor is unlocked.
-                if (!cursorLocked && _lock == false)
+                if (cursorLocked)
                     return;
 
                 Log.wtf("Jumping!");
@@ -1458,7 +1455,7 @@ namespace InfimaGames.LowPolyShooterPack
             if (!IsPause)
             {
                 //Block while the cursor is unlocked.
-                if (!cursorLocked && _lock == false)
+                if (cursorLocked)
                     return;
 
                 //Null Check.
@@ -1489,8 +1486,17 @@ namespace InfimaGames.LowPolyShooterPack
             }
         }
 
-        public void LockCursor() =>
+        public void LockCursor()
+        {
             _lock = true;
+            cursorLocked = true;
+        }
+
+        public void NoLockCursor()
+        {
+            _lock = false;
+            cursorLocked = false;
+        }
 
         public void YesFire() =>
             _canFire = true;
@@ -1523,9 +1529,10 @@ namespace InfimaGames.LowPolyShooterPack
         {
             if (!IsPause)
             {
-                if (_lock == false)
-                    //Read.
-                    axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
+                if (cursorLocked)
+                    return;
+                //Read.
+                axisMovement = cursorLocked ? context.ReadValue<Vector2>() : default;
             }
         }
 
@@ -1536,20 +1543,20 @@ namespace InfimaGames.LowPolyShooterPack
         {
             if (!IsPause)
             {
-                if (_lock == false)
-                {
-                    axisLook = cursorLocked ? context.ReadValue<Vector2>() : default;
-                    //Make sure that we have a weapon.
-                    if (equippedWeapon == null)
-                        return;
+                if (cursorLocked)
+                    return;
+                
+                axisLook = cursorLocked ? default : context.ReadValue<Vector2>();
+                //Make sure that we have a weapon.
+                if (equippedWeapon == null)
+                    return;
 
-                    //Make sure that we have a scope.
-                    if (equippedWeaponScope == null)
-                        return;
+                //Make sure that we have a scope.
+                if (equippedWeaponScope == null)
+                    return;
 
-                    //If we're aiming, multiply by the mouse sensitivity multiplier of the equipped weapon's scope!
-                    axisLook *= aiming ? equippedWeaponScope.GetMultiplierMouseSensitivity() : 1.0f;
-                }
+                //If we're aiming, multiply by the mouse sensitivity multiplier of the equipped weapon's scope!
+                axisLook *= aiming ? equippedWeaponScope.GetMultiplierMouseSensitivity() : 1.0f;
             }
         }
 
@@ -1560,6 +1567,8 @@ namespace InfimaGames.LowPolyShooterPack
         {
             if (!IsPause)
             {
+                if (cursorLocked)
+                    return;
                 //Switch.
                 tutorialTextVisible = context switch
                 {

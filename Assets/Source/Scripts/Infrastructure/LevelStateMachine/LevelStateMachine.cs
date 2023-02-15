@@ -26,6 +26,7 @@ public class LevelStateMachine
         _states = new Dictionary<Type, ILevelState>
         {
             [typeof(StartLevelState)] = new StartLevelState(this, analyticManager),
+            [typeof(NarrativeState)] = new NarrativeState(this,gameStatusScreen),
             [typeof(SpawnEnemyState)] = new SpawnEnemyState(this, levelAdjustmentTool),
             [typeof(AttackState)] = new AttackState(this, player, levelAdjustmentTool,gameStatusScreen),
             [typeof(MoveState)] = new MoveState(this, player),
