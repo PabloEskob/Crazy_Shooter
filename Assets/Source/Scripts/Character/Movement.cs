@@ -1,5 +1,6 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using System;
 using System.Linq;
 using Assets.Source.Scripts.UI;
 using Source.Infrastructure;
@@ -133,6 +134,11 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region UNITY FUNCTIONS
 
+        private void OnDisable()
+        {
+            _storage.Changed -= Change;
+        }
+
         /// <summary>
         /// Awake.
         /// </summary>
@@ -146,6 +152,7 @@ namespace InfimaGames.LowPolyShooterPack
         protected override void Start()
         {
             _storage = AllServices.Container.Single<IStorage>();
+            _storage.Changed += Change;
             
             //Rigidbody Setup.
             rigidBody = GetComponent<Rigidbody>();
@@ -161,6 +168,11 @@ namespace InfimaGames.LowPolyShooterPack
             //Create our smooth velocity helper. Will be useful to get some smoother motion.
             smoothVelocity = new SmoothVelocity();
             
+            Change();
+        }
+
+        private void Change()
+        {
             if (_storage.HasKeyFloat(SettingsNames.SoundSettingsKey))
                 audioSource.volume = _storage.GetFloat(SettingsNames.SoundSettingsKey);
         }

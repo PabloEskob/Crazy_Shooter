@@ -339,17 +339,6 @@
                 },
                 {
                     "name": "",
-                    "id": "64767df0-dd96-438b-878e-fe24248339dd",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Inventory Next",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ced9121a-056b-40fc-a663-9d1e81066727",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
@@ -358,6 +347,39 @@
                     "action": "Inventory Next",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "ab669d24-b1cf-4d57-b4d1-b9c3a702a9eb",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory Next",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "9dd844a8-694e-4238-b318-095ece831e17",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory Next",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "c66d1ca4-9cb1-4f96-9a45-ee3f88a15ae9",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory Next",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -622,17 +644,6 @@
                 },
                 {
                     "name": "",
-                    "id": "83370e0c-a5eb-4205-bab8-c61692db0b84",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Inventory Next",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "76444e04-7352-4262-9e06-027ec4983f10",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
@@ -663,6 +674,39 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "96af4b9d-5802-4cb6-bdb5-ed21315f9ceb",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory Next",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "9a9df925-aea1-470c-b7ee-f9f584cdb3de",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory Next",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "5af0049b-0466-4d83-839d-cbe61558d3b7",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory Next",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

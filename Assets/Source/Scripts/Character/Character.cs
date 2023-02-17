@@ -90,7 +90,10 @@ namespace InfimaGames.LowPolyShooterPack
         /// <summary>
         /// Total amount of grenades.
         /// </summary>
+        ///
         private int grenadeTotal;
+
+        private bool _canInventoryNext = true;
 
         /// <summary>
         /// True if the character is aiming.
@@ -851,6 +854,7 @@ namespace InfimaGames.LowPolyShooterPack
                 equippedWeaponScope = weaponAttachmentManager.GetEquippedScope();
                 //Get equipped magazine. We need this one for its settings!
                 equippedWeaponMagazine = weaponAttachmentManager.GetEquippedMagazine();
+                _canInventoryNext = true;
             }
         }
 
@@ -1463,6 +1467,9 @@ namespace InfimaGames.LowPolyShooterPack
                 if (inventory == null)
                     return;
 
+                if (_canInventoryNext == false)
+                    return;
+                
                 //Switch.
                 switch (context)
                 {
@@ -1470,17 +1477,23 @@ namespace InfimaGames.LowPolyShooterPack
                     case { phase: InputActionPhase.Performed }:
                         //Get the index increment direction for our inventory using the scroll wheel direction. If we're not
                         //actually using one, then just increment by one.
-                        float scrollValue = context.valueType.IsEquivalentTo(typeof(Vector2))
-                            ? Mathf.Sign(context.ReadValue<Vector2>().y)
-                            : 1.0f;
+                        float scrollValue;
+                        _canInventoryNext = false;
 
+                        if (context.valueType.IsEquivalentTo(typeof(Vector2)))
+                            scrollValue = Mathf.Sign(context.ReadValue<Vector2>().y);
+                        else if (context.valueType.IsEquivalentTo(typeof(Single)))
+                            scrollValue = context.ReadValue<Single>();
+                        else
+                            scrollValue = 1f;
+                        
                         //Get the next index to switch to.
                         int indexNext = scrollValue > 0 ? inventory.GetNextIndex() : inventory.GetLastIndex();
                         //Get the current weapon's index.
                         int indexCurrent = inventory.GetEquippedIndex();
 
                         //Make sure we're allowed to change, and also that we're not using the same index, otherwise weird things happen!
-                        if (CanChangeWeapon() && (indexCurrent != indexNext))
+                        if (CanChangeWeapon() && (indexCurrent != indexNext)) 
                             StartCoroutine(nameof(Equip), indexNext);
                         break;
                 }

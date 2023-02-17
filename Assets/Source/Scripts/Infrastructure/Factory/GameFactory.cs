@@ -42,6 +42,8 @@ namespace Source.Scripts.Infrastructure.Factory
             _gameStatusScreen = _assetProvider.Instantiate(AssetPath.PathGameStatusScreen)
                 .GetComponent<GameStatusScreen>();
             _gameStatusScreen.InitPlayer(player);
+            Debug.Log(_gameStatusScreen);
+            Debug.Log(player);
             player.InitScreens(_gameStatusScreen);
             _startAlert = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<StartAlert>();
         }
@@ -65,6 +67,7 @@ namespace Source.Scripts.Infrastructure.Factory
 
         public void CreateLevelStateMachine(Player player, IAnalyticManager analyticManager)
         {
+            Debug.Log(analyticManager);
             _levelStateMachine = new LevelStateMachine(player, _finishLevel, analyticManager, _levelAdjustmentTool,
                 _gameStatusScreen,_startAlert);
             _gameStatusScreen.SetLevelStateMachine(_levelStateMachine);
