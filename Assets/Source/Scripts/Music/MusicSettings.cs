@@ -25,7 +25,7 @@ public class MusicSettings : MonoBehaviour
 
     private void Change()
     {
-        if (_storage.HasKeyFloat(SettingsNames.SoundSettingsKey))
+        if (_storage.HasKeyFloat(SettingsNames.MusicSettingsKey))
             _audioSource.volume = _storage.GetFloat(SettingsNames.MusicSettingsKey);
     }
 }

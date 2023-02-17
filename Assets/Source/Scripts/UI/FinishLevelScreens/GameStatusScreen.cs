@@ -1,5 +1,6 @@
 using PixelCrushers.DialogueSystem;
 using Source.Scripts.Music;
+using Source.Scripts.Ui;
 using UnityEngine;
 
 public class GameStatusScreen : MonoBehaviour
@@ -21,7 +22,7 @@ public class GameStatusScreen : MonoBehaviour
     {
         _actorUI.OnEnableScreen -= ShowScreen;
         _player.OnSpawnedActorUi -= InitActorUi;
-        
+
         Lua.UnregisterFunction("StartEnemySpawn");
         Lua.UnregisterFunction("StartFinishState");
     }
@@ -31,7 +32,7 @@ public class GameStatusScreen : MonoBehaviour
         _switchScreen = GetComponentInChildren<SwitchScreen>();
         _zombieSounds = GetComponentInChildren<SoundZombieScreams>();
     }
-    
+
     public void PlayVictory()
     {
         _switchScreen.ShowVictoryScreen();
@@ -44,10 +45,10 @@ public class GameStatusScreen : MonoBehaviour
         _switchScreen.gameObject.SetActive(false);
     }
 
-    public void StartEnemySpawn() => 
+    public void StartEnemySpawn() =>
         _levelStateMachine.Enter<SpawnEnemyState>();
 
-    public void StartFinishState() => 
+    public void StartFinishState() =>
         _levelStateMachine.Enter<FinishState>();
 
     public void EndNarrative()
@@ -75,7 +76,7 @@ public class GameStatusScreen : MonoBehaviour
     public void StopRoutineSoundZombie() =>
         StopCoroutine(_coroutine);
 
-    public void SetLevelStateMachine(LevelStateMachine levelStateMachine) => 
+    public void SetLevelStateMachine(LevelStateMachine levelStateMachine) =>
         _levelStateMachine = levelStateMachine;
 
     private void ShowScreen() =>

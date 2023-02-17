@@ -24,7 +24,7 @@ public class SwitchScreen : MonoBehaviour
 
     private void Start()
     {
-        _canvas.sortingOrder = -1;
+       ChangeSortingOrderCanvas(-1);
         Cursor.visible =false ;
     }
 
@@ -39,7 +39,7 @@ public class SwitchScreen : MonoBehaviour
 
     public void CursorVisibility()
     {
-        _canvas.sortingOrder = 1;
+       ChangeSortingOrderCanvas(1);
         _player.LockCursor();
         Cursor.visible = true;
         Cursor.lockState = _cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
@@ -47,9 +47,14 @@ public class SwitchScreen : MonoBehaviour
 
     public void CursorNoVisibility()
     {
-        _canvas.sortingOrder = -1;
+       ChangeSortingOrderCanvas(-1);
         _player.NoLockCursor();
         Cursor.visible = false;
         Cursor.lockState = !_cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
+    }
+
+    public void ChangeSortingOrderCanvas(int value)
+    {
+        _canvas.sortingOrder = value;
     }
 }

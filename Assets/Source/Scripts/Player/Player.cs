@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     private Character _character;
     private ActorUI _actorUI;
     private CanvasSpawner _canvasSpawner;
+    private GameStatusScreen _gameStatusScreen;
+    private PauseScreen _pauseScreen;
 
     public PlayerMove PlayerMove =>
         _playerMove;
@@ -72,6 +74,15 @@ public class Player : MonoBehaviour
 
     public void SetDisable() =>
         _playerBody.Disable();
+
+    public void InitScreens(GameStatusScreen gameStatusScreen)
+    {
+        _gameStatusScreen = gameStatusScreen;
+        _pauseScreen = _gameStatusScreen.GetComponent<PauseScreen>();
+    }
+
+    public void SetPause() => 
+        _pauseScreen.OpenPanel();
 
     private void SetActorUi()
     {

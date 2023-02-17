@@ -42,6 +42,7 @@ namespace Source.Scripts.Infrastructure.Factory
             _gameStatusScreen = _assetProvider.Instantiate(AssetPath.PathGameStatusScreen)
                 .GetComponent<GameStatusScreen>();
             _gameStatusScreen.InitPlayer(player);
+            player.InitScreens(_gameStatusScreen);
             _startAlert = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<StartAlert>();
         }
 

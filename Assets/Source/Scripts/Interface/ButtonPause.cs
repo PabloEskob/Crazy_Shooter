@@ -1,24 +1,31 @@
+using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class ButtonPause : MonoBehaviour, IPointerClickHandler
+public class ButtonPause : MonoBehaviour
 {
-    private PanelPause _panelPause;
-    private ActorUI _actorUI;
+    private bool _isPause = true;
+    private bool _cursor;
+    private bool _cursorLocked;
+    public event Action<bool> Paused;
     
-    private void Awake() =>
-        _actorUI = GetComponentInParent<ActorUI>();
-
-    private void Start() => 
-        _panelPause = _actorUI.PanelPause;
-
-    public void OnPointerClick(PointerEventData eventData) => 
-        SwitchPanel();
-
     public void SwitchPanel()
     {
-        ProjectContext.Instance.PauseService.SetPaused(!_panelPause.isActiveAndEnabled);
-        _panelPause.gameObject.SetActive(!_panelPause.isActiveAndEnabled);
+        switch (_isPause)
+        {
+            case true:
+                _cursor = Cursor.visible;
+
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                break;
+            case false when !_cursor:
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                break;
+        }
+
+        ProjectContext.Instance.PauseService.SetPaused(_isPause);
+        Paused?.Invoke(_isPause);
+        _isPause = !_isPause;
     }
-    
 }

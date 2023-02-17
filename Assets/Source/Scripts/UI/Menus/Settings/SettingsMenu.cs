@@ -43,6 +43,7 @@ namespace Source.Scripts.Ui
             _cameraSensitivitySlider.maxValue = _maxValue;
             OnLoad();
             Hide();
+            gameObject.SetActive(false);
         }
 
         private void OnEnable()
@@ -62,7 +63,7 @@ namespace Source.Scripts.Ui
             _musicVolumeSlider.onValueChanged.RemoveListener(OnMusicSliderValueChanged);
             _cameraSensitivitySlider.onValueChanged.RemoveListener(OnSensitivitySliderValueChanged);
         }
-
+        
         private void OnSoundSliderValueChanged(float value) =>
             _storage.SetFloat(SettingsNames.SoundSettingsKey, value);
 
@@ -97,7 +98,5 @@ namespace Source.Scripts.Ui
         }
 
         public void Show() => gameObject.SetActive(true);
-
-        
     }
 }
