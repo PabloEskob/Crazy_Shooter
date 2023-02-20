@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Assets.Source.Scripts.UI;
 using Source.Infrastructure;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
@@ -28,7 +27,8 @@ namespace InfimaGames.LowPolyShooterPack
         private IStorage _storage;
         private Vector3 _positionToLook;
         private bool _canRotate;
-        
+        private bool IsPause => ProjectContext.Instance.PauseService.IsPaused;
+
 
         private void Awake() =>
             _playerCharacter = ServiceLocator.Current.Get<IGameModeService>().GetPlayerCharacter();
@@ -36,6 +36,7 @@ namespace InfimaGames.LowPolyShooterPack
         private void Start()
         {
             _storage = AllServices.Container.Single<IStorage>();
+
 
             if (_storage.HasKeyFloat(SettingsNames.SensitivityKey))
                 SetSensitivity(_storage.GetFloat(SettingsNames.SensitivityKey));
@@ -50,15 +51,16 @@ namespace InfimaGames.LowPolyShooterPack
         public void StopRoutine() =>
             StopCoroutine(_coroutine);
 
-        public void StartRotateToFinish(TurningPoint turningPoint) => 
+        public void StartRotateToFinish(TurningPoint turningPoint) =>
             _coroutine = StartCoroutine(StartRotateToTarget(turningPoint));
 
         private IEnumerator StartRotateToTarget(TurningPoint turningPoint)
         {
             while (true)
             {
-                UpdatePositionToLookAt(turningPoint);
-                yield return null;
+                if (!IsPause) 
+                    UpdatePositionToLookAt(turningPoint);
+                yield return new WaitForEndOfFrame();
             }
         }
 
@@ -89,12 +91,15 @@ namespace InfimaGames.LowPolyShooterPack
         {
             while (true)
             {
-                if (_canRotate)
-                    RotationOfWeaponAndCameras();
-                else
-                    DisableCamera();
-
-                yield return null;
+                if (!IsPause)
+                {
+                    if (_canRotate)
+                        RotationOfWeaponAndCameras();
+                    else
+                        DisableCamera();
+                    
+                }
+                yield return new WaitForEndOfFrame();
             }
         }
 
@@ -103,7 +108,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         private void RotationOfWeaponAndCameras()
         {
-            Vector2 frameInput = _playerCharacter.IsCursorLocked() ? _playerCharacter.GetInputLook() : default;
+            Vector2 frameInput = _playerCharacter.IsCursorLocked() ? default : _playerCharacter.GetInputLook();
             frameInput *= _sensitivity;
 
             var transformLocalRotation = transform.localRotation;
@@ -120,7 +125,7 @@ namespace InfimaGames.LowPolyShooterPack
 
         private Quaternion SmoothedRotation(Quaternion rotation, Vector3 positionToLook)
         {
-            if (rotation == TargetRotation(positionToLook)) 
+            if (rotation == TargetRotation(positionToLook))
                 StopRoutine();
 
             return Quaternion.Lerp(rotation, TargetRotation(positionToLook), SpeedFactor());

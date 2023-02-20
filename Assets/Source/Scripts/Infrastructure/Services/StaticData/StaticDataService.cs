@@ -8,8 +8,6 @@ public class StaticDataService : IStaticDataService
     private const string GameDataPath = "GameData/GameConfig";
 
     private Dictionary<MonsterTypeId, EnemyStaticData> _enemies;
-    private List<LevelNames> _levelConfigs;
-
     private GameConfig _gameConfig;
 
     public StaticDataService()

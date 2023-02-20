@@ -1,6 +1,6 @@
 ﻿public class EnemyStateWin : IEnemyState
 {
-    private Enemy _enemy;
+    private readonly Enemy _enemy;
 
     public EnemyStateWin(Enemy enemy)
     {
@@ -9,9 +9,12 @@
 
     public void Enter()
     {
+       _enemy.EnemyMove.StartMoveToPlayerDeath();
+       _enemy.WaypointIndicator.gameObject.SetActive(false);
     }
 
     public void Exit()
     {
+        
     }
 }

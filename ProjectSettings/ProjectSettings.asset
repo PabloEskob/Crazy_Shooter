@@ -135,8 +135,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets:
-  - {fileID: 11400000, guid: 9eb07e2d669e9c94e9d7d3c782a916f7, type: 2}
+  preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -175,7 +174,7 @@ PlayerSettings:
   APKExpansionFiles: 0
   keepLoadedShadersAlive: 0
   StripUnusedMeshComponents: 1
-  VertexChannelCompressionMask: 4054
+  VertexChannelCompressionMask: 222
   iPhoneSdkVersion: 988
   iOSTargetOSVersionString: 11.0
   tvOSSdkVersion: 0
@@ -434,7 +433,7 @@ PlayerSettings:
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
   m_TemplateCustomTags:
-    METRICA_COUNTER_ID: 
+    METRICA_COUNTER_ID: 92205755
   mobileMTRendering:
     Android: 1
     iPhone: 1
@@ -705,8 +704,9 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 1
   scriptingDefineSymbols:
-    Standalone: DREAMTECK_SPLINES
-    WebGL: DREAMTECK_SPLINES;GAME_ANALYTICS
+    Android: TMP_PRESENT;USE_NEW_INPUT
+    Standalone: DREAMTECK_SPLINES;TMP_PRESENT;USE_NEW_INPUT
+    WebGL: DREAMTECK_SPLINES;GAME_ANALYTICS;TMP_PRESENT;USE_NEW_INPUT
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

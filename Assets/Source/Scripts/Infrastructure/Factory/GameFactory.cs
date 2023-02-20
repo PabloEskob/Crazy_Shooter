@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.Source.Scripts.Analytics;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,44 +9,53 @@ namespace Source.Scripts.Infrastructure.Factory
 {
     public class GameFactory : IGameFactory
     {
-        private const string LaunchRoomTag = "LaunchRoom";
         private const string FinishLevel = "FinishLevel";
+        private const string LevelTag = "LevelTool";
+        private const string DialogTag = "StartAlert";
 
         private readonly IStaticDataService _staticDataEnemy;
+        private readonly IAnalyticManager _analyticManager;
         private readonly IAssetProvider _assetProvider;
         private GameStatusScreen _gameStatusScreen;
         private LevelStateMachine _levelStateMachine;
-        private LaunchRoom _launchRoom;
         private FinishLevel _finishLevel;
+        private LevelAdjustmentTool _levelAdjustmentTool;
+        private StartAlert _startAlert;
 
         public Player Player { get; private set; }
         public List<ISavedProgressReader> ProgressReaders { get; }
         public List<ISavedProgress> ProgressWriters { get; }
 
-        public GameFactory(IAssetProvider assetProvider, IStaticDataService staticDataEnemy)
+        public GameFactory(IAssetProvider assetProvider, IStaticDataService staticDataEnemy,
+            IAnalyticManager analyticManager)
         {
             _staticDataEnemy = staticDataEnemy;
+            _analyticManager = analyticManager;
             _assetProvider = assetProvider;
         }
 
-        public Player CreatePlayer(GameObject initialPoint) =>
+        public Player CreatePlayer(GameObject initialPoint) => 
             InstantiateRegistered(AssetPath.PlayerPath, initialPoint.transform.position);
 
         public void CreateHUD(Player player)
         {
             _gameStatusScreen = _assetProvider.Instantiate(AssetPath.PathGameStatusScreen)
                 .GetComponent<GameStatusScreen>();
-            _gameStatusScreen.Player = player;
+            _gameStatusScreen.InitPlayer(player);
+            Debug.Log(_gameStatusScreen);
+            Debug.Log(player);
+            player.InitScreens(_gameStatusScreen);
+            _startAlert = GameObject.FindGameObjectWithTag(DialogTag).GetComponent<StartAlert>();
         }
 
         public void CreateStartScene()
         {
-            _launchRoom = GameObject.FindGameObjectWithTag(LaunchRoomTag).GetComponent<LaunchRoom>();
             _finishLevel = GameObject.FindGameObjectWithTag(FinishLevel).GetComponent<FinishLevel>();
+            _levelAdjustmentTool = GameObject.FindGameObjectWithTag(LevelTag).GetComponent<LevelAdjustmentTool>();
             StartScene startScene = _assetProvider.Instantiate(AssetPath.StartScenePath).GetComponent<StartScene>();
-            startScene.Construct(this, _launchRoom, _gameStatusScreen, _finishLevel);
+            startScene.Construct(this, _gameStatusScreen,_levelAdjustmentTool);
         }
-        
+
         public Enemy CreateEnemy(MonsterTypeId monsterTypeId, Vector3 parent, bool move, EnemySpawner enemySpawner)
         {
             var enemyStaticData = _staticDataEnemy.ForEnemy(monsterTypeId);
@@ -55,8 +65,13 @@ namespace Source.Scripts.Infrastructure.Factory
             return enemy;
         }
 
-        public void CreateLevelStateMachine(Player player) => 
-            _levelStateMachine = new LevelStateMachine(player,_launchRoom,_finishLevel);
+        public void CreateLevelStateMachine(Player player, IAnalyticManager analyticManager)
+        {
+            Debug.Log(analyticManager);
+            _levelStateMachine = new LevelStateMachine(player, _finishLevel, analyticManager, _levelAdjustmentTool,
+                _gameStatusScreen,_startAlert);
+            _gameStatusScreen.SetLevelStateMachine(_levelStateMachine);
+        }
 
         private Player InstantiateRegistered(string prefabPath, Vector3 position)
         {

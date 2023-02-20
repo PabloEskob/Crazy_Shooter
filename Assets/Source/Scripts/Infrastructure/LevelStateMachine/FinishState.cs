@@ -1,24 +1,25 @@
-﻿using UnityEngine;
-
-public class FinishState : ILevelState
+﻿public class FinishState : ILevelState
 {
     private readonly Player _player;
     private readonly FinishLevel _finishLevel;
-    private Coroutine _coroutine;
+    private readonly GameStatusScreen _gameStatusScreen;
 
-    public FinishState(LevelStateMachine levelStateMachine, Player player, FinishLevel finishLevel)
+    public FinishState( Player player, FinishLevel finishLevel,GameStatusScreen gameStatusScreen)
     {
+        _gameStatusScreen = gameStatusScreen;
         _finishLevel = finishLevel;
         _player = player;
     }
 
     public void Enter()
     {
+        _finishLevel.OpenChest();
         _player.PlayerRotate.CameraLook.StartRotateToFinish(_finishLevel.TurningPoint);
+        _gameStatusScreen.PlayVictory();
     }
 
     public void Exit()
     {
-        
+       
     }
 }

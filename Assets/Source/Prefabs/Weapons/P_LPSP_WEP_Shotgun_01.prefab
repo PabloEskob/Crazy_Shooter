@@ -309,7 +309,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 85f37da445b3cfd4f8a94cef0bca3ebd, type: 2}
-  - {fileID: 2100000, guid: daf3770baea414742ba7b6bdc426eeec, type: 2}
+  - {fileID: 2100000, guid: 33b10df1cf0a695428111258a0c564b6, type: 2}
   - {fileID: 2100000, guid: 738331d397eda8b41a936b9620ba361b, type: 2}
   - {fileID: 2100000, guid: 738331d397eda8b41a936b9620ba361b, type: 2}
   - {fileID: 2100000, guid: 07a70e0af646ae9498c6ef448486987f, type: 2}
@@ -536,6 +536,7 @@ GameObject:
   - component: {fileID: 8137163820050006698}
   - component: {fileID: 8578661464601570599}
   - component: {fileID: 3803130821125631615}
+  - component: {fileID: -3177214446890129620}
   m_Layer: 6
   m_Name: P_LPSP_WEP_Shotgun_01
   m_TagString: Untagged
@@ -593,20 +594,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 11400000, guid: f5a92667a88dfe3478161ae9db5a994f, type: 2}
+  _skinsHandler: {fileID: -3177214446890129620}
   _bulletPool: {fileID: 0}
   _damage: 1
   _fireRate: 1
   _reloadSpeed: 1
   _magazineSize: 8
   _maxUpgradeLevel: 4
-  Price: 150
   _isInfinityAmmo: 1
+  Price: 150
+  _icon: {fileID: 21300000, guid: 284367c449397e04ca08826c26d68bb8, type: 3}
+  _weaponType: 3
+  _isBought: 0
+  _isEquipped: 0
+  _isCollected: 1
   weaponName: Shotgun 01
   multiplierMovementSpeed: 1
   attachmentManager: {fileID: 8578661464601570599}
-  _weaponType: Shotgun
-  _isBought: 1
-  _isEquipped: 0
   automatic: 0
   boltAction: 1
   shotCount: 6
@@ -712,6 +716,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4c405f36d24a5db61be27959609b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3177214446890129620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836565387965750232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: {fileID: 8137163820050006698}
+  _weaponMaterials:
+  - {fileID: 2100000, guid: 33b10df1cf0a695428111258a0c564b6, type: 2}
+  _textureList:
+  - {fileID: 2800000, guid: e2a08845119fe9b4fad65d70e81f4d3c, type: 3}
+  - {fileID: 2800000, guid: 370541881cfb92f4b981da331149a53c, type: 3}
+  - {fileID: 2800000, guid: 775c58c09435edf42a0f8df7caa83ccb, type: 3}
+  - {fileID: 2800000, guid: 9958ae9d322a4094293b37abb12011ed, type: 3}
+  - {fileID: 2800000, guid: a02102ea6f2d51f42a4b214017bef1da, type: 3}
+  - {fileID: 2800000, guid: 6fdad8ed64615bc4cba8bcec532c632c, type: 3}
+  - {fileID: 2800000, guid: b6ed4cc371c5c0c479a0e3fa13e1c89c, type: 3}
+  - {fileID: 2800000, guid: 2ce2d59553f85a54096f1b3a80a8db71, type: 3}
+  - {fileID: 2800000, guid: fd7789874fc76574abd42505400ebc65, type: 3}
+  - {fileID: 2800000, guid: 583ee1a57da446b47b38b3b966d30366, type: 3}
+  _defaultTexture: {fileID: 2800000, guid: 20ed273a63b288242ab8ef4c6f4942e3, type: 3}
 --- !u!1001 &1421891693884146309
 PrefabInstance:
   m_ObjectHideFlags: 0

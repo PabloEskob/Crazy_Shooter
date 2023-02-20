@@ -1,3 +1,4 @@
+using Assets.Source.Scripts.Analytics;
 using Source.Infrastructure.States;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Source.Infrastructure
         private readonly IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
+        private readonly IAnalyticManager _analyticManager;
 
        // private string LevelName = "Level 1";
 
@@ -20,7 +22,7 @@ namespace Source.Infrastructure
 
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IStorage storage,
-            LoadingScreen loadingScreen, IGameFactory gameFactory, IStaticDataService staticData)
+            LoadingScreen loadingScreen, IGameFactory gameFactory, IStaticDataService staticData, IAnalyticManager analyticManager)
         {
             _gameStateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
@@ -28,6 +30,7 @@ namespace Source.Infrastructure
             _loadingScreen = loadingScreen;
             _gameFactory = gameFactory;
             _staticData = staticData;
+            _analyticManager = analyticManager;
         }
 
         public void Enter(int level) =>
@@ -49,13 +52,13 @@ namespace Source.Infrastructure
             Player player = _gameFactory.CreatePlayer(GameObject.FindWithTag(PlayerInitialPointTag));
             _gameFactory.CreateHUD(player);
             _gameFactory.CreateStartScene();
-            _gameFactory.CreateLevelStateMachine(player);
+            _gameFactory.CreateLevelStateMachine(player, _analyticManager);
         }
 
         private string GetNextLevelName() =>
             _staticData.ForLevel(_storage.GetLevel()).SceneName;
 
-        public string GetNextLevelNameByNumber(int levelNumber) =>
+        private string GetNextLevelNameByNumber(int levelNumber) =>
             _staticData.ForLevel(levelNumber).SceneName;
     }
 }

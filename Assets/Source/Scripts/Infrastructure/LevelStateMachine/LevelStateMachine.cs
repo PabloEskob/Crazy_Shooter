@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Source.Scripts.Analytics;
+using System;
 using System.Collections.Generic;
 
 public class LevelStateMachine
@@ -6,10 +7,11 @@ public class LevelStateMachine
     private Dictionary<Type, ILevelState> _states;
     private ILevelState _currentLevelState;
 
-    public LevelStateMachine(Player player, LaunchRoom launchRoom, FinishLevel finishLevel)
+    public LevelStateMachine(Player player, FinishLevel finishLevel, IAnalyticManager analyticManager,
+        LevelAdjustmentTool levelAdjustmentTool, GameStatusScreen gameStatusScreen, StartAlert startAlert)
     {
-        InitStates(player, launchRoom, finishLevel);
-        Enter<SpawnEnemyState>();
+        InitStates(player, finishLevel, analyticManager, levelAdjustmentTool,gameStatusScreen,startAlert);
+        Enter<StartLevelState>();
     }
 
     public void Enter<TState>() where TState : class, ILevelState
@@ -18,15 +20,19 @@ public class LevelStateMachine
         state.Enter();
     }
 
-    private void InitStates(Player player, LaunchRoom launchRoom, FinishLevel finishLevel)
+    private void InitStates(Player player, FinishLevel finishLevel, IAnalyticManager analyticManager,
+        LevelAdjustmentTool levelAdjustmentTool, GameStatusScreen gameStatusScreen, StartAlert startAlert)
     {
         _states = new Dictionary<Type, ILevelState>
         {
-            [typeof(SpawnEnemyState)] = new SpawnEnemyState(this, launchRoom),
-            [typeof(AttackState)] = new AttackState(this, launchRoom, player),
+            [typeof(StartLevelState)] = new StartLevelState(this, analyticManager,startAlert),
+            [typeof(NarrativeState)] = new NarrativeState(this,gameStatusScreen),
+            [typeof(SpawnEnemyState)] = new SpawnEnemyState(this, levelAdjustmentTool,startAlert),
+            [typeof(AttackState)] = new AttackState(this, player, levelAdjustmentTool,gameStatusScreen),
             [typeof(MoveState)] = new MoveState(this, player),
-            [typeof(TurnStateToTarget)] = new TurnStateToTarget(this, player, launchRoom),
-            [typeof(FinishState)] = new FinishState(this, player, finishLevel),
+            [typeof(TurnStateToTarget)] = new TurnStateToTarget(this, player, levelAdjustmentTool),
+            [typeof(FinishState)] = new FinishState( player, finishLevel,gameStatusScreen),
+            [typeof(DeathState)] = new DeathState(player,gameStatusScreen),
         };
     }
 

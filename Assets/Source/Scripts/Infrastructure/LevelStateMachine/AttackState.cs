@@ -1,33 +1,47 @@
-﻿public class AttackState : ILevelState
+﻿using UnityEngine;
+
+public class AttackState : ILevelState
 {
     private readonly LevelStateMachine _levelStateMachine;
-    private readonly LaunchRoom _launchRoom;
-    private Room _room;
     private readonly Player _player;
+    private readonly LevelAdjustmentTool _levelAdjustmentTool;
+    private readonly GameStatusScreen _gameStatusScreen;
+    private Zone _zone;
 
-    public AttackState(LevelStateMachine levelStateMachine, LaunchRoom launchRoom, Player player)
+    public AttackState(LevelStateMachine levelStateMachine, Player player, LevelAdjustmentTool levelAdjustmentTool,
+        GameStatusScreen gameStatusScreen)
     {
         _player = player;
-        _launchRoom = launchRoom;
         _levelStateMachine = levelStateMachine;
+        _levelAdjustmentTool = levelAdjustmentTool;
+        _gameStatusScreen = gameStatusScreen;
     }
 
     public void Enter()
     {
+        _player.PlayerDeath.OnDied += Death;
         _player.PlayerRotate.EnableCameraLock();
-        _room = _launchRoom.GetRoom();
-        _room.OnRoomCleared += RoomClear;
+        _zone = _levelAdjustmentTool.GetRoom();
+        _gameStatusScreen.StartRoutineSoundZombie();
+        _zone.OnRoomCleared += RoomClear;
+        _zone.OnNextWave += ClearWave;
     }
 
     public void Exit()
     {
+        _player.PlayerDeath.OnDied -= Death;
         _player.PlayerRotate.CameraLook.StopRoutine();
-       
-        _room.OnRoomCleared -= RoomClear;
+        _gameStatusScreen.StopRoutineSoundZombie();
+        _zone.OnRoomCleared -= RoomClear;
+        _zone.OnNextWave -= ClearWave;
     }
 
-    private void RoomClear()
-    {
+    private void RoomClear() =>
         _levelStateMachine.Enter<MoveState>();
-    }
+
+    private void ClearWave() =>
+        _levelStateMachine.Enter<TurnStateToTarget>();
+
+    private void Death() =>
+        _levelStateMachine.Enter<DeathState>();
 }

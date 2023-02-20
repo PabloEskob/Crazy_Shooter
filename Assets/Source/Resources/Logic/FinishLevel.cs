@@ -22,9 +22,11 @@ public class FinishLevel : MonoBehaviour
     private void Awake() => 
         TurningPoint = GetComponentInChildren<TurningPoint>();
 
+    public void OpenChest() => 
+        _animator.SetTrigger(Open);
+
     private IEnumerator EndLevel()
     {
-        _animator.SetTrigger(Open);
         var delay = new WaitForSeconds(_delay);
         yield return delay;
         OnEndedLevel?.Invoke();

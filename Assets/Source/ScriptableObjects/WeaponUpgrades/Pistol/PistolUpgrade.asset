@@ -20,19 +20,19 @@ MonoBehaviour:
     _magazineSize: 0
     _price: 1000
   - _level: 2
-    _damage: 20
+    _damage: 30
     _fireRate: 0.2
     _reload: 0
     _magazineSize: 0
     _price: 2000
   - _level: 3
-    _damage: 30
+    _damage: 50
     _fireRate: 0.3
     _reload: 0
     _magazineSize: 0
     _price: 3000
   - _level: 4
-    _damage: 40
+    _damage: 70
     _fireRate: 0.4
     _reload: 0
     _magazineSize: 0

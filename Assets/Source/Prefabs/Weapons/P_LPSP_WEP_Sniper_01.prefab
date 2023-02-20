@@ -484,6 +484,7 @@ GameObject:
   - component: {fileID: 8137163820050006698}
   - component: {fileID: 8578661464601570599}
   - component: {fileID: 3803130821125631615}
+  - component: {fileID: -8416182591258796962}
   m_Layer: 6
   m_Name: P_LPSP_WEP_Sniper_01
   m_TagString: Untagged
@@ -541,20 +542,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 11400000, guid: 55d087660aa02e140914d2ccdaa62ba7, type: 2}
+  _skinsHandler: {fileID: -8416182591258796962}
   _bulletPool: {fileID: 0}
   _damage: 1
   _fireRate: 1
   _reloadSpeed: 1
   _magazineSize: 7
   _maxUpgradeLevel: 4
-  Price: 150
   _isInfinityAmmo: 1
+  Price: 150
+  _icon: {fileID: 0}
+  _weaponType: 4
+  _isBought: 0
+  _isEquipped: 0
+  _isCollected: 1
   weaponName: Sniper 01
   multiplierMovementSpeed: 1
   attachmentManager: {fileID: 8578661464601570599}
-  _weaponType: Sniper Rifle
-  _isBought: 1
-  _isEquipped: 0
   automatic: 0
   boltAction: 1
   shotCount: 1
@@ -666,6 +670,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4c405f36d24a5db61be27959609b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8416182591258796962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836565387965750232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: {fileID: 8137163820050006698}
+  _weaponMaterials:
+  - {fileID: 2100000, guid: abd5b66a9ca30ee42ba93392201adf78, type: 2}
+  _textureList:
+  - {fileID: 2800000, guid: 583ee1a57da446b47b38b3b966d30366, type: 3}
+  - {fileID: 2800000, guid: db6576cf84a40ec4b9db916b3ec6d4df, type: 3}
+  - {fileID: 2800000, guid: 370541881cfb92f4b981da331149a53c, type: 3}
+  - {fileID: 2800000, guid: 44745f5d1c0b60e4cb7def0aed7bd3a7, type: 3}
+  - {fileID: 2800000, guid: 880199096e4f42d42a02e6bf90a2a40e, type: 3}
+  - {fileID: 2800000, guid: b6ed4cc371c5c0c479a0e3fa13e1c89c, type: 3}
+  - {fileID: 2800000, guid: 2ce2d59553f85a54096f1b3a80a8db71, type: 3}
+  - {fileID: 2800000, guid: 751a888d6b074154598e353fbc15fcf8, type: 3}
+  - {fileID: 2800000, guid: d824bf31444f697448e5c698046ae5da, type: 3}
+  - {fileID: 2800000, guid: 09bb8ebf41c953146987f66f3bbf9280, type: 3}
+  _defaultTexture: {fileID: 2800000, guid: 567beb0e15733dd4789c7227df342604, type: 3}
 --- !u!1 &5836565387965750234
 GameObject:
   m_ObjectHideFlags: 0

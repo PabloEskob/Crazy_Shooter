@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 6035197157201893670}
   - component: {fileID: 8866888881564896686}
   - component: {fileID: 524015489424269637}
+  - component: {fileID: 2457136468254547047}
   m_Layer: 6
   m_Name: P_LPSP_WEP_AR_01
   m_TagString: Untagged
@@ -332,20 +333,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeConfig: {fileID: 11400000, guid: ff9a278ec1035df45a6c1b9a529cd726, type: 2}
+  _skinsHandler: {fileID: 2457136468254547047}
   _bulletPool: {fileID: 0}
   _damage: 1
   _fireRate: 1
   _reloadSpeed: 1
   _magazineSize: 30
   _maxUpgradeLevel: 4
-  Price: 150
   _isInfinityAmmo: 0
+  Price: 150
+  _icon: {fileID: 21300000, guid: 9122a7342e510534cbe63ec092f3fcc6, type: 3}
+  _weaponType: 1
+  _isBought: 0
+  _isEquipped: 0
+  _isCollected: 1
   weaponName: Assault Rifle 01
   multiplierMovementSpeed: 1
   attachmentManager: {fileID: 8866888881564896686}
-  _weaponType: Assault Rifle
-  _isBought: 1
-  _isEquipped: 0
   automatic: 1
   boltAction: 0
   shotCount: 1
@@ -451,6 +455,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4c405f36d24a5db61be27959609b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2457136468254547047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8445401694592989334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c674b4f75ce134389fc1705299730f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: {fileID: 6035197157201893670}
+  _weaponMaterials:
+  - {fileID: 2100000, guid: 8bf3795760184334483710ee835cccdc, type: 2}
+  - {fileID: 2100000, guid: f163886c552e95540a538a1986131edf, type: 2}
+  _textureList:
+  - {fileID: 2800000, guid: 583ee1a57da446b47b38b3b966d30366, type: 3}
+  - {fileID: 2800000, guid: db6576cf84a40ec4b9db916b3ec6d4df, type: 3}
+  - {fileID: 2800000, guid: 370541881cfb92f4b981da331149a53c, type: 3}
+  - {fileID: 2800000, guid: 44745f5d1c0b60e4cb7def0aed7bd3a7, type: 3}
+  - {fileID: 2800000, guid: 880199096e4f42d42a02e6bf90a2a40e, type: 3}
+  - {fileID: 2800000, guid: b6ed4cc371c5c0c479a0e3fa13e1c89c, type: 3}
+  - {fileID: 2800000, guid: 2ce2d59553f85a54096f1b3a80a8db71, type: 3}
+  - {fileID: 2800000, guid: 751a888d6b074154598e353fbc15fcf8, type: 3}
+  - {fileID: 2800000, guid: d824bf31444f697448e5c698046ae5da, type: 3}
+  - {fileID: 2800000, guid: 09bb8ebf41c953146987f66f3bbf9280, type: 3}
+  _defaultTexture: {fileID: 2800000, guid: db6576cf84a40ec4b9db916b3ec6d4df, type: 3}
 --- !u!1 &8445401694592989336
 GameObject:
   m_ObjectHideFlags: 0

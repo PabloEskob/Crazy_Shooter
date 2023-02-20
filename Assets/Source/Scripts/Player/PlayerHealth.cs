@@ -43,6 +43,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
             return;
 
         Current -= damage;
+        
        _player.PlayerAnimator.PlayHit();
     }
 }

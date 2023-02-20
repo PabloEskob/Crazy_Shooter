@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 973253228936777432, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1173631881349560264, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: _bodyShot
@@ -102,6 +102,10 @@ PrefabInstance:
     - target: {fileID: 7912165017643291299, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912165017643291299, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2232fe1398e21934986cbf984ac7c923, type: 3}

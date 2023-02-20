@@ -278,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6478d350f246aca457699f1cff409d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationClip: {fileID: -4506338696897810887, guid: 2bcb7d9b368c716448cc4b0153aca9bc, type: 3}
 --- !u!114 &1536784074449121643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,7 +345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62839c95bedc401ebec4e2d49ede4b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bloodEffectSpawner: {fileID: 524220157833909674}
   _fxHeadShot: {fileID: 0}
   _deathFx: {fileID: 1246534896543721760}
   _blood: {fileID: 0}
@@ -358,7 +356,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6184830516390962201}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4885206093487227485, guid: 7ab62dc2a5905d549a60cb0f51217cb8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1dc6aaa214183c54585da84582145e53, type: 3}
@@ -574,17 +572,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d6c676f7c63e5d4fbc3ce9bf5f15287, type: 3}
---- !u!114 &524220157833909674 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1635997280441953185, guid: 8d6c676f7c63e5d4fbc3ce9bf5f15287, type: 3}
-  m_PrefabInstance: {fileID: 1293199049510714891}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ef9da313d14353be4e92e6ed5b127b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8102855165507302935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7025969979245004828, guid: 8d6c676f7c63e5d4fbc3ce9bf5f15287, type: 3}

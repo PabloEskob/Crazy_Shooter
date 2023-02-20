@@ -57,6 +57,8 @@ namespace InfimaGames.LowPolyShooterPack
                     else
                     {
                         weapon.UpdateStatsToData();
+                        weapon.SetBoolToData();
+                        _storage.SetString(weapon.GetName(), weapon.GetData().ToJson());
                     }
                 }
 
@@ -74,8 +76,6 @@ namespace InfimaGames.LowPolyShooterPack
                     equippedWeaponIndex = i;
             }
 
-            //Equip.
-            //Equip(equippedAtStart);
             Equip(equippedWeaponIndex);
             Initialized?.Invoke();
         }

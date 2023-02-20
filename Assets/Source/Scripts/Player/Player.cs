@@ -1,4 +1,7 @@
-﻿using InfimaGames.LowPolyShooterPack;
+﻿using System;
+using InfimaGames.LowPolyShooterPack;
+using InfimaGames.LowPolyShooterPack.Interface;
+using Source.Scripts.PostProcess;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerHealth))]
@@ -8,25 +11,42 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerRotate))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private PlayerBody _playerBody;
+    [SerializeField] private PostProcess _postProcess;
+
     private PlayerMove _playerMove;
     private PlayerHealth _playerHealth;
     private PlayerAnimator _playerAnimator;
     private PlayerDeath _playerDeath;
     private PlayerRotate _playerRotate;
     private Character _character;
-    
+    private ActorUI _actorUI;
+    private CanvasSpawner _canvasSpawner;
+    private GameStatusScreen _gameStatusScreen;
+    private PauseScreen _pauseScreen;
+
     public PlayerMove PlayerMove =>
         _playerMove;
+
     public PlayerHealth PlayerHealth =>
         _playerHealth;
+
     public PlayerDeath PlayerDeath =>
         _playerDeath;
+
     public PlayerAnimator PlayerAnimator =>
         _playerAnimator;
+
     public PlayerRotate PlayerRotate =>
         _playerRotate;
+
     public Character Character =>
         _character;
+
+    public PostProcess PostProcess =>
+        _postProcess;
+
+    public event Action<ActorUI> OnSpawnedActorUi;
 
     private void Awake()
     {
@@ -36,5 +56,38 @@ public class Player : MonoBehaviour
         _playerDeath = GetComponent<PlayerDeath>();
         _playerRotate = GetComponent<PlayerRotate>();
         _character = GetComponent<Character>();
+        _canvasSpawner = GetComponent<CanvasSpawner>();
+    }
+
+    private void Start()
+    {
+#if UNITY_EDITOR
+        _actorUI = _canvasSpawner.CurrentCanvas.GetComponent<ActorUI>();
+
+        OnSpawnedActorUi?.Invoke(_actorUI);
+#endif
+
+#if !UNITY_EDITOR && UNITY_WEBGL
+        _canvasSpawner.Spawned += SetActorUi;
+#endif
+    }
+
+    public void SetDisable() =>
+        _playerBody.Disable();
+
+    public void InitScreens(GameStatusScreen gameStatusScreen)
+    {
+        _gameStatusScreen = gameStatusScreen;
+        _pauseScreen = _gameStatusScreen.GetComponent<PauseScreen>();
+    }
+
+    public void SetPause() => 
+        _pauseScreen.OpenPanel();
+
+    private void SetActorUi()
+    {
+        _actorUI = _canvasSpawner.CurrentCanvas.GetComponent<ActorUI>();
+        OnSpawnedActorUi?.Invoke(_actorUI);
+        _canvasSpawner.Spawned -= SetActorUi;
     }
 }

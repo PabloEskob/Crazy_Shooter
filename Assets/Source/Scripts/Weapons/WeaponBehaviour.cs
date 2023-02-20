@@ -1,5 +1,6 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
+using Assets.Source.Scripts.Weapons;
 using UnityEngine;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -31,6 +32,12 @@ namespace InfimaGames.LowPolyShooterPack
         #endregion
 
         #region GETTERS
+
+        public abstract bool GetCollectedState();
+
+        public abstract string GetName();
+
+        public abstract WeaponTypes GetWeaponType();
 
         public abstract float GetReloadSpeed();
         /// <summary>
@@ -184,6 +191,7 @@ namespace InfimaGames.LowPolyShooterPack
         public abstract void SetIsBought();
         public abstract void SetEquipped();
         public abstract void SetUnequipped();
+        public abstract void SetIsCollected();
         /// <summary>
         /// Fires the weapon.
         /// </summary>
@@ -207,10 +215,6 @@ namespace InfimaGames.LowPolyShooterPack
         /// Ejects a casing from the weapon. This is commonly called from animation events, but can be called from anywhere.
         /// </summary>
         public abstract void EjectCasing();
-
-        public abstract string GetName();
-
-        public abstract string GetWeaponType();
 
         #endregion
 

@@ -1,10 +1,13 @@
 ﻿// Copyright 2021, Infima Games. All Rights Reserved.
 
 using System;
+using System.Runtime.CompilerServices;
+using Assets.Source.Scripts.Weapons;
 using InfimaGames.LowPolyShooterPack.Legacy;
 using Source.Scripts.Data;
 using Source.Scripts.StaticData;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace InfimaGames.LowPolyShooterPack
@@ -18,16 +21,23 @@ namespace InfimaGames.LowPolyShooterPack
         #region FIELDS SERIALIZED
 
         [SerializeField] private UpgradeConfig _upgradeConfig;
+        [SerializeField] private WeaponSkinsHandler _skinsHandler;
         [SerializeField] private BulletPool _bulletPool;
 
-        [Header("")]
+        [Header("Weapon stats")]
         [SerializeField] private float _damage;
         [SerializeField] private float _fireRate;
         [SerializeField] private float _reloadSpeed;
         [SerializeField] private float _magazineSize;
         [SerializeField] private int _maxUpgradeLevel = 4;
-        [SerializeField] private int Price = 100;
         [SerializeField] private bool _isInfinityAmmo;
+        [SerializeField] private int Price = 100;
+        [SerializeField] private Sprite _icon;
+
+        [SerializeField] private WeaponTypes _weaponType;
+        [SerializeField] private bool _isBought;
+        [SerializeField] private bool _isEquipped;
+        [SerializeField] private bool _isCollected;
 
         private int _frameUpgradeLevel;
         private int _muzzleUpgradeLevel;
@@ -37,6 +47,8 @@ namespace InfimaGames.LowPolyShooterPack
 
         public int MaxUpgradeLevel => _maxUpgradeLevel;
         public int WeaponPrice => Price;
+        public WeaponSkinsHandler SkinsHandler => _skinsHandler;
+        public Sprite Icon => _icon;
 
         private const int FireRateDelta = 100;
 
@@ -57,10 +69,6 @@ namespace InfimaGames.LowPolyShooterPack
         /// </summary>
         [SerializeField] private WeaponAttachmentManagerBehaviour attachmentManager;
 
-
-        [SerializeField] private string _weaponType;
-        [SerializeField] private bool _isBought;
-        [SerializeField] private bool _isEquipped;
 
         [Header("Firing")]
 
@@ -252,7 +260,7 @@ namespace InfimaGames.LowPolyShooterPack
         #endregion
         private WeaponData _data = new WeaponData();
 
-        public WeaponUpgrade WeaponUpgrade { get; private set; }
+        public WeaponUpgradeData WeaponUpgrade { get; private set; }
         public UpgradeConfig UpgradeConfig => _upgradeConfig;
 
         public event Action WeaponInitialized;
@@ -314,11 +322,15 @@ namespace InfimaGames.LowPolyShooterPack
         public float ReloadSpeed => _reloadSpeed;
         public float MagazineSize => _magazineSize;
 
+        public override bool GetCollectedState() => _isCollected;
+
         public override string GetName() => weaponName;
 
-        public override string GetWeaponType() => _weaponType;
+        public override WeaponTypes GetWeaponType() => _weaponType;
 
         public WeaponData GetData() => _data;
+
+        public Sprite GetIcon() => _icon;
 
         public void SetData(String name) =>
             _data = name.ToDeserialized<WeaponData>();
@@ -327,6 +339,14 @@ namespace InfimaGames.LowPolyShooterPack
         {
             _isBought = _data.IsBought;
             _isEquipped = _data.IsEquipped;
+            _isCollected = _data.IsCollected;
+        }
+
+        public void SetBoolToData()
+        {
+            _data.IsBought = _isBought;
+            _data.IsEquipped = _isEquipped;
+            _data.IsCollected = _isCollected;
         }
 
         public override Offsets GetWeaponOffsets() => weaponOffsets;
@@ -408,6 +428,18 @@ namespace InfimaGames.LowPolyShooterPack
 
         #region METHODS
 
+        public void OnRewarded()
+        {
+            SetIsCollected();
+            SetIsBought();
+        }
+
+        public override void SetIsCollected()
+        {
+            _isCollected = true;
+            _data.IsCollected = _isCollected;
+        }
+
         public override void SetIsBought()
         {
             _isBought = true;
@@ -456,7 +488,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Reduce ammunition! We just shot, so we need to get rid of one!
             ammunitionCurrent = Mathf.Clamp(ammunitionCurrent - 1, 0, magazineBehaviour.GetMagazineSize());
 
-            
+
 
 
             //Set the slide back if we just ran out of ammunition.
@@ -496,7 +528,7 @@ namespace InfimaGames.LowPolyShooterPack
             }
         }
 
-           private int ammunitionLeftInMagazine;
+        private int ammunitionLeftInMagazine;
         public override void FillAmmunition(int amount)
         {
             ammunitionLeftInMagazine = ammunitionCurrent;
@@ -512,7 +544,6 @@ namespace InfimaGames.LowPolyShooterPack
         {
             int magazineSize = magazineBehaviour.GetMagazineSize();
             int ammunitionLeft = magazineBehaviour.GetAmmunitionTotal();
-            Debug.Log(ammunitionCurrent);
             return ammunitionLeft > magazineSize ? magazineSize : ammunitionLeftInMagazine + ammunitionLeft;
         }
 
@@ -539,26 +570,31 @@ namespace InfimaGames.LowPolyShooterPack
 
             switch (WeaponUpgrade)
             {
-                case GunFrameUpgrade:
+                case GunFrameUpgradeData:
                     _frameUpgradeLevel++;
+                    Debug.Log("Frame upgraded");
                     break;
-                case Source.Scripts.StaticData.MuzzleUpgrade:
+                case MuzzleUpgradeData:
                     _muzzleUpgradeLevel++;
+                    Debug.Log("Muzzle upgraded");
                     break;
-                case BulletUpgrade:
+                case BulletUpgradeData:
                     _bulletsUpgradeLevel++;
+                    Debug.Log("Bullet upgraded");
                     break;
-                case Source.Scripts.StaticData.ScopeUpgrade:
+                case ScopeUpgradeData:
+                    Debug.Log("Scope upgraded");
                     _scopeUpgradeLevel++;
                     break;
-                case Source.Scripts.StaticData.MagazineUpgrade:
+                case MagazineUpgradeData:
+                    Debug.Log("Magazine upgraded");
                     _magazineSizeUpgradeLevel++;
                     break;
             }
         }
 
 
-        public WeaponUpgrade GetFrameUpgrade()
+        public WeaponUpgradeData GetFrameUpgrade()
         {
             for (int i = 0; i < UpgradeConfig.GunFrameUpgrades.Count; i++)
             {
@@ -573,7 +609,7 @@ namespace InfimaGames.LowPolyShooterPack
             return null;
         }
 
-        public WeaponUpgrade GetMuzzleUpgrade()
+        public WeaponUpgradeData GetMuzzleUpgrade()
         {
             for (int i = 0; i < UpgradeConfig.MuzzleUpgrades.Count; i++)
             {
@@ -588,7 +624,7 @@ namespace InfimaGames.LowPolyShooterPack
             return null;
         }
 
-        public WeaponUpgrade GetScopeUpgrade()
+        public WeaponUpgradeData GetScopeUpgrade()
         {
             for (int i = 0; i < UpgradeConfig.ScopeUpgrades.Count; i++)
             {
@@ -603,7 +639,7 @@ namespace InfimaGames.LowPolyShooterPack
             return null;
         }
 
-        public WeaponUpgrade GetBulletsUpgrade()
+        public WeaponUpgradeData GetBulletsUpgrade()
         {
             for (int i = 0; i < UpgradeConfig.BulletUpgrades.Count; i++)
             {
@@ -618,7 +654,7 @@ namespace InfimaGames.LowPolyShooterPack
             return null;
         }
 
-        public WeaponUpgrade GetMagazineUpgrade()
+        public WeaponUpgradeData GetMagazineUpgrade()
         {
             for (int i = 0; i < UpgradeConfig.MagazineUpgrades.Count; i++)
             {
@@ -636,7 +672,6 @@ namespace InfimaGames.LowPolyShooterPack
         public void UpdateStatsToData()
         {
             _data.Damage = _damage;
-            //_fireRate = roundsPerMinutes / FireRateDelta;
             _data.FireRate = _fireRate;
             _data.Reload = _reloadSpeed;
             _data.MagazineSize = _magazineSize;

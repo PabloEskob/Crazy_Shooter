@@ -4,7 +4,6 @@ using Source.Scripts.Infrastructure.Factory;
 using Source.Scripts.Infrastructure.Services.PersistentProgress;
 using Source.Scripts.SaveSystem;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Source.Infrastructure
 {
@@ -14,7 +13,7 @@ namespace Source.Infrastructure
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly AllServices _services;
-
+        
         public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader, AllServices services)
         {
             _stateMachine = stateMachine;
@@ -31,7 +30,7 @@ namespace Source.Infrastructure
             _services.RegisterSingle<IAnalyticManager>(CreateAnalyticManager());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
-            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IStaticDataService>()));
+            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>(), _services.Single<IStaticDataService>(), _services.Single<IAnalyticManager>()));
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistentProgressService>(), _services.Single<IGameFactory>()));
             _services.RegisterSingle<IStorage>(new Storage(DataNames.GameName));
         }
@@ -63,13 +62,11 @@ namespace Source.Infrastructure
         {
             IAnalyticManager analytic = new AnalyticManager(new List<IAnalytic>
             {
-#if GAME_ANALYTICS
                 new GameAnalyticsAnalytic()
-#endif
             });
-#if YANDEX_METRICA && !UNITY_EDITOR
-            analytic.AddAnalytic(new YandexMetricaAnalytic());
-#endif
+//#if YANDEX_METRICA && !UNITY_EDITOR
+//            analytic.AddAnalytic(new YandexMetricaAnalytic());
+//#endif
             return analytic;
         }
 

@@ -4,4 +4,8 @@
     public const string PathEnemy = "Enemy/SO";
     public const string StartScenePath = "Logic/StartScene";
     public const string PathGameStatusScreen = "UI/GameStatusScreen";
+    public const string PathLevelAdjustment = "Level/LevelAdjustmentTool";
+    public const string PathSpawner = "Spawn/Spawner";
+    public const string PathTurningPoint = "Spawn/TurningPoint";
+    public const string PathClaws = "UI/ClawsImage";
 }
